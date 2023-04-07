@@ -149,3 +149,103 @@ enums:
     go_name: StaKey
   MSKstartpointtype_enum:
     go_name: StarPointType
+funcs:
+  MSK_asyncgetresult:
+    skip: true
+  MSK_asyncoptimize:
+    skip: true
+  MSK_asyncpoll:
+    skip: true
+  MSK_asyncstop:
+    skip: true
+  MSK_clonetask:
+    skip: true
+  MSK_deletetask:
+    skip: true
+  MSK_freedbgtask:
+    skip: true
+  MSK_freetask:
+    skip: true
+  MSK_generateaccnames:
+    skip: true
+  MSK_generatebarvarnames:
+    skip: true
+  MSK_generateconenames:
+    skip: true
+  MSK_generateconnames:
+    skip: true
+  MSK_generatedjcnames:
+    skip: true
+  MSK_generatevarnames:
+    skip: true
+  MSK_getcallbackfunc:
+    skip: true
+  MSK_getenv:
+    skip: true
+  MSK_getinfeasiblesubproblem:
+    skip: true
+  MSK_getnastrparamal:
+    skip: true
+  MSK_getstrparamal:
+    skip: true
+  MSK_linkfunctotaskstream:
+    skip: true
+  MSK_putcallbackfunc:
+    skip: true
+  MSK_putresponsefunc:
+    skip: true
+  MSK_readdatacb:
+    skip: true
+  MSK_writedatahandle:
+    skip: true
+  MSK_computesparsecholesky:
+    skip: true
+  MSK_deleteenv:
+    skip: true
+  MSK_freedbgenv:
+    skip: true
+  MSK_freeenv:
+    skip: true
+  MSK_linkfunctoenvstream:
+    skip: true
+  MSK_makeemptytask:
+    skip: true
+  MSK_makeenv:
+    skip: true
+  MSK_maketask:
+    skip: true
+  MSK_optimizebatch:
+    skip: true
+  MSK_putexitfunc:
+    skip: true
+  MSK_callocdbgtask:
+    skip: true # calloc, use golang one
+  MSK_calloctask:
+    skip: true # calloc, use golang one
+  MSK_callocdbgenv:
+    skip: true # calloc, use golang one
+  MSK_callocenv:
+    skip: true # calloc, use golang one
+  MSK_echoenv:
+    skip: true # this is a variadic function
+  MSK_echotask:
+    skip: true # this is a variadic function
+  MSK_axpy:
+    comments: performs y = a*x + y where x/y are vectors.
+  MSK_gemv:
+    comments: calculates y = aAx + by, where A is matrix, x,y is vector, and a b are scalars.
+  MSK_dot:
+    last_param_outupt: true
+    comments: performs a dot product of two vectors
+  MSK_gemm:
+    comments: |
+      performs a general matrix multiplication
+      C = alpha * A * B + beta * C
+  MSK_potrf:
+    comments: performs Cholesky decomposition of symmetric square matrix a
+  MSK_syrk:
+    comments: performs rank k update of matrix C, C = aAA^T + bC where A/C is matrix and a, b are scalars.
+  MSK_syeig:
+    comments: calculates the eigen values of a symmetric matrix.
+  MSK_syevd:
+    comments: calculates the eigen values and eigen vectors of a symmetric matrix.
