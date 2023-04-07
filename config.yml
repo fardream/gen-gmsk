@@ -150,6 +150,10 @@ enums:
   MSKstartpointtype_enum:
     go_name: StarPointType
 funcs:
+  MSK_makeenv:
+    skip: true
+  MSK_maketask:
+    skip: true
   MSK_asyncgetresult:
     skip: true
   MSK_asyncoptimize:
@@ -249,3 +253,56 @@ funcs:
     comments: calculates the eigen values of a symmetric matrix.
   MSK_syevd:
     comments: calculates the eigen values and eigen vectors of a symmetric matrix.
+  MSK_appendcons:
+    comments: add vanilla linear constraints to the task.
+  MSK_appendvars:
+    comments: add variables to the task.
+  MSK_appendacc:
+    comments: |
+      adds an affine conic constraint to the task, where the afe idx is provided
+      by an array or pointer - if the afe idx is sequential, use [Task.AppendAccSeq]
+      to avoid allocating an array.
+  MSK_appendaccs:
+    comments: adds a list of affine conic constraints to the task.
+  MSK_appendaccseq:
+    comments: adds an affine conic constraint to the task where the affine idx is sequential.
+  MSK_appendaccsseq:
+    comments: append a block of accs to the tas - assuming affine expressions are sequential.
+  MSK_appenddjcs:
+    comments: adds disjunctive constraints to the task.
+  MSK_putdjc:
+    comments: sets the disjunctive constraint.
+  MSK_appendafes:
+    comments: adds affine expressions to the task.
+  MSK_putaij:
+    comments: set the value of the constraints matrix A[i,j]
+  MSK_putaijlist:
+    comments: sets a list of constraint matrix A by index.
+  MSK_putcj:
+    comments: set the coefficient in the objective function.
+  MSK_putcjslice:
+    comments: set a slice of coefficients in the objective.
+  MSK_putcjlist:
+    comments: set coefficients of the objective with index/value.
+  MSK_putvarbound:
+    comments: set the bound for a variable.
+  MSK_putvarboundslice:
+    comments: sets the bound for a slice of variables using 3 vectors.
+  MSK_putvarboundsliceconst:
+    comments: set the bound for a slice of variables to the same value.
+  MSK_getxx:
+    skip: true # getting solution x, special handling.
+  MSK_getxxslice:
+    skip: true # getting solution x slice, special handling.
+  MSK_putconbound:
+    comments: set the bound for a contraint
+  MSK_putconboundslice:
+    comments: sets a list of constraint bounds.
+  MSK_putconboundsliceconst:
+    comments: sets a slice of constraint bounds to the same constant value.
+  MSK_putobjsense:
+    comments: set the objective sense - which is either minimize or maximize
+  MSK_putxxslice:
+    comments: sets the initial solution for a slice.
+  MSK_optimizeterm:
+    skip: true

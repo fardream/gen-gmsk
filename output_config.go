@@ -222,7 +222,7 @@ func normalizeFunction(f *MskFunction, config *OutputConfig) {
 		return
 	}
 	if fc.GoName == "" {
-		fc.GoName = UpperCaseFirstLetter(GetGoName(fname))
+		fc.GoName = GetFuncName(f.Name)
 	}
 
 	fc.IsTask = len(f.Parameters) >= 1 && f.Parameters[0].Type == "MSKtask_t"
@@ -382,9 +382,10 @@ func BuildFunction(f *MskFunction, fc *FuncConfig, config *OutputConfig, out io.
 	}
 	fmt.Fprintf(out, "// %s is wrapping [%s]%s\n", fc.GoName, f.Name, s)
 	SplitComments(out, fc.Comments)
+	fmt.Fprintln(out, "//")
 	fmt.Fprintf(out, "// function %s has following parameters:\n", f.Name)
 	for _, fp := range f.Parameters {
-		fmt.Fprintf(out, "// - %s: %s\n", fp.Name, fp.Type)
+		fmt.Fprintf(out, "//   - %s: %s\n", fp.Name, fp.Type)
 	}
 	fmt.Fprintf(out, "//\n// [%s]: https://docs.mosek.com/latest/capi/alphabetic-functionalities.html\n", f.Name)
 	if fc.IsTask {
