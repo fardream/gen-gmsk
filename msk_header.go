@@ -40,14 +40,10 @@ type MskFunction struct {
 }
 
 type MosekH struct {
-	Enums     map[string]*MskEnum `json:"-"` // turn off
-	EnumList  []string            `json:"-"` // turn off
+	Enums     map[string]*MskEnum `json:"enums"`
+	EnumList  []string            `json:"enum_list"`
 	Functions []*MskFunction      `json:"functions"`
-	Typedefs  map[string]string   `json:"-"`
-}
-
-type Typedef struct {
-	Name string `json:"name"`
+	Typedefs  map[string]string   `json:"typedefs"`
 }
 
 func NewMosekH() *MosekH {

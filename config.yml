@@ -1,0 +1,251 @@
+package_name: gmsk
+enums:
+  MSKboundkey_enum:
+    go_name: BoundKey
+    comment: Bound on variables and constraints
+    constant_comments:
+      MSK_BK_LO: lower bound
+      MSK_BK_UP: upper bound
+      MSK_BK_FX: fixed bound
+      MSK_BK_FR: free
+      MSK_BK_RA: range bound
+  MSKvariabletype_enum:
+    go_name: VariableType
+    comment: type of variables, either integer or continuous.
+    constant_comments:
+      MSK_VAR_TYPE_CONT: continuous
+      MSK_VAR_TYPE_INT: integer
+  MSKobjsense_enum:
+    go_name: ObjectiveSense
+    comment: whether to maximize or minimize the objective.
+    constant_comments:
+      MSK_OBJECTIVE_SENSE_MINIMIZE: Objective is to maximize
+      MSK_OBJECTIVE_SENSE_MAXIMIZE: Objective is to minimize
+  MSKsoltype_enum:
+    go_name: SolType
+    comment: solution type
+    constant_comments:
+      MSK_SOL_ITR: Iterior Point Solution.
+      MSK_SOL_BAS: Basic Solution.
+      MSK_SOL_ITG: Integer Solution.
+  MSKstreamtype_enum:
+    go_name: StreamType
+    comment: type of stream
+  MSKdataformat_enum:
+    go_name: DataFormat
+    comment: format of data file
+  MSKcompresstype_enum:
+    go_name: CompressType
+    comment: compress type for data file
+  MSKuplo_enum:
+    go_name: UpLo
+    comment: indicating if a matrix is upper triangular or lower triangular
+    constant_comments:
+      MSK_UPLO_LO: lower triangular
+      MSK_UPLO_UP: upper triangular
+  MSKtranspose_enum:
+    go_name: Transpose
+    comment: if the matrix input should be transposed or not
+    constant_comments:
+      MSK_TRANSPOSE_NO: No transpose
+      MSK_TRANSPOSE_YES: Transpose
+  MSKonoffkey_enum:
+    go_name: OnOff
+    integer_type: int32
+    is_equal_type: true
+    comment: |
+      This is alias of int32, because golang distinguishes
+      the enum and integers.
+  MSKoptimizertype_enum:
+    integer_type: int32
+    go_name: OptimizerType
+    is_equal_type: true
+    comment: can be set for the integer parameter [IPAR_OPTIMIZER]
+  MSKiparam_enum:
+    comment: |
+      tells what paramete the integer parameter is set for
+      in MSK_putintparam or [Task.PutIntParam].
+    go_name: IParam
+  MSKdparam_enum:
+    go_name: DParam
+  MSKiinfitem_enum:
+    go_name: IInfItem
+  MSKdinfitem_enum:
+    go_name: DInfItem
+  MSKsolsta_enum:
+    go_name: SolSta
+  MSKprosta_enum:
+    go_name: ProSta
+  MSKvalue_enum:
+    skip: true
+  MSKsimreform_enum:
+    go_name: SimReform
+  MSKintpnthotstart_enum:
+    go_name: IntpntHotstart
+  MSKcallbackcode_enum:
+    go_name: CallbackCode
+  MSKcheckconvexitytype_enum:
+    go_name: CheckConvexityType
+  MSKconetype_enum:
+    go_name: ConeType
+  MSKdomaintype_enum:
+    go_name: DomainType
+  MSKnametype_enum:
+    go_name: NameType
+  MSKsymmattype_enum:
+    go_name: SymmatType
+  MSKsolformat_enum:
+    go_name: SolFormat
+  MSKliinfitem_enum:
+    go_name: LIInfItem
+  MSKinftype_enum:
+    go_name: InfType
+  MSKiomode_enum:
+    go_name: IoMode
+  MSKbranchdir_enum:
+    go_name: BranchDir
+  MSKmiqcqoreformmethod_enum:
+    go_name: MiQcQoReformMethod
+  MSKmiodatapermmethod_enum:
+    go_name: MioDataPermMethod
+  MSKmiocontsoltype_enum:
+    go_name: MioContSolType
+  MSKmiomode_enum:
+    go_name: MioMode
+  MSKmionodeseltype_enum:
+    go_name: MioNodeSelType
+  MSKmpsformat_enum:
+    go_name: MPSFormat
+  MSKorderingtype_enum:
+    go_name: OrderingType
+  MSKpresolvemode_enum:
+    go_name: PresolveMode
+  MSKparametertype_enum:
+    go_name: ParameterType
+  MSKproblemitem_enum:
+    go_name: ProblemItem
+  MSKproblemtype_enum:
+    go_name: ProblemType
+  MSKxmlwriteroutputtype_enum:
+    go_name: XmlWriterOutputType
+  MSKrescodetype_enum:
+    go_name: ResCodeType
+  MSKscalingtype_enum:
+    go_name: ScalingType
+  MSKscalingmethod_enum:
+    go_name: ScalingMethod
+  MSKsensitivitytype_enum:
+    go_name: SensitivityType
+  MSKsimseltype_enum:
+    go_name: SimSelType
+  MSKsolitem_enum:
+    go_name: SolItem
+  MSKsolveform:
+    go_name: SolveForm
+  MSKsparam_enum:
+    go_name: SParam
+    comment: string parameter.
+  MSKstakey_enum:
+    go_name: StaKey
+  MSKstartpointtype_enum:
+    go_name: StarPointType
+funcs:
+  MSK_asyncgetresult:
+    skip: true
+  MSK_asyncoptimize:
+    skip: true
+  MSK_asyncpoll:
+    skip: true
+  MSK_asyncstop:
+    skip: true
+  MSK_clonetask:
+    skip: true
+  MSK_deletetask:
+    skip: true
+  MSK_freedbgtask:
+    skip: true
+  MSK_freetask:
+    skip: true
+  MSK_generateaccnames:
+    skip: true
+  MSK_generatebarvarnames:
+    skip: true
+  MSK_generateconenames:
+    skip: true
+  MSK_generateconnames:
+    skip: true
+  MSK_generatedjcnames:
+    skip: true
+  MSK_generatevarnames:
+    skip: true
+  MSK_getcallbackfunc:
+    skip: true
+  MSK_getenv:
+    skip: true
+  MSK_getinfeasiblesubproblem:
+    skip: true
+  MSK_getnastrparamal:
+    skip: true
+  MSK_getstrparamal:
+    skip: true
+  MSK_linkfunctotaskstream:
+    skip: true
+  MSK_putcallbackfunc:
+    skip: true
+  MSK_putresponsefunc:
+    skip: true
+  MSK_readdatacb:
+    skip: true
+  MSK_writedatahandle:
+    skip: true
+  MSK_computesparsecholesky:
+    skip: true
+  MSK_deleteenv:
+    skip: true
+  MSK_freedbgenv:
+    skip: true
+  MSK_freeenv:
+    skip: true
+  MSK_linkfunctoenvstream:
+    skip: true
+  MSK_makeemptytask:
+    skip: true
+  MSK_makeenv:
+    skip: true
+  MSK_maketask:
+    skip: true
+  MSK_optimizebatch:
+    skip: true
+  MSK_putexitfunc:
+    skip: true
+  MSK_callocdbgtask:
+    skip: true # calloc, use golang one
+  MSK_calloctask:
+    skip: true # calloc, use golang one
+  MSK_callocdbgenv:
+    skip: true # calloc, use golang one
+  MSK_callocenv:
+    skip: true # calloc, use golang one
+  MSK_echoenv:
+    skip: true # this is a variadic function
+  MSK_echotask:
+    skip: true # this is a variadic function
+  MSK_axpy:
+    comments: performs y = a*x + y where x/y are vectors.
+  MSK_gemv:
+    comments: calculates y = aAx + by, where A is matrix, x,y is vector, and a b are scalars.
+  MSK_dot:
+    last_param_outupt: true
+    comments: performs a dot product of two vectors
+  MSK_gemm:
+    comments: |
+      performs a general matrix multiplication
+      C = alpha * A * B + beta * C
+  MSK_potrf:
+    comments: performs Cholesky decomposition of symmetric square matrix a
+  MSK_syrk:
+    comments: performs rank k update of matrix C, C = aAA^T + bC where A/C is matrix and a, b are scalars.
+  MSK_syeig:
+    comments: calculates the eigen values of a symmetric matrix.
+  MSK_syevd:
+    comments: calculates the eigen values and eigen vectors of a symmetric matrix.
