@@ -28,15 +28,15 @@ func (e *MskEnum) AddValue(name, value string) *MskEnum {
 	return e
 }
 
-type MskFunctionParameter struct {
+type ParamDecl struct {
 	Name string `json:"name"`
 	Type string `json:"type"`
 }
 
 type MskFunction struct {
-	Name       string                 `json:"name"`
-	Parameters []MskFunctionParameter `json:"parameters"`
-	ReturnType string                 `json:"return_type"`
+	Name       string      `json:"name"`
+	Parameters []ParamDecl `json:"parameters"`
+	ReturnType string      `json:"return_type"`
 }
 
 type MosekH struct {
@@ -123,7 +123,7 @@ func (h *MosekH) VisitFunc(cursor, parent clang.Cursor) clang.ChildVisitResult {
 		f.ReturnType = cursor.ResultType().Spelling()
 		for i := uint32(0); i < uint32(cursor.NumArguments()); i++ {
 			arg := cursor.Argument(i)
-			f.Parameters = append(f.Parameters, MskFunctionParameter{
+			f.Parameters = append(f.Parameters, ParamDecl{
 				Type: arg.Type().Spelling(),
 				Name: arg.Spelling(),
 			})
