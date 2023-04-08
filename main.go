@@ -90,7 +90,13 @@ func main() {
 
 	builderToFile(outputDir, "enums.go", m, config, BuildEnums)
 	builderToFile(outputDir, path.Join("res", "codes.go"), m, config, BuildResCode)
-	builderToFile(outputDir, "funcs.go", m, config, BuildFuncs)
+
+	for i := 0; i < int(funcType_TASK_OTHER); i++ {
+		t := funcType(i)
+		builderToFile(outputDir, t.OutputFile(), m, config, func(mh *MosekH, oc *OutputConfig, w io.Writer) error {
+			return BuildFuncs(mh, oc, t, w)
+		})
+	}
 
 	log.Printf("number of functions: %d", len(m.Functions))
 }
