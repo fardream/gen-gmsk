@@ -9,33 +9,20 @@ import (
 type funcType uint
 
 const (
-	funcType_NORMAL funcType = iota
-	funcType_ENV
-	funcType_TASK_PUT
-	funcType_TASK_GET
-	funcType_TASK_APPEND
-	funcType_TASK_OTHER
+	funcType_NORMAL            funcType = iota // other_funcs
+	funcType_ENV                               // env
+	funcType_TASK_PUT                          // task_put
+	funcType_TASK_GET                          // task_get
+	funcType_TASK_GETNUM                       // task_getnum
+	funcType_TASK_APPEND                       // task_append
+	funcType_TASK_APPENDDOMAIN                 // task_apenddomain
+	funcType_TASK_OTHER                        // task_other
+	// this is the last so that we can iterate through the types
+	funcType_LAST // task_last
 )
 
 func (t funcType) OutputFile() string {
-	switch t {
-	case funcType_NORMAL:
-		return "other_funcs.go"
-	case funcType_ENV:
-		return "env_methods.go"
-	case funcType_TASK_APPEND:
-		return "task_append.go"
-	case funcType_TASK_GET:
-		return "task_get.go"
-	case funcType_TASK_PUT:
-		return "task_put.go"
-	case funcType_TASK_OTHER:
-		return "task_other.go"
-	}
-
-	log.Panicf("doesn't recognize %d", t)
-
-	return ""
+	return fmt.Sprintf("%s.go", t.String())
 }
 
 type pair struct {
@@ -44,19 +31,35 @@ type pair struct {
 }
 
 var funcActions = []pair{
+	{"checkOut", "CheckOut"},
+	{"checkin", "CheckIn"},
 	{"analyze", "Analyze"},
+	{"getnum", "GetNum"},
 	{"append", "Append"},
+	{"unlink", "Unlink"},
+	{"remove", "Remove"},
+	{"check", "Check"},
+	{"empty", "Empty"},
+	{"print", "Print"},
+	{"write", "Write"},
+	{"read", "Read"},
 	{"make", "Make"},
+	{"link", "Link"},
 	{"get", "Get"},
 	{"put", "Put"},
 }
 
 var funcSuffix = []pair{
+	{"blocktriplet", "BlockTriplet"},
 	{"sliceconst", "SliceConst"},
 	{"listconst", "ListConst"},
+	{"domain", "Domain"},
 	{"slice", "Slice"},
+	{"list64", "List64"},
+	{"name", "Name"},
 	{"list", "List"},
 	{"seq", "Seq"},
+	{"new", "New"},
 }
 
 func GetFuncAction(s string) (string, string) {
@@ -79,7 +82,7 @@ func GetFunctionSuffix(s string) (string, string) {
 	return s, ""
 }
 
-func GetFuncName(s string) (action string, mid string, suffix string) {
+func splitFuncName(s string) (action string, mid string, suffix string) {
 	var after string
 	after, action = GetFuncAction(GetGoName(s))
 	mid, suffix = GetFunctionSuffix(after)
@@ -87,44 +90,22 @@ func GetFuncName(s string) (action string, mid string, suffix string) {
 }
 
 type ParamConfig struct {
-	Name      string `json:"name"`
-	OrigCType string `json:"orig_c_type"`
-	GoType    string `json:"go_type"`
-	CgoType   string `json:"cgo_type"`
-	IsPointer bool   `json:"is_pointer"`
-	IsConst   bool   `json:"is_const"`
-	IsString  bool   `json:"is_string"`
-	IsTask    bool   `json:"is_task"`
-	IsEnv     bool   `json:"is_env"`
-}
-
-func (c *ParamConfig) GetGoTypeString() string {
-	if c.IsPointer {
-		return fmt.Sprintf("*%s", c.GoType)
-	}
-	return c.GoType
-}
-
-func (c *ParamConfig) GetCgoTypeCast(withP bool) string {
-	cgotype := c.CgoType
-	if c.CgoType == "unsigned int" {
-		cgotype = "uint"
-	}
-	if c.IsPointer && c.CgoType == "char" {
-		return fmt.Sprintf("(*C.char)(unsafe.Pointer(%s))", c.Name)
-	} else if c.IsPointer && withP {
-		return fmt.Sprintf("(*C.%s)(&%s)", cgotype, c.Name)
-	} else if c.IsPointer {
-		return fmt.Sprintf("(*C.%s)(%s)", cgotype, c.Name)
-	}
-	return fmt.Sprintf("C.%s(%s)", cgotype, c.Name)
+	Name      string   `json:"name"`        // name of the parameter
+	OrigCType string   `json:"orig_c_type"` // Original C type
+	GoType    string   `json:"go_type"`     // Mapped Go Type, without const and *
+	CgoType   string   `json:"cgo_type"`    // Mapped CgoType, without *
+	IsPointer bool     `json:"is_pointer"`  // is pointer
+	IsConst   bool     `json:"is_const"`    // is const
+	IsTask    bool     `json:"is_task"`     // task, and first parameter
+	IsEnv     bool     `json:"is_env"`      // env, and first parameter
+	PkgsUsed  []string `json:"pkgs_used"`   // packaged used
 }
 
 type FuncConfig struct {
 	*CommonId `json:",inline"`
 
-	LastParamOutput bool     `json:"last_param_outupt"` // last parameter is output
-	FuncType        funcType `json:"func_type"`
+	LastNParamOutput int      `json:"last_n_param_output"`
+	FuncType         funcType `json:"func_type"`
 
 	params []*ParamConfig
 }
@@ -134,15 +115,8 @@ func (fc *FuncConfig) IsEnv() bool {
 }
 
 func (fc *FuncConfig) IsTask() bool {
-	switch fc.FuncType {
-	case funcType_TASK_APPEND,
-		funcType_TASK_GET,
-		funcType_TASK_PUT,
-		funcType_TASK_OTHER:
-		return true
-	default:
-		return false
-	}
+	i := int(fc.FuncType)
+	return i > int(funcType_ENV) && i < int(funcType_LAST)
 }
 
 type FuncTmplInput struct {
@@ -163,14 +137,13 @@ func (t *FuncTmplInput) GoParams() []string {
 	if t.IsEnv() || t.IsTask() {
 		i = 1
 	}
-	n := len(t.CFunc.Parameters)
-	if t.LastParamOutput {
-		n -= 1
-	}
+	n := len(t.CFunc.Parameters) - t.LastNParamOutput
 
 	for _, v := range t.params[i:n] {
 		var s string
 		switch {
+		case v.OrigCType == "const char *":
+			s = fmt.Sprintf("%s string", v.Name)
 		case v.IsPointer:
 			s = fmt.Sprintf("%s *%s", v.Name, v.GoType)
 		default:
@@ -182,9 +155,42 @@ func (t *FuncTmplInput) GoParams() []string {
 	return r
 }
 
+func (t *FuncTmplInput) ExtraStdPkgs() []string {
+	pkgs := make(map[string]struct{})
+	for _, pc := range t.params {
+		if pc.OrigCType == "const char *" || pc.OrigCType == "char *" {
+			pkgs["unsafe"] = struct{}{}
+		}
+	}
+
+	return keys(pkgs)
+}
+
+func keys[T any](m map[string]T) []string {
+	var r []string
+	for k := range m {
+		r = append(r, k)
+	}
+
+	return r
+}
+
+func (t *FuncTmplInput) InputStrings() []*ParamConfig {
+	var r []*ParamConfig
+	for _, p := range t.params {
+		if p.OrigCType == "const char *" {
+			r = append(r, p)
+		}
+	}
+
+	return r
+}
+
+// CCallInputs are the inputs to C function calls from cgo.
 func (t *FuncTmplInput) CCallInputs() []string {
 	n := len(t.params)
 	var r []string
+	output_param_n := n - t.LastNParamOutput
 	for i, pc := range t.params {
 		var s string
 		switch {
@@ -192,10 +198,10 @@ func (t *FuncTmplInput) CCallInputs() []string {
 			s = "env.getEnv()"
 		case i == 0 && t.IsTask():
 			s = "task.task"
-		case i == n-1 && t.LastParamOutput:
+		case i >= output_param_n:
 			s = fmt.Sprintf("(*C.%s)(&%s)", pc.CgoType, pc.Name)
 		case pc.OrigCType == "const char *":
-			s = fmt.Sprintf("(*C.char)(unsafe.Pointer(%s))", pc.Name)
+			s = fmt.Sprintf("c_%s", pc.Name)
 		case pc.OrigCType == "char *":
 			s = fmt.Sprintf("(*C.char)(unsafe.Pointer(%s))", pc.Name)
 		case pc.IsPointer:
@@ -220,34 +226,64 @@ func (t *FuncTmplInput) CReturnMapped() string {
 }
 
 func (t *FuncTmplInput) ReturnType() string {
-	var lastparam *ParamConfig
-	if t.LastParamOutput {
-		lastparam = t.params[len(t.params)-1]
-		if !lastparam.IsPointer {
-			log.Panicf("last output parameter: %s is not a pointer: %s", lastparam.Name, lastparam.OrigCType)
-		}
+	if t.CFunc.ReturnType == "void" && t.LastNParamOutput == 0 {
+		return ""
 	}
-
-	if t.LastParamOutput && t.CFunc.ReturnType == "void" {
-		return fmt.Sprintf("%s %s", lastparam.Name, lastparam.GoType)
-	}
-
 	goTypeForC, found := t.config.TypeToGoType[t.CFunc.ReturnType]
 	if !found {
-		log.Printf("cannot find mapping for return type %s", t.CFunc.ReturnType)
+		log.Panicf("cannot find mapping for return type %s", t.CFunc.ReturnType)
+	}
+	if t.LastNParamOutput == 0 {
+		return goTypeForC
 	}
 
-	if t.LastParamOutput {
-		return fmt.Sprintf("(r %s, %s %s)", goTypeForC, lastparam.Name, lastparam.GoType)
+	returnValeus := []string{fmt.Sprintf("r %s", goTypeForC)}
+	for _, v := range t.params[(len(t.params) - t.LastNParamOutput):] {
+		returnValeus = append(returnValeus, fmt.Sprintf("%s %s", v.Name, v.GoType))
 	}
 
-	return goTypeForC
+	return fmt.Sprintf("(%s)", strings.Join(returnValeus, ", "))
+}
+
+func replacePrefix(s, oldPrefix, newPrefix string) (bool, string) {
+	if strings.HasPrefix(s, oldPrefix) {
+		return true, fmt.Sprintf("%s%s", newPrefix, UpperCaseFirstLetter(strings.TrimPrefix(s, oldPrefix)))
+	}
+	return false, s
+}
+
+func replaceSuffix(s, oldSuffix, newSuffix string) (bool, string) {
+	if strings.HasSuffix(s, oldSuffix) {
+		return true, fmt.Sprintf("%s%s", strings.TrimSuffix(s, oldSuffix), newSuffix)
+	}
+	return false, s
+}
+
+func midName(action, mid, suffix string) string {
+	switch {
+	case action == "Append" && suffix == "Domain":
+		s := mid
+		_, s = replacePrefix(s, "primal", "Primal")
+		_, s = replacePrefix(s, "dual", "Dual")
+		_, s = replaceSuffix(s, "cone", "Cone")
+		_, s = replacePrefix(s, "r", "R")
+		s = UpperCaseFirstLetter(s)
+		return s
+	default:
+		for _, v := range funcVars {
+			t, p := replacePrefix(mid, v.MskName, v.GoName)
+			if t {
+				return p
+			}
+		}
+		return UpperCaseFirstLetter(mid)
+	}
 }
 
 func normalizeFunction(f *MskFunction, config *OutputConfig) {
 	fname := f.Name
-	action, mid, suffix := GetFuncName(f.Name)
-	canonName := fmt.Sprintf("%s%s%s", action, UpperCaseFirstLetter(mid), suffix)
+	action, mid, suffix := splitFuncName(f.Name)
+	canonName := fmt.Sprintf("%s%s%s", action, midName(action, mid, suffix), suffix)
 
 	fc, found := config.Funcs[fname]
 
@@ -263,7 +299,7 @@ func normalizeFunction(f *MskFunction, config *OutputConfig) {
 		return
 	}
 	if fc.GoName == "" {
-		fc.GoName = fmt.Sprintf("%s%s%s", action, UpperCaseFirstLetter(mid), suffix)
+		fc.GoName = canonName
 	}
 
 	IsTask := len(f.Parameters) >= 1 && f.Parameters[0].Type == "MSKtask_t"
@@ -276,11 +312,22 @@ func normalizeFunction(f *MskFunction, config *OutputConfig) {
 			fc.FuncType = funcType_TASK_PUT
 		case "Get":
 			fc.FuncType = funcType_TASK_GET
+		case "GetNum":
+			fc.FuncType = funcType_TASK_GETNUM
 		case "Append":
-			fc.FuncType = funcType_TASK_APPEND
+			if suffix == "Domain" {
+				fc.FuncType = funcType_TASK_APPENDDOMAIN
+				fc.LastNParamOutput = 1
+			} else {
+				fc.FuncType = funcType_TASK_APPEND
+			}
 		default:
 			fc.FuncType = funcType_TASK_OTHER
 		}
+	}
+
+	if action == "GetNum" && fc.LastNParamOutput == 0 {
+		fc.LastNParamOutput = 1
 	}
 
 	for i, p := range f.Parameters {

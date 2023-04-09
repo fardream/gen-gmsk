@@ -9,13 +9,8 @@ type CommonId struct {
 }
 
 func (c *CommonId) SplitComments() []string {
-	if !c.HasComments() {
+	if c.Comment == "" {
 		return nil
 	}
-
 	return strings.Split(c.Comment, "\n")
-}
-
-func (c *CommonId) HasComments() bool {
-	return c.Comment != ""
 }

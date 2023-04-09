@@ -17,9 +17,6 @@ var configStr []byte
 //go:embed func.tmpl
 var funcTmpl string
 
-//go:embed func-header.tmpl
-var funcHeader string
-
 type EnumConfig struct {
 	CommonId         `json:",inline"`
 	ConstantComments map[string]string `json:"constant_comments"`
@@ -51,7 +48,7 @@ func NewOutputConfig() *OutputConfig {
 		},
 	}
 
-	err := yaml.Unmarshal(configStr, r)
+	err := yaml.UnmarshalWithOptions(configStr, r, yaml.Strict())
 	if err != nil {
 		log.Panic(err)
 	}
@@ -255,6 +252,17 @@ type FileTmplInput struct {
 	Funcs []*FuncTmplInput
 
 	Desc string
+}
+
+func (fi *FileTmplInput) ExtraStdPkgs() []string {
+	pkgs := make(map[string]struct{})
+	for _, f := range fi.Funcs {
+		for _, p := range f.ExtraStdPkgs() {
+			pkgs[p] = struct{}{}
+		}
+	}
+
+	return keys(pkgs)
 }
 
 func BuildFuncs(h *MosekH, config *OutputConfig, funcTypeFilter funcType, out io.Writer) error {
