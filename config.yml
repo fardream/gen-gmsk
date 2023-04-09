@@ -214,10 +214,6 @@ funcs:
     skip: true
   MSK_makeemptytask:
     skip: true
-  MSK_makeenv:
-    skip: true
-  MSK_maketask:
-    skip: true
   MSK_optimizebatch:
     skip: true
   MSK_putexitfunc:
@@ -239,7 +235,7 @@ funcs:
   MSK_gemv:
     comment: calculates y = aAx + by, where A is matrix, x,y is vector, and a b are scalars.
   MSK_dot:
-    last_param_outupt: true
+    last_n_param_output: 1
     comment: performs a dot product of two vectors
   MSK_gemm:
     comment: |
@@ -306,3 +302,142 @@ funcs:
     comment: sets the initial solution for a slice.
   MSK_optimizeterm:
     skip: true
+  MSK_getversion: # 3 outputs as parameters
+    last_n_param_output: 3
+  MSK_inputdata:
+    go_name: InputData
+    comment: sets the data for objective, linear constraints, and variables.
+  MSK_inputdata64:
+    go_name: InputData64
+    comment: sets the data for objective, linear constraints, and variables.
+  MSK_putaccname:
+    comment: sets a name for an affine conic constraint.
+  MSK_putconname:
+    comment: sets a name for a constraint at indext i.
+  MSK_putvarname:
+    comment: sets a name for variable at j.
+  MSK_optimizetrm:
+    go_name: OptimizeTrm
+    comment: optimizes the problem.
+    last_n_param_output: 1
+  MSK_getnumafe:
+    comment: gets the number of constraints in the task.
+  MSK_getnumvar:
+    comment: gets the number of variables in the task.
+  MSK_getnumcon:
+    comment: gets the number of linear constraints in the task.
+  MSK_appendquadraticconedomain:
+    comment: adds a new quadratic cone of size n to the task. returns the index of the domain if successful.
+  MSK_appendrdomain:
+    comment: adds the whole n dimension R space domain to the task.
+  MSK_appendrquadraticconedomain:
+    comment: |
+      adds a new *rotated* quadratic cone of size n to the task. returns the index of the domain if successful.
+      note the function is similarly spelled to the *unrotated* quadratic cone [Task.AppendQuadraticConeDomain]
+  MSK_appendprimalpowerconedomain:
+    comment: add a primal power cone to the task.
+  MSK_appenddualpowerconedomain:
+    comment: add a dual power cone to the task.
+  MSK_appendprimalexpconedomain:
+    comment: add a primal exponential cone to the task.
+  MSK_appenddualexpconedomain:
+    comment: add a dual exponential cone to the task.
+  MSK_appendprimalgeomeanconedomain:
+    go_name: AppendPrimalGeoMeanConeDomain
+    comment: adds a primal geometric mean cone domain to the task.
+  MSK_appenddualgeomeanconedomain:
+    go_name: AppendDualGeoMeanConeDomain
+    comment: adds a dual geometric mean cone domain to the task.
+  MSK_appendsvecpsdconedomain:
+    go_name: AppendSvecPsdConeDomain
+    comment: adds a SVEC_PSD domain, or vectorized postive semidefinite matrix. n must be k(k+1)/2.
+  MSK_appendrplusdomain:
+    comment: add a domain of x>=0
+  MSK_appendrzerodomain:
+    comment: add a domain of x=0
+  MSK_appendrminusdomain:
+    comment: add a domain of x<0
+  MSK_appendbarvars:
+    comment: |
+      adds semidefinite matrix variables to the task.
+      Barvar because MOSEK uses bar{x} notation to indicate an element
+      of a semidefinite matrix.
+      The dimension of each of the semidefinite variables are provided
+      through the pointer dim.
+  MSK_putcfix:
+    comment: sets the constant term in the objective.
+  MSK_putbarcj:
+    comment: |
+      adds a positive semidefinite matrix to the objective.
+      j is the index of the matrix variable, and num is number of weight matrices. Those
+      weight matrices are identified by sub (the idx when they are added to the task
+      by [Task.AppendSparseSymmat].
+  MSK_putbarcblocktriplet:
+    comment: |
+      sets the coefficients for
+      matrix variable. suj is the index of the matrix variable, subk/subl are row/colmn index
+      of the cofficients, and valjkl is the coefficients value.
+  MSK_putqobj:
+    comment: sets the cofficient for quadratic objective term.
+  MSK_putvartype:
+    comment: sets the type of the variable.
+  MSK_putvartypelist:
+    comment: sets the type of a list of variables.
+  MSK_putacol:
+    comment: puts a column of A matrix.
+  MSK_putarow:
+    comment: puts a row of A matrix.
+  MSK_putbaraij:
+    comment: |
+      a semidefinite matrix to constraint.
+      i is the index of the constraint,and j is the index of the semidefinite matrix variable.
+      num is the number of coefficients matrices, and sub/weights are the coefficient matrices'
+      idx (when they are added by [Task.AppendSparseSymmat]) and weights.
+  MSK_putbarablocktriplet:
+    comment: |
+      sets constraints for matrix variable.
+      subi is the index of the constraint, subj is the index of the matrix variable,
+      subk and subl are the indices of the coefficients and valijkl are the coefficients value.
+  MSK_putqconk:
+    comment: sets the quandratic constraint's coefficients.
+  MSK_putafefentry:
+    comment: sets an entry in the  affine expression F matrix.
+  MSK_putafefentrylist:
+    comment: sets a portion of the affine expression F matrix.
+  MSK_putafefrow:
+    comment: sets a row of affine expression F matrix.
+  MSK_putafefcol:
+    comment: sets a column of affine expression F matrix.
+  MSK_putafebarfblocktriplet:
+    comment: |
+      sets a matrix variable to the F matrix of affine expression.
+      the rows of afe idx is provided in afeidx, the matrix variables are indexed by barvaridx, and subk, subl are the indices
+      of the coefficients for those matrix variables, and valkl are the corresponding coefficients.
+  MSK_putafeg:
+    comment: sets the value at afeidx to g.
+  MSK_putafegslice:
+    comment: sets a slice of values in g.
+  MSK_getsolsta:
+    comment: returns the solution status.
+    last_n_param_output: 1
+  MSK_getprosta:
+    comment: returns the problem status.
+    last_n_param_output: 1
+  MSK_appendsparsesymmat:
+    comment: |
+      adds a sparse and symmetric matrix to the task.
+      matrix is represented in coordinate format, and only lower triangular portion of the matrix should be
+      specified.
+      Those matrices can be used as either coefficent in the objective or constraints. The matrix is identified
+      by the returned idx.
+    last_n_param_output: 1
+  MSK_getintinf:
+    comment: retrieves integer information from the task.
+    last_n_param_output: 1
+  MSK_getdouinf:
+    comment: retrieves float point information from the task.
+    last_n_param_output: 1
+  MSK_putintparam:
+    comment: sets an integer parameter.
+  MSK_putdouparam:
+    comment: sets a float point parameter.

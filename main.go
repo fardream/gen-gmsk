@@ -91,7 +91,7 @@ func main() {
 	builderToFile(outputDir, "enums.go", m, config, BuildEnums)
 	builderToFile(outputDir, path.Join("res", "codes.go"), m, config, BuildResCode)
 
-	for i := 0; i < int(funcType_TASK_OTHER); i++ {
+	for i := 0; i < int(funcType_LAST); i++ {
 		t := funcType(i)
 		builderToFile(outputDir, t.OutputFile(), m, config, func(mh *MosekH, oc *OutputConfig, w io.Writer) error {
 			return BuildFuncs(mh, oc, t, w)

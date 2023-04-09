@@ -3,20 +3,18 @@
 
 package {{.PackageName}}
 
+// #include <stdlib.h> // for C.free
 // #include <mosek.h>
 import "C"
 
 import (
-    "unsafe"
-
-    "github.com/fardream/gmsk/res"
+{{if .ExtraStdPkgs}}{{range .ExtraStdPkgs}}	"{{.}}"
+{{end}}
+{{end}}	"github.com/fardream/gmsk/res"
 )
 
-// We don't know if unsafe will be used or not, so
-var _ any = unsafe.Pointer(nil)
-
 {{range .Funcs}}
-// {{.GoName}} is wrapping {{.CName}}{{if .HasComments}},
+// {{.GoName}} is wrapping [{{.CName}}]{{if .SplitComments}} and
 {{range .SplitComments}}// {{.}}
 {{end}}//{{else}}
 //{{end}}
@@ -27,11 +25,16 @@ var _ any = unsafe.Pointer(nil)
 func {{if .IsTask}}(task *Task) {{else if .IsEnv}}(env *Env) {{end}}{{.GoName}}(
 {{range .GoParams}}	{{.}},
 {{end}}) {{.ReturnType}} {
-	{{if .LastParamOutput}}r ={{else}}return {{end}}{{.CReturnMapped}}(
+{{if .InputStrings}}{{range .InputStrings}}
+		c_{{.Name}} := C.CString({{.Name}})
+        defer C.free(unsafe.Pointer(c_{{.Name}}))
+{{end}}
+{{end}}	{{if .LastNParamOutput}}r ={{else}}return {{end}}{{.CReturnMapped}}(
 		C.{{.CName}}(
 {{range .CCallInputs}}        {{.}},
 {{end}}		),
     )
-{{if .LastParamOutput}}	return
+{{if .LastNParamOutput}}
+	return
 {{end}}}
 {{end}}
