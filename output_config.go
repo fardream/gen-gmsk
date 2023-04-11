@@ -17,6 +17,12 @@ var configStr []byte
 //go:embed func.tmpl
 var funcTmpl string
 
+//go:embed urls.yml
+var urlsStr []byte
+
+//go:embed deprecated.yml
+var deprecatedStr []byte
+
 type EnumConfig struct {
 	CommonId         `json:",inline"`
 	ConstantComments map[string]string `json:"constant_comments"`
@@ -29,6 +35,8 @@ type OutputConfig struct {
 	PackageName  string                 `json:"package_name"`
 	TypeToGoType map[string]string      `json:"type_to_go_type"`
 	Funcs        map[string]*FuncConfig `json:"funcs"`
+	Deprecated   map[string]struct{}    `json:"deprecated"`
+	Urls         map[string]string      `json:"urls"`
 }
 
 func NewOutputConfig() *OutputConfig {
@@ -45,11 +53,19 @@ func NewOutputConfig() *OutputConfig {
 			"char":         "byte",
 			"MSKrescodee":  "res.Code",
 			"unsigned int": "uint32",
+			"MSKbooleant":  "bool",
 		},
+		Deprecated: make(map[string]struct{}),
+		Urls:       make(map[string]string),
 	}
 
-	err := yaml.UnmarshalWithOptions(configStr, r, yaml.Strict())
-	if err != nil {
+	if err := yaml.UnmarshalWithOptions(configStr, r, yaml.Strict()); err != nil {
+		log.Panic(err)
+	}
+	if err := yaml.UnmarshalWithOptions(urlsStr, &r.Urls, yaml.Strict()); err != nil {
+		log.Panic(err)
+	}
+	if err := yaml.UnmarshalWithOptions(deprecatedStr, &r.Deprecated, yaml.Strict()); err != nil {
 		log.Panic(err)
 	}
 

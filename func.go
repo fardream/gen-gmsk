@@ -9,14 +9,23 @@ import (
 type funcType uint
 
 const (
-	funcType_NORMAL            funcType = iota // other_funcs
-	funcType_ENV                               // env
-	funcType_TASK_PUT                          // task_put
-	funcType_TASK_GET                          // task_get
-	funcType_TASK_GETNUM                       // task_getnum
-	funcType_TASK_APPEND                       // task_append
-	funcType_TASK_APPENDDOMAIN                 // task_apenddomain
-	funcType_TASK_OTHER                        // task_other
+	// first one
+	funcType_NORMAL funcType = iota // other_funcs
+	// env
+	funcType_ENV // env
+	// task
+	funcType_TASK_PUT              // task_put
+	funcType_TASK_GET              // task_get
+	funcType_TASK_NAME             // task_name
+	funcType_TASK_GETNUM           // task_getnum
+	funcType_TASK_GETNUMNZ         // task_getnumnz
+	funcType_TASK_SLICETRIP        // task_slicetrip
+	funcType_TASK_APPEND           // task_append
+	funcType_TASK_APPENDDOMAIN     // task_apenddomain
+	funcType_TASK_GETLIST_OR_SLICE // task_getlist_or_slice
+	funcType_TASK_PUTLIST_OR_SLICE // task_putlist_or_slice
+	funcType_TASK_PUTMAXNUM        // task_putmaxnum
+	funcType_TASK_OTHER            // task_other
 	// this is the last so that we can iterate through the types
 	funcType_LAST // task_last
 )
@@ -31,12 +40,15 @@ type pair struct {
 }
 
 var funcActions = []pair{
+	{"putmaxnum", "PutMaxNum"},
 	{"checkOut", "CheckOut"},
+	{"evaluate", "Evaluate"},
 	{"checkin", "CheckIn"},
 	{"analyze", "Analyze"},
 	{"getnum", "GetNum"},
 	{"append", "Append"},
 	{"unlink", "Unlink"},
+	{"delete", "Delete"},
 	{"remove", "Remove"},
 	{"check", "Check"},
 	{"empty", "Empty"},
@@ -46,18 +58,30 @@ var funcActions = []pair{
 	{"make", "Make"},
 	{"link", "Link"},
 	{"get", "Get"},
+	{"set", "Set"},
 	{"put", "Put"},
 }
 
 var funcSuffix = []pair{
+	{"blocktriplets", "BlockTriplets"},
 	{"blocktriplet", "BlockTriplet"},
 	{"sliceconst", "SliceConst"},
+	{"slicetrip", "SliceTrip"},
 	{"listconst", "ListConst"},
+	{"summary", "Summary"},
+	{"namelen", "NameLen"},
+	{"numnz64", "NumNz64"},
+	{"numnz", "NumNz"},
+	{"tostr", "ToStr"},
+	{"list64", "List64"},
 	{"domain", "Domain"},
 	{"slice", "Slice"},
-	{"list64", "List64"},
+	{"dotys", "DotYs"},
+	{"doty", "DotY"},
+	{"info", "Info"},
 	{"name", "Name"},
 	{"list", "List"},
+	{"file", "File"},
 	{"seq", "Seq"},
 	{"new", "New"},
 }
@@ -90,15 +114,16 @@ func splitFuncName(s string) (action string, mid string, suffix string) {
 }
 
 type ParamConfig struct {
-	Name      string   `json:"name"`        // name of the parameter
-	OrigCType string   `json:"orig_c_type"` // Original C type
-	GoType    string   `json:"go_type"`     // Mapped Go Type, without const and *
-	CgoType   string   `json:"cgo_type"`    // Mapped CgoType, without *
-	IsPointer bool     `json:"is_pointer"`  // is pointer
-	IsConst   bool     `json:"is_const"`    // is const
-	IsTask    bool     `json:"is_task"`     // task, and first parameter
-	IsEnv     bool     `json:"is_env"`      // env, and first parameter
-	PkgsUsed  []string `json:"pkgs_used"`   // packaged used
+	Name      string `json:"name"`        // name of the parameter
+	OrigCType string `json:"orig_c_type"` // Original C type
+	GoType    string `json:"go_type"`     // Mapped Go Type, without const and *
+	CgoType   string `json:"cgo_type"`    // Mapped CgoType, without *
+	IsPointer bool   `json:"is_pointer"`  // is pointer
+	IsConst   bool   `json:"is_const"`    // is const
+	IsTask    bool   `json:"is_task"`     // task, and first parameter
+	IsEnv     bool   `json:"is_env"`      // env, and first parameter
+	IsStrOut  bool   `json:"is_str_out"`  // char * type, is output string
+	IsBoolOut bool   `json:"is_bool_out"` // bool * type, is output bool
 }
 
 type FuncConfig struct {
@@ -175,6 +200,28 @@ func keys[T any](m map[string]T) []string {
 	return r
 }
 
+func (t *FuncTmplInput) OutputStrings() []string {
+	var r []string
+	for i := len(t.params) - t.LastNParamOutput; i < len(t.params); i++ {
+		if t.params[i].IsStrOut {
+			r = append(r, t.params[i].Name)
+		}
+	}
+
+	return r
+}
+
+func (t *FuncTmplInput) OutputBools() []string {
+	var r []string
+	for i := len(t.params) - t.LastNParamOutput; i < len(t.params); i++ {
+		if t.params[i].IsBoolOut {
+			r = append(r, t.params[i].Name)
+		}
+	}
+
+	return r
+}
+
 func (t *FuncTmplInput) InputStrings() []*ParamConfig {
 	var r []*ParamConfig
 	for _, p := range t.params {
@@ -198,6 +245,12 @@ func (t *FuncTmplInput) CCallInputs() []string {
 			s = "env.getEnv()"
 		case i == 0 && t.IsTask():
 			s = "task.task"
+		case i < output_param_n && pc.OrigCType == "MSKbooleant":
+			s = fmt.Sprintf("boolToInt(%s)", pc.Name)
+		case pc.IsStrOut:
+			s = fmt.Sprintf("c_%s", pc.Name)
+		case pc.IsBoolOut:
+			s = fmt.Sprintf("&c_%s", pc.Name)
 		case i >= output_param_n:
 			s = fmt.Sprintf("(*C.%s)(&%s)", pc.CgoType, pc.Name)
 		case pc.OrigCType == "const char *":
@@ -217,12 +270,25 @@ func (t *FuncTmplInput) CCallInputs() []string {
 }
 
 func (t *FuncTmplInput) CReturnMapped() string {
+	if t.CFunc.ReturnType == "MSKbooleant" {
+		return "intToBool"
+	}
 	goTypeForC, found := t.config.TypeToGoType[t.CFunc.ReturnType]
 	if !found {
 		log.Printf("cannot find mapping for return type %s", t.CFunc.ReturnType)
 	}
 
 	return goTypeForC
+}
+
+func (t *FuncTmplInput) ReturnValueName() string {
+	for _, v := range t.params {
+		if v.Name == "r" {
+			return "rescode"
+		}
+	}
+
+	return "r"
 }
 
 func (t *FuncTmplInput) ReturnType() string {
@@ -237,12 +303,22 @@ func (t *FuncTmplInput) ReturnType() string {
 		return goTypeForC
 	}
 
-	returnValeus := []string{fmt.Sprintf("r %s", goTypeForC)}
-	for _, v := range t.params[(len(t.params) - t.LastNParamOutput):] {
-		returnValeus = append(returnValeus, fmt.Sprintf("%s %s", v.Name, v.GoType))
+	returnValeus := []string{}
+	returnValueName := t.ReturnValueName()
+
+	for _, v := range t.params[len(t.params)-t.LastNParamOutput:] {
+		thisr := fmt.Sprintf("%s %s", v.Name, v.GoType)
+		switch {
+		case v.IsStrOut:
+			thisr = fmt.Sprintf("%s string", v.Name)
+		case v.IsBoolOut:
+			thisr = fmt.Sprintf("%s bool", v.Name)
+		}
+
+		returnValeus = append(returnValeus, thisr)
 	}
 
-	return fmt.Sprintf("(%s)", strings.Join(returnValeus, ", "))
+	return fmt.Sprintf("(%s res.Code, %s)", returnValueName, strings.Join(returnValeus, ", "))
 }
 
 func replacePrefix(s, oldPrefix, newPrefix string) (bool, string) {
@@ -301,55 +377,109 @@ func normalizeFunction(f *MskFunction, config *OutputConfig) {
 	if fc.GoName == "" {
 		fc.GoName = canonName
 	}
+	if !fc.IsDeprecated {
+		_, isdes := config.Deprecated[fname]
+		fc.IsDeprecated = isdes
+	}
+	if fc.Url == "" {
+		url, found := config.Urls[fname]
+		if found {
+			fc.Url = url
+		} else {
+			fc.Url = "https://docs.mosek.com/latest/capi/alphabetic-functionalities.html"
+		}
+	}
 
 	IsTask := len(f.Parameters) >= 1 && f.Parameters[0].Type == "MSKtask_t"
 	IsEnv := len(f.Parameters) >= 1 && f.Parameters[0].Type == "MSKenv_t"
-	if IsEnv {
+	switch {
+	case IsEnv:
 		fc.FuncType = funcType_ENV
-	} else if IsTask {
-		switch action {
-		case "Put":
-			fc.FuncType = funcType_TASK_PUT
-		case "Get":
-			fc.FuncType = funcType_TASK_GET
-		case "GetNum":
-			fc.FuncType = funcType_TASK_GETNUM
-		case "Append":
-			if suffix == "Domain" {
-				fc.FuncType = funcType_TASK_APPENDDOMAIN
-				fc.LastNParamOutput = 1
-			} else {
-				fc.FuncType = funcType_TASK_APPEND
-			}
-		default:
-			fc.FuncType = funcType_TASK_OTHER
-		}
+	case IsTask && action == "PutMaxNum":
+		fc.FuncType = funcType_TASK_PUTMAXNUM
+	case IsTask && suffix == "SliceTrip":
+		fc.FuncType = funcType_TASK_SLICETRIP
+	case IsTask && (suffix == "Name" || suffix == "NameLen"):
+		fc.FuncType = funcType_TASK_NAME
+	case IsTask && (suffix == "NumNz" || suffix == "NumNz64") && action == "Get":
+		fc.FuncType = funcType_TASK_GETNUMNZ
+	case IsTask && action == "Append" && suffix == "Domain":
+		fc.FuncType = funcType_TASK_APPENDDOMAIN
+	case IsTask && action == "Append":
+		fc.FuncType = funcType_TASK_APPEND
+	case IsTask && action == "Get" && (suffix == "List" ||
+		suffix == "List64" || suffix == "Slice" || suffix == "SliceConst"):
+		fc.FuncType = funcType_TASK_GETLIST_OR_SLICE
+	case IsTask && action == "Get":
+		fc.FuncType = funcType_TASK_GET
+	case IsTask && action == "GetNum":
+		fc.FuncType = funcType_TASK_GETNUM
+	case IsTask && action == "Put" && (suffix == "List" ||
+		suffix == "List64" || suffix == "Slice" || suffix == "SliceConst"):
+		fc.FuncType = funcType_TASK_PUTLIST_OR_SLICE
+	case IsTask && action == "Put":
+		fc.FuncType = funcType_TASK_PUT
+	case IsTask:
+		fc.FuncType = funcType_TASK_OTHER
+	default:
+		fc.FuncType = funcType_NORMAL
 	}
 
 	if action == "GetNum" && fc.LastNParamOutput == 0 {
 		fc.LastNParamOutput = 1
 	}
-
+	nparams := len(f.Parameters)
+	last_n_params := nparams - fc.LastNParamOutput
 	for i, p := range f.Parameters {
 		pc := &ParamConfig{Name: p.Name, OrigCType: p.Type}
 		switch {
 		case i == 0 && IsEnv:
 			pc.IsEnv = true
+
 		case i == 0 && IsTask:
 			pc.IsTask = true
+
+		case i == nparams-1 && action == "GetNum" && fc.LastNParamOutput == 0:
+			fallthrough
+		case i == nparams-1 && fc.FuncType == funcType_TASK_APPENDDOMAIN && fc.LastNParamOutput == 0:
+			fallthrough
+		case i == nparams-1 && action == "Get" && (suffix == "NumNz" || suffix == "NumNz64") && fc.LastNParamOutput == 0:
+			fallthrough
+		case i == nparams-1 && action == "Get" && suffix == "NameLen" && fc.LastNParamOutput == 0:
+			fc.LastNParamOutput = 1
+			processParam(pc, p, config, f)
+
+		case i == nparams-1 && action == "Get" && suffix == "Name" && fc.LastNParamOutput == 0:
+			fc.LastNParamOutput = 1
+			pc.IsStrOut = true
+
+		case i == nparams-1 && action == "" && suffix == "ToStr" && fc.LastNParamOutput == 0 && p.Type == "char *":
+			fc.LastNParamOutput = 1
+			pc.IsStrOut = true
+
+		case i >= last_n_params && p.Type == "char *":
+			pc.IsStrOut = true
+
+		case i >= last_n_params && p.Type == "MSKbooleant *":
+			pc.IsBoolOut = true
+
 		default:
-			pc.IsPointer = strings.HasSuffix(p.Type, " *")
-			ctype := strings.TrimSuffix(p.Type, " *")
-			pc.IsConst = strings.HasPrefix(p.Type, "const ")
-			ctype = strings.TrimPrefix(ctype, "const ")
-			pc.CgoType = ctype
-			found = false
-			pc.GoType, found = config.TypeToGoType[ctype]
-			if !found {
-				log.Printf("cannot find func: %s", f.Name)
-			}
+			processParam(pc, p, config, f)
 		}
 
 		fc.params = append(fc.params, pc)
+	}
+}
+
+func processParam(pc *ParamConfig, p ParamDecl, config *OutputConfig, f *MskFunction) {
+	pc.IsPointer = strings.HasSuffix(p.Type, " *")
+	ctype := strings.TrimSuffix(p.Type, " *")
+	pc.IsConst = strings.HasPrefix(p.Type, "const ")
+	ctype = strings.TrimPrefix(ctype, "const ")
+	pc.CgoType = ctype
+	found := false
+	pc.GoType, found = config.TypeToGoType[ctype]
+	if !found {
+		log.Printf("cannot find func: %s", f.Name)
 	}
 }

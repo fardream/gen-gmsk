@@ -12,16 +12,22 @@ func _() {
 	_ = x[funcType_ENV-1]
 	_ = x[funcType_TASK_PUT-2]
 	_ = x[funcType_TASK_GET-3]
-	_ = x[funcType_TASK_GETNUM-4]
-	_ = x[funcType_TASK_APPEND-5]
-	_ = x[funcType_TASK_APPENDDOMAIN-6]
-	_ = x[funcType_TASK_OTHER-7]
-	_ = x[funcType_LAST-8]
+	_ = x[funcType_TASK_NAME-4]
+	_ = x[funcType_TASK_GETNUM-5]
+	_ = x[funcType_TASK_GETNUMNZ-6]
+	_ = x[funcType_TASK_SLICETRIP-7]
+	_ = x[funcType_TASK_APPEND-8]
+	_ = x[funcType_TASK_APPENDDOMAIN-9]
+	_ = x[funcType_TASK_GETLIST_OR_SLICE-10]
+	_ = x[funcType_TASK_PUTLIST_OR_SLICE-11]
+	_ = x[funcType_TASK_PUTMAXNUM-12]
+	_ = x[funcType_TASK_OTHER-13]
+	_ = x[funcType_LAST-14]
 }
 
-const _funcType_name = "other_funcsenvtask_puttask_gettask_getnumtask_appendtask_apenddomaintask_othertask_last"
+const _funcType_name = "other_funcsenvtask_puttask_gettask_nametask_getnumtask_getnumnztask_slicetriptask_appendtask_apenddomaintask_getlist_or_slicetask_putlist_or_slicetask_putmaxnumtask_othertask_last"
 
-var _funcType_index = [...]uint8{0, 11, 14, 22, 30, 41, 52, 68, 78, 87}
+var _funcType_index = [...]uint8{0, 11, 14, 22, 30, 39, 50, 63, 77, 88, 104, 125, 146, 160, 170, 179}
 
 func (i funcType) String() string {
 	if i >= funcType(len(_funcType_index)-1) {

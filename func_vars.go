@@ -9,7 +9,9 @@ var funcVars []pair = []pair{
 	{"barc", "BarC"},
 	{"baraij", "BarAij"},
 	{"bara", "BarA"},
-
+	// acc
+	{"accgvector", "AccGVector"},
+	{"accftrip", "AccFTrip"},
 	// afe
 	{"afef", "AfeF"},
 	{"afeg", "AfeG"},
@@ -22,6 +24,7 @@ var funcVars []pair = []pair{
 	// a
 	{"acol", "ACol"},
 	{"arow", "ARow"},
+	{"apiece", "APiece"},
 	//
 	{"solsta", "SolSta"},
 	{"prosta", "ProSta"},

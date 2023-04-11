@@ -441,3 +441,36 @@ funcs:
     comment: sets an integer parameter.
   MSK_putdouparam:
     comment: sets a float point parameter.
+  MSK_getcodedesc:
+    comment: |
+      gets description for [res.Code]. The first returned value is symbol, and the second returned value is
+      the description. The process may fail.
+    last_n_param_output: 2
+    go_name: GetCodeDesc
+  MSK_getbuildinfo:
+    last_n_param_output: 2
+    go_name: GetBuildInfo
+  MSK_getresponseclass:
+    last_n_param_output: 1
+    go_name: GetResponseClass
+  MSK_solutiondef:
+    last_n_param_output: 1
+    go_name: SolutionDef
+    comment: checks if solution is defined.
+  MSK_solutionsummary:
+    comment: prints the summary of the solution to the given stream.
+  MSK_getaccdoty:
+    skip: true
+  MSK_getaccn:
+    skip: true
+  MSK_evaluateacc:
+    skip: true
+  MSK_callbackcodetostr:
+    last_n_param_output: 1
+    go_name: CallbackCodeToStr
+  MSK_licensecleanup:
+    go_name: LicenseCleanUp
+  MSK_isinfinity:
+    go_name: IsInfinity
+  MSK_getcone:
+    is_deprecated: true

@@ -18,23 +18,44 @@ import (
 {{range .SplitComments}}// {{.}}
 {{end}}//{{else}}
 //{{end}}
-{{with .CFunc}}// [{{.Name}}] has following parameters
+{{with .CFunc}}// [{{.Name}}] returns {{.ReturnType}} and has following parameters
 {{range .Parameters}}//   - {{.Name}}: {{.Type}}
 {{end}}{{end}}//
-// [{{.CName}}]: https://docs.mosek.com/latest/capi/alphabetic-functionalities.html
+{{- if .IsDeprecated}}
+// Deprecated: [{{.CName}}]/{{.GoName}} is deprecated by mosek and will be removed in a future release.
+//
+{{- end}}
+// [{{.CName}}]: {{.Url}}
 func {{if .IsTask}}(task *Task) {{else if .IsEnv}}(env *Env) {{end}}{{.GoName}}(
 {{range .GoParams}}	{{.}},
 {{end}}) {{.ReturnType}} {
-{{if .InputStrings}}{{range .InputStrings}}
-		c_{{.Name}} := C.CString({{.Name}})
-        defer C.free(unsafe.Pointer(c_{{.Name}}))
+{{if .OutputBools}}{{range .OutputBools -}}
+	c_{{.}} := C.MSKbooleant(0)
 {{end}}
-{{end}}	{{if .LastNParamOutput}}r ={{else}}return {{end}}{{.CReturnMapped}}(
+{{end}}{{if .OutputStrings}}{{range .OutputStrings -}}
+	c_{{.}} := (*C.char)(C.calloc(MAX_STR_LEN + 1, 1))
+	defer C.free(unsafe.Pointer(c_{{.}}))
+{{end}}
+{{end}}{{if .InputStrings}}{{range .InputStrings}}
+	c_{{.Name}} := C.CString({{.Name}})
+	defer C.free(unsafe.Pointer(c_{{.Name}}))
+{{end}}
+{{end}}	{{if .LastNParamOutput}}{{.ReturnValueName}} = {{else}}return {{end}}{{.CReturnMapped}}(
 		C.{{.CName}}(
 {{range .CCallInputs}}        {{.}},
 {{end}}		),
     )
+{{if .OutputBools}}
+	if {{.ReturnValueName}}.IsOk() { {{- range .OutputBools}}
+		{{.}} = intToBool(c_{{.}})
+{{- end}}
+}{{end}}{{if .OutputStrings}}
+	if {{.ReturnValueName}}.IsOk() { {{- range .OutputStrings}}
+		{{.}} = C.GoString(c_{{.}})
+{{- end}}
+	}
+{{- end}}
 {{if .LastNParamOutput}}
 	return
-{{end}}}
-{{end}}
+{{end -}}}
+{{end -}}
