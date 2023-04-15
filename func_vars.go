@@ -34,7 +34,12 @@ var funcVars []pair = []pair{
 	// params
 	{"intparam", "IntParam"},
 	{"douparam", "DouParam"},
+	{"strparam", "StrParam"},
 	// info
 	{"intinf", "IntInf"},
 	{"douinf", "DouInf"},
+	{"strinf", "StrInf"},
+	//
+	{"primal", "Primal"},
+	{"dual", "Dual"},
 }

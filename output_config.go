@@ -31,12 +31,15 @@ type EnumConfig struct {
 }
 
 type OutputConfig struct {
-	Enums        map[string]*EnumConfig `json:"enums"`
-	PackageName  string                 `json:"package_name"`
-	TypeToGoType map[string]string      `json:"type_to_go_type"`
-	Funcs        map[string]*FuncConfig `json:"funcs"`
-	Deprecated   map[string]struct{}    `json:"deprecated"`
-	Urls         map[string]string      `json:"urls"`
+	Enums           map[string]*EnumConfig `json:"enums"`
+	PackageName     string                 `json:"package_name"`
+	TypeToGoType    map[string]string      `json:"type_to_go_type"`
+	Funcs           map[string]*FuncConfig `json:"funcs"`
+	Deprecated      map[string]struct{}    `json:"deprecated"`
+	Urls            map[string]string      `json:"urls"`
+	RustFuncs       []RustFunc             `json:"rust_funcs"`
+	RustEnums       map[string]RustEnum    `json:"rust_enums"`
+	mappedRustFuncs map[string]RustFunc    `json:"-"`
 }
 
 func NewOutputConfig() *OutputConfig {
@@ -55,8 +58,10 @@ func NewOutputConfig() *OutputConfig {
 			"unsigned int": "uint32",
 			"MSKbooleant":  "bool",
 		},
-		Deprecated: make(map[string]struct{}),
-		Urls:       make(map[string]string),
+		Deprecated:      make(map[string]struct{}),
+		Urls:            make(map[string]string),
+		RustEnums:       make(map[string]RustEnum),
+		mappedRustFuncs: make(map[string]RustFunc),
 	}
 
 	if err := yaml.UnmarshalWithOptions(configStr, r, yaml.Strict()); err != nil {
@@ -67,6 +72,17 @@ func NewOutputConfig() *OutputConfig {
 	}
 	if err := yaml.UnmarshalWithOptions(deprecatedStr, &r.Deprecated, yaml.Strict()); err != nil {
 		log.Panic(err)
+	}
+	if err := yaml.UnmarshalWithOptions(rustEnumsBytes, &r.RustEnums, yaml.Strict()); err != nil {
+		log.Panic(err)
+	}
+	if err := yaml.UnmarshalWithOptions(rustFuncsBytes, &r.RustFuncs, yaml.Strict()); err != nil {
+		log.Panic(err)
+	}
+
+	for _, f := range r.RustFuncs {
+		mskname := fmt.Sprintf("MSK_%s", strings.ReplaceAll(f.Name, "_", ""))
+		r.mappedRustFuncs[mskname] = f
 	}
 
 	return r
@@ -103,7 +119,19 @@ func GetEnumType(underlying string) string {
 	}
 }
 
-func UpperCaseFirstLetter(s string) string {
+func lowerCaseFirstLetter(s string) string {
+	b := []byte(s)
+	if len(b) == 0 {
+		return s
+	}
+	if b[0] >= 'A' && b[0] <= 'Z' {
+		b[0] += byte('a') - byte('A')
+	}
+
+	return string(b)
+}
+
+func upperCaseFirstLetter(s string) string {
 	b := []byte(s)
 	if len(b) == 0 {
 		return s
@@ -139,7 +167,7 @@ func Normalize(h *MosekH, config *OutputConfig) error {
 		}
 		enumConfig, found := config.Enums[enumName]
 		if !found {
-			goName := UpperCaseFirstLetter(strings.TrimSuffix(GetGoName(enumName), "_enum"))
+			goName := upperCaseFirstLetter(strings.TrimSuffix(GetGoName(enumName), "_enum"))
 			enumConfig = &EnumConfig{CommonId: CommonId{GoName: goName, Skip: false}}
 			config.Enums[enumName] = enumConfig
 		}
@@ -152,6 +180,31 @@ func Normalize(h *MosekH, config *OutputConfig) error {
 		_, found = config.TypeToGoType[enumName]
 		if !found {
 			config.TypeToGoType[enumName] = enumConfig.GoName
+		}
+	}
+
+	for k, v := range config.RustEnums {
+		cname := fmt.Sprintf("MSK%s_enum", lowerCaseFirstLetter(k))
+		e, found := h.Enums[cname]
+		if !found {
+			continue
+		}
+		ec, found := config.Enums[cname]
+		if !found {
+			continue
+		}
+		if ec.Comment == "" {
+			ec.Comment = v.Comment
+		}
+		for _, recconst := range v.EnumConsts {
+			for _, ev := range e.Values {
+				if ev.Value == recconst.Value {
+					_, found := ec.ConstantComments[ev.Name]
+					if !found {
+						ec.ConstantComments[ev.Name] = recconst.Comment
+					}
+				}
+			}
 		}
 	}
 
@@ -172,9 +225,8 @@ func Normalize(h *MosekH, config *OutputConfig) error {
 	if config.Funcs == nil {
 		config.Funcs = make(map[string]*FuncConfig)
 	}
+
 	for _, f := range h.Functions {
-		// first, check if the first argument is MSKent_t or MSKtask_t
-		// which we will use to add method to Task or Env
 		normalizeFunction(f, config)
 	}
 
@@ -246,9 +298,23 @@ func BuildResCode(h *MosekH, config *OutputConfig, out io.Writer) error {
 	fmt.Fprintln(out)
 	fmt.Fprintln(out, "package res")
 
+	enumConfig, found := config.Enums["MSKrescode_enum"]
+	if !found {
+		enumConfig = &EnumConfig{
+			CommonId: CommonId{},
+		}
+	}
 	fmt.Fprintln(out, "const (")
 	for _, v := range rescodeEnum.Values {
-		fmt.Fprintf(out, "\t%s Code = %s\n", strings.TrimPrefix(v.Name, "MSK_RES_"), v.Value)
+		valueComment := ""
+		if enumConfig.ConstantComments != nil {
+			v, found := enumConfig.ConstantComments[v.Name]
+			if found {
+				valueComment = fmt.Sprintf("// %s", v)
+			}
+		}
+		fmt.Fprintf(out, "\t%s Code = %s%s\n", strings.TrimPrefix(v.Name, "MSK_RES_"), v.Value, valueComment)
+
 	}
 	fmt.Fprintln(out, ")")
 

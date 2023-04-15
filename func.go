@@ -40,6 +40,7 @@ type pair struct {
 }
 
 var funcActions = []pair{
+	{"getmaxnum", "GetMaxNum"},
 	{"putmaxnum", "PutMaxNum"},
 	{"checkOut", "CheckOut"},
 	{"evaluate", "Evaluate"},
@@ -323,7 +324,7 @@ func (t *FuncTmplInput) ReturnType() string {
 
 func replacePrefix(s, oldPrefix, newPrefix string) (bool, string) {
 	if strings.HasPrefix(s, oldPrefix) {
-		return true, fmt.Sprintf("%s%s", newPrefix, UpperCaseFirstLetter(strings.TrimPrefix(s, oldPrefix)))
+		return true, fmt.Sprintf("%s%s", newPrefix, upperCaseFirstLetter(strings.TrimPrefix(s, oldPrefix)))
 	}
 	return false, s
 }
@@ -343,7 +344,7 @@ func midName(action, mid, suffix string) string {
 		_, s = replacePrefix(s, "dual", "Dual")
 		_, s = replaceSuffix(s, "cone", "Cone")
 		_, s = replacePrefix(s, "r", "R")
-		s = UpperCaseFirstLetter(s)
+		s = upperCaseFirstLetter(s)
 		return s
 	default:
 		for _, v := range funcVars {
@@ -352,7 +353,62 @@ func midName(action, mid, suffix string) string {
 				return p
 			}
 		}
-		return UpperCaseFirstLetter(mid)
+		return upperCaseFirstLetter(mid)
+	}
+}
+
+func snakeToCamel(s string) string {
+	b := strings.Builder{}
+	for _, v := range strings.Split(s, "_") {
+		fmt.Fprint(&b, upperCaseFirstLetter(v))
+	}
+
+	return b.String()
+}
+
+func processRustComment(rustcomment string, config *OutputConfig) string {
+	r := make([]string, 0)
+	for _, v := range strings.Split(rustcomment, "\n") {
+		switch {
+		case strings.Contains(v, "# Argument"):
+			r = append(r, "\nArguments: ")
+		case strings.Contains(v, "_`") && strings.HasPrefix(v, "- `"):
+			r = append(r, fmt.Sprintf("  %s", strings.Replace(v, "_`", "`", len(v))))
+		case strings.HasPrefix(v, "- `"):
+			r = append(r, fmt.Sprintf("  %s", strings.Replace(v, "_`", "`", len(v))))
+		case strings.Contains(v, "# Returns"):
+			r = append(r, "\nReturns:")
+		case strings.HasPrefix(v, "See ["):
+			if len(r) > 0 && r[len(r)-1] == "" {
+				r = r[:len(r)-1]
+			}
+			continue
+		case strings.Contains(v, "Full documentation"):
+			continue
+		default:
+			r = append(r, v)
+		}
+	}
+
+	return strings.Join(r, "\n")
+}
+
+func setGoNameAndCommentFromRust(f *MskFunction, fc *FuncConfig, config *OutputConfig) {
+	if fc.GoName != "" && fc.Comment != "" {
+		return
+	}
+
+	rustfunc, found := config.mappedRustFuncs[f.Name]
+	if !found {
+		return
+	}
+
+	if fc.Comment == "" {
+		fc.Comment = processRustComment(rustfunc.Comment, config)
+	}
+
+	if fc.GoName == "" {
+		fc.GoName = snakeToCamel(rustfunc.Name)
 	}
 }
 
@@ -362,18 +418,19 @@ func normalizeFunction(f *MskFunction, config *OutputConfig) {
 	canonName := fmt.Sprintf("%s%s%s", action, midName(action, mid, suffix), suffix)
 
 	fc, found := config.Funcs[fname]
-
 	if !found {
 		fc = &FuncConfig{
-			CommonId: &CommonId{
-				GoName: canonName,
-			},
+			CommonId: &CommonId{},
 		}
 		config.Funcs[f.Name] = fc
 	}
+
 	if fc.Skip {
 		return
 	}
+
+	setGoNameAndCommentFromRust(f, fc, config)
+
 	if fc.GoName == "" {
 		fc.GoName = canonName
 	}
@@ -439,6 +496,8 @@ func normalizeFunction(f *MskFunction, config *OutputConfig) {
 		case i == 0 && IsTask:
 			pc.IsTask = true
 
+		case i == nparams-1 && action == "GetMaxNum" && fc.LastNParamOutput == 0:
+			fallthrough
 		case i == nparams-1 && action == "GetNum" && fc.LastNParamOutput == 0:
 			fallthrough
 		case i == nparams-1 && fc.FuncType == funcType_TASK_APPENDDOMAIN && fc.LastNParamOutput == 0:

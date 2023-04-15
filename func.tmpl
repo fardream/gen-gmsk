@@ -14,13 +14,11 @@ import (
 )
 
 {{range .Funcs}}
-// {{.GoName}} is wrapping [{{.CName}}]{{if .SplitComments}} and
+// {{.GoName}} is wrapping [{{.CName}}]{{if .SplitComments}},
 {{range .SplitComments}}// {{.}}
 {{end}}//{{else}}
 //{{end}}
-{{with .CFunc}}// [{{.Name}}] returns {{.ReturnType}} and has following parameters
-{{range .Parameters}}//   - {{.Name}}: {{.Type}}
-{{end}}{{end}}//
+//
 {{- if .IsDeprecated}}
 // Deprecated: [{{.CName}}]/{{.GoName}} is deprecated by mosek and will be removed in a future release.
 //

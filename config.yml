@@ -2,53 +2,22 @@ package_name: gmsk
 enums:
   MSKboundkey_enum:
     go_name: BoundKey
-    comment: Bound on variables and constraints
-    constant_comments:
-      MSK_BK_LO: lower bound
-      MSK_BK_UP: upper bound
-      MSK_BK_FX: fixed bound
-      MSK_BK_FR: free
-      MSK_BK_RA: range bound
   MSKvariabletype_enum:
     go_name: VariableType
-    comment: type of variables, either integer or continuous.
-    constant_comments:
-      MSK_VAR_TYPE_CONT: continuous
-      MSK_VAR_TYPE_INT: integer
   MSKobjsense_enum:
     go_name: ObjectiveSense
-    comment: whether to maximize or minimize the objective.
-    constant_comments:
-      MSK_OBJECTIVE_SENSE_MINIMIZE: Objective is to maximize
-      MSK_OBJECTIVE_SENSE_MAXIMIZE: Objective is to minimize
   MSKsoltype_enum:
     go_name: SolType
-    comment: solution type
-    constant_comments:
-      MSK_SOL_ITR: Iterior Point Solution.
-      MSK_SOL_BAS: Basic Solution.
-      MSK_SOL_ITG: Integer Solution.
   MSKstreamtype_enum:
     go_name: StreamType
-    comment: type of stream
   MSKdataformat_enum:
     go_name: DataFormat
-    comment: format of data file
   MSKcompresstype_enum:
     go_name: CompressType
-    comment: compress type for data file
   MSKuplo_enum:
     go_name: UpLo
-    comment: indicating if a matrix is upper triangular or lower triangular
-    constant_comments:
-      MSK_UPLO_LO: lower triangular
-      MSK_UPLO_UP: upper triangular
   MSKtranspose_enum:
     go_name: Transpose
-    comment: if the matrix input should be transposed or not
-    constant_comments:
-      MSK_TRANSPOSE_NO: No transpose
-      MSK_TRANSPOSE_YES: Transpose
   MSKonoffkey_enum:
     go_name: OnOff
     integer_type: int32
@@ -236,229 +205,41 @@ funcs:
     comment: calculates y = aAx + by, where A is matrix, x,y is vector, and a b are scalars.
   MSK_dot:
     last_n_param_output: 1
-    comment: performs a dot product of two vectors
-  MSK_gemm:
-    comment: |
-      performs a general matrix multiplication
-      C = alpha * A * B + beta * C
-  MSK_potrf:
-    comment: performs Cholesky decomposition of symmetric square matrix a
-  MSK_syrk:
-    comment: performs rank k update of matrix C, C = aAA^T + bC where A/C is matrix and a, b are scalars.
-  MSK_syeig:
-    comment: calculates the eigen values of a symmetric matrix.
-  MSK_syevd:
-    comment: calculates the eigen values and eigen vectors of a symmetric matrix.
-  MSK_appendcons:
-    comment: add vanilla linear constraints to the task.
-  MSK_appendvars:
-    comment: add variables to the task.
-  MSK_appendacc:
-    comment: |
-      adds an affine conic constraint to the task, where the afe idx is provided
-      by an array or pointer - if the afe idx is sequential, use [Task.AppendAccSeq]
-      to avoid allocating an array.
-  MSK_appendaccs:
-    comment: adds a list of affine conic constraints to the task.
-  MSK_appendaccseq:
-    comment: adds an affine conic constraint to the task where the affine idx is sequential.
-  MSK_appendaccsseq:
-    comment: append a block of accs to the tas - assuming affine expressions are sequential.
-  MSK_appenddjcs:
-    comment: adds disjunctive constraints to the task.
-  MSK_putdjc:
-    comment: sets the disjunctive constraint.
-  MSK_appendafes:
-    comment: adds affine expressions to the task.
-  MSK_putaij:
-    comment: set the value of the constraints matrix A[i,j]
-  MSK_putaijlist:
-    comment: sets a list of constraint matrix A by index.
-  MSK_putcj:
-    comment: set the coefficient in the objective function.
-  MSK_putcjslice:
-    comment: set a slice of coefficients in the objective.
-  MSK_putcjlist:
-    comment: set coefficients of the objective with index/value.
-  MSK_putvarbound:
-    comment: set the bound for a variable.
-  MSK_putvarboundslice:
-    comment: sets the bound for a slice of variables using 3 vectors.
-  MSK_putvarboundsliceconst:
-    comment: set the bound for a slice of variables to the same value.
   MSK_getxx:
     skip: true # getting solution x, special handling.
   MSK_getxxslice:
     skip: true # getting solution x slice, special handling.
-  MSK_putconbound:
-    comment: set the bound for a contraint
-  MSK_putconboundslice:
-    comment: sets a list of constraint bounds.
-  MSK_putconboundsliceconst:
-    comment: sets a slice of constraint bounds to the same constant value.
-  MSK_putobjsense:
-    comment: set the objective sense - which is either minimize or maximize
-  MSK_putxxslice:
-    comment: sets the initial solution for a slice.
-  MSK_optimizeterm:
-    skip: true
   MSK_getversion: # 3 outputs as parameters
     last_n_param_output: 3
-  MSK_inputdata:
-    go_name: InputData
-    comment: sets the data for objective, linear constraints, and variables.
-  MSK_inputdata64:
-    go_name: InputData64
-    comment: sets the data for objective, linear constraints, and variables.
-  MSK_putaccname:
-    comment: sets a name for an affine conic constraint.
-  MSK_putconname:
-    comment: sets a name for a constraint at indext i.
-  MSK_putvarname:
-    comment: sets a name for variable at j.
   MSK_optimizetrm:
-    go_name: OptimizeTrm
-    comment: optimizes the problem.
     last_n_param_output: 1
-  MSK_getnumafe:
-    comment: gets the number of constraints in the task.
-  MSK_getnumvar:
-    comment: gets the number of variables in the task.
-  MSK_getnumcon:
-    comment: gets the number of linear constraints in the task.
-  MSK_appendquadraticconedomain:
-    comment: adds a new quadratic cone of size n to the task. returns the index of the domain if successful.
-  MSK_appendrdomain:
-    comment: adds the whole n dimension R space domain to the task.
-  MSK_appendrquadraticconedomain:
-    comment: |
-      adds a new *rotated* quadratic cone of size n to the task. returns the index of the domain if successful.
-      note the function is similarly spelled to the *unrotated* quadratic cone [Task.AppendQuadraticConeDomain]
-  MSK_appendprimalpowerconedomain:
-    comment: add a primal power cone to the task.
-  MSK_appenddualpowerconedomain:
-    comment: add a dual power cone to the task.
-  MSK_appendprimalexpconedomain:
-    comment: add a primal exponential cone to the task.
-  MSK_appenddualexpconedomain:
-    comment: add a dual exponential cone to the task.
-  MSK_appendprimalgeomeanconedomain:
-    go_name: AppendPrimalGeoMeanConeDomain
-    comment: adds a primal geometric mean cone domain to the task.
-  MSK_appenddualgeomeanconedomain:
-    go_name: AppendDualGeoMeanConeDomain
-    comment: adds a dual geometric mean cone domain to the task.
-  MSK_appendsvecpsdconedomain:
-    go_name: AppendSvecPsdConeDomain
-    comment: adds a SVEC_PSD domain, or vectorized postive semidefinite matrix. n must be k(k+1)/2.
-  MSK_appendrplusdomain:
-    comment: add a domain of x>=0
-  MSK_appendrzerodomain:
-    comment: add a domain of x=0
-  MSK_appendrminusdomain:
-    comment: add a domain of x<0
-  MSK_appendbarvars:
-    comment: |
-      adds semidefinite matrix variables to the task.
-      Barvar because MOSEK uses bar{x} notation to indicate an element
-      of a semidefinite matrix.
-      The dimension of each of the semidefinite variables are provided
-      through the pointer dim.
-  MSK_putcfix:
-    comment: sets the constant term in the objective.
-  MSK_putbarcj:
-    comment: |
-      adds a positive semidefinite matrix to the objective.
-      j is the index of the matrix variable, and num is number of weight matrices. Those
-      weight matrices are identified by sub (the idx when they are added to the task
-      by [Task.AppendSparseSymmat].
-  MSK_putbarcblocktriplet:
-    comment: |
-      sets the coefficients for
-      matrix variable. suj is the index of the matrix variable, subk/subl are row/colmn index
-      of the cofficients, and valjkl is the coefficients value.
-  MSK_putqobj:
-    comment: sets the cofficient for quadratic objective term.
-  MSK_putvartype:
-    comment: sets the type of the variable.
-  MSK_putvartypelist:
-    comment: sets the type of a list of variables.
-  MSK_putacol:
-    comment: puts a column of A matrix.
-  MSK_putarow:
-    comment: puts a row of A matrix.
-  MSK_putbaraij:
-    comment: |
-      a semidefinite matrix to constraint.
-      i is the index of the constraint,and j is the index of the semidefinite matrix variable.
-      num is the number of coefficients matrices, and sub/weights are the coefficient matrices'
-      idx (when they are added by [Task.AppendSparseSymmat]) and weights.
-  MSK_putbarablocktriplet:
-    comment: |
-      sets constraints for matrix variable.
-      subi is the index of the constraint, subj is the index of the matrix variable,
-      subk and subl are the indices of the coefficients and valijkl are the coefficients value.
-  MSK_putqconk:
-    comment: sets the quandratic constraint's coefficients.
-  MSK_putafefentry:
-    comment: sets an entry in the  affine expression F matrix.
-  MSK_putafefentrylist:
-    comment: sets a portion of the affine expression F matrix.
-  MSK_putafefrow:
-    comment: sets a row of affine expression F matrix.
-  MSK_putafefcol:
-    comment: sets a column of affine expression F matrix.
-  MSK_putafebarfblocktriplet:
-    comment: |
-      sets a matrix variable to the F matrix of affine expression.
-      the rows of afe idx is provided in afeidx, the matrix variables are indexed by barvaridx, and subk, subl are the indices
-      of the coefficients for those matrix variables, and valkl are the corresponding coefficients.
-  MSK_putafeg:
-    comment: sets the value at afeidx to g.
-  MSK_putafegslice:
-    comment: sets a slice of values in g.
+    go_name: OptimizeTrm
+    comment: |-
+      Optimizes the problem.
+
+      Returns:
+
+      - `trmcode` Is either OK or a termination response code.
   MSK_getsolsta:
-    comment: returns the solution status.
     last_n_param_output: 1
   MSK_getprosta:
-    comment: returns the problem status.
     last_n_param_output: 1
   MSK_appendsparsesymmat:
-    comment: |
-      adds a sparse and symmetric matrix to the task.
-      matrix is represented in coordinate format, and only lower triangular portion of the matrix should be
-      specified.
-      Those matrices can be used as either coefficent in the objective or constraints. The matrix is identified
-      by the returned idx.
+    last_n_param_output: 1
+  MSK_appendsparsesymmatlist:
     last_n_param_output: 1
   MSK_getintinf:
-    comment: retrieves integer information from the task.
     last_n_param_output: 1
   MSK_getdouinf:
-    comment: retrieves float point information from the task.
     last_n_param_output: 1
-  MSK_putintparam:
-    comment: sets an integer parameter.
-  MSK_putdouparam:
-    comment: sets a float point parameter.
   MSK_getcodedesc:
-    comment: |
-      gets description for [res.Code]. The first returned value is symbol, and the second returned value is
-      the description. The process may fail.
     last_n_param_output: 2
-    go_name: GetCodeDesc
   MSK_getbuildinfo:
     last_n_param_output: 2
-    go_name: GetBuildInfo
   MSK_getresponseclass:
     last_n_param_output: 1
-    go_name: GetResponseClass
   MSK_solutiondef:
     last_n_param_output: 1
-    go_name: SolutionDef
-    comment: checks if solution is defined.
-  MSK_solutionsummary:
-    comment: prints the summary of the solution to the given stream.
   MSK_getaccdoty:
     skip: true
   MSK_getaccn:
@@ -467,10 +248,77 @@ funcs:
     skip: true
   MSK_callbackcodetostr:
     last_n_param_output: 1
-    go_name: CallbackCodeToStr
-  MSK_licensecleanup:
-    go_name: LicenseCleanUp
-  MSK_isinfinity:
-    go_name: IsInfinity
   MSK_getcone:
     is_deprecated: true
+  MSK_optimizermt:
+    last_n_param_output: 1
+  MSK_getstrparamlen:
+    last_n_param_output: 1
+  MSK_getlenbarvarj:
+    last_n_param_output: 1
+  MSK_expirylicenses:
+    last_n_param_output: 1
+  MSK_isdouparname:
+    last_n_param_output: 1
+  MSK_isstrparname:
+    last_n_param_output: 1
+  MSK_isintparname:
+    last_n_param_output: 1
+  MSK_getaccdomain:
+    last_n_param_output: 1
+  MSK_getcj:
+    last_n_param_output: 1
+  MSK_getcfix:
+    last_n_param_output: 1
+  MSK_getconnameindex:
+    last_n_param_output: 1
+  MSK_getdimbarvarj:
+    last_n_param_output: 1
+  MSK_getdjcnumafe:
+    last_n_param_output: 1
+  MSK_getdjcnumafetot:
+    last_n_param_output: 1
+  MSK_getdjcnumdomain:
+    last_n_param_output: 1
+  MSK_getdjcnumdomaintot:
+    last_n_param_output: 1
+  MSK_getdjcnumterm:
+    last_n_param_output: 1
+  MSK_getdjcnumtermtot:
+    last_n_param_output: 1
+  MSK_getdomainn:
+    last_n_param_output: 1
+  MSK_getdomaintype:
+    last_n_param_output: 1
+  MSK_getprimalobj:
+    last_n_param_output: 1
+  MSK_getdualobj:
+    last_n_param_output: 1
+  MSK_getdouparam:
+    last_n_param_output: 1
+  MSK_getinfindex:
+    last_n_param_output: 1
+  MSK_getinfmax:
+    last_n_param_output: 1
+  MSK_getintparam:
+    last_n_param_output: 1
+  MSK_getlintinf:
+    last_n_param_output: 1
+  MSK_getnadouparam:
+    last_n_param_output: 1
+  MSK_getnaintinf:
+    last_n_param_output: 1
+  MSK_getnaintparam:
+    last_n_param_output: 1
+  MSK_getnastrparam:
+    last_n_param_output: 2
+  MSK_getobjsense:
+    last_n_param_output: 1
+  MSK_getparammax:
+    last_n_param_output: 1
+  MSK_getprobtype:
+    last_n_param_output: 1
+  MSK_getvartype:
+    last_n_param_output: 1
+  MSK_getvarnameindex:
+    last_n_param_output: 1

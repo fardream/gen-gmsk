@@ -1,0 +1,4306 @@
+Miomode:
+  name: Miomode
+  comment: Integer restrictions
+  enum_consts:
+  - name: IGNORED
+    comment: The integer constraints are ignored and the problem is solved as a continuous problem.
+    value: '0'
+  - name: SATISFIED
+    comment: Integer restrictions should be satisfied.
+    value: '1'
+Scalingtype:
+  name: Scalingtype
+  comment: Scaling type
+  enum_consts:
+  - name: FREE
+    comment: The optimizer chooses the scaling heuristic.
+    value: '0'
+  - name: NONE
+    comment: No scaling is performed.
+    value: '1'
+Purify:
+  name: Purify
+  comment: Solution purification employed optimizer.
+  enum_consts:
+  - name: NONE
+    comment: The optimizer performs no solution purification.
+    value: '0'
+  - name: PRIMAL
+    comment: The optimizer purifies the primal solution.
+    value: '1'
+  - name: DUAL
+    comment: The optimizer purifies the dual solution.
+    value: '2'
+  - name: PRIMAL_DUAL
+    comment: The optimizer purifies both the primal and dual solution.
+    value: '3'
+  - name: AUTO
+    comment: TBD
+    value: '4'
+Dataformat:
+  name: Dataformat
+  comment: Data format types
+  enum_consts:
+  - name: EXTENSION
+    comment: The file extension is used to determine the data file format.
+    value: '0'
+  - name: MPS
+    comment: The data file is MPS formatted.
+    value: '1'
+  - name: LP
+    comment: The data file is LP formatted.
+    value: '2'
+  - name: OP
+    comment: The data file is an optimization problem formatted file.
+    value: '3'
+  - name: FREE_MPS
+    comment: The data a free MPS formatted file.
+    value: '4'
+  - name: TASK
+    comment: Generic task dump file.
+    value: '5'
+  - name: PTF
+    comment: (P)retty (T)ext (F)format.
+    value: '6'
+  - name: CB
+    comment: Conic benchmark format,
+    value: '7'
+  - name: JSON_TASK
+    comment: JSON based task format.
+    value: '8'
+Solitem:
+  name: Solitem
+  comment: Solution items
+  enum_consts:
+  - name: XC
+    comment: Solution for the constraints.
+    value: '0'
+  - name: XX
+    comment: Variable solution.
+    value: '1'
+  - name: Y
+    comment: Lagrange multipliers for equations.
+    value: '2'
+  - name: SLC
+    comment: Lagrange multipliers for lower bounds on the constraints.
+    value: '3'
+  - name: SUC
+    comment: Lagrange multipliers for upper bounds on the constraints.
+    value: '4'
+  - name: SLX
+    comment: Lagrange multipliers for lower bounds on the variables.
+    value: '5'
+  - name: SUX
+    comment: Lagrange multipliers for upper bounds on the variables.
+    value: '6'
+  - name: SNX
+    comment: Lagrange multipliers corresponding to the conic constraints on the variables.
+    value: '7'
+Xmlwriteroutputtype:
+  name: Xmlwriteroutputtype
+  comment: XML writer output mode
+  enum_consts:
+  - name: ROW
+    comment: Write in row order.
+    value: '0'
+  - name: COL
+    comment: Write in column order.
+    value: '1'
+Presolvemode:
+  name: Presolvemode
+  comment: Presolve method.
+  enum_consts:
+  - name: OFF
+    comment: The problem is not presolved before it is optimized.
+    value: '0'
+  - name: ON
+    comment: The problem is presolved before it is optimized.
+    value: '1'
+  - name: FREE
+    comment: It is decided automatically whether to presolve before the problem is optimized.
+    value: '2'
+Dparam:
+  name: Dparam
+  comment: Double parameters
+  enum_consts:
+  - name: ANA_SOL_INFEAS_TOL
+    comment: If a constraint violates its bound with an amount larger than this value, the constraint name, index and violation will be printed by the solution analyzer.
+    value: '0'
+  - name: BASIS_REL_TOL_S
+    comment: Maximum relative dual bound violation allowed in an optimal basic solution.
+    value: '1'
+  - name: BASIS_TOL_S
+    comment: Maximum absolute dual bound violation in an optimal basic solution.
+    value: '2'
+  - name: BASIS_TOL_X
+    comment: Maximum absolute primal bound violation allowed in an optimal basic solution.
+    value: '3'
+  - name: CHECK_CONVEXITY_REL_TOL
+    comment: Convexity check tolerance.
+    value: '4'
+  - name: DATA_SYM_MAT_TOL
+    comment: Zero tolerance threshold for symmetric matrices.
+    value: '5'
+  - name: DATA_SYM_MAT_TOL_HUGE
+    comment: Data tolerance threshold.
+    value: '6'
+  - name: DATA_SYM_MAT_TOL_LARGE
+    comment: Data tolerance threshold.
+    value: '7'
+  - name: DATA_TOL_AIJ_HUGE
+    comment: Data tolerance threshold.
+    value: '8'
+  - name: DATA_TOL_AIJ_LARGE
+    comment: Data tolerance threshold.
+    value: '9'
+  - name: DATA_TOL_BOUND_INF
+    comment: Data tolerance threshold.
+    value: '10'
+  - name: DATA_TOL_BOUND_WRN
+    comment: Data tolerance threshold.
+    value: '11'
+  - name: DATA_TOL_C_HUGE
+    comment: Data tolerance threshold.
+    value: '12'
+  - name: DATA_TOL_CJ_LARGE
+    comment: Data tolerance threshold.
+    value: '13'
+  - name: DATA_TOL_QIJ
+    comment: Data tolerance threshold.
+    value: '14'
+  - name: DATA_TOL_X
+    comment: Data tolerance threshold.
+    value: '15'
+  - name: INTPNT_CO_TOL_DFEAS
+    comment: Dual feasibility tolerance used by the interior-point optimizer for conic problems.
+    value: '16'
+  - name: INTPNT_CO_TOL_INFEAS
+    comment: Infeasibility tolerance used by the interior-point optimizer for conic problems.
+    value: '17'
+  - name: INTPNT_CO_TOL_MU_RED
+    comment: Relative complementarity gap tolerance used by the interior-point optimizer for conic problems.
+    value: '18'
+  - name: INTPNT_CO_TOL_NEAR_REL
+    comment: Optimality tolerance used by the interior-point optimizer for conic problems.
+    value: '19'
+  - name: INTPNT_CO_TOL_PFEAS
+    comment: Primal feasibility tolerance used by the interior-point optimizer for conic problems.
+    value: '20'
+  - name: INTPNT_CO_TOL_REL_GAP
+    comment: Relative gap termination tolerance used by the interior-point optimizer for conic problems.
+    value: '21'
+  - name: INTPNT_QO_TOL_DFEAS
+    comment: Dual feasibility tolerance used by the interior-point optimizer for quadratic problems.
+    value: '22'
+  - name: INTPNT_QO_TOL_INFEAS
+    comment: Infeasibility tolerance used by the interior-point optimizer for quadratic problems.
+    value: '23'
+  - name: INTPNT_QO_TOL_MU_RED
+    comment: Relative complementarity gap tolerance used by the interior-point optimizer for quadratic problems.
+    value: '24'
+  - name: INTPNT_QO_TOL_NEAR_REL
+    comment: Optimality tolerance used by the interior-point optimizer for quadratic problems.
+    value: '25'
+  - name: INTPNT_QO_TOL_PFEAS
+    comment: Primal feasibility tolerance used by the interior-point optimizer for quadratic problems.
+    value: '26'
+  - name: INTPNT_QO_TOL_REL_GAP
+    comment: Relative gap termination tolerance used by the interior-point optimizer for quadratic problems.
+    value: '27'
+  - name: INTPNT_TOL_DFEAS
+    comment: Dual feasibility tolerance used by the interior-point optimizer for linear problems.
+    value: '28'
+  - name: INTPNT_TOL_DSAFE
+    comment: Controls the interior-point dual starting point.
+    value: '29'
+  - name: INTPNT_TOL_INFEAS
+    comment: Infeasibility tolerance used by the interior-point optimizer for linear problems.
+    value: '30'
+  - name: INTPNT_TOL_MU_RED
+    comment: Relative complementarity gap tolerance used by the interior-point optimizer for linear problems.
+    value: '31'
+  - name: INTPNT_TOL_PATH
+    comment: Interior-point centering aggressiveness.
+    value: '32'
+  - name: INTPNT_TOL_PFEAS
+    comment: Primal feasibility tolerance used by the interior-point optimizer for linear problems.
+    value: '33'
+  - name: INTPNT_TOL_PSAFE
+    comment: Controls the interior-point primal starting point.
+    value: '34'
+  - name: INTPNT_TOL_REL_GAP
+    comment: Relative gap termination tolerance used by the interior-point optimizer for linear problems.
+    value: '35'
+  - name: INTPNT_TOL_REL_STEP
+    comment: Relative step size to the boundary for linear and quadratic optimization problems.
+    value: '36'
+  - name: INTPNT_TOL_STEP_SIZE
+    comment: Minimal step size tolerance for the interior-point optimizer.
+    value: '37'
+  - name: LOWER_OBJ_CUT
+    comment: Objective bound.
+    value: '38'
+  - name: LOWER_OBJ_CUT_FINITE_TRH
+    comment: Objective bound.
+    value: '39'
+  - name: MIO_DJC_MAX_BIGM
+    comment: Maximum allowed big-M value when reformulating disjunctive constraints to linear constraints.
+    value: '40'
+  - name: MIO_MAX_TIME
+    comment: Time limit for the mixed-integer optimizer.
+    value: '41'
+  - name: MIO_REL_GAP_CONST
+    comment: This value is used to compute the relative gap for the solution to an integer optimization problem.
+    value: '42'
+  - name: MIO_TOL_ABS_GAP
+    comment: Absolute optimality tolerance employed by the mixed-integer optimizer.
+    value: '43'
+  - name: MIO_TOL_ABS_RELAX_INT
+    comment: Integer feasibility tolerance.
+    value: '44'
+  - name: MIO_TOL_FEAS
+    comment: Feasibility tolerance for mixed integer solver.
+    value: '45'
+  - name: MIO_TOL_REL_DUAL_BOUND_IMPROVEMENT
+    comment: Controls cut generation for mixed-integer optimizer.
+    value: '46'
+  - name: MIO_TOL_REL_GAP
+    comment: Relative optimality tolerance employed by the mixed-integer optimizer.
+    value: '47'
+  - name: OPTIMIZER_MAX_TIME
+    comment: Solver time limit.
+    value: '48'
+  - name: PRESOLVE_TOL_ABS_LINDEP
+    comment: Absolute tolerance employed by the linear dependency checker.
+    value: '49'
+  - name: PRESOLVE_TOL_AIJ
+    comment: Absolute zero tolerance employed for constraint coefficients in the presolve.
+    value: '50'
+  - name: PRESOLVE_TOL_PRIMAL_INFEAS_PERTURBATION
+    comment: The presolve is allowed to perturbe a bound on a constraint or variable by this amount if it removes an infeasibility.
+    value: '51'
+  - name: PRESOLVE_TOL_REL_LINDEP
+    comment: Relative tolerance employed by the linear dependency checker.
+    value: '52'
+  - name: PRESOLVE_TOL_S
+    comment: Absolute zero tolerance employed for slack variables in the presolve.
+    value: '53'
+  - name: PRESOLVE_TOL_X
+    comment: Absolute zero tolerance employed for variables in the presolve.
+    value: '54'
+  - name: QCQO_REFORMULATE_REL_DROP_TOL
+    comment: This parameter determines when columns are dropped in incomplete Cholesky factorization during reformulation of quadratic problems.
+    value: '55'
+  - name: SEMIDEFINITE_TOL_APPROX
+    comment: Tolerance to define a matrix to be positive semidefinite.
+    value: '56'
+  - name: SIM_LU_TOL_REL_PIV
+    comment: Relative pivot tolerance employed when computing the LU factorization of the basis matrix.
+    value: '57'
+  - name: SIMPLEX_ABS_TOL_PIV
+    comment: Absolute pivot tolerance employed by the simplex optimizers.
+    value: '58'
+  - name: UPPER_OBJ_CUT
+    comment: Objective bound.
+    value: '59'
+  - name: UPPER_OBJ_CUT_FINITE_TRH
+    comment: Objective bound.
+    value: '60'
+Prosta:
+  name: Prosta
+  comment: Problem status keys
+  enum_consts:
+  - name: UNKNOWN
+    comment: Unknown problem status.
+    value: '0'
+  - name: PRIM_AND_DUAL_FEAS
+    comment: The problem is primal and dual feasible.
+    value: '1'
+  - name: PRIM_FEAS
+    comment: The problem is primal feasible.
+    value: '2'
+  - name: DUAL_FEAS
+    comment: The problem is dual feasible.
+    value: '3'
+  - name: PRIM_INFEAS
+    comment: The problem is primal infeasible.
+    value: '4'
+  - name: DUAL_INFEAS
+    comment: The problem is dual infeasible.
+    value: '5'
+  - name: PRIM_AND_DUAL_INFEAS
+    comment: The problem is primal and dual infeasible.
+    value: '6'
+  - name: ILL_POSED
+    comment: The problem is ill-posed. For example, it may be primal and dual feasible but have a positive duality gap.
+    value: '7'
+  - name: PRIM_INFEAS_OR_UNBOUNDED
+    comment: The problem is either primal infeasible or unbounded. This may occur for mixed-integer problems.
+    value: '8'
+Symmattype:
+  name: Symmattype
+  comment: Cone types
+  enum_consts:
+  - name: SPARSE
+    comment: Sparse symmetric matrix.
+    value: '0'
+Dinfitem:
+  name: Dinfitem
+  comment: Double information items
+  enum_consts:
+  - name: ANA_PRO_SCALARIZED_CONSTRAINT_MATRIX_DENSITY
+    comment: Density percentage of the scalarized constraint matrix.
+    value: '0'
+  - name: BI_CLEAN_DUAL_TIME
+    comment: Time  spent within the dual clean-up optimizer of the basis identification procedure since its invocation.
+    value: '1'
+  - name: BI_CLEAN_PRIMAL_TIME
+    comment: Time spent within the primal clean-up optimizer of the basis identification procedure since its invocation.
+    value: '2'
+  - name: BI_CLEAN_TIME
+    comment: Time spent within the clean-up phase of the basis identification procedure since its invocation.
+    value: '3'
+  - name: BI_DUAL_TIME
+    comment: Time spent within the dual phase basis identification procedure since its invocation.
+    value: '4'
+  - name: BI_PRIMAL_TIME
+    comment: Time  spent within the primal phase of the basis identification procedure since its invocation.
+    value: '5'
+  - name: BI_TIME
+    comment: Time spent within the basis identification procedure since its invocation.
+    value: '6'
+  - name: INTPNT_DUAL_FEAS
+    comment: Dual feasibility measure reported by the interior-point optimizer.
+    value: '7'
+  - name: INTPNT_DUAL_OBJ
+    comment: Dual objective value reported by the interior-point optimizer.
+    value: '8'
+  - name: INTPNT_FACTOR_NUM_FLOPS
+    comment: An estimate of the number of flops used in the factorization.
+    value: '9'
+  - name: INTPNT_OPT_STATUS
+    comment: A measure of optimality of the solution.
+    value: '10'
+  - name: INTPNT_ORDER_TIME
+    comment: Order time (in seconds).
+    value: '11'
+  - name: INTPNT_PRIMAL_FEAS
+    comment: Primal feasibility measure reported by the interior-point optimizer.
+    value: '12'
+  - name: INTPNT_PRIMAL_OBJ
+    comment: Primal objective value reported by the interior-point optimizer.
+    value: '13'
+  - name: INTPNT_TIME
+    comment: Time spent within the interior-point optimizer since its invocation.
+    value: '14'
+  - name: MIO_CLIQUE_SEPARATION_TIME
+    comment: Separation time for clique cuts.
+    value: '15'
+  - name: MIO_CMIR_SEPARATION_TIME
+    comment: Separation time for CMIR cuts.
+    value: '16'
+  - name: MIO_CONSTRUCT_SOLUTION_OBJ
+    comment: Optimal objective value corresponding to the feasible solution.
+    value: '17'
+  - name: MIO_DUAL_BOUND_AFTER_PRESOLVE
+    comment: Value of the dual bound after presolve but before cut generation.
+    value: '18'
+  - name: MIO_GMI_SEPARATION_TIME
+    comment: Separation time for GMI cuts.
+    value: '19'
+  - name: MIO_IMPLIED_BOUND_TIME
+    comment: Separation time for implied bound cuts.
+    value: '20'
+  - name: MIO_INITIAL_FEASIBLE_SOLUTION_OBJ
+    comment: Optimal objective value corresponding to the user provided initial solution.
+    value: '21'
+  - name: MIO_KNAPSACK_COVER_SEPARATION_TIME
+    comment: Separation time for knapsack cover.
+    value: '22'
+  - name: MIO_LIPRO_SEPARATION_TIME
+    comment: Separation time for lift-and-project cuts.
+    value: '23'
+  - name: MIO_OBJ_ABS_GAP
+    comment: If the mixed-integer optimizer has computed a feasible solution and a bound, this contains the absolute gap.
+    value: '24'
+  - name: MIO_OBJ_BOUND
+    comment: The best bound on the objective value known.
+    value: '25'
+  - name: MIO_OBJ_INT
+    comment: The primal objective value corresponding to the best integer feasible solution.
+    value: '26'
+  - name: MIO_OBJ_REL_GAP
+    comment: If the mixed-integer optimizer has computed a feasible solution and a bound, this contains the relative gap.
+    value: '27'
+  - name: MIO_PROBING_TIME
+    comment: Total time for probing.
+    value: '28'
+  - name: MIO_ROOT_CUTGEN_TIME
+    comment: Total time for cut generation.
+    value: '29'
+  - name: MIO_ROOT_OPTIMIZER_TIME
+    comment: Time spent in the contiuous optimizer while processing the root node relaxation.
+    value: '30'
+  - name: MIO_ROOT_PRESOLVE_TIME
+    comment: Time spent presolving the problem at the root node.
+    value: '31'
+  - name: MIO_ROOT_TIME
+    comment: Time spent processing the root node.
+    value: '32'
+  - name: MIO_TIME
+    comment: Time spent in the mixed-integer optimizer.
+    value: '33'
+  - name: MIO_USER_OBJ_CUT
+    comment: If the objective cut is used, then this information item has the value of the cut.
+    value: '34'
+  - name: OPTIMIZER_TIME
+    comment: Total time spent in the optimizer since it was invoked.
+    value: '35'
+  - name: PRESOLVE_ELI_TIME
+    comment: Total time spent in the eliminator since the presolve was invoked.
+    value: '36'
+  - name: PRESOLVE_LINDEP_TIME
+    comment: Total time spent  in the linear dependency checker since the presolve was invoked.
+    value: '37'
+  - name: PRESOLVE_TIME
+    comment: Total time (in seconds) spent in the presolve since it was invoked.
+    value: '38'
+  - name: PRESOLVE_TOTAL_PRIMAL_PERTURBATION
+    comment: Total perturbation of the bounds of the primal problem.
+    value: '39'
+  - name: PRIMAL_REPAIR_PENALTY_OBJ
+    comment: The optimal objective value of the penalty function.
+    value: '40'
+  - name: QCQO_REFORMULATE_MAX_PERTURBATION
+    comment: Maximum absolute diagonal perturbation occurring during the QCQO reformulation.
+    value: '41'
+  - name: QCQO_REFORMULATE_TIME
+    comment: Time spent with conic quadratic reformulation.
+    value: '42'
+  - name: QCQO_REFORMULATE_WORST_CHOLESKY_COLUMN_SCALING
+    comment: Worst Cholesky column scaling.
+    value: '43'
+  - name: QCQO_REFORMULATE_WORST_CHOLESKY_DIAG_SCALING
+    comment: Worst Cholesky diagonal scaling.
+    value: '44'
+  - name: READ_DATA_TIME
+    comment: Time spent reading the data file.
+    value: '45'
+  - name: REMOTE_TIME
+    comment: The total real time in seconds spent when optimizing on a server by the process performing the optimization on the server
+    value: '46'
+  - name: SIM_DUAL_TIME
+    comment: Time spent in the dual simplex optimizer since invoking it.
+    value: '47'
+  - name: SIM_FEAS
+    comment: Feasibility measure reported by the simplex optimizer.
+    value: '48'
+  - name: SIM_OBJ
+    comment: Objective value reported by the simplex optimizer.
+    value: '49'
+  - name: SIM_PRIMAL_TIME
+    comment: Time spent in the primal simplex optimizer since invoking it.
+    value: '50'
+  - name: SIM_TIME
+    comment: Time spent in the simplex optimizer since invoking it.
+    value: '51'
+  - name: SOL_BAS_DUAL_OBJ
+    comment: Dual objective value of the basic solution. Updated by the function updatesolutioninfo.
+    value: '52'
+  - name: SOL_BAS_DVIOLCON
+    comment: Maximal dual bound violation for xx in the basic solution. Updated by the function updatesolutioninfo.
+    value: '53'
+  - name: SOL_BAS_DVIOLVAR
+    comment: Maximal dual bound violation for xx in the basic solution. Updated by the function updatesolutioninfo.
+    value: '54'
+  - name: SOL_BAS_NRM_BARX
+    comment: Infinity norm of barx in the basic solution.
+    value: '55'
+  - name: SOL_BAS_NRM_SLC
+    comment: Infinity norm of slc in the basic solution.
+    value: '56'
+  - name: SOL_BAS_NRM_SLX
+    comment: Infinity norm of slx in the basic solution.
+    value: '57'
+  - name: SOL_BAS_NRM_SUC
+    comment: Infinity norm of suc in the basic solution.
+    value: '58'
+  - name: SOL_BAS_NRM_SUX
+    comment: Infinity norm of sux in the basic solution.
+    value: '59'
+  - name: SOL_BAS_NRM_XC
+    comment: Infinity norm of xc in the basic solution.
+    value: '60'
+  - name: SOL_BAS_NRM_XX
+    comment: Infinity norm of xx in the basic solution.
+    value: '61'
+  - name: SOL_BAS_NRM_Y
+    comment: Infinity norm of Y in the basic solution.
+    value: '62'
+  - name: SOL_BAS_PRIMAL_OBJ
+    comment: Primal objective value of the basic solution. Updated by the function updatesolutioninfo.
+    value: '63'
+  - name: SOL_BAS_PVIOLCON
+    comment: Maximal primal bound violation for xc in the basic solution. Updated by the function updatesolutioninfo.
+    value: '64'
+  - name: SOL_BAS_PVIOLVAR
+    comment: Maximal primal bound violation for xx in the basic solution. Updated by the function updatesolutioninfo.
+    value: '65'
+  - name: SOL_ITG_NRM_BARX
+    comment: Infinity norm of barx in the integer solution.
+    value: '66'
+  - name: SOL_ITG_NRM_XC
+    comment: Infinity norm of xc in the integer solution.
+    value: '67'
+  - name: SOL_ITG_NRM_XX
+    comment: Infinity norm of xx in the integer solution.
+    value: '68'
+  - name: SOL_ITG_PRIMAL_OBJ
+    comment: Primal objective value of the integer solution. Updated by the function updatesolutioninfo.
+    value: '69'
+  - name: SOL_ITG_PVIOLACC
+    comment: Maximal primal violation for affine conic constraints in the integer solution. Updated by the function updatesolutioninfo.
+    value: '70'
+  - name: SOL_ITG_PVIOLBARVAR
+    comment: Maximal primal bound violation for barx in the integer solution. Updated by the function updatesolutioninfo.
+    value: '71'
+  - name: SOL_ITG_PVIOLCON
+    comment: Maximal primal bound violation for xc in the integer solution. Updated by the function updatesolutioninfo.
+    value: '72'
+  - name: SOL_ITG_PVIOLCONES
+    comment: Maximal primal violation for primal conic constraints in the integer solution. Updated by the function updatesolutioninfo.
+    value: '73'
+  - name: SOL_ITG_PVIOLDJC
+    comment: Maximal primal violation for disjunctive constraints in the integer solution. Updated by the function updatesolutioninfo.
+    value: '74'
+  - name: SOL_ITG_PVIOLITG
+    comment: Maximal violation for the integer constraints in the integer solution. Updated by the function updatesolutioninfo.
+    value: '75'
+  - name: SOL_ITG_PVIOLVAR
+    comment: Maximal primal bound violation for xx in the integer solution. Updated by the function updatesolutioninfo.
+    value: '76'
+  - name: SOL_ITR_DUAL_OBJ
+    comment: Dual objective value of the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '77'
+  - name: SOL_ITR_DVIOLACC
+    comment: Maximal dual violation for affine conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '78'
+  - name: SOL_ITR_DVIOLBARVAR
+    comment: Maximal dual bound violation for barx in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '79'
+  - name: SOL_ITR_DVIOLCON
+    comment: Maximal dual bound violation for xc in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '80'
+  - name: SOL_ITR_DVIOLCONES
+    comment: Maximal dual violation for conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '81'
+  - name: SOL_ITR_DVIOLVAR
+    comment: Maximal dual bound violation for xx in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '82'
+  - name: SOL_ITR_NRM_BARS
+    comment: Infinity norm of bars in the interior-point solution.
+    value: '83'
+  - name: SOL_ITR_NRM_BARX
+    comment: Infinity norm of barx in the interior-point solution.
+    value: '84'
+  - name: SOL_ITR_NRM_SLC
+    comment: Infinity norm of slc in the interior-point solution.
+    value: '85'
+  - name: SOL_ITR_NRM_SLX
+    comment: Infinity norm of slx in the interior-point solution.
+    value: '86'
+  - name: SOL_ITR_NRM_SNX
+    comment: Infinity norm of snx in the interior-point solution.
+    value: '87'
+  - name: SOL_ITR_NRM_SUC
+    comment: Infinity norm of suc in the interior-point solution.
+    value: '88'
+  - name: SOL_ITR_NRM_SUX
+    comment: Infinity norm of sux in the interior-point solution.
+    value: '89'
+  - name: SOL_ITR_NRM_XC
+    comment: Infinity norm of xc in the interior-point solution.
+    value: '90'
+  - name: SOL_ITR_NRM_XX
+    comment: Infinity norm of xx in the interior-point solution.
+    value: '91'
+  - name: SOL_ITR_NRM_Y
+    comment: Infinity norm of Y in the interior-point solution.
+    value: '92'
+  - name: SOL_ITR_PRIMAL_OBJ
+    comment: Primal objective value of the interior-point solution.
+    value: '93'
+  - name: SOL_ITR_PVIOLACC
+    comment: Maximal primal violation for affine conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '94'
+  - name: SOL_ITR_PVIOLBARVAR
+    comment: Maximal primal bound violation for barx in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '95'
+  - name: SOL_ITR_PVIOLCON
+    comment: Maximal primal bound violation for xc in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '96'
+  - name: SOL_ITR_PVIOLCONES
+    comment: Maximal primal violation for conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '97'
+  - name: SOL_ITR_PVIOLVAR
+    comment: Maximal primal bound violation for xx in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '98'
+  - name: TO_CONIC_TIME
+    comment: Time spent in the last to conic reformulation.
+    value: '99'
+  - name: WRITE_DATA_TIME
+    comment: Time spent writing the data file.
+    value: '100'
+  - name: END
+    comment: ''
+    value: '100'
+Startpointtype:
+  name: Startpointtype
+  comment: Starting point types
+  enum_consts:
+  - name: FREE
+    comment: The starting point is chosen automatically.
+    value: '0'
+  - name: GUESS
+    comment: The optimizer guesses a starting point.
+    value: '1'
+  - name: CONSTANT
+    comment: The optimizer constructs a starting point by assigning a constant value to all primal and dual variables. This starting point is normally robust.
+    value: '2'
+  - name: SATISFY_BOUNDS
+    comment: The starting point satisfies all the simple bounds on nonlinear variables.
+    value: '3'
+Iinfitem:
+  name: Iinfitem
+  comment: Integer information items.
+  enum_consts:
+  - name: ANA_PRO_NUM_CON
+    comment: Number of constraints in the problem.
+    value: '0'
+  - name: ANA_PRO_NUM_CON_EQ
+    comment: Number of equality constraints.
+    value: '1'
+  - name: ANA_PRO_NUM_CON_FR
+    comment: Number of unbounded constraints.
+    value: '2'
+  - name: ANA_PRO_NUM_CON_LO
+    comment: Number of constraints with a lower bound and an infinite upper bound.
+    value: '3'
+  - name: ANA_PRO_NUM_CON_RA
+    comment: Number of constraints with finite lower and upper bounds.
+    value: '4'
+  - name: ANA_PRO_NUM_CON_UP
+    comment: Number of constraints with an upper bound and an infinite lower bound.
+    value: '5'
+  - name: ANA_PRO_NUM_VAR
+    comment: Number of variables in the problem.
+    value: '6'
+  - name: ANA_PRO_NUM_VAR_BIN
+    comment: Number of binary variables.
+    value: '7'
+  - name: ANA_PRO_NUM_VAR_CONT
+    comment: Number of continuous variables.
+    value: '8'
+  - name: ANA_PRO_NUM_VAR_EQ
+    comment: Number of fixed variables.
+    value: '9'
+  - name: ANA_PRO_NUM_VAR_FR
+    comment: Number of unbounded constraints.
+    value: '10'
+  - name: ANA_PRO_NUM_VAR_INT
+    comment: Number of general integer variables.
+    value: '11'
+  - name: ANA_PRO_NUM_VAR_LO
+    comment: Number of variables with a lower bound and an infinite upper bound.
+    value: '12'
+  - name: ANA_PRO_NUM_VAR_RA
+    comment: Number of variables with finite lower and upper bounds.
+    value: '13'
+  - name: ANA_PRO_NUM_VAR_UP
+    comment: Number of variables with an upper bound and an infinite lower bound.
+    value: '14'
+  - name: INTPNT_FACTOR_DIM_DENSE
+    comment: Dimension of the dense sub system in factorization.
+    value: '15'
+  - name: INTPNT_ITER
+    comment: Number of interior-point iterations since invoking the interior-point optimizer.
+    value: '16'
+  - name: INTPNT_NUM_THREADS
+    comment: Number of threads that the interior-point optimizer is using.
+    value: '17'
+  - name: INTPNT_SOLVE_DUAL
+    comment: Non-zero if the interior-point optimizer is solving the dual problem.
+    value: '18'
+  - name: MIO_ABSGAP_SATISFIED
+    comment: Non-zero if absolute gap is within tolerances.
+    value: '19'
+  - name: MIO_CLIQUE_TABLE_SIZE
+    comment: Size of the clique table.
+    value: '20'
+  - name: MIO_CONSTRUCT_SOLUTION
+    comment: Informs if MOSEK successfully constructed an initial integer feasible solution.
+    value: '21'
+  - name: MIO_INITIAL_FEASIBLE_SOLUTION
+    comment: Informs if MOSEK found the solution provided by the user to be feasible
+    value: '22'
+  - name: MIO_NODE_DEPTH
+    comment: Depth of the last node solved.
+    value: '23'
+  - name: MIO_NUM_ACTIVE_NODES
+    comment: Number of active branch and bound nodes.
+    value: '24'
+  - name: MIO_NUM_BRANCH
+    comment: Number of branches performed during the optimization.
+    value: '25'
+  - name: MIO_NUM_CLIQUE_CUTS
+    comment: Number of clique cuts.
+    value: '26'
+  - name: MIO_NUM_CMIR_CUTS
+    comment: Number of Complemented Mixed Integer Rounding (CMIR) cuts.
+    value: '27'
+  - name: MIO_NUM_GOMORY_CUTS
+    comment: Number of Gomory cuts.
+    value: '28'
+  - name: MIO_NUM_IMPLIED_BOUND_CUTS
+    comment: Number of implied bound cuts.
+    value: '29'
+  - name: MIO_NUM_INT_SOLUTIONS
+    comment: Number of integer feasible solutions that have been found.
+    value: '30'
+  - name: MIO_NUM_KNAPSACK_COVER_CUTS
+    comment: Number of clique cuts.
+    value: '31'
+  - name: MIO_NUM_LIPRO_CUTS
+    comment: Number of lift-and-project cuts.
+    value: '32'
+  - name: MIO_NUM_RELAX
+    comment: Number of relaxations solved during the optimization.
+    value: '33'
+  - name: MIO_NUM_REPEATED_PRESOLVE
+    comment: Number of times presolve was repeated at root.
+    value: '34'
+  - name: MIO_NUMBIN
+    comment: Number of binary variables in the problem to be solved by the mixed-integer optimizer.
+    value: '35'
+  - name: MIO_NUMBINCONEVAR
+    comment: Number of binary cone variables in the problem to be solved by the mixed-integer optimizer.
+    value: '36'
+  - name: MIO_NUMCON
+    comment: Number of constraints in the problem to be solved by the mixed-integer optimizer.
+    value: '37'
+  - name: MIO_NUMCONE
+    comment: Number of cones in the problem to be solved by the mixed-integer optimizer.
+    value: '38'
+  - name: MIO_NUMCONEVAR
+    comment: Number of cone variables in the problem to be solved by the mixed-integer optimizer.
+    value: '39'
+  - name: MIO_NUMCONT
+    comment: Number of continuous variables in the problem to be solved by the mixed-integer optimizer.
+    value: '40'
+  - name: MIO_NUMCONTCONEVAR
+    comment: Number of continuous cone variables in the problem to be solved by the mixed-integer optimizer.
+    value: '41'
+  - name: MIO_NUMDEXPCONES
+    comment: Number of dual exponential cones in the problem to be solved by the mixed-integer optimizer.
+    value: '42'
+  - name: MIO_NUMDJC
+    comment: Number of disjunctive constraints in the problem to be solved by the mixed-integer optimizer.
+    value: '43'
+  - name: MIO_NUMDPOWCONES
+    comment: Number of dual power cones in the problem to be solved by the mixed-integer optimizer.
+    value: '44'
+  - name: MIO_NUMINT
+    comment: Number of integer variables in the problem to be solved by the mixed-integer optimizer.
+    value: '45'
+  - name: MIO_NUMINTCONEVAR
+    comment: Number of integer cone variables in the problem to be solved by the mixed-integer optimizer.
+    value: '46'
+  - name: MIO_NUMPEXPCONES
+    comment: Number of primal exponential cones in the problem to be solved by the mixed-integer optimizer.
+    value: '47'
+  - name: MIO_NUMPPOWCONES
+    comment: Number of primal power cones in the problem to be solved by the mixed-integer optimizer.
+    value: '48'
+  - name: MIO_NUMQCONES
+    comment: Number of quadratic cones in the problem to be solved by the mixed-integer optimizer.
+    value: '49'
+  - name: MIO_NUMRQCONES
+    comment: Number of rotated quadratic cones in the problem to be solved by the mixed-integer optimizer.
+    value: '50'
+  - name: MIO_NUMVAR
+    comment: Number of variables in the problem to be solved by the mixed-integer optimizer.
+    value: '51'
+  - name: MIO_OBJ_BOUND_DEFINED
+    comment: Non-zero if a valid objective bound has been found, otherwise zero.
+    value: '52'
+  - name: MIO_PRESOLVED_NUMBIN
+    comment: Number of binary variables in the problem after the mixed-integer optimizer's presolve.
+    value: '53'
+  - name: MIO_PRESOLVED_NUMBINCONEVAR
+    comment: Number of binary cone variables in the problem after the mixed-integer optimizer's presolve.
+    value: '54'
+  - name: MIO_PRESOLVED_NUMCON
+    comment: Number of constraints in the problem after the mixed-integer optimizer's presolve.
+    value: '55'
+  - name: MIO_PRESOLVED_NUMCONE
+    comment: Number of cones in the problem after the mixed-integer optimizer's presolve.
+    value: '56'
+  - name: MIO_PRESOLVED_NUMCONEVAR
+    comment: Number of cone variables in the problem after the mixed-integer optimizer's presolve.
+    value: '57'
+  - name: MIO_PRESOLVED_NUMCONT
+    comment: Number of continuous variables in the problem after the mixed-integer optimizer's presolve.
+    value: '58'
+  - name: MIO_PRESOLVED_NUMCONTCONEVAR
+    comment: Number of continuous cone variables in the problem after the mixed-integer optimizer's presolve.
+    value: '59'
+  - name: MIO_PRESOLVED_NUMDEXPCONES
+    comment: Number of dual exponential cones in the problem after the mixed-integer optimizer's presolve.
+    value: '60'
+  - name: MIO_PRESOLVED_NUMDJC
+    comment: Number of disjunctive constraints in the problem after the mixed-integer optimizer's presolve.
+    value: '61'
+  - name: MIO_PRESOLVED_NUMDPOWCONES
+    comment: Number of dual power cones in the problem after the mixed-integer optimizer's presolve.
+    value: '62'
+  - name: MIO_PRESOLVED_NUMINT
+    comment: Number of integer variables in the problem after the mixed-integer optimizer's presolve.
+    value: '63'
+  - name: MIO_PRESOLVED_NUMINTCONEVAR
+    comment: Number of integer cone variables in the problem after the mixed-integer optimizer's presolve.
+    value: '64'
+  - name: MIO_PRESOLVED_NUMPEXPCONES
+    comment: Number of primal exponential cones in the problem after the mixed-integer optimizer's presolve.
+    value: '65'
+  - name: MIO_PRESOLVED_NUMPPOWCONES
+    comment: Number of primal power cones in the problem after the mixed-integer optimizer's presolve.
+    value: '66'
+  - name: MIO_PRESOLVED_NUMQCONES
+    comment: Number of quadratic cones in the problem after the mixed-integer optimizer's presolve.
+    value: '67'
+  - name: MIO_PRESOLVED_NUMRQCONES
+    comment: Number of rotated quadratic cones in the problem after the mixed-integer optimizer's presolve.
+    value: '68'
+  - name: MIO_PRESOLVED_NUMVAR
+    comment: Number of variables in the problem after the mixed-integer optimizer's presolve.
+    value: '69'
+  - name: MIO_RELGAP_SATISFIED
+    comment: Non-zero if relative gap is within tolerances.
+    value: '70'
+  - name: MIO_TOTAL_NUM_CUTS
+    comment: Total number of cuts generated by the mixed-integer optimizer.
+    value: '71'
+  - name: MIO_USER_OBJ_CUT
+    comment: If it is non-zero, then the objective cut is used.
+    value: '72'
+  - name: OPT_NUMCON
+    comment: Number of constraints in the problem solved when the optimizer is called.
+    value: '73'
+  - name: OPT_NUMVAR
+    comment: Number of variables in the problem solved when the optimizer is called
+    value: '74'
+  - name: OPTIMIZE_RESPONSE
+    comment: The response code returned by optimize.
+    value: '75'
+  - name: PRESOLVE_NUM_PRIMAL_PERTURBATIONS
+    comment: Number perturbations to thhe bounds of the primal problem.
+    value: '76'
+  - name: PURIFY_DUAL_SUCCESS
+    comment: Is nonzero if the dual solution is purified.
+    value: '77'
+  - name: PURIFY_PRIMAL_SUCCESS
+    comment: Is nonzero if the primal solution is purified.
+    value: '78'
+  - name: RD_NUMBARVAR
+    comment: Number of symmetric variables read.
+    value: '79'
+  - name: RD_NUMCON
+    comment: Number of constraints read.
+    value: '80'
+  - name: RD_NUMCONE
+    comment: Number of conic constraints read.
+    value: '81'
+  - name: RD_NUMINTVAR
+    comment: Number of integer-constrained variables read.
+    value: '82'
+  - name: RD_NUMQ
+    comment: Number of nonempty Q matrices read.
+    value: '83'
+  - name: RD_NUMVAR
+    comment: Number of variables read.
+    value: '84'
+  - name: RD_PROTYPE
+    comment: Problem type.
+    value: '85'
+  - name: SIM_DUAL_DEG_ITER
+    comment: The number of dual degenerate iterations.
+    value: '86'
+  - name: SIM_DUAL_HOTSTART
+    comment: If 1 then the dual simplex algorithm is solving from an advanced basis.
+    value: '87'
+  - name: SIM_DUAL_HOTSTART_LU
+    comment: If 1 then a valid basis factorization of full rank was located and used by the dual simplex algorithm.
+    value: '88'
+  - name: SIM_DUAL_INF_ITER
+    comment: The number of iterations taken with dual infeasibility.
+    value: '89'
+  - name: SIM_DUAL_ITER
+    comment: Number of dual simplex iterations during the last optimization.
+    value: '90'
+  - name: SIM_NUMCON
+    comment: Number of constraints in the problem solved by the simplex optimizer.
+    value: '91'
+  - name: SIM_NUMVAR
+    comment: Number of variables in the problem solved by the simplex optimizer.
+    value: '92'
+  - name: SIM_PRIMAL_DEG_ITER
+    comment: The number of primal degenerate iterations.
+    value: '93'
+  - name: SIM_PRIMAL_HOTSTART
+    comment: If 1 then the primal simplex algorithm is solving from an advanced basis.
+    value: '94'
+  - name: SIM_PRIMAL_HOTSTART_LU
+    comment: If 1 then a valid basis factorization of full rank was located and used by the primal simplex algorithm.
+    value: '95'
+  - name: SIM_PRIMAL_INF_ITER
+    comment: The number of iterations taken with primal infeasibility.
+    value: '96'
+  - name: SIM_PRIMAL_ITER
+    comment: Number of primal simplex iterations during the last optimization.
+    value: '97'
+  - name: SIM_SOLVE_DUAL
+    comment: Is non-zero if dual problem is solved.
+    value: '98'
+  - name: SOL_BAS_PROSTA
+    comment: Problem status of the basic solution. Updated after each optimization.
+    value: '99'
+  - name: SOL_BAS_SOLSTA
+    comment: Solution status of the basic solution. Updated after each optimization.
+    value: '100'
+  - name: SOL_ITG_PROSTA
+    comment: Problem status of the integer solution. Updated after each optimization.
+    value: '101'
+  - name: SOL_ITG_SOLSTA
+    comment: Solution status of the integer solution. Updated after each optimization.
+    value: '102'
+  - name: SOL_ITR_PROSTA
+    comment: Problem status of the interior-point solution. Updated after each optimization.
+    value: '103'
+  - name: SOL_ITR_SOLSTA
+    comment: Solution status of the interior-point solution. Updated after each optimization.
+    value: '104'
+  - name: STO_NUM_A_REALLOC
+    comment: Number of times the storage for storing the linear coefficient matrix has been changed.
+    value: '105'
+  - name: END
+    comment: ''
+    value: '105'
+Transpose:
+  name: Transpose
+  comment: Transposed matrix.
+  enum_consts:
+  - name: NO
+    comment: No transpose is applied.
+    value: '0'
+  - name: YES
+    comment: A transpose is applied.
+    value: '1'
+Solsta:
+  name: Solsta
+  comment: Solution status keys
+  enum_consts:
+  - name: UNKNOWN
+    comment: Status of the solution is unknown.
+    value: '0'
+  - name: OPTIMAL
+    comment: The solution is optimal.
+    value: '1'
+  - name: PRIM_FEAS
+    comment: The solution is primal feasible.
+    value: '2'
+  - name: DUAL_FEAS
+    comment: The solution is dual feasible.
+    value: '3'
+  - name: PRIM_AND_DUAL_FEAS
+    comment: The solution is both primal and dual feasible.
+    value: '4'
+  - name: PRIM_INFEAS_CER
+    comment: The solution is a certificate of primal infeasibility.
+    value: '5'
+  - name: DUAL_INFEAS_CER
+    comment: The solution is a certificate of dual infeasibility.
+    value: '6'
+  - name: PRIM_ILLPOSED_CER
+    comment: The solution is a certificate that the primal problem is illposed.
+    value: '7'
+  - name: DUAL_ILLPOSED_CER
+    comment: The solution is a certificate that the dual problem is illposed.
+    value: '8'
+  - name: INTEGER_OPTIMAL
+    comment: The primal solution is integer optimal.
+    value: '9'
+Scalingmethod:
+  name: Scalingmethod
+  comment: Scaling method
+  enum_consts:
+  - name: POW2
+    comment: Scales only with power of 2 leaving the mantissa untouched.
+    value: '0'
+  - name: FREE
+    comment: The optimizer chooses the scaling heuristic.
+    value: '1'
+Objsense:
+  name: Objsense
+  comment: Objective sense types
+  enum_consts:
+  - name: MINIMIZE
+    comment: The problem should be minimized.
+    value: '0'
+  - name: MAXIMIZE
+    comment: The problem should be maximized.
+    value: '1'
+Intpnthotstart:
+  name: Intpnthotstart
+  comment: Hot-start type employed by the interior-point optimizers.
+  enum_consts:
+  - name: NONE
+    comment: The interior-point optimizer performs a coldstart.
+    value: '0'
+  - name: PRIMAL
+    comment: The interior-point optimizer exploits the primal solution only.
+    value: '1'
+  - name: DUAL
+    comment: The interior-point optimizer exploits the dual solution only.
+    value: '2'
+  - name: PRIMAL_DUAL
+    comment: The interior-point optimizer exploits both the primal and dual solution.
+    value: '3'
+Problemtype:
+  name: Problemtype
+  comment: Problem types
+  enum_consts:
+  - name: LO
+    comment: The problem is a linear optimization problem.
+    value: '0'
+  - name: QO
+    comment: The problem is a quadratic optimization problem.
+    value: '1'
+  - name: QCQO
+    comment: The problem is a quadratically constrained optimization problem.
+    value: '2'
+  - name: CONIC
+    comment: A conic optimization.
+    value: '3'
+  - name: MIXED
+    comment: General nonlinear constraints and conic constraints. This combination can not be solved by MOSEK.
+    value: '4'
+Simdupvec:
+  name: Simdupvec
+  comment: Exploit duplicate columns.
+  enum_consts:
+  - name: OFF
+    comment: Disallow the simplex optimizer to exploit duplicated columns.
+    value: '0'
+  - name: ON
+    comment: Allow the simplex optimizer to exploit duplicated columns.
+    value: '1'
+  - name: FREE
+    comment: The simplex optimizer can choose freely.
+    value: '2'
+Simreform:
+  name: Simreform
+  comment: Problem reformulation.
+  enum_consts:
+  - name: OFF
+    comment: Disallow the simplex optimizer to reformulate the problem.
+    value: '0'
+  - name: ON
+    comment: Allow the simplex optimizer to reformulate the problem.
+    value: '1'
+  - name: FREE
+    comment: The simplex optimizer can choose freely.
+    value: '2'
+  - name: AGGRESSIVE
+    comment: The simplex optimizer should use an aggressive reformulation strategy.
+    value: '3'
+Iparam:
+  name: Iparam
+  comment: Integer parameters
+  enum_consts:
+  - name: ANA_SOL_BASIS
+    comment: Controls whether the basis matrix is analyzed in solution analyzer.
+    value: '0'
+  - name: ANA_SOL_PRINT_VIOLATED
+    comment: Controls whether a list of violated constraints is printed.
+    value: '1'
+  - name: AUTO_SORT_A_BEFORE_OPT
+    comment: Controls whether the elements in each column of A are sorted before an optimization is performed.
+    value: '2'
+  - name: AUTO_UPDATE_SOL_INFO
+    comment: Controls whether the solution information items are automatically updated after an optimization is performed.
+    value: '3'
+  - name: BASIS_SOLVE_USE_PLUS_ONE
+    comment: Controls the sign of the columns in the basis matrix corresponding to slack variables.
+    value: '4'
+  - name: BI_CLEAN_OPTIMIZER
+    comment: Controls which simplex optimizer is used in the clean-up phase.
+    value: '5'
+  - name: BI_IGNORE_MAX_ITER
+    comment: Turns on basis identification in case the interior-point optimizer is terminated due to maximum number of iterations.
+    value: '6'
+  - name: BI_IGNORE_NUM_ERROR
+    comment: Turns on basis identification in case the interior-point optimizer is terminated due to a numerical problem.
+    value: '7'
+  - name: BI_MAX_ITERATIONS
+    comment: Maximum number of iterations after basis identification.
+    value: '8'
+  - name: CACHE_LICENSE
+    comment: Control license caching.
+    value: '9'
+  - name: CHECK_CONVEXITY
+    comment: Specify the level of convexity check on quadratic problems.
+    value: '10'
+  - name: COMPRESS_STATFILE
+    comment: Control compression of stat files.
+    value: '11'
+  - name: INFEAS_GENERIC_NAMES
+    comment: Controls the contents of the infeasibility report.
+    value: '12'
+  - name: INFEAS_PREFER_PRIMAL
+    comment: Controls which certificate is used if both primal- and dual- certificate of infeasibility is available.
+    value: '13'
+  - name: INFEAS_REPORT_AUTO
+    comment: Turns the feasibility report on or off.
+    value: '14'
+  - name: INFEAS_REPORT_LEVEL
+    comment: Controls the contents of the infeasibility report.
+    value: '15'
+  - name: INTPNT_BASIS
+    comment: Controls whether basis identification is performed.
+    value: '16'
+  - name: INTPNT_DIFF_STEP
+    comment: Controls whether different step sizes are allowed in the primal and dual space.
+    value: '17'
+  - name: INTPNT_HOTSTART
+    comment: Currently not in use.
+    value: '18'
+  - name: INTPNT_MAX_ITERATIONS
+    comment: Controls the maximum number of iterations allowed in the interior-point optimizer.
+    value: '19'
+  - name: INTPNT_MAX_NUM_COR
+    comment: Maximum number of correction steps.
+    value: '20'
+  - name: INTPNT_MAX_NUM_REFINEMENT_STEPS
+    comment: Maximum number of steps to be used by the iterative search direction refinement.
+    value: '21'
+  - name: INTPNT_OFF_COL_TRH
+    comment: Controls the aggressiveness of the offending column detection.
+    value: '22'
+  - name: INTPNT_ORDER_GP_NUM_SEEDS
+    comment: This parameter controls the number of random seeds tried.
+    value: '23'
+  - name: INTPNT_ORDER_METHOD
+    comment: Controls the ordering strategy.
+    value: '24'
+  - name: INTPNT_PURIFY
+    comment: Currently not in use.
+    value: '25'
+  - name: INTPNT_REGULARIZATION_USE
+    comment: Controls whether regularization is allowed.
+    value: '26'
+  - name: INTPNT_SCALING
+    comment: Controls how the problem is scaled before the interior-point optimizer is used.
+    value: '27'
+  - name: INTPNT_SOLVE_FORM
+    comment: Controls whether the primal or the dual problem is solved.
+    value: '28'
+  - name: INTPNT_STARTING_POINT
+    comment: Starting point used by the interior-point optimizer.
+    value: '29'
+  - name: LICENSE_DEBUG
+    comment: Controls the license manager client debugging behavior.
+    value: '30'
+  - name: LICENSE_PAUSE_TIME
+    comment: Controls license manager client behavior.
+    value: '31'
+  - name: LICENSE_SUPPRESS_EXPIRE_WRNS
+    comment: Controls license manager client behavior.
+    value: '32'
+  - name: LICENSE_TRH_EXPIRY_WRN
+    comment: Controls when expiry warnings are issued.
+    value: '33'
+  - name: LICENSE_WAIT
+    comment: Controls if MOSEK should queue for a license if none is available.
+    value: '34'
+  - name: LOG
+    comment: Controls the amount of log information.
+    value: '35'
+  - name: LOG_ANA_PRO
+    comment: Controls amount of output from the problem analyzer.
+    value: '36'
+  - name: LOG_BI
+    comment: Controls the amount of output printed by the basis identification procedure. A higher level implies that more information is logged.
+    value: '37'
+  - name: LOG_BI_FREQ
+    comment: Controls the logging frequency.
+    value: '38'
+  - name: LOG_CHECK_CONVEXITY
+    comment: Controls logging in convexity check on quadratic problems.
+    value: '39'
+  - name: LOG_CUT_SECOND_OPT
+    comment: Controls the reduction in the log levels for the second and any subsequent optimizations.
+    value: '40'
+  - name: LOG_EXPAND
+    comment: Controls the amount of logging when a data item such as the maximum number constrains is expanded.
+    value: '41'
+  - name: LOG_FEAS_REPAIR
+    comment: Controls the amount of output printed when performing feasibility repair. A value higher than one means extensive logging.
+    value: '42'
+  - name: LOG_FILE
+    comment: If turned on, then some log info is printed when a file is written or read.
+    value: '43'
+  - name: LOG_INCLUDE_SUMMARY
+    comment: Controls whether solution summary should be printed by the optimizer.
+    value: '44'
+  - name: LOG_INFEAS_ANA
+    comment: Controls log level for the infeasibility analyzer.
+    value: '45'
+  - name: LOG_INTPNT
+    comment: Controls the amount of log information from the interior-point optimizers.
+    value: '46'
+  - name: LOG_LOCAL_INFO
+    comment: Control whether local identifying information is printed to the log.
+    value: '47'
+  - name: LOG_MIO
+    comment: Controls the amount of log information from the mixed-integer optimizers.
+    value: '48'
+  - name: LOG_MIO_FREQ
+    comment: The mixed-integer optimizer logging frequency.
+    value: '49'
+  - name: LOG_ORDER
+    comment: If turned on, then factor lines are added to the log.
+    value: '50'
+  - name: LOG_PRESOLVE
+    comment: Controls amount of output printed by the presolve procedure. A higher level implies that more information is logged.
+    value: '51'
+  - name: LOG_RESPONSE
+    comment: Controls amount of output printed when response codes are reported. A higher level implies that more information is logged.
+    value: '52'
+  - name: LOG_SENSITIVITY
+    comment: Control logging in sensitivity analyzer.
+    value: '53'
+  - name: LOG_SENSITIVITY_OPT
+    comment: Control logging in sensitivity analyzer.
+    value: '54'
+  - name: LOG_SIM
+    comment: Controls the amount of log information from the simplex optimizers.
+    value: '55'
+  - name: LOG_SIM_FREQ
+    comment: Controls simplex logging frequency.
+    value: '56'
+  - name: LOG_SIM_MINOR
+    comment: Currently not in use.
+    value: '57'
+  - name: LOG_STORAGE
+    comment: Controls the memory related log information.
+    value: '58'
+  - name: MAX_NUM_WARNINGS
+    comment: Each warning is shown a limited number of times controlled by this parameter. A negative value is identical to infinite number of times.
+    value: '59'
+  - name: MIO_BRANCH_DIR
+    comment: Controls whether the mixed-integer optimizer is branching up or down by default.
+    value: '60'
+  - name: MIO_CONIC_OUTER_APPROXIMATION
+    comment: Toggles outer approximation for conic problems.
+    value: '61'
+  - name: MIO_CONSTRUCT_SOL
+    comment: Controls if an initial mixed integer solution should be constructed from the values of the integer variables.
+    value: '62'
+  - name: MIO_CUT_CLIQUE
+    comment: Controls whether clique cuts should be generated.
+    value: '63'
+  - name: MIO_CUT_CMIR
+    comment: Controls whether mixed integer rounding cuts should be generated.
+    value: '64'
+  - name: MIO_CUT_GMI
+    comment: Controls whether GMI cuts should be generated.
+    value: '65'
+  - name: MIO_CUT_IMPLIED_BOUND
+    comment: Controls whether implied bound cuts should be generated.
+    value: '66'
+  - name: MIO_CUT_KNAPSACK_COVER
+    comment: Controls whether knapsack cover cuts should be generated.
+    value: '67'
+  - name: MIO_CUT_LIPRO
+    comment: Controls whether lift-and-project cuts should be generated.
+    value: '68'
+  - name: MIO_CUT_SELECTION_LEVEL
+    comment: Controls how aggressively generated cuts are selected to be included in the relaxation.
+    value: '69'
+  - name: MIO_DATA_PERMUTATION_METHOD
+    comment: Controls what problem data permutation method is appplied to mixed-integer problems.
+    value: '70'
+  - name: MIO_FEASPUMP_LEVEL
+    comment: Controls the way the Feasibility Pump heuristic is employed by the mixed-integer optimizer.
+    value: '71'
+  - name: MIO_HEURISTIC_LEVEL
+    comment: Controls the heuristic employed by the mixed-integer optimizer to locate an initial integer feasible solution.
+    value: '72'
+  - name: MIO_MAX_NUM_BRANCHES
+    comment: Maximum number of branches allowed during the branch and bound search.
+    value: '73'
+  - name: MIO_MAX_NUM_RELAXS
+    comment: Maximum number of relaxations in branch and bound search.
+    value: '74'
+  - name: MIO_MAX_NUM_ROOT_CUT_ROUNDS
+    comment: Maximum number of cut separation rounds at the root node.
+    value: '75'
+  - name: MIO_MAX_NUM_SOLUTIONS
+    comment: Controls how many feasible solutions the mixed-integer optimizer investigates.
+    value: '76'
+  - name: MIO_MEMORY_EMPHASIS_LEVEL
+    comment: Controls how much emphasis is put on reducing memory usage.
+    value: '77'
+  - name: MIO_MODE
+    comment: Turns on/off the mixed-integer mode.
+    value: '78'
+  - name: MIO_NODE_OPTIMIZER
+    comment: Controls which optimizer is employed at the non-root nodes in the mixed-integer optimizer.
+    value: '79'
+  - name: MIO_NODE_SELECTION
+    comment: Controls the node selection strategy employed by the mixed-integer optimizer.
+    value: '80'
+  - name: MIO_NUMERICAL_EMPHASIS_LEVEL
+    comment: Controls how much emphasis is put on reducing numerical problems
+    value: '81'
+  - name: MIO_PERSPECTIVE_REFORMULATE
+    comment: Enables or disables perspective reformulation in presolve.
+    value: '82'
+  - name: MIO_PRESOLVE_AGGREGATOR_USE
+    comment: Controls if the aggregator should be used.
+    value: '83'
+  - name: MIO_PROBING_LEVEL
+    comment: Controls the amount of probing employed by the mixed-integer optimizer in presolve.
+    value: '84'
+  - name: MIO_PROPAGATE_OBJECTIVE_CONSTRAINT
+    comment: Use objective domain propagation.
+    value: '85'
+  - name: MIO_QCQO_REFORMULATION_METHOD
+    comment: Controls what reformulation method is applied to mixed-integer quadratic problems.
+    value: '86'
+  - name: MIO_RINS_MAX_NODES
+    comment: Maximum number of nodes in each call to RINS.
+    value: '87'
+  - name: MIO_ROOT_OPTIMIZER
+    comment: Controls which optimizer is employed at the root node in the mixed-integer optimizer.
+    value: '88'
+  - name: MIO_ROOT_REPEAT_PRESOLVE_LEVEL
+    comment: Controls whether presolve can be repeated at root node.
+    value: '89'
+  - name: MIO_SEED
+    comment: Sets the random seed used for randomization in the mixed integer optimizer.
+    value: '90'
+  - name: MIO_SYMMETRY_LEVEL
+    comment: Controls the amount of symmetry detection and handling employed by the mixed-integer optimizer in presolve.
+    value: '91'
+  - name: MIO_VB_DETECTION_LEVEL
+    comment: Controls how much effort is put into detecting variable bounds.
+    value: '92'
+  - name: MT_SPINCOUNT
+    comment: Set the number of iterations to spin before sleeping.
+    value: '93'
+  - name: NG
+    comment: Not in use
+    value: '94'
+  - name: NUM_THREADS
+    comment: The number of threads employed by the optimizer.
+    value: '95'
+  - name: OPF_WRITE_HEADER
+    comment: Write a text header with date and MOSEK version in an OPF file.
+    value: '96'
+  - name: OPF_WRITE_HINTS
+    comment: Write a hint section with problem dimensions in the beginning of an OPF file.
+    value: '97'
+  - name: OPF_WRITE_LINE_LENGTH
+    comment: Aim to keep lines in OPF files not much longer than this.
+    value: '98'
+  - name: OPF_WRITE_PARAMETERS
+    comment: Write a parameter section in an OPF file.
+    value: '99'
+  - name: OPF_WRITE_PROBLEM
+    comment: Write objective, constraints, bounds etc. to an OPF file.
+    value: '100'
+  - name: OPF_WRITE_SOL_BAS
+    comment: Controls what is written to the OPF files.
+    value: '101'
+  - name: OPF_WRITE_SOL_ITG
+    comment: Controls what is written to the OPF files.
+    value: '102'
+  - name: OPF_WRITE_SOL_ITR
+    comment: Controls what is written to the OPF files.
+    value: '103'
+  - name: OPF_WRITE_SOLUTIONS
+    comment: Enable inclusion of solutions in the OPF files.
+    value: '104'
+  - name: OPTIMIZER
+    comment: Controls which optimizer is used to optimize the task.
+    value: '105'
+  - name: PARAM_READ_CASE_NAME
+    comment: If turned on, then names in the parameter file are case sensitive.
+    value: '106'
+  - name: PARAM_READ_IGN_ERROR
+    comment: If turned on, then errors in parameter settings is ignored.
+    value: '107'
+  - name: PRESOLVE_ELIMINATOR_MAX_FILL
+    comment: Maximum amount of fill-in created in one pivot during the elimination phase.
+    value: '108'
+  - name: PRESOLVE_ELIMINATOR_MAX_NUM_TRIES
+    comment: Control the maximum number of times the eliminator is tried.
+    value: '109'
+  - name: PRESOLVE_LEVEL
+    comment: Currently not used.
+    value: '110'
+  - name: PRESOLVE_LINDEP_ABS_WORK_TRH
+    comment: Controls linear dependency check in presolve.
+    value: '111'
+  - name: PRESOLVE_LINDEP_REL_WORK_TRH
+    comment: Controls linear dependency check in presolve.
+    value: '112'
+  - name: PRESOLVE_LINDEP_USE
+    comment: Controls whether the linear constraints are checked for linear dependencies.
+    value: '113'
+  - name: PRESOLVE_MAX_NUM_PASS
+    comment: Control the maximum number of times presolve passes over the problem.
+    value: '114'
+  - name: PRESOLVE_MAX_NUM_REDUCTIONS
+    comment: Controls the maximum number of reductions performed by the presolve.
+    value: '115'
+  - name: PRESOLVE_USE
+    comment: Controls whether the presolve is applied to a problem before it is optimized.
+    value: '116'
+  - name: PRIMAL_REPAIR_OPTIMIZER
+    comment: Controls which optimizer that is used to find the optimal repair.
+    value: '117'
+  - name: PTF_WRITE_PARAMETERS
+    comment: Controls whether parameters section is written in PTF files.
+    value: '118'
+  - name: PTF_WRITE_SOLUTIONS
+    comment: Controls whether solution section is written in PTF files.
+    value: '119'
+  - name: PTF_WRITE_TRANSFORM
+    comment: Controls if simple transformation are done when writing PTF files.
+    value: '120'
+  - name: READ_DEBUG
+    comment: Turns on additional debugging information when reading files.
+    value: '121'
+  - name: READ_KEEP_FREE_CON
+    comment: Controls whether the free constraints are included in the problem.
+    value: '122'
+  - name: READ_MPS_FORMAT
+    comment: Controls how strictly the MPS file reader interprets the MPS format.
+    value: '123'
+  - name: READ_MPS_WIDTH
+    comment: Controls the maximal number of characters allowed in one line of the MPS file.
+    value: '124'
+  - name: READ_TASK_IGNORE_PARAM
+    comment: Controls what information is used from the task files.
+    value: '125'
+  - name: REMOTE_USE_COMPRESSION
+    comment: Use compression when sending data to an optimization server
+    value: '126'
+  - name: REMOVE_UNUSED_SOLUTIONS
+    comment: Removes unused solutions before the optimization is performed.
+    value: '127'
+  - name: SENSITIVITY_ALL
+    comment: Controls sensitivity report behavior.
+    value: '128'
+  - name: SENSITIVITY_OPTIMIZER
+    comment: Controls which optimizer is used for optimal partition sensitivity analysis.
+    value: '129'
+  - name: SENSITIVITY_TYPE
+    comment: Controls which type of sensitivity analysis is to be performed.
+    value: '130'
+  - name: SIM_BASIS_FACTOR_USE
+    comment: Controls whether an LU factorization of the basis is used in a hot-start.
+    value: '131'
+  - name: SIM_DEGEN
+    comment: Controls how aggressively degeneration is handled.
+    value: '132'
+  - name: SIM_DETECT_PWL
+    comment: Not in use.
+    value: '133'
+  - name: SIM_DUAL_CRASH
+    comment: Controls whether crashing is performed in the dual simplex optimizer.
+    value: '134'
+  - name: SIM_DUAL_PHASEONE_METHOD
+    comment: An experimental feature.
+    value: '135'
+  - name: SIM_DUAL_RESTRICT_SELECTION
+    comment: Controls how aggressively restricted selection is used.
+    value: '136'
+  - name: SIM_DUAL_SELECTION
+    comment: Controls the dual simplex strategy.
+    value: '137'
+  - name: SIM_EXPLOIT_DUPVEC
+    comment: Controls if the simplex optimizers are allowed to exploit duplicated columns.
+    value: '138'
+  - name: SIM_HOTSTART
+    comment: Controls the type of hot-start that the simplex optimizer perform.
+    value: '139'
+  - name: SIM_HOTSTART_LU
+    comment: Determines if the simplex optimizer should exploit the initial factorization.
+    value: '140'
+  - name: SIM_MAX_ITERATIONS
+    comment: Maximum number of iterations that can be used by a simplex optimizer.
+    value: '141'
+  - name: SIM_MAX_NUM_SETBACKS
+    comment: Controls how many set-backs that are allowed within a simplex optimizer.
+    value: '142'
+  - name: SIM_NON_SINGULAR
+    comment: Controls if the simplex optimizer ensures a non-singular basis, if possible.
+    value: '143'
+  - name: SIM_PRIMAL_CRASH
+    comment: Controls the simplex crash.
+    value: '144'
+  - name: SIM_PRIMAL_PHASEONE_METHOD
+    comment: An experimental feature.
+    value: '145'
+  - name: SIM_PRIMAL_RESTRICT_SELECTION
+    comment: Controls how aggressively restricted selection is used.
+    value: '146'
+  - name: SIM_PRIMAL_SELECTION
+    comment: Controls the primal simplex strategy.
+    value: '147'
+  - name: SIM_REFACTOR_FREQ
+    comment: Controls the basis refactoring frequency.
+    value: '148'
+  - name: SIM_REFORMULATION
+    comment: Controls if the simplex optimizers are allowed to reformulate the problem.
+    value: '149'
+  - name: SIM_SAVE_LU
+    comment: Controls if the LU factorization stored should be replaced with the LU factorization corresponding to the initial basis.
+    value: '150'
+  - name: SIM_SCALING
+    comment: Controls how much effort is used in scaling the problem before a simplex optimizer is used.
+    value: '151'
+  - name: SIM_SCALING_METHOD
+    comment: Controls how the problem is scaled before a simplex optimizer is used.
+    value: '152'
+  - name: SIM_SEED
+    comment: Sets the random seed used for randomization in the simplex optimizers.
+    value: '153'
+  - name: SIM_SOLVE_FORM
+    comment: Controls whether the primal or the dual problem is solved by the primal-/dual-simplex optimizer.
+    value: '154'
+  - name: SIM_STABILITY_PRIORITY
+    comment: Controls how high priority the numerical stability should be given.
+    value: '155'
+  - name: SIM_SWITCH_OPTIMIZER
+    comment: Controls the simplex behavior.
+    value: '156'
+  - name: SOL_FILTER_KEEP_BASIC
+    comment: Control the contents of the solution files.
+    value: '157'
+  - name: SOL_FILTER_KEEP_RANGED
+    comment: Control the contents of the solution files.
+    value: '158'
+  - name: SOL_READ_NAME_WIDTH
+    comment: Controls the input solution file format.
+    value: '159'
+  - name: SOL_READ_WIDTH
+    comment: Controls the input solution file format.
+    value: '160'
+  - name: SOLUTION_CALLBACK
+    comment: Indicates whether solution callbacks will be performed during the optimization.
+    value: '161'
+  - name: TIMING_LEVEL
+    comment: Controls the amount of timing performed inside MOSEK.
+    value: '162'
+  - name: WRITE_BAS_CONSTRAINTS
+    comment: Controls the basic solution file format.
+    value: '163'
+  - name: WRITE_BAS_HEAD
+    comment: Controls the basic solution file format.
+    value: '164'
+  - name: WRITE_BAS_VARIABLES
+    comment: Controls the basic solution file format.
+    value: '165'
+  - name: WRITE_COMPRESSION
+    comment: Controls output file compression.
+    value: '166'
+  - name: WRITE_DATA_PARAM
+    comment: Controls output file data.
+    value: '167'
+  - name: WRITE_FREE_CON
+    comment: Controls the output file data.
+    value: '168'
+  - name: WRITE_GENERIC_NAMES
+    comment: Controls the output file data.
+    value: '169'
+  - name: WRITE_GENERIC_NAMES_IO
+    comment: Index origin used in  generic names.
+    value: '170'
+  - name: WRITE_IGNORE_INCOMPATIBLE_ITEMS
+    comment: Controls if the writer ignores incompatible problem items when writing files.
+    value: '171'
+  - name: WRITE_INT_CONSTRAINTS
+    comment: Controls the integer solution file format.
+    value: '172'
+  - name: WRITE_INT_HEAD
+    comment: Controls the integer solution file format.
+    value: '173'
+  - name: WRITE_INT_VARIABLES
+    comment: Controls the integer solution file format.
+    value: '174'
+  - name: WRITE_JSON_INDENTATION
+    comment: When set, the JSON task and solution files are written with indentation for better readability.
+    value: '175'
+  - name: WRITE_LP_FULL_OBJ
+    comment: Write full linear objective
+    value: '176'
+  - name: WRITE_LP_LINE_WIDTH
+    comment: Controls the LP output file format.
+    value: '177'
+  - name: WRITE_MPS_FORMAT
+    comment: Controls in which format the MPS is written.
+    value: '178'
+  - name: WRITE_MPS_INT
+    comment: Controls the output file data.
+    value: '179'
+  - name: WRITE_SOL_BARVARIABLES
+    comment: Controls the solution file format.
+    value: '180'
+  - name: WRITE_SOL_CONSTRAINTS
+    comment: Controls the solution file format.
+    value: '181'
+  - name: WRITE_SOL_HEAD
+    comment: Controls solution file format.
+    value: '182'
+  - name: WRITE_SOL_IGNORE_INVALID_NAMES
+    comment: Controls whether the user specified names are employed even if they are invalid names.
+    value: '183'
+  - name: WRITE_SOL_VARIABLES
+    comment: Controls the solution file format.
+    value: '184'
+  - name: WRITE_TASK_INC_SOL
+    comment: Controls whether the solutions are stored in the task file too.
+    value: '185'
+  - name: WRITE_XML_MODE
+    comment: Controls if linear coefficients should be written by row or column when writing in the XML file format.
+    value: '186'
+Miqcqoreformmethod:
+  name: Miqcqoreformmethod
+  comment: Specifies the reformulation method for mixed-integer quadratic problems.
+  enum_consts:
+  - name: FREE
+    comment: The mixed-integer optimizer decides which reformulation method to apply.
+    value: '0'
+  - name: NONE
+    comment: No reformulation method is applied.
+    value: '1'
+  - name: LINEARIZATION
+    comment: A reformulation via linearization is applied.
+    value: '2'
+  - name: EIGEN_VAL_METHOD
+    comment: The eigenvalue method is applied.
+    value: '3'
+  - name: DIAG_SDP
+    comment: A perturbation of matrix diagonals via the solution of SDPs is applied.
+    value: '4'
+  - name: RELAX_SDP
+    comment: A Reformulation based on the solution of an SDP-relaxation of the problem is applied.
+    value: '5'
+Sensitivitytype:
+  name: Sensitivitytype
+  comment: Sensitivity types
+  enum_consts:
+  - name: BASIS
+    comment: Basis sensitivity analysis is performed.
+    value: '0'
+Problemitem:
+  name: Problemitem
+  comment: Problem data items
+  enum_consts:
+  - name: VAR
+    comment: Item is a variable.
+    value: '0'
+  - name: CON
+    comment: Item is a constraint.
+    value: '1'
+  - name: CONE
+    comment: Item is a cone.
+    value: '2'
+Simseltype:
+  name: Simseltype
+  comment: Simplex selection strategy
+  enum_consts:
+  - name: FREE
+    comment: The optimizer chooses the pricing strategy.
+    value: '0'
+  - name: FULL
+    comment: The optimizer uses full pricing.
+    value: '1'
+  - name: ASE
+    comment: The optimizer uses approximate steepest-edge pricing.
+    value: '2'
+  - name: DEVEX
+    comment: The optimizer uses devex steepest-edge pricing.
+    value: '3'
+  - name: SE
+    comment: The optimizer uses steepest-edge selection.
+    value: '4'
+  - name: PARTIAL
+    comment: The optimizer uses a partial selection approach.
+    value: '5'
+Domaintype:
+  name: Domaintype
+  comment: Cone types
+  enum_consts:
+  - name: R
+    comment: R.
+    value: '0'
+  - name: RZERO
+    comment: The zero vector.
+    value: '1'
+  - name: RPLUS
+    comment: The positive orthant.
+    value: '2'
+  - name: RMINUS
+    comment: The negative orthant.
+    value: '3'
+  - name: QUADRATIC_CONE
+    comment: The quadratic cone.
+    value: '4'
+  - name: RQUADRATIC_CONE
+    comment: The rotated quadratic cone.
+    value: '5'
+  - name: PRIMAL_EXP_CONE
+    comment: The primal exponential cone.
+    value: '6'
+  - name: DUAL_EXP_CONE
+    comment: The dual exponential cone.
+    value: '7'
+  - name: PRIMAL_POWER_CONE
+    comment: The primal power cone.
+    value: '8'
+  - name: DUAL_POWER_CONE
+    comment: The dual power cone.
+    value: '9'
+  - name: PRIMAL_GEO_MEAN_CONE
+    comment: The primal geometric mean cone.
+    value: '10'
+  - name: DUAL_GEO_MEAN_CONE
+    comment: The dual geometric mean cone.
+    value: '11'
+  - name: SVEC_PSD_CONE
+    comment: The vectorized positive semidefinite cone.
+    value: '12'
+Boundkey:
+  name: Boundkey
+  comment: Bound keys
+  enum_consts:
+  - name: LO
+    comment: The constraint or variable has a finite lower bound and an infinite upper bound.
+    value: '0'
+  - name: UP
+    comment: The constraint or variable has an infinite lower bound and an finite upper bound.
+    value: '1'
+  - name: FX
+    comment: The constraint or variable is fixed.
+    value: '2'
+  - name: FR
+    comment: The constraint or variable is free.
+    value: '3'
+  - name: RA
+    comment: The constraint or variable is ranged.
+    value: '4'
+Conetype:
+  name: Conetype
+  comment: Cone types
+  enum_consts:
+  - name: QUAD
+    comment: The cone is a quadratic cone.
+    value: '0'
+  - name: RQUAD
+    comment: The cone is a rotated quadratic cone.
+    value: '1'
+  - name: PEXP
+    comment: A primal exponential cone.
+    value: '2'
+  - name: DEXP
+    comment: A dual exponential cone.
+    value: '3'
+  - name: PPOW
+    comment: A primal power cone.
+    value: '4'
+  - name: DPOW
+    comment: A dual power cone.
+    value: '5'
+  - name: ZERO
+    comment: The zero cone.
+    value: '6'
+Callbackcode:
+  name: Callbackcode
+  comment: Progress callback codes
+  enum_consts:
+  - name: BEGIN_BI
+    comment: The basis identification procedure has been started.
+    value: '0'
+  - name: BEGIN_CONIC
+    comment: The callback function is called when the conic optimizer is started.
+    value: '1'
+  - name: BEGIN_DUAL_BI
+    comment: The callback function is called from within the basis identification procedure when the dual phase is started.
+    value: '2'
+  - name: BEGIN_DUAL_SENSITIVITY
+    comment: Dual sensitivity analysis is started.
+    value: '3'
+  - name: BEGIN_DUAL_SETUP_BI
+    comment: The callback function is called when the dual BI phase is started.
+    value: '4'
+  - name: BEGIN_DUAL_SIMPLEX
+    comment: The callback function is called when the dual simplex optimizer started.
+    value: '5'
+  - name: BEGIN_DUAL_SIMPLEX_BI
+    comment: The callback function is called from within the basis identification procedure when the dual simplex clean-up phase is started.
+    value: '6'
+  - name: BEGIN_INFEAS_ANA
+    comment: The callback function is called when the infeasibility analyzer is started.
+    value: '7'
+  - name: BEGIN_INTPNT
+    comment: The callback function is called when the interior-point optimizer is started.
+    value: '8'
+  - name: BEGIN_LICENSE_WAIT
+    comment: Begin waiting for license.
+    value: '9'
+  - name: BEGIN_MIO
+    comment: The callback function is called when the mixed-integer optimizer is started.
+    value: '10'
+  - name: BEGIN_OPTIMIZER
+    comment: The callback function is called when the optimizer is started.
+    value: '11'
+  - name: BEGIN_PRESOLVE
+    comment: The callback function is called when the presolve is started.
+    value: '12'
+  - name: BEGIN_PRIMAL_BI
+    comment: The callback function is called from within the basis identification procedure when the primal phase is started.
+    value: '13'
+  - name: BEGIN_PRIMAL_REPAIR
+    comment: Begin primal feasibility repair.
+    value: '14'
+  - name: BEGIN_PRIMAL_SENSITIVITY
+    comment: Primal sensitivity analysis is started.
+    value: '15'
+  - name: BEGIN_PRIMAL_SETUP_BI
+    comment: The callback function is called when the primal BI setup is started.
+    value: '16'
+  - name: BEGIN_PRIMAL_SIMPLEX
+    comment: The callback function is called when the primal simplex optimizer is started.
+    value: '17'
+  - name: BEGIN_PRIMAL_SIMPLEX_BI
+    comment: The callback function is called from within the basis identification procedure when the primal simplex clean-up phase is started.
+    value: '18'
+  - name: BEGIN_QCQO_REFORMULATE
+    comment: Begin QCQO reformulation.
+    value: '19'
+  - name: BEGIN_READ
+    comment: MOSEK has started reading a problem file.
+    value: '20'
+  - name: BEGIN_ROOT_CUTGEN
+    comment: The callback function is called when root cut generation is started.
+    value: '21'
+  - name: BEGIN_SIMPLEX
+    comment: The callback function is called when the simplex optimizer is started.
+    value: '22'
+  - name: BEGIN_SIMPLEX_BI
+    comment: The callback function is called from within the basis identification procedure when the simplex clean-up phase is started.
+    value: '23'
+  - name: BEGIN_SOLVE_ROOT_RELAX
+    comment: The callback function is called when solution of root relaxation is started.
+    value: '24'
+  - name: BEGIN_TO_CONIC
+    comment: Begin conic reformulation.
+    value: '25'
+  - name: BEGIN_WRITE
+    comment: MOSEK has started writing a problem file.
+    value: '26'
+  - name: CONIC
+    comment: The callback function is called from within the conic optimizer after the information database has been updated.
+    value: '27'
+  - name: DUAL_SIMPLEX
+    comment: The callback function is called from within the dual simplex optimizer.
+    value: '28'
+  - name: END_BI
+    comment: The callback function is called when the basis identification procedure is terminated.
+    value: '29'
+  - name: END_CONIC
+    comment: The callback function is called when the conic optimizer is terminated.
+    value: '30'
+  - name: END_DUAL_BI
+    comment: The callback function is called from within the basis identification procedure when the dual phase is terminated.
+    value: '31'
+  - name: END_DUAL_SENSITIVITY
+    comment: Dual sensitivity analysis is terminated.
+    value: '32'
+  - name: END_DUAL_SETUP_BI
+    comment: The callback function is called when the dual BI phase is terminated.
+    value: '33'
+  - name: END_DUAL_SIMPLEX
+    comment: The callback function is called when the dual simplex optimizer is terminated.
+    value: '34'
+  - name: END_DUAL_SIMPLEX_BI
+    comment: The callback function is called from within the basis identification procedure when the dual clean-up phase is terminated.
+    value: '35'
+  - name: END_INFEAS_ANA
+    comment: The callback function is called when the infeasibility analyzer is terminated.
+    value: '36'
+  - name: END_INTPNT
+    comment: The callback function is called when the interior-point optimizer is terminated.
+    value: '37'
+  - name: END_LICENSE_WAIT
+    comment: End waiting for license.
+    value: '38'
+  - name: END_MIO
+    comment: The callback function is called when the mixed-integer optimizer is terminated.
+    value: '39'
+  - name: END_OPTIMIZER
+    comment: The callback function is called when the optimizer is terminated.
+    value: '40'
+  - name: END_PRESOLVE
+    comment: The callback function is called when the presolve is completed.
+    value: '41'
+  - name: END_PRIMAL_BI
+    comment: The callback function is called from within the basis identification procedure when the primal phase is terminated.
+    value: '42'
+  - name: END_PRIMAL_REPAIR
+    comment: End primal feasibility repair.
+    value: '43'
+  - name: END_PRIMAL_SENSITIVITY
+    comment: Primal sensitivity analysis is terminated.
+    value: '44'
+  - name: END_PRIMAL_SETUP_BI
+    comment: The callback function is called when the primal BI setup is terminated.
+    value: '45'
+  - name: END_PRIMAL_SIMPLEX
+    comment: The callback function is called when the primal simplex optimizer is terminated.
+    value: '46'
+  - name: END_PRIMAL_SIMPLEX_BI
+    comment: The callback function is called from within the basis identification procedure when the primal clean-up phase is terminated.
+    value: '47'
+  - name: END_QCQO_REFORMULATE
+    comment: End QCQO reformulation.
+    value: '48'
+  - name: END_READ
+    comment: MOSEK has finished reading a problem file.
+    value: '49'
+  - name: END_ROOT_CUTGEN
+    comment: The callback function is called when root cut generation is terminated.
+    value: '50'
+  - name: END_SIMPLEX
+    comment: The callback function is called when the simplex optimizer is terminated.
+    value: '51'
+  - name: END_SIMPLEX_BI
+    comment: The callback function is called from within the basis identification procedure when the simplex clean-up phase is terminated.
+    value: '52'
+  - name: END_SOLVE_ROOT_RELAX
+    comment: The callback function is called when solution of root relaxation is terminated.
+    value: '53'
+  - name: END_TO_CONIC
+    comment: End conic reformulation.
+    value: '54'
+  - name: END_WRITE
+    comment: MOSEK has finished writing a problem file.
+    value: '55'
+  - name: IM_BI
+    comment: The callback function is called from within the basis identification procedure at an intermediate point.
+    value: '56'
+  - name: IM_CONIC
+    comment: The callback function is called at an intermediate stage within the conic optimizer where the information database has not been updated.
+    value: '57'
+  - name: IM_DUAL_BI
+    comment: The callback function is called from within the basis identification procedure at an intermediate point in the dual phase.
+    value: '58'
+  - name: IM_DUAL_SENSIVITY
+    comment: The callback function is called at an intermediate stage of the dual sensitivity analysis.
+    value: '59'
+  - name: IM_DUAL_SIMPLEX
+    comment: The callback function is called at an intermediate point in the dual simplex optimizer.
+    value: '60'
+  - name: IM_INTPNT
+    comment: The callback function is called at an intermediate stage within the interior-point optimizer where the information database has not been updated.
+    value: '61'
+  - name: IM_LICENSE_WAIT
+    comment: MOSEK is waiting for a license.
+    value: '62'
+  - name: IM_LU
+    comment: The callback function is called from within the LU factorization procedure at an intermediate point.
+    value: '63'
+  - name: IM_MIO
+    comment: The callback function is called at an intermediate point in the mixed-integer optimizer.
+    value: '64'
+  - name: IM_MIO_DUAL_SIMPLEX
+    comment: The callback function is called at an intermediate point in the mixed-integer optimizer while running the dual simplex optimizer.
+    value: '65'
+  - name: IM_MIO_INTPNT
+    comment: The callback function is called at an intermediate point in the mixed-integer optimizer while running the interior-point optimizer.
+    value: '66'
+  - name: IM_MIO_PRIMAL_SIMPLEX
+    comment: The callback function is called at an intermediate point in the mixed-integer optimizer while running the primal simplex optimizer.
+    value: '67'
+  - name: IM_ORDER
+    comment: The callback function is called from within the matrix ordering procedure at an intermediate point.
+    value: '68'
+  - name: IM_PRESOLVE
+    comment: The callback function is called from within the presolve procedure at an intermediate stage.
+    value: '69'
+  - name: IM_PRIMAL_BI
+    comment: The callback function is called from within the basis identification procedure at an intermediate point in the primal phase.
+    value: '70'
+  - name: IM_PRIMAL_SENSIVITY
+    comment: The callback function is called at an intermediate stage of the primal sensitivity analysis.
+    value: '71'
+  - name: IM_PRIMAL_SIMPLEX
+    comment: The callback function is called at an intermediate point in the primal simplex optimizer.
+    value: '72'
+  - name: IM_QO_REFORMULATE
+    comment: The callback function is called at an intermediate stage of the conic quadratic reformulation.
+    value: '73'
+  - name: IM_READ
+    comment: Intermediate stage in reading.
+    value: '74'
+  - name: IM_ROOT_CUTGEN
+    comment: The callback is called from within root cut generation at an intermediate stage.
+    value: '75'
+  - name: IM_SIMPLEX
+    comment: The callback function is called from within the simplex optimizer at an intermediate point.
+    value: '76'
+  - name: IM_SIMPLEX_BI
+    comment: The callback function is called from within the basis identification procedure at an intermediate point in the simplex clean-up phase.
+    value: '77'
+  - name: INTPNT
+    comment: The callback function is called from within the interior-point optimizer after the information database has been updated.
+    value: '78'
+  - name: NEW_INT_MIO
+    comment: The callback function is called after a new integer solution has been located by the mixed-integer optimizer.
+    value: '79'
+  - name: PRIMAL_SIMPLEX
+    comment: The callback function is called from within the primal simplex optimizer.
+    value: '80'
+  - name: READ_OPF
+    comment: The callback function is called from the OPF reader.
+    value: '81'
+  - name: READ_OPF_SECTION
+    comment: A chunk of Q non-zeros has been read from a problem file.
+    value: '82'
+  - name: SOLVING_REMOTE
+    comment: The callback function is called while the task is being solved on a remote server.
+    value: '83'
+  - name: UPDATE_DUAL_BI
+    comment: The callback function is called from within the basis identification procedure at an intermediate point in the dual phase.
+    value: '84'
+  - name: UPDATE_DUAL_SIMPLEX
+    comment: The callback function is called in the dual simplex optimizer.
+    value: '85'
+  - name: UPDATE_DUAL_SIMPLEX_BI
+    comment: The callback function is called from within the basis identification procedure at an intermediate point in the dual simplex clean-up phase.
+    value: '86'
+  - name: UPDATE_PRESOLVE
+    comment: The callback function is called from within the presolve procedure.
+    value: '87'
+  - name: UPDATE_PRIMAL_BI
+    comment: The callback function is called from within the basis identification procedure at an intermediate point in the primal phase.
+    value: '88'
+  - name: UPDATE_PRIMAL_SIMPLEX
+    comment: The callback function is called  in the primal simplex optimizer.
+    value: '89'
+  - name: UPDATE_PRIMAL_SIMPLEX_BI
+    comment: The callback function is called from within the basis identification procedure at an intermediate point in the primal simplex clean-up phase.
+    value: '90'
+  - name: UPDATE_SIMPLEX
+    comment: The callback function is called from simplex optimizer.
+    value: '91'
+  - name: WRITE_OPF
+    comment: The callback function is called from the OPF writer.
+    value: '92'
+Stakey:
+  name: Stakey
+  comment: Status keys
+  enum_consts:
+  - name: UNK
+    comment: The status for the constraint or variable is unknown.
+    value: '0'
+  - name: BAS
+    comment: The constraint or variable is in the basis.
+    value: '1'
+  - name: SUPBAS
+    comment: The constraint or variable is super basic.
+    value: '2'
+  - name: LOW
+    comment: The constraint or variable is at its lower bound.
+    value: '3'
+  - name: UPR
+    comment: The constraint or variable is at its upper bound.
+    value: '4'
+  - name: FIX
+    comment: The constraint or variable is fixed.
+    value: '5'
+  - name: INF
+    comment: The constraint or variable is infeasible in the bounds.
+    value: '6'
+Mpsformat:
+  name: Mpsformat
+  comment: MPS file format type
+  enum_consts:
+  - name: STRICT
+    comment: It is assumed that the input file satisfies the MPS format strictly.
+    value: '0'
+  - name: RELAXED
+    comment: It is assumed that the input file satisfies a slightly relaxed version of the MPS format.
+    value: '1'
+  - name: FREE
+    comment: It is assumed that the input file satisfies the free MPS format. This implies that spaces are not allowed in names. Otherwise the format is free.
+    value: '2'
+  - name: CPLEX
+    comment: The CPLEX compatible version of the MPS format is employed.
+    value: '3'
+Inftype:
+  name: Inftype
+  comment: Information item types
+  enum_consts:
+  - name: DOU_TYPE
+    comment: Is a double information type.
+    value: '0'
+  - name: INT_TYPE
+    comment: Is an integer.
+    value: '1'
+  - name: LINT_TYPE
+    comment: Is a long integer.
+    value: '2'
+Sparam:
+  name: Sparam
+  comment: String parameters
+  enum_consts:
+  - name: BAS_SOL_FILE_NAME
+    comment: Name of the bas solution file.
+    value: '0'
+  - name: DATA_FILE_NAME
+    comment: Data are read and written to this file.
+    value: '1'
+  - name: DEBUG_FILE_NAME
+    comment: MOSEK debug file.
+    value: '2'
+  - name: INT_SOL_FILE_NAME
+    comment: Name of the int solution file.
+    value: '3'
+  - name: ITR_SOL_FILE_NAME
+    comment: Name of the itr solution file.
+    value: '4'
+  - name: MIO_DEBUG_STRING
+    comment: For internal debugging purposes.
+    value: '5'
+  - name: PARAM_COMMENT_SIGN
+    comment: Solution file comment character.
+    value: '6'
+  - name: PARAM_READ_FILE_NAME
+    comment: Modifications to the parameter database is read from this file.
+    value: '7'
+  - name: PARAM_WRITE_FILE_NAME
+    comment: The parameter database is written to this file.
+    value: '8'
+  - name: READ_MPS_BOU_NAME
+    comment: Name of the BOUNDS vector used. An empty name means that the first BOUNDS vector is used.
+    value: '9'
+  - name: READ_MPS_OBJ_NAME
+    comment: Objective name in the MPS file.
+    value: '10'
+  - name: READ_MPS_RAN_NAME
+    comment: Name of the RANGE vector  used. An empty name means that the first RANGE vector is used.
+    value: '11'
+  - name: READ_MPS_RHS_NAME
+    comment: Name of the RHS used. An empty name means that the first RHS vector is used.
+    value: '12'
+  - name: REMOTE_OPTSERVER_HOST
+    comment: URL of the remote optimization server.
+    value: '13'
+  - name: REMOTE_TLS_CERT
+    comment: Known server certificates in PEM format
+    value: '14'
+  - name: REMOTE_TLS_CERT_PATH
+    comment: Path to known server certificates in PEM format
+    value: '15'
+  - name: SENSITIVITY_FILE_NAME
+    comment: Sensitivity report file name.
+    value: '16'
+  - name: SENSITIVITY_RES_FILE_NAME
+    comment: Name of the sensitivity report output file.
+    value: '17'
+  - name: SOL_FILTER_XC_LOW
+    comment: Solution file filter.
+    value: '18'
+  - name: SOL_FILTER_XC_UPR
+    comment: Solution file filter.
+    value: '19'
+  - name: SOL_FILTER_XX_LOW
+    comment: Solution file filter.
+    value: '20'
+  - name: SOL_FILTER_XX_UPR
+    comment: Solution file filter.
+    value: '21'
+  - name: STAT_KEY
+    comment: Key used when writing the summary file.
+    value: '22'
+  - name: STAT_NAME
+    comment: Name used when writing the statistics file.
+    value: '23'
+  - name: WRITE_LP_GEN_VAR_NAME
+    comment: Added variable names in the LP files.
+    value: '24'
+Variabletype:
+  name: Variabletype
+  comment: Variable types
+  enum_consts:
+  - name: TYPE_CONT
+    comment: Is a continuous variable.
+    value: '0'
+  - name: TYPE_INT
+    comment: Is an integer variable.
+    value: '1'
+Feature:
+  name: Feature
+  comment: License feature
+  enum_consts:
+  - name: PTS
+    comment: Base system.
+    value: '0'
+  - name: PTON
+    comment: Conic extension.
+    value: '1'
+Solveform:
+  name: Solveform
+  comment: Solve primal or dual form
+  enum_consts:
+  - name: FREE
+    comment: The optimizer is free to solve either the primal or the dual problem.
+    value: '0'
+  - name: PRIMAL
+    comment: The optimizer should solve the primal problem.
+    value: '1'
+  - name: DUAL
+    comment: The optimizer should solve the dual problem.
+    value: '2'
+Mark:
+  name: Mark
+  comment: Mark
+  enum_consts:
+  - name: LO
+    comment: The lower bound is selected for sensitivity analysis.
+    value: '0'
+  - name: UP
+    comment: The upper bound is selected for sensitivity analysis.
+    value: '1'
+Value:
+  name: Value
+  comment: Integer values
+  enum_consts:
+  - name: LICENSE_BUFFER_LENGTH
+    comment: The length of a license key buffer.
+    value: '21'
+  - name: MAX_STR_LEN
+    comment: Maximum string length allowed in MOSEK.
+    value: '1024'
+Checkconvexitytype:
+  name: Checkconvexitytype
+  comment: Types of convexity checks.
+  enum_consts:
+  - name: NONE
+    comment: No convexity check.
+    value: '0'
+  - name: SIMPLE
+    comment: Perform simple and fast convexity check.
+    value: '1'
+  - name: FULL
+    comment: Perform a full convexity check.
+    value: '2'
+Optimizertype:
+  name: Optimizertype
+  comment: Optimizer types
+  enum_consts:
+  - name: CONIC
+    comment: The optimizer for problems having conic constraints.
+    value: '0'
+  - name: DUAL_SIMPLEX
+    comment: The dual simplex optimizer is used.
+    value: '1'
+  - name: FREE
+    comment: The optimizer is chosen automatically.
+    value: '2'
+  - name: FREE_SIMPLEX
+    comment: One of the simplex optimizers is used.
+    value: '3'
+  - name: INTPNT
+    comment: The interior-point optimizer is used.
+    value: '4'
+  - name: MIXED_INT
+    comment: The mixed-integer optimizer.
+    value: '5'
+  - name: PRIMAL_SIMPLEX
+    comment: The primal simplex optimizer is used.
+    value: '6'
+Orderingtype:
+  name: Orderingtype
+  comment: Ordering strategies
+  enum_consts:
+  - name: FREE
+    comment: The ordering method is chosen automatically.
+    value: '0'
+  - name: APPMINLOC
+    comment: Approximate minimum local fill-in ordering is employed.
+    value: '1'
+  - name: EXPERIMENTAL
+    comment: This option should not be used.
+    value: '2'
+  - name: TRY_GRAPHPAR
+    comment: Always try the graph partitioning based ordering.
+    value: '3'
+  - name: FORCE_GRAPHPAR
+    comment: Always use the graph partitioning based ordering even if it is worse than the approximate minimum local fill ordering.
+    value: '4'
+  - name: NONE
+    comment: No ordering is used.
+    value: '5'
+Basindtype:
+  name: Basindtype
+  comment: Basis identification
+  enum_consts:
+  - name: NEVER
+    comment: Never do basis identification.
+    value: '0'
+  - name: ALWAYS
+    comment: Basis identification is always performed even if the interior-point optimizer terminates abnormally.
+    value: '1'
+  - name: NO_ERROR
+    comment: Basis identification is performed if the interior-point optimizer terminates without an error.
+    value: '2'
+  - name: IF_FEASIBLE
+    comment: Basis identification is not performed if the interior-point optimizer terminates with a problem status saying that the problem is primal or dual infeasible.
+    value: '3'
+  - name: RESERVERED
+    comment: Not currently in use.
+    value: '4'
+Parametertype:
+  name: Parametertype
+  comment: Parameter type
+  enum_consts:
+  - name: INVALID_TYPE
+    comment: Not a valid parameter.
+    value: '0'
+  - name: DOU_TYPE
+    comment: Is a double parameter.
+    value: '1'
+  - name: INT_TYPE
+    comment: Is an integer parameter.
+    value: '2'
+  - name: STR_TYPE
+    comment: Is a string parameter.
+    value: '3'
+Onoffkey:
+  name: Onoffkey
+  comment: On/off
+  enum_consts:
+  - name: OFF
+    comment: Switch the option off.
+    value: '0'
+  - name: ON
+    comment: Switch the option on.
+    value: '1'
+Soltype:
+  name: Soltype
+  comment: Solution types
+  enum_consts:
+  - name: ITR
+    comment: The interior solution.
+    value: '0'
+  - name: BAS
+    comment: The basic solution.
+    value: '1'
+  - name: ITG
+    comment: The integer solution.
+    value: '2'
+Simdegen:
+  name: Simdegen
+  comment: Degeneracy strategies
+  enum_consts:
+  - name: NONE
+    comment: The simplex optimizer should use no degeneration strategy.
+    value: '0'
+  - name: FREE
+    comment: The simplex optimizer chooses the degeneration strategy.
+    value: '1'
+  - name: AGGRESSIVE
+    comment: The simplex optimizer should use an aggressive degeneration strategy.
+    value: '2'
+  - name: MODERATE
+    comment: The simplex optimizer should use a moderate degeneration strategy.
+    value: '3'
+  - name: MINIMUM
+    comment: The simplex optimizer should use a minimum degeneration strategy.
+    value: '4'
+Nametype:
+  name: Nametype
+  comment: Name types
+  enum_consts:
+  - name: GEN
+    comment: General names. However, no duplicate and blank names are allowed.
+    value: '0'
+  - name: MPS
+    comment: MPS type names.
+    value: '1'
+  - name: LP
+    comment: LP type names.
+    value: '2'
+Miocontsoltype:
+  name: Miocontsoltype
+  comment: Continuous mixed-integer solution type
+  enum_consts:
+  - name: NONE
+    comment: No interior-point or basic solution.
+    value: '0'
+  - name: ROOT
+    comment: Solutions to the root node problem.
+    value: '1'
+  - name: ITG
+    comment: A feasible primal solution.
+    value: '2'
+  - name: ITG_REL
+    comment: A feasible primal solution or a root node solution if the problem is infeasible.
+    value: '3'
+Uplo:
+  name: Uplo
+  comment: Triangular part of a symmetric matrix.
+  enum_consts:
+  - name: LO
+    comment: Lower part.
+    value: '0'
+  - name: UP
+    comment: Upper part.
+    value: '1'
+Branchdir:
+  name: Branchdir
+  comment: Specifies the branching direction.
+  enum_consts:
+  - name: FREE
+    comment: The mixed-integer optimizer decides which branch to choose.
+    value: '0'
+  - name: UP
+    comment: The mixed-integer optimizer always chooses the up branch first.
+    value: '1'
+  - name: DOWN
+    comment: The mixed-integer optimizer always chooses the down branch first.
+    value: '2'
+  - name: NEAR
+    comment: Branch in direction nearest to selected fractional variable.
+    value: '3'
+  - name: FAR
+    comment: Branch in direction farthest from selected fractional variable.
+    value: '4'
+  - name: ROOT_LP
+    comment: Chose direction based on root lp value of selected variable.
+    value: '5'
+  - name: GUIDED
+    comment: Branch in direction of current incumbent.
+    value: '6'
+  - name: PSEUDOCOST
+    comment: Branch based on the pseudocost of the variable.
+    value: '7'
+Solformat:
+  name: Solformat
+  comment: Data format types
+  enum_consts:
+  - name: EXTENSION
+    comment: The file extension is used to determine the data file format.
+    value: '0'
+  - name: B
+    comment: Simple binary format
+    value: '1'
+  - name: TASK
+    comment: Tar based format.
+    value: '2'
+  - name: JSON_TASK
+    comment: JSON based format.
+    value: '3'
+Simhotstart:
+  name: Simhotstart
+  comment: Hot-start type employed by the simplex optimizer
+  enum_consts:
+  - name: NONE
+    comment: The simplex optimizer performs a coldstart.
+    value: '0'
+  - name: FREE
+    comment: The simplex optimize chooses the hot-start type.
+    value: '1'
+  - name: STATUS_KEYS
+    comment: Only the status keys of the constraints and variables are used to choose the type of hot-start.
+    value: '2'
+Miodatapermmethod:
+  name: Miodatapermmethod
+  comment: Specifies the problem data permutation method for mixed-integer problems.
+  enum_consts:
+  - name: NONE
+    comment: No problem data permutation is applied.
+    value: '0'
+  - name: CYCLIC_SHIFT
+    comment: A random cyclic shift is applied to permute the problem data.
+    value: '1'
+  - name: RANDOM
+    comment: A random permutation is applied to the problem data.
+    value: '2'
+Iomode:
+  name: Iomode
+  comment: Input/output modes
+  enum_consts:
+  - name: READ
+    comment: The file is read-only.
+    value: '0'
+  - name: WRITE
+    comment: The file is write-only. If the file exists then it is truncated when it is opened. Otherwise it is created when it is opened.
+    value: '1'
+  - name: READWRITE
+    comment: The file is to read and write.
+    value: '2'
+Liinfitem:
+  name: Liinfitem
+  comment: Long integer information items.
+  enum_consts:
+  - name: ANA_PRO_SCALARIZED_CONSTRAINT_MATRIX_NUM_COLUMNS
+    comment: Number of columns in the scalarized constraint matrix.
+    value: '0'
+  - name: ANA_PRO_SCALARIZED_CONSTRAINT_MATRIX_NUM_NZ
+    comment: Number of non-zero entries in the scalarized constraint matrix.
+    value: '1'
+  - name: ANA_PRO_SCALARIZED_CONSTRAINT_MATRIX_NUM_ROWS
+    comment: Number of rows in the scalarized constraint matrix.
+    value: '2'
+  - name: BI_CLEAN_DUAL_DEG_ITER
+    comment: Number of dual degenerate clean iterations performed in the basis identification.
+    value: '3'
+  - name: BI_CLEAN_DUAL_ITER
+    comment: Number of dual clean iterations performed in the basis identification.
+    value: '4'
+  - name: BI_CLEAN_PRIMAL_DEG_ITER
+    comment: Number of primal degenerate clean iterations performed in the basis identification.
+    value: '5'
+  - name: BI_CLEAN_PRIMAL_ITER
+    comment: Number of primal clean iterations performed in the basis identification.
+    value: '6'
+  - name: BI_DUAL_ITER
+    comment: Number of dual pivots performed in the basis identification.
+    value: '7'
+  - name: BI_PRIMAL_ITER
+    comment: Number of primal pivots performed in the basis identification.
+    value: '8'
+  - name: INTPNT_FACTOR_NUM_NZ
+    comment: Number of non-zeros in factorization.
+    value: '9'
+  - name: MIO_ANZ
+    comment: Number of non-zero entries in the constraint matrix of the problem to be solved by the mixed-integer optimizer.
+    value: '10'
+  - name: MIO_INTPNT_ITER
+    comment: Number of interior-point iterations performed by the mixed-integer optimizer.
+    value: '11'
+  - name: MIO_NUM_DUAL_ILLPOSED_CER
+    comment: Number of dual illposed certificates encountered by the mixed-integer optimizer.
+    value: '12'
+  - name: MIO_NUM_PRIM_ILLPOSED_CER
+    comment: Number of primal illposed certificates encountered by the mixed-integer optimizer.
+    value: '13'
+  - name: MIO_PRESOLVED_ANZ
+    comment: Number of non-zero entries in the constraint matrix of the problem after the mixed-integer optimizer's presolve.
+    value: '14'
+  - name: MIO_SIMPLEX_ITER
+    comment: Number of simplex iterations performed by the mixed-integer optimizer.
+    value: '15'
+  - name: RD_NUMACC
+    comment: Number of affince conic constraints.
+    value: '16'
+  - name: RD_NUMANZ
+    comment: Number of non-zeros in A that is read.
+    value: '17'
+  - name: RD_NUMDJC
+    comment: Number of disjuncive constraints.
+    value: '18'
+  - name: RD_NUMQNZ
+    comment: Number of Q non-zeros.
+    value: '19'
+  - name: SIMPLEX_ITER
+    comment: Number of iterations performed by the simplex optimizer.
+    value: '20'
+  - name: END
+    comment: ''
+    value: '20'
+Rescodetype:
+  name: Rescodetype
+  comment: Response code type
+  enum_consts:
+  - name: OK
+    comment: The response code is OK.
+    value: '0'
+  - name: WRN
+    comment: The response code is a warning.
+    value: '1'
+  - name: TRM
+    comment: The response code is an optimizer termination status.
+    value: '2'
+  - name: ERR
+    comment: The response code is an error.
+    value: '3'
+  - name: UNK
+    comment: The response code does not belong to any class.
+    value: '4'
+Streamtype:
+  name: Streamtype
+  comment: Stream types
+  enum_consts:
+  - name: LOG
+    comment: Log stream. Contains the aggregated contents of all other streams. This means that a message written to any other stream will also be written to this stream.
+    value: '0'
+  - name: MSG
+    comment: Message stream. Log information relating to performance and progress of the optimization is written to this stream.
+    value: '1'
+  - name: ERR
+    comment: Error stream. Error messages are written to this stream.
+    value: '2'
+  - name: WRN
+    comment: Warning stream. Warning messages are written to this stream.
+    value: '3'
+Rescode:
+  name: Rescode
+  comment: Response codes
+  enum_consts:
+  - name: OK
+    comment: No error occurred.
+    value: '0'
+  - name: WRN_OPEN_PARAM_FILE
+    comment: The parameter file could not be opened.
+    value: '50'
+  - name: WRN_LARGE_BOUND
+    comment: A numerically large bound value is specified.
+    value: '51'
+  - name: WRN_LARGE_LO_BOUND
+    comment: A numerically large lower bound value is specified.
+    value: '52'
+  - name: WRN_LARGE_UP_BOUND
+    comment: A numerically large upper bound value is specified.
+    value: '53'
+  - name: WRN_LARGE_CON_FX
+    comment: A equality constraint is fixed to numerically large value.
+    value: '54'
+  - name: WRN_LARGE_CJ
+    comment: A numerically large value is specified for one element in c.
+    value: '57'
+  - name: WRN_LARGE_AIJ
+    comment: A numerically large value is specified for an element in A.
+    value: '62'
+  - name: WRN_ZERO_AIJ
+    comment: One or more zero elements are specified in A.
+    value: '63'
+  - name: WRN_NAME_MAX_LEN
+    comment: A name is longer than the buffer that is supposed to hold it.
+    value: '65'
+  - name: WRN_SPAR_MAX_LEN
+    comment: A value for a string parameter is longer than the buffer that is supposed to hold it.
+    value: '66'
+  - name: WRN_MPS_SPLIT_RHS_VECTOR
+    comment: An RHS vector is split into several nonadjacent parts.
+    value: '70'
+  - name: WRN_MPS_SPLIT_RAN_VECTOR
+    comment: A RANGE vector is split into several nonadjacent parts in an MPS file.
+    value: '71'
+  - name: WRN_MPS_SPLIT_BOU_VECTOR
+    comment: A BOUNDS vector is split into several nonadjacent parts in an MPS file.
+    value: '72'
+  - name: WRN_LP_OLD_QUAD_FORMAT
+    comment: Missing '/2' after quadratic expressions in bound or objective.
+    value: '80'
+  - name: WRN_LP_DROP_VARIABLE
+    comment: Ignore a variable because the variable was not previously defined.
+    value: '85'
+  - name: WRN_NZ_IN_UPR_TRI
+    comment: Non-zero elements specified in the upper triangle of a matrix were ignored.
+    value: '200'
+  - name: WRN_DROPPED_NZ_QOBJ
+    comment: One or more non-zero elements were dropped in the Q matrix in the objective.
+    value: '201'
+  - name: WRN_IGNORE_INTEGER
+    comment: Ignored integer constraints.
+    value: '250'
+  - name: WRN_NO_GLOBAL_OPTIMIZER
+    comment: No global optimizer is available.
+    value: '251'
+  - name: WRN_MIO_INFEASIBLE_FINAL
+    comment: The final mixed-integer problem with all the integer variables fixed at their optimal values is infeasible.
+    value: '270'
+  - name: WRN_SOL_FILTER
+    comment: Invalid solution filter is specified.
+    value: '300'
+  - name: WRN_UNDEF_SOL_FILE_NAME
+    comment: Undefined name occurred in a solution.
+    value: '350'
+  - name: WRN_SOL_FILE_IGNORED_CON
+    comment: One or more lines in the constraint section were ignored when reading a solution file.
+    value: '351'
+  - name: WRN_SOL_FILE_IGNORED_VAR
+    comment: One or more lines in the variable section were ignored when reading a solution file.
+    value: '352'
+  - name: WRN_TOO_FEW_BASIS_VARS
+    comment: An incomplete basis is specified.
+    value: '400'
+  - name: WRN_TOO_MANY_BASIS_VARS
+    comment: A basis with too many variables is specified.
+    value: '405'
+  - name: WRN_LICENSE_EXPIRE
+    comment: The license expires.
+    value: '500'
+  - name: WRN_LICENSE_SERVER
+    comment: The license server is not responding.
+    value: '501'
+  - name: WRN_EMPTY_NAME
+    comment: A variable or constraint name is empty. The output file may be invalid.
+    value: '502'
+  - name: WRN_USING_GENERIC_NAMES
+    comment: Generic names are used because a name is not valid.
+    value: '503'
+  - name: WRN_INVALID_MPS_NAME
+    comment: A name e.g. a row name is not a valid MPS name.
+    value: '504'
+  - name: WRN_INVALID_MPS_OBJ_NAME
+    comment: The objective name is not a valid MPS name.
+    value: '505'
+  - name: WRN_LICENSE_FEATURE_EXPIRE
+    comment: The license expires.
+    value: '509'
+  - name: WRN_PARAM_NAME_DOU
+    comment: Parameter name not recognized.
+    value: '510'
+  - name: WRN_PARAM_NAME_INT
+    comment: Parameter name not recognized.
+    value: '511'
+  - name: WRN_PARAM_NAME_STR
+    comment: Parameter name not recognized.
+    value: '512'
+  - name: WRN_PARAM_STR_VALUE
+    comment: A parameter value is not correct.
+    value: '515'
+  - name: WRN_PARAM_IGNORED_CMIO
+    comment: A parameter was ignored by the conic mixed integer optimizer.
+    value: '516'
+  - name: WRN_ZEROS_IN_SPARSE_ROW
+    comment: One or more (near) zero elements are specified in a sparse row of a matrix.
+    value: '705'
+  - name: WRN_ZEROS_IN_SPARSE_COL
+    comment: One or more (near) zero elements are specified in a sparse column of a matrix.
+    value: '710'
+  - name: WRN_INCOMPLETE_LINEAR_DEPENDENCY_CHECK
+    comment: The linear dependency check(s) is incomplete.
+    value: '800'
+  - name: WRN_ELIMINATOR_SPACE
+    comment: The eliminator is skipped at least once due to lack of space.
+    value: '801'
+  - name: WRN_PRESOLVE_OUTOFSPACE
+    comment: The presolve is incomplete due to lack of space.
+    value: '802'
+  - name: WRN_PRESOLVE_PRIMAL_PERTUBATIONS
+    comment: The presolve perturbed the bounds of the primal problem. This is an indication that the problem is nearly infeasible.
+    value: '803'
+  - name: WRN_WRITE_CHANGED_NAMES
+    comment: Some names were changed because they were invalid for the output file format.
+    value: '830'
+  - name: WRN_WRITE_DISCARDED_CFIX
+    comment: The fixed objective term was discarded in the output file.
+    value: '831'
+  - name: WRN_DUPLICATE_CONSTRAINT_NAMES
+    comment: Two constraint names are identical.
+    value: '850'
+  - name: WRN_DUPLICATE_VARIABLE_NAMES
+    comment: Two variable names are identical.
+    value: '851'
+  - name: WRN_DUPLICATE_BARVARIABLE_NAMES
+    comment: Two barvariable names are identical.
+    value: '852'
+  - name: WRN_DUPLICATE_CONE_NAMES
+    comment: Two cone names are identical.
+    value: '853'
+  - name: WRN_WRITE_LP_INVALID_VAR_NAMES
+    comment: LP file will be written with generic variable names.
+    value: '854'
+  - name: WRN_WRITE_LP_DUPLICATE_VAR_NAMES
+    comment: LP file will be written with generic variable names.
+    value: '855'
+  - name: WRN_WRITE_LP_INVALID_CON_NAMES
+    comment: LP file will be written with generic constraint names.
+    value: '856'
+  - name: WRN_WRITE_LP_DUPLICATE_CON_NAMES
+    comment: LP file will be written with generic constraint names.
+    value: '857'
+  - name: WRN_ANA_LARGE_BOUNDS
+    comment: Warn against very large bounds.
+    value: '900'
+  - name: WRN_ANA_C_ZERO
+    comment: Warn against all objective coefficients being zero.
+    value: '901'
+  - name: WRN_ANA_EMPTY_COLS
+    comment: Warn against empty columns.
+    value: '902'
+  - name: WRN_ANA_CLOSE_BOUNDS
+    comment: Warn against close bounds.
+    value: '903'
+  - name: WRN_ANA_ALMOST_INT_BOUNDS
+    comment: Warn against almost integral bounds.
+    value: '904'
+  - name: WRN_NO_INFEASIBILITY_REPORT_WHEN_MATRIX_VARIABLES
+    comment: An infeasibility report is not available when the problem contains matrix variables.
+    value: '930'
+  - name: WRN_NO_DUALIZER
+    comment: No automatic dualizer is available for the specified problem.
+    value: '950'
+  - name: WRN_SYM_MAT_LARGE
+    comment: A numerically large value is specified for an element in E.
+    value: '960'
+  - name: WRN_MODIFIED_DOUBLE_PARAMETER
+    comment: A double parameter related to solver tolerances has a non-default value.
+    value: '970'
+  - name: WRN_LARGE_FIJ
+    comment: A numerically large value is specified for an element in F.
+    value: '980'
+  - name: ERR_LICENSE
+    comment: Invalid license.
+    value: '1000'
+  - name: ERR_LICENSE_EXPIRED
+    comment: The license has expired.
+    value: '1001'
+  - name: ERR_LICENSE_VERSION
+    comment: Invalid license version.
+    value: '1002'
+  - name: ERR_LICENSE_OLD_SERVER_VERSION
+    comment: The license server version is too old.
+    value: '1003'
+  - name: ERR_SIZE_LICENSE
+    comment: The problem is bigger than the license.
+    value: '1005'
+  - name: ERR_PROB_LICENSE
+    comment: The software is not licensed to solve the problem.
+    value: '1006'
+  - name: ERR_FILE_LICENSE
+    comment: Invalid license file.
+    value: '1007'
+  - name: ERR_MISSING_LICENSE_FILE
+    comment: A license cannot be located.
+    value: '1008'
+  - name: ERR_SIZE_LICENSE_CON
+    comment: The problem has too many constraints.
+    value: '1010'
+  - name: ERR_SIZE_LICENSE_VAR
+    comment: The problem has too many variables.
+    value: '1011'
+  - name: ERR_SIZE_LICENSE_INTVAR
+    comment: The problem contains too many integer variables.
+    value: '1012'
+  - name: ERR_OPTIMIZER_LICENSE
+    comment: The optimizer required is not licensed.
+    value: '1013'
+  - name: ERR_FLEXLM
+    comment: The license manager reported an error.
+    value: '1014'
+  - name: ERR_LICENSE_SERVER
+    comment: The license server is not responding.
+    value: '1015'
+  - name: ERR_LICENSE_MAX
+    comment: Maximum number of licenses is reached.
+    value: '1016'
+  - name: ERR_LICENSE_MOSEKLM_DAEMON
+    comment: The MOSEKLM license manager daemon is not up and running.
+    value: '1017'
+  - name: ERR_LICENSE_FEATURE
+    comment: A requested feature is not available in the license file(s).
+    value: '1018'
+  - name: ERR_PLATFORM_NOT_LICENSED
+    comment: A requested license feature is not available for the required platform.
+    value: '1019'
+  - name: ERR_LICENSE_CANNOT_ALLOCATE
+    comment: The license system cannot allocate the memory required.
+    value: '1020'
+  - name: ERR_LICENSE_CANNOT_CONNECT
+    comment: MOSEK cannot connect to the license server.
+    value: '1021'
+  - name: ERR_LICENSE_INVALID_HOSTID
+    comment: The host ID specified in the license file does not match the host ID of the computer.
+    value: '1025'
+  - name: ERR_LICENSE_SERVER_VERSION
+    comment: The version specified in the checkout request is greater than the highest version number the daemon supports.
+    value: '1026'
+  - name: ERR_LICENSE_NO_SERVER_SUPPORT
+    comment: The license server does not support the requested feature.
+    value: '1027'
+  - name: ERR_LICENSE_NO_SERVER_LINE
+    comment: No SERVER lines in license file.
+    value: '1028'
+  - name: ERR_OLDER_DLL
+    comment: The dynamic link library is older than the specified version.
+    value: '1035'
+  - name: ERR_NEWER_DLL
+    comment: The dynamic link library is newer than the specified version.
+    value: '1036'
+  - name: ERR_LINK_FILE_DLL
+    comment: A file cannot be linked to a stream in the DLL version.
+    value: '1040'
+  - name: ERR_THREAD_MUTEX_INIT
+    comment: Could not initialize a mutex.
+    value: '1045'
+  - name: ERR_THREAD_MUTEX_LOCK
+    comment: Could not lock a mutex.
+    value: '1046'
+  - name: ERR_THREAD_MUTEX_UNLOCK
+    comment: Could not unlock a mutex.
+    value: '1047'
+  - name: ERR_THREAD_CREATE
+    comment: Could not create a thread.
+    value: '1048'
+  - name: ERR_THREAD_COND_INIT
+    comment: Could not initialize a condition.
+    value: '1049'
+  - name: ERR_UNKNOWN
+    comment: Unknown error.
+    value: '1050'
+  - name: ERR_SPACE
+    comment: Out of space.
+    value: '1051'
+  - name: ERR_FILE_OPEN
+    comment: An error occurred while opening a file.
+    value: '1052'
+  - name: ERR_FILE_READ
+    comment: An error occurred while reading file.
+    value: '1053'
+  - name: ERR_FILE_WRITE
+    comment: An error occurred while writing to a file.
+    value: '1054'
+  - name: ERR_DATA_FILE_EXT
+    comment: The data file format cannot be determined from the file name.
+    value: '1055'
+  - name: ERR_INVALID_FILE_NAME
+    comment: An invalid file name has been specified.
+    value: '1056'
+  - name: ERR_INVALID_SOL_FILE_NAME
+    comment: An invalid file name has been specified.
+    value: '1057'
+  - name: ERR_END_OF_FILE
+    comment: End of file reached.
+    value: '1059'
+  - name: ERR_NULL_ENV
+    comment: env is a null pointer.
+    value: '1060'
+  - name: ERR_NULL_TASK
+    comment: task is a null pointer.
+    value: '1061'
+  - name: ERR_INVALID_STREAM
+    comment: An invalid stream is referenced.
+    value: '1062'
+  - name: ERR_NO_INIT_ENV
+    comment: Environment is not initialized.
+    value: '1063'
+  - name: ERR_INVALID_TASK
+    comment: The task is invalid.
+    value: '1064'
+  - name: ERR_NULL_POINTER
+    comment: An argument to a function is unexpectedly a null pointer.
+    value: '1065'
+  - name: ERR_LIVING_TASKS
+    comment: Not all tasks associated with the environment have been deleted.
+    value: '1066'
+  - name: ERR_BLANK_NAME
+    comment: An all blank name has been specified.
+    value: '1070'
+  - name: ERR_DUP_NAME
+    comment: Duplicate names specified.
+    value: '1071'
+  - name: ERR_FORMAT_STRING
+    comment: The name format string is invalid.
+    value: '1072'
+  - name: ERR_SPARSITY_SPECIFICATION
+    comment: The sparsity included an index that was out of bounds of the shape.
+    value: '1073'
+  - name: ERR_MISMATCHING_DIMENSION
+    comment: Mismatching dimensions specified in arguments
+    value: '1074'
+  - name: ERR_INVALID_OBJ_NAME
+    comment: An invalid objective name is specified.
+    value: '1075'
+  - name: ERR_INVALID_CON_NAME
+    comment: An invalid constraint name is used.
+    value: '1076'
+  - name: ERR_INVALID_VAR_NAME
+    comment: An invalid variable name is used.
+    value: '1077'
+  - name: ERR_INVALID_CONE_NAME
+    comment: An invalid cone name is used.
+    value: '1078'
+  - name: ERR_INVALID_BARVAR_NAME
+    comment: An invalid symmetric matrix variable name is used.
+    value: '1079'
+  - name: ERR_SPACE_LEAKING
+    comment: MOSEK is leaking memory.
+    value: '1080'
+  - name: ERR_SPACE_NO_INFO
+    comment: No available information about the space usage.
+    value: '1081'
+  - name: ERR_DIMENSION_SPECIFICATION
+    comment: Invalid dimension specification
+    value: '1082'
+  - name: ERR_AXIS_NAME_SPECIFICATION
+    comment: Invalid axis names specification
+    value: '1083'
+  - name: ERR_READ_FORMAT
+    comment: The specified format cannot be read.
+    value: '1090'
+  - name: ERR_MPS_FILE
+    comment: An error occurred while reading an MPS file.
+    value: '1100'
+  - name: ERR_MPS_INV_FIELD
+    comment: Invalid field occurred while reading an MPS file.
+    value: '1101'
+  - name: ERR_MPS_INV_MARKER
+    comment: An invalid marker has been specified in the MPS file.
+    value: '1102'
+  - name: ERR_MPS_NULL_CON_NAME
+    comment: An empty constraint name is used in an MPS file.
+    value: '1103'
+  - name: ERR_MPS_NULL_VAR_NAME
+    comment: An empty variable name is used in an MPS file.
+    value: '1104'
+  - name: ERR_MPS_UNDEF_CON_NAME
+    comment: An undefined constraint name occurred in an MPS file.
+    value: '1105'
+  - name: ERR_MPS_UNDEF_VAR_NAME
+    comment: An undefined variable name occurred in an MPS file.
+    value: '1106'
+  - name: ERR_MPS_INVALID_CON_KEY
+    comment: An invalid constraint key occurred in an MPS file.
+    value: '1107'
+  - name: ERR_MPS_INVALID_BOUND_KEY
+    comment: An invalid bound key occurred in an MPS file.
+    value: '1108'
+  - name: ERR_MPS_INVALID_SEC_NAME
+    comment: An invalid section name occurred in an MPS file.
+    value: '1109'
+  - name: ERR_MPS_NO_OBJECTIVE
+    comment: No objective is defined in an MPS file.
+    value: '1110'
+  - name: ERR_MPS_SPLITTED_VAR
+    comment: The non-zero elements in A corresponding to a variable in an MPS file must be specified consecutively.
+    value: '1111'
+  - name: ERR_MPS_MUL_CON_NAME
+    comment: A constraint name is specified multiple times in the ROWS section in an MPS file.
+    value: '1112'
+  - name: ERR_MPS_MUL_QSEC
+    comment: Multiple QSECTIONs are specified for a constraint.
+    value: '1113'
+  - name: ERR_MPS_MUL_QOBJ
+    comment: The Q term in the objective is specified multiple times.
+    value: '1114'
+  - name: ERR_MPS_INV_SEC_ORDER
+    comment: The sections in an MPS file is not in the correct order.
+    value: '1115'
+  - name: ERR_MPS_MUL_CSEC
+    comment: Multiple CSECTIONs are given the same name.
+    value: '1116'
+  - name: ERR_MPS_CONE_TYPE
+    comment: Invalid cone type specified in a  CSECTION.
+    value: '1117'
+  - name: ERR_MPS_CONE_OVERLAP
+    comment: A variable is specified to be a member of several cones.
+    value: '1118'
+  - name: ERR_MPS_CONE_REPEAT
+    comment: A variable is repeated within the CSECTION.
+    value: '1119'
+  - name: ERR_MPS_NON_SYMMETRIC_Q
+    comment: A non symmetric matrix has been speciefied.
+    value: '1120'
+  - name: ERR_MPS_DUPLICATE_Q_ELEMENT
+    comment: Duplicate elements is specified in a Q matrix.
+    value: '1121'
+  - name: ERR_MPS_INVALID_OBJSENSE
+    comment: An invalid objective sense is specified.
+    value: '1122'
+  - name: ERR_MPS_TAB_IN_FIELD2
+    comment: A tab char occurred in field 2.
+    value: '1125'
+  - name: ERR_MPS_TAB_IN_FIELD3
+    comment: A tab char occurred in field 3.
+    value: '1126'
+  - name: ERR_MPS_TAB_IN_FIELD5
+    comment: A tab char occurred in field 5.
+    value: '1127'
+  - name: ERR_MPS_INVALID_OBJ_NAME
+    comment: An invalid objective name is specified.
+    value: '1128'
+  - name: ERR_MPS_INVALID_KEY
+    comment: An invalid indicator key occurred in an MPS file.
+    value: '1129'
+  - name: ERR_MPS_INVALID_INDICATOR_CONSTRAINT
+    comment: An invalid indicator constraint is used. It must not be a ranged constraint.
+    value: '1130'
+  - name: ERR_MPS_INVALID_INDICATOR_VARIABLE
+    comment: An invalid indicator variable is specfied. It must be a binary variable.
+    value: '1131'
+  - name: ERR_MPS_INVALID_INDICATOR_VALUE
+    comment: An invalid indicator value is specfied. It must be either 0 or 1.
+    value: '1132'
+  - name: ERR_MPS_INVALID_INDICATOR_QUADRATIC_CONSTRAINT
+    comment: A quadratic constraint can be be an indicator constraint.
+    value: '1133'
+  - name: ERR_OPF_SYNTAX
+    comment: Syntax error in an OPF file
+    value: '1134'
+  - name: ERR_OPF_PREMATURE_EOF
+    comment: Premature end of file in an OPF file.
+    value: '1136'
+  - name: ERR_OPF_MISMATCHED_TAG
+    comment: Mismatched end-tag in OPF file
+    value: '1137'
+  - name: ERR_OPF_DUPLICATE_BOUND
+    comment: Either upper or lower bound was specified twice in OPF file
+    value: '1138'
+  - name: ERR_OPF_DUPLICATE_CONSTRAINT_NAME
+    comment: Duplicate constraint name in OPF File
+    value: '1139'
+  - name: ERR_OPF_INVALID_CONE_TYPE
+    comment: Invalid cone type in OPF File
+    value: '1140'
+  - name: ERR_OPF_INCORRECT_TAG_PARAM
+    comment: Invalid number of parameters in start-tag in OPF File
+    value: '1141'
+  - name: ERR_OPF_INVALID_TAG
+    comment: Invalid start-tag in OPF File
+    value: '1142'
+  - name: ERR_OPF_DUPLICATE_CONE_ENTRY
+    comment: Same variable appears in multiple cones in OPF File
+    value: '1143'
+  - name: ERR_OPF_TOO_LARGE
+    comment: The problem is too large to be correctly loaded
+    value: '1144'
+  - name: ERR_OPF_DUAL_INTEGER_SOLUTION
+    comment: Dual solution values are not allowed in OPF File
+    value: '1146'
+  - name: ERR_LP_INCOMPATIBLE
+    comment: The problem cannot be written to an LP formatted file.
+    value: '1150'
+  - name: ERR_LP_EMPTY
+    comment: The problem cannot be written to an LP formatted file.
+    value: '1151'
+  - name: ERR_LP_DUP_SLACK_NAME
+    comment: The name of the slack variable added to a ranged constraint already exists.
+    value: '1152'
+  - name: ERR_WRITE_MPS_INVALID_NAME
+    comment: An invalid name is created while writing an MPS file.
+    value: '1153'
+  - name: ERR_LP_INVALID_VAR_NAME
+    comment: A variable name is invalid when used in an LP formatted file.
+    value: '1154'
+  - name: ERR_LP_FREE_CONSTRAINT
+    comment: Free constraints cannot be written in LP file format.
+    value: '1155'
+  - name: ERR_WRITE_OPF_INVALID_VAR_NAME
+    comment: Empty variable names cannot be written to OPF files.
+    value: '1156'
+  - name: ERR_LP_FILE_FORMAT
+    comment: Syntax error in an LP file.
+    value: '1157'
+  - name: ERR_WRITE_LP_FORMAT
+    comment: Problem cannot be written as an LP file.
+    value: '1158'
+  - name: ERR_READ_LP_MISSING_END_TAG
+    comment: Syntax error in LP fil. Possibly missing End tag.
+    value: '1159'
+  - name: ERR_LP_INDICATOR_VAR
+    comment: An indicator variable was not declared binary
+    value: '1160'
+  - name: ERR_WRITE_LP_NON_UNIQUE_NAME
+    comment: An auto-generated name is not unique.
+    value: '1161'
+  - name: ERR_READ_LP_NONEXISTING_NAME
+    comment: A variable never occurred in objective or constraints.
+    value: '1162'
+  - name: ERR_LP_WRITE_CONIC_PROBLEM
+    comment: The problem contains cones that cannot be written to an LP formatted file.
+    value: '1163'
+  - name: ERR_LP_WRITE_GECO_PROBLEM
+    comment: The problem contains general convex terms that cannot be written to an LP formatted file.
+    value: '1164'
+  - name: ERR_WRITING_FILE
+    comment: An error occurred while writing file
+    value: '1166'
+  - name: ERR_INVALID_NAME_IN_SOL_FILE
+    comment: An invalid name occurred in a solution file.
+    value: '1170'
+  - name: ERR_LP_INVALID_CON_NAME
+    comment: A constraint name is invalid when used in an LP formatted file.
+    value: '1171'
+  - name: ERR_JSON_SYNTAX
+    comment: Syntax error in an JSON data
+    value: '1175'
+  - name: ERR_JSON_STRING
+    comment: Error in JSON string.
+    value: '1176'
+  - name: ERR_JSON_NUMBER_OVERFLOW
+    comment: Invalid number entry - wrong type or value overflow.
+    value: '1177'
+  - name: ERR_JSON_FORMAT
+    comment: Error in an JSON Task file
+    value: '1178'
+  - name: ERR_JSON_DATA
+    comment: Inconsistent data in JSON Task file
+    value: '1179'
+  - name: ERR_JSON_MISSING_DATA
+    comment: Missing data section in JSON task file.
+    value: '1180'
+  - name: ERR_PTF_INCOMPATIBILITY
+    comment: Incompatible item
+    value: '1181'
+  - name: ERR_PTF_UNDEFINED_ITEM
+    comment: Undefined symbol referenced
+    value: '1182'
+  - name: ERR_PTF_INCONSISTENCY
+    comment: Inconsistent size of item
+    value: '1183'
+  - name: ERR_PTF_FORMAT
+    comment: Syntax error in an PTF file
+    value: '1184'
+  - name: ERR_ARGUMENT_LENNEQ
+    comment: Incorrect length of arguments.
+    value: '1197'
+  - name: ERR_ARGUMENT_TYPE
+    comment: Incorrect argument type.
+    value: '1198'
+  - name: ERR_NUM_ARGUMENTS
+    comment: Incorrect number of function arguments.
+    value: '1199'
+  - name: ERR_IN_ARGUMENT
+    comment: A function argument is incorrect.
+    value: '1200'
+  - name: ERR_ARGUMENT_DIMENSION
+    comment: A function argument is of incorrect dimension.
+    value: '1201'
+  - name: ERR_SHAPE_IS_TOO_LARGE
+    comment: The size of the n-dimensional shape is too large.
+    value: '1202'
+  - name: ERR_INDEX_IS_TOO_SMALL
+    comment: An index in an argument is too small.
+    value: '1203'
+  - name: ERR_INDEX_IS_TOO_LARGE
+    comment: An index in an argument is too large.
+    value: '1204'
+  - name: ERR_INDEX_IS_NOT_UNIQUE
+    comment: An index in an argument is is unique.
+    value: '1205'
+  - name: ERR_PARAM_NAME
+    comment: A parameter name is not correct.
+    value: '1206'
+  - name: ERR_PARAM_NAME_DOU
+    comment: A parameter name is not correct.
+    value: '1207'
+  - name: ERR_PARAM_NAME_INT
+    comment: A parameter name is not correct.
+    value: '1208'
+  - name: ERR_PARAM_NAME_STR
+    comment: A parameter name is not correct.
+    value: '1209'
+  - name: ERR_PARAM_INDEX
+    comment: Parameter index is out of range.
+    value: '1210'
+  - name: ERR_PARAM_IS_TOO_LARGE
+    comment: A parameter value is too large.
+    value: '1215'
+  - name: ERR_PARAM_IS_TOO_SMALL
+    comment: A parameter value is too small.
+    value: '1216'
+  - name: ERR_PARAM_VALUE_STR
+    comment: A parameter value string is incorrect.
+    value: '1217'
+  - name: ERR_PARAM_TYPE
+    comment: A parameter type is invalid.
+    value: '1218'
+  - name: ERR_INF_DOU_INDEX
+    comment: A double information index is out of range for the specified type.
+    value: '1219'
+  - name: ERR_INF_INT_INDEX
+    comment: An integer information index is out of range for the specified type.
+    value: '1220'
+  - name: ERR_INDEX_ARR_IS_TOO_SMALL
+    comment: An index in an array argument is too small.
+    value: '1221'
+  - name: ERR_INDEX_ARR_IS_TOO_LARGE
+    comment: An index in an array argument is too large.
+    value: '1222'
+  - name: ERR_INF_LINT_INDEX
+    comment: A long integer information index is out of range for the specified type.
+    value: '1225'
+  - name: ERR_ARG_IS_TOO_SMALL
+    comment: The value of a argument is too small.
+    value: '1226'
+  - name: ERR_ARG_IS_TOO_LARGE
+    comment: The value of a argument is too large.
+    value: '1227'
+  - name: ERR_INVALID_WHICHSOL
+    comment: whichsol is invalid.
+    value: '1228'
+  - name: ERR_INF_DOU_NAME
+    comment: A double information name is invalid.
+    value: '1230'
+  - name: ERR_INF_INT_NAME
+    comment: An integer information name is invalid.
+    value: '1231'
+  - name: ERR_INF_TYPE
+    comment: The information type is invalid.
+    value: '1232'
+  - name: ERR_INF_LINT_NAME
+    comment: A long integer information name is invalid.
+    value: '1234'
+  - name: ERR_INDEX
+    comment: An index is out of range.
+    value: '1235'
+  - name: ERR_WHICHSOL
+    comment: The solution defined by whichsol does not exists.
+    value: '1236'
+  - name: ERR_SOLITEM
+    comment: The solution number  solemn does not exists.
+    value: '1237'
+  - name: ERR_WHICHITEM_NOT_ALLOWED
+    comment: whichitem is unacceptable.
+    value: '1238'
+  - name: ERR_MAXNUMCON
+    comment: Invalid maximum number of constraints specified.
+    value: '1240'
+  - name: ERR_MAXNUMVAR
+    comment: The maximum number of variables limit is too small.
+    value: '1241'
+  - name: ERR_MAXNUMBARVAR
+    comment: The maximum number of semidefinite variables limit is too small.
+    value: '1242'
+  - name: ERR_MAXNUMQNZ
+    comment: Too small maximum number of non-zeros for the Q matrices is specified.
+    value: '1243'
+  - name: ERR_TOO_SMALL_MAX_NUM_NZ
+    comment: The maximum number of non-zeros specified is too small.
+    value: '1245'
+  - name: ERR_INVALID_IDX
+    comment: A specified index is invalid.
+    value: '1246'
+  - name: ERR_INVALID_MAX_NUM
+    comment: A specified index is invalid.
+    value: '1247'
+  - name: ERR_UNALLOWED_WHICHSOL
+    comment: The value of whichsol is not allowed.
+    value: '1248'
+  - name: ERR_NUMCONLIM
+    comment: Maximum number of constraints limit is exceeded.
+    value: '1250'
+  - name: ERR_NUMVARLIM
+    comment: Maximum number of variables limit is exceeded.
+    value: '1251'
+  - name: ERR_TOO_SMALL_MAXNUMANZ
+    comment: Too small maximum number of non-zeros in A specified.
+    value: '1252'
+  - name: ERR_INV_APTRE
+    comment: aptre\[j\] is strictly smaller than aptrb\[j\] for some j.
+    value: '1253'
+  - name: ERR_MUL_A_ELEMENT
+    comment: An element in A is defined multiple times.
+    value: '1254'
+  - name: ERR_INV_BK
+    comment: Invalid bound key.
+    value: '1255'
+  - name: ERR_INV_BKC
+    comment: Invalid bound key is specified for a constraint.
+    value: '1256'
+  - name: ERR_INV_BKX
+    comment: An invalid bound key is specified for a variable.
+    value: '1257'
+  - name: ERR_INV_VAR_TYPE
+    comment: An invalid variable type is specified for a variable.
+    value: '1258'
+  - name: ERR_SOLVER_PROBTYPE
+    comment: Problem type does not match the chosen optimizer.
+    value: '1259'
+  - name: ERR_OBJECTIVE_RANGE
+    comment: Empty objective range.
+    value: '1260'
+  - name: ERR_BASIS
+    comment: Invalid basis is specified.
+    value: '1266'
+  - name: ERR_INV_SKC
+    comment: Invalid value in skc encountered.
+    value: '1267'
+  - name: ERR_INV_SKX
+    comment: Invalid value in skx encountered.
+    value: '1268'
+  - name: ERR_INV_SK_STR
+    comment: Invalid status key string encountered.
+    value: '1269'
+  - name: ERR_INV_SK
+    comment: Invalid status key code encountered.
+    value: '1270'
+  - name: ERR_INV_CONE_TYPE_STR
+    comment: Invalid cone type string encountered.
+    value: '1271'
+  - name: ERR_INV_CONE_TYPE
+    comment: Invalid cone type code encountered.
+    value: '1272'
+  - name: ERR_INV_SKN
+    comment: Invalid value in skn encountered.
+    value: '1274'
+  - name: ERR_INVALID_SURPLUS
+    comment: Invalid surplus.
+    value: '1275'
+  - name: ERR_INV_NAME_ITEM
+    comment: An invalid name item code is used.
+    value: '1280'
+  - name: ERR_PRO_ITEM
+    comment: An invalid problem item is used.
+    value: '1281'
+  - name: ERR_INVALID_FORMAT_TYPE
+    comment: Invalid format type.
+    value: '1283'
+  - name: ERR_FIRSTI
+    comment: Invalid firsti.
+    value: '1285'
+  - name: ERR_LASTI
+    comment: Invalid lasti.
+    value: '1286'
+  - name: ERR_FIRSTJ
+    comment: Invalid firstj.
+    value: '1287'
+  - name: ERR_LASTJ
+    comment: Invalid lastj.
+    value: '1288'
+  - name: ERR_MAX_LEN_IS_TOO_SMALL
+    comment: A maximum length that is too small has been specified.
+    value: '1289'
+  - name: ERR_NONLINEAR_EQUALITY
+    comment: The model contains a nonlinear equality.
+    value: '1290'
+  - name: ERR_NONCONVEX
+    comment: The optimization problem is nonconvex.
+    value: '1291'
+  - name: ERR_NONLINEAR_RANGED
+    comment: The problem contains a nonlinear constraint with inite lower and upper bound.
+    value: '1292'
+  - name: ERR_CON_Q_NOT_PSD
+    comment: The quadratic constraint matrix is not PSD.
+    value: '1293'
+  - name: ERR_CON_Q_NOT_NSD
+    comment: The quadratic constraint matrix is not NSD.
+    value: '1294'
+  - name: ERR_OBJ_Q_NOT_PSD
+    comment: The quadratic coefficient matrix in the objective is not PSD.
+    value: '1295'
+  - name: ERR_OBJ_Q_NOT_NSD
+    comment: The quadratic coefficient matrix in the objective is not NSD.
+    value: '1296'
+  - name: ERR_ARGUMENT_PERM_ARRAY
+    comment: An invalid permutation array is specified.
+    value: '1299'
+  - name: ERR_CONE_INDEX
+    comment: An index of a non-existing cone has been specified.
+    value: '1300'
+  - name: ERR_CONE_SIZE
+    comment: A cone with incorrect number of members is specified.
+    value: '1301'
+  - name: ERR_CONE_OVERLAP
+    comment: One or more of variables in the cone to be added is already member of another cone.
+    value: '1302'
+  - name: ERR_CONE_REP_VAR
+    comment: A variable is included multiple times in the cone.
+    value: '1303'
+  - name: ERR_MAXNUMCONE
+    comment: The value specified for maxnumcone is too small.
+    value: '1304'
+  - name: ERR_CONE_TYPE
+    comment: Invalid cone type specified.
+    value: '1305'
+  - name: ERR_CONE_TYPE_STR
+    comment: Invalid cone type specified.
+    value: '1306'
+  - name: ERR_CONE_OVERLAP_APPEND
+    comment: The cone to be appended has one variable which is already member of another cone.
+    value: '1307'
+  - name: ERR_REMOVE_CONE_VARIABLE
+    comment: A variable cannot be removed because it will make a cone invalid.
+    value: '1310'
+  - name: ERR_APPENDING_TOO_BIG_CONE
+    comment: Trying to append a too big cone.
+    value: '1311'
+  - name: ERR_CONE_PARAMETER
+    comment: An invalid cone parameter.
+    value: '1320'
+  - name: ERR_SOL_FILE_INVALID_NUMBER
+    comment: An invalid number is specified in a solution file.
+    value: '1350'
+  - name: ERR_HUGE_C
+    comment: A huge value in absolute size is specified for an objective coefficient.
+    value: '1375'
+  - name: ERR_HUGE_AIJ
+    comment: A numerically huge value is specified for an element in A.
+    value: '1380'
+  - name: ERR_DUPLICATE_AIJ
+    comment: An element in the A matrix is specified twice.
+    value: '1385'
+  - name: ERR_LOWER_BOUND_IS_A_NAN
+    comment: The lower bound specified is not a number (nan).
+    value: '1390'
+  - name: ERR_UPPER_BOUND_IS_A_NAN
+    comment: The upper bound specified is not a number (nan).
+    value: '1391'
+  - name: ERR_INFINITE_BOUND
+    comment: A numerically huge bound value is specified.
+    value: '1400'
+  - name: ERR_INV_QOBJ_SUBI
+    comment: Invalid value %d at qosubi.
+    value: '1401'
+  - name: ERR_INV_QOBJ_SUBJ
+    comment: Invalid value in qosubj.
+    value: '1402'
+  - name: ERR_INV_QOBJ_VAL
+    comment: Invalid value in qoval.
+    value: '1403'
+  - name: ERR_INV_QCON_SUBK
+    comment: Invalid value in qcsubk.
+    value: '1404'
+  - name: ERR_INV_QCON_SUBI
+    comment: Invalid value in qcsubi.
+    value: '1405'
+  - name: ERR_INV_QCON_SUBJ
+    comment: Invalid value in qcsubj.
+    value: '1406'
+  - name: ERR_INV_QCON_VAL
+    comment: Invalid value in qcval.
+    value: '1407'
+  - name: ERR_QCON_SUBI_TOO_SMALL
+    comment: Invalid value in qcsubi.
+    value: '1408'
+  - name: ERR_QCON_SUBI_TOO_LARGE
+    comment: Invalid value in qcsubi.
+    value: '1409'
+  - name: ERR_QOBJ_UPPER_TRIANGLE
+    comment: An element in the upper triangle of the quadratic term in the objective is specified.
+    value: '1415'
+  - name: ERR_QCON_UPPER_TRIANGLE
+    comment: An element in the upper triangle of the quadratic term in a constraint.
+    value: '1417'
+  - name: ERR_FIXED_BOUND_VALUES
+    comment: A fixed constraint/variable has been specified using the bound keys but the numerical bounds are different.
+    value: '1420'
+  - name: ERR_TOO_SMALL_A_TRUNCATION_VALUE
+    comment: A too small value for the A trucation value is specified.
+    value: '1421'
+  - name: ERR_INVALID_OBJECTIVE_SENSE
+    comment: An invalid objective sense is specified.
+    value: '1445'
+  - name: ERR_UNDEFINED_OBJECTIVE_SENSE
+    comment: The objective sense has not been specified before the optimization.
+    value: '1446'
+  - name: ERR_Y_IS_UNDEFINED
+    comment: The solution item y is undefined.
+    value: '1449'
+  - name: ERR_NAN_IN_DOUBLE_DATA
+    comment: An invalid floating value was used in some double data.
+    value: '1450'
+  - name: ERR_INF_IN_DOUBLE_DATA
+    comment: An infinite floating value was used in some double data.
+    value: '1451'
+  - name: ERR_NAN_IN_BLC
+    comment: blc contains an invalid floating point value, i.e. a NaN.
+    value: '1461'
+  - name: ERR_NAN_IN_BUC
+    comment: buc contains an invalid floating point value, i.e. a NaN.
+    value: '1462'
+  - name: ERR_INVALID_CFIX
+    comment: An invalid fixed term in the objective is speficied.
+    value: '1469'
+  - name: ERR_NAN_IN_C
+    comment: c contains an invalid floating point value, i.e. a NaN.
+    value: '1470'
+  - name: ERR_NAN_IN_BLX
+    comment: blx contains an invalid floating point value, i.e. a NaN.
+    value: '1471'
+  - name: ERR_NAN_IN_BUX
+    comment: bux contains an invalid floating point value, i.e. a NaN.
+    value: '1472'
+  - name: ERR_INVALID_AIJ
+    comment: a\[i,j\] contains an invalid floating point value, i.e. a NaN or an infinite value.
+    value: '1473'
+  - name: ERR_INVALID_CJ
+    comment: c\[j\] contains an invalid floating point value, i.e. a NaN or an infinite value.
+    value: '1474'
+  - name: ERR_SYM_MAT_INVALID
+    comment: A symmetric matrix contains an invalid floating point value, i.e. a NaN or an infinite value.
+    value: '1480'
+  - name: ERR_SYM_MAT_HUGE
+    comment: A numerically huge value is specified for an element in E.
+    value: '1482'
+  - name: ERR_INV_PROBLEM
+    comment: Invalid problem type.
+    value: '1500'
+  - name: ERR_MIXED_CONIC_AND_NL
+    comment: The problem contains both conic and nonlinear constraints.
+    value: '1501'
+  - name: ERR_GLOBAL_INV_CONIC_PROBLEM
+    comment: The global optimizer can only be applied to problems without semidefinite variables.
+    value: '1503'
+  - name: ERR_INV_OPTIMIZER
+    comment: An invalid optimizer has been chosen for the problem.
+    value: '1550'
+  - name: ERR_MIO_NO_OPTIMIZER
+    comment: No optimizer is available for the current class of integer optimization problems.
+    value: '1551'
+  - name: ERR_NO_OPTIMIZER_VAR_TYPE
+    comment: No optimizer is available for this class of optimization problems.
+    value: '1552'
+  - name: ERR_FINAL_SOLUTION
+    comment: An error occurred during the solution finalization.
+    value: '1560'
+  - name: ERR_FIRST
+    comment: Invalid first.
+    value: '1570'
+  - name: ERR_LAST
+    comment: Invalid last.
+    value: '1571'
+  - name: ERR_SLICE_SIZE
+    comment: Invalid slice size specified.
+    value: '1572'
+  - name: ERR_NEGATIVE_SURPLUS
+    comment: Negative surplus.
+    value: '1573'
+  - name: ERR_NEGATIVE_APPEND
+    comment: Cannot append a negative number.
+    value: '1578'
+  - name: ERR_POSTSOLVE
+    comment: An error occurred during the postsolve.
+    value: '1580'
+  - name: ERR_OVERFLOW
+    comment: A computation produced an overflow.
+    value: '1590'
+  - name: ERR_NO_BASIS_SOL
+    comment: No basic solution is defined.
+    value: '1600'
+  - name: ERR_BASIS_FACTOR
+    comment: The factorization of the basis is invalid.
+    value: '1610'
+  - name: ERR_BASIS_SINGULAR
+    comment: The basis is singular.
+    value: '1615'
+  - name: ERR_FACTOR
+    comment: An error occurred while factorizing a matrix.
+    value: '1650'
+  - name: ERR_FEASREPAIR_CANNOT_RELAX
+    comment: An optimization problem cannot be relaxed.
+    value: '1700'
+  - name: ERR_FEASREPAIR_SOLVING_RELAXED
+    comment: The relaxed problem could not be solved to optimality.
+    value: '1701'
+  - name: ERR_FEASREPAIR_INCONSISTENT_BOUND
+    comment: The upper bound is less than the lower bound for a variable or a constraint.
+    value: '1702'
+  - name: ERR_REPAIR_INVALID_PROBLEM
+    comment: The feasibility repair does not support the specified problem type.
+    value: '1710'
+  - name: ERR_REPAIR_OPTIMIZATION_FAILED
+    comment: Computation the optimal relaxation failed.
+    value: '1711'
+  - name: ERR_NAME_MAX_LEN
+    comment: A name is longer than the buffer that is supposed to hold it.
+    value: '1750'
+  - name: ERR_NAME_IS_NULL
+    comment: The name buffer is a null pointer.
+    value: '1760'
+  - name: ERR_INVALID_COMPRESSION
+    comment: Invalid compression type.
+    value: '1800'
+  - name: ERR_INVALID_IOMODE
+    comment: Invalid io mode.
+    value: '1801'
+  - name: ERR_NO_PRIMAL_INFEAS_CER
+    comment: A certificate of primal infeasibility is not available.
+    value: '2000'
+  - name: ERR_NO_DUAL_INFEAS_CER
+    comment: A certificate of dual infeasibility is not available.
+    value: '2001'
+  - name: ERR_NO_SOLUTION_IN_CALLBACK
+    comment: The required solution is not available.
+    value: '2500'
+  - name: ERR_INV_MARKI
+    comment: Invalid value in marki.
+    value: '2501'
+  - name: ERR_INV_MARKJ
+    comment: Invalid value in markj.
+    value: '2502'
+  - name: ERR_INV_NUMI
+    comment: Invalid numi.
+    value: '2503'
+  - name: ERR_INV_NUMJ
+    comment: Invalid numj.
+    value: '2504'
+  - name: ERR_TASK_INCOMPATIBLE
+    comment: The Task file is incompatible with this platform.
+    value: '2560'
+  - name: ERR_TASK_INVALID
+    comment: The Task file is invalid.
+    value: '2561'
+  - name: ERR_TASK_WRITE
+    comment: Failed to write the task file.
+    value: '2562'
+  - name: ERR_LU_MAX_NUM_TRIES
+    comment: Could not compute the LU factors of the matrix within the maximum number of allowed tries.
+    value: '2800'
+  - name: ERR_INVALID_UTF8
+    comment: An invalid UTF8 string is encountered.
+    value: '2900'
+  - name: ERR_INVALID_WCHAR
+    comment: An invalid wchar string is encountered.
+    value: '2901'
+  - name: ERR_NO_DUAL_FOR_ITG_SOL
+    comment: No dual information is available for the integer solution.
+    value: '2950'
+  - name: ERR_NO_SNX_FOR_BAS_SOL
+    comment: snx is not available for the basis solution.
+    value: '2953'
+  - name: ERR_INTERNAL
+    comment: An internal error occurred.
+    value: '3000'
+  - name: ERR_API_ARRAY_TOO_SMALL
+    comment: An input array was too short.
+    value: '3001'
+  - name: ERR_API_CB_CONNECT
+    comment: Failed to connect a callback object.
+    value: '3002'
+  - name: ERR_API_FATAL_ERROR
+    comment: An internal error occurred in the API. Please report this problem.
+    value: '3005'
+  - name: ERR_SEN_FORMAT
+    comment: Syntax error in sensitivity analysis file.
+    value: '3050'
+  - name: ERR_SEN_UNDEF_NAME
+    comment: An undefined name was encountered in the sensitivity analysis file.
+    value: '3051'
+  - name: ERR_SEN_INDEX_RANGE
+    comment: Index out of range in the sensitivity analysis file.
+    value: '3052'
+  - name: ERR_SEN_BOUND_INVALID_UP
+    comment: Analysis of upper bound requested for an index, where no upper bound exists.
+    value: '3053'
+  - name: ERR_SEN_BOUND_INVALID_LO
+    comment: Analysis of lower bound requested for an index, where no lower bound exists.
+    value: '3054'
+  - name: ERR_SEN_INDEX_INVALID
+    comment: Invalid range given in the sensitivity file.
+    value: '3055'
+  - name: ERR_SEN_INVALID_REGEXP
+    comment: Syntax error in regexp or regexp longer than 1024.
+    value: '3056'
+  - name: ERR_SEN_SOLUTION_STATUS
+    comment: No optimal solution found to the original problem given for sensitivity analysis.
+    value: '3057'
+  - name: ERR_SEN_NUMERICAL
+    comment: Numerical difficulties encountered performing the sensitivity analysis.
+    value: '3058'
+  - name: ERR_SEN_UNHANDLED_PROBLEM_TYPE
+    comment: Sensitivity analysis cannot be performed for the specified problem.
+    value: '3080'
+  - name: ERR_UNB_STEP_SIZE
+    comment: A step-size in an optimizer was unexpectedly unbounded.
+    value: '3100'
+  - name: ERR_IDENTICAL_TASKS
+    comment: Some tasks related to this function call were identical. Unique tasks were expected.
+    value: '3101'
+  - name: ERR_AD_INVALID_CODELIST
+    comment: The code list data was invalid.
+    value: '3102'
+  - name: ERR_INTERNAL_TEST_FAILED
+    comment: An internal unit test function failed.
+    value: '3500'
+  - name: ERR_XML_INVALID_PROBLEM_TYPE
+    comment: The problem type is not supported by the XML format.
+    value: '3600'
+  - name: ERR_INVALID_AMPL_STUB
+    comment: Invalid AMPL stub.
+    value: '3700'
+  - name: ERR_INT64_TO_INT32_CAST
+    comment: A 64 bit integer could not be cast to a 32 bit integer.
+    value: '3800'
+  - name: ERR_SIZE_LICENSE_NUMCORES
+    comment: The computer contains more cpu cores than the license allows for.
+    value: '3900'
+  - name: ERR_INFEAS_UNDEFINED
+    comment: The requested value is not defined for this solution type.
+    value: '3910'
+  - name: ERR_NO_BARX_FOR_SOLUTION
+    comment: There is no barx available for the solution specified.
+    value: '3915'
+  - name: ERR_NO_BARS_FOR_SOLUTION
+    comment: There is no bars available for the solution specified.
+    value: '3916'
+  - name: ERR_BAR_VAR_DIM
+    comment: The dimension of a symmetric matrix variable has to be greater than 0.
+    value: '3920'
+  - name: ERR_SYM_MAT_INVALID_ROW_INDEX
+    comment: A row index specified for sparse symmetric matrix is invalid.
+    value: '3940'
+  - name: ERR_SYM_MAT_INVALID_COL_INDEX
+    comment: A column index specified for sparse symmetric matrix is invalid.
+    value: '3941'
+  - name: ERR_SYM_MAT_NOT_LOWER_TRINGULAR
+    comment: Only the lower triangular part of sparse symmetric matrix should be specified.
+    value: '3942'
+  - name: ERR_SYM_MAT_INVALID_VALUE
+    comment: The numerical value specified in a sparse symmetric matrix is not a floating point value.
+    value: '3943'
+  - name: ERR_SYM_MAT_DUPLICATE
+    comment: A value in a symmetric matric as been specified more than once.
+    value: '3944'
+  - name: ERR_INVALID_SYM_MAT_DIM
+    comment: A sparse symmetric matrix of invalid dimension is specified.
+    value: '3950'
+  - name: ERR_API_INTERNAL
+    comment: An internal fatal error occurred in an interface function.
+    value: '3999'
+  - name: ERR_INVALID_FILE_FORMAT_FOR_SYM_MAT
+    comment: The file format does not support a problem with symmetric matrix variables.
+    value: '4000'
+  - name: ERR_INVALID_FILE_FORMAT_FOR_CFIX
+    comment: The file format does not support a problem with nonzero fixed term in c.
+    value: '4001'
+  - name: ERR_INVALID_FILE_FORMAT_FOR_RANGED_CONSTRAINTS
+    comment: The file format does not support a problem with ranged constraints.
+    value: '4002'
+  - name: ERR_INVALID_FILE_FORMAT_FOR_FREE_CONSTRAINTS
+    comment: The file format does not support a problem with free constraints.
+    value: '4003'
+  - name: ERR_INVALID_FILE_FORMAT_FOR_CONES
+    comment: The file format does not support a problem with conic constraints.
+    value: '4005'
+  - name: ERR_INVALID_FILE_FORMAT_FOR_QUADRATIC_TERMS
+    comment: The file format does not support a problem with quadratic terms.
+    value: '4006'
+  - name: ERR_INVALID_FILE_FORMAT_FOR_NONLINEAR
+    comment: The file format does not support a problem with nonlinear terms.
+    value: '4010'
+  - name: ERR_INVALID_FILE_FORMAT_FOR_DISJUNCTIVE_CONSTRAINTS
+    comment: The file format does not support a problem with disjunctive constraints.
+    value: '4011'
+  - name: ERR_INVALID_FILE_FORMAT_FOR_AFFINE_CONIC_CONSTRAINTS
+    comment: The file format does not support a problem with affine conic constraints.
+    value: '4012'
+  - name: ERR_DUPLICATE_CONSTRAINT_NAMES
+    comment: Two constraint names are identical.
+    value: '4500'
+  - name: ERR_DUPLICATE_VARIABLE_NAMES
+    comment: Two variable names are identical.
+    value: '4501'
+  - name: ERR_DUPLICATE_BARVARIABLE_NAMES
+    comment: Two barvariable names are identical.
+    value: '4502'
+  - name: ERR_DUPLICATE_CONE_NAMES
+    comment: Two cone names are identical.
+    value: '4503'
+  - name: ERR_DUPLICATE_DOMAIN_NAMES
+    comment: Two domain names are identical.
+    value: '4504'
+  - name: ERR_DUPLICATE_DJC_NAMES
+    comment: Two disjunctive constraint names are identical.
+    value: '4505'
+  - name: ERR_NON_UNIQUE_ARRAY
+    comment: An array does not contain unique elements.
+    value: '5000'
+  - name: ERR_ARGUMENT_IS_TOO_SMALL
+    comment: The value of a function argument is too small.
+    value: '5004'
+  - name: ERR_ARGUMENT_IS_TOO_LARGE
+    comment: The value of a function argument is too large.
+    value: '5005'
+  - name: ERR_MIO_INTERNAL
+    comment: A fatal error occurred in the mixed integer optimizer.  Please contact MOSEK support.
+    value: '5010'
+  - name: ERR_INVALID_PROBLEM_TYPE
+    comment: An invalid problem type.
+    value: '6000'
+  - name: ERR_UNHANDLED_SOLUTION_STATUS
+    comment: Unhandled solution status.
+    value: '6010'
+  - name: ERR_UPPER_TRIANGLE
+    comment: An element in the upper triangle of a lower triangular matrix is specified.
+    value: '6020'
+  - name: ERR_LAU_SINGULAR_MATRIX
+    comment: A matrix is singular.
+    value: '7000'
+  - name: ERR_LAU_NOT_POSITIVE_DEFINITE
+    comment: A matrix is not positive definite.
+    value: '7001'
+  - name: ERR_LAU_INVALID_LOWER_TRIANGULAR_MATRIX
+    comment: An invalid lower triangular matrix.
+    value: '7002'
+  - name: ERR_LAU_UNKNOWN
+    comment: An unknown error.
+    value: '7005'
+  - name: ERR_LAU_ARG_M
+    comment: Invalid argument m.
+    value: '7010'
+  - name: ERR_LAU_ARG_N
+    comment: Invalid argument n.
+    value: '7011'
+  - name: ERR_LAU_ARG_K
+    comment: Invalid argument k.
+    value: '7012'
+  - name: ERR_LAU_ARG_TRANSA
+    comment: Invalid argument transa.
+    value: '7015'
+  - name: ERR_LAU_ARG_TRANSB
+    comment: Invalid argument transb.
+    value: '7016'
+  - name: ERR_LAU_ARG_UPLO
+    comment: Invalid argument uplo.
+    value: '7017'
+  - name: ERR_LAU_ARG_TRANS
+    comment: Invalid argument trans.
+    value: '7018'
+  - name: ERR_LAU_INVALID_SPARSE_SYMMETRIC_MATRIX
+    comment: An invalid sparse symmetric matrix is specfified.
+    value: '7019'
+  - name: ERR_CBF_PARSE
+    comment: An error occurred while parsing an CBF file.
+    value: '7100'
+  - name: ERR_CBF_OBJ_SENSE
+    comment: An invalid objective sense is specified.
+    value: '7101'
+  - name: ERR_CBF_NO_VARIABLES
+    comment: An invalid objective sense is specified.
+    value: '7102'
+  - name: ERR_CBF_TOO_MANY_CONSTRAINTS
+    comment: Too many constraints specified.
+    value: '7103'
+  - name: ERR_CBF_TOO_MANY_VARIABLES
+    comment: Too many variables specified.
+    value: '7104'
+  - name: ERR_CBF_NO_VERSION_SPECIFIED
+    comment: No version specified.
+    value: '7105'
+  - name: ERR_CBF_SYNTAX
+    comment: Invalid syntax.
+    value: '7106'
+  - name: ERR_CBF_DUPLICATE_OBJ
+    comment: Duplicate OBJ keyword.
+    value: '7107'
+  - name: ERR_CBF_DUPLICATE_CON
+    comment: Duplicate CON keyword.
+    value: '7108'
+  - name: ERR_CBF_DUPLICATE_VAR
+    comment: Duplicate VAR keyword.
+    value: '7110'
+  - name: ERR_CBF_DUPLICATE_INT
+    comment: Duplicate INT keyword.
+    value: '7111'
+  - name: ERR_CBF_INVALID_VAR_TYPE
+    comment: Invalid variable type.
+    value: '7112'
+  - name: ERR_CBF_INVALID_CON_TYPE
+    comment: Invalid constraint type.
+    value: '7113'
+  - name: ERR_CBF_INVALID_DOMAIN_DIMENSION
+    comment: Invalid domain dimension.
+    value: '7114'
+  - name: ERR_CBF_DUPLICATE_OBJACOORD
+    comment: Duplicate index in OBJCOORD.
+    value: '7115'
+  - name: ERR_CBF_DUPLICATE_BCOORD
+    comment: Duplicate index in BCOORD.
+    value: '7116'
+  - name: ERR_CBF_DUPLICATE_ACOORD
+    comment: Duplicate index in ACOORD.
+    value: '7117'
+  - name: ERR_CBF_TOO_FEW_VARIABLES
+    comment: Too few variables defined.
+    value: '7118'
+  - name: ERR_CBF_TOO_FEW_CONSTRAINTS
+    comment: Too few constraints defined.
+    value: '7119'
+  - name: ERR_CBF_TOO_FEW_INTS
+    comment: Too ints specified.
+    value: '7120'
+  - name: ERR_CBF_TOO_MANY_INTS
+    comment: Too ints specified.
+    value: '7121'
+  - name: ERR_CBF_INVALID_INT_INDEX
+    comment: Invalid INT index.
+    value: '7122'
+  - name: ERR_CBF_UNSUPPORTED
+    comment: Unsupported feature is present.
+    value: '7123'
+  - name: ERR_CBF_DUPLICATE_PSDVAR
+    comment: Duplicate PSDVAR keyword.
+    value: '7124'
+  - name: ERR_CBF_INVALID_PSDVAR_DIMENSION
+    comment: Invalid PSDVAR dimension.
+    value: '7125'
+  - name: ERR_CBF_TOO_FEW_PSDVAR
+    comment: Too few variables defined.
+    value: '7126'
+  - name: ERR_CBF_INVALID_EXP_DIMENSION
+    comment: Invalid dimension of a exponential cone.
+    value: '7127'
+  - name: ERR_CBF_DUPLICATE_POW_CONES
+    comment: Multiple POWCONES specified.
+    value: '7130'
+  - name: ERR_CBF_DUPLICATE_POW_STAR_CONES
+    comment: Multiple POW*CONES specified.
+    value: '7131'
+  - name: ERR_CBF_INVALID_POWER
+    comment: Invalid power specified.
+    value: '7132'
+  - name: ERR_CBF_POWER_CONE_IS_TOO_LONG
+    comment: Power cone is too long.
+    value: '7133'
+  - name: ERR_CBF_INVALID_POWER_CONE_INDEX
+    comment: Invalid power cone index.
+    value: '7134'
+  - name: ERR_CBF_INVALID_POWER_STAR_CONE_INDEX
+    comment: Invalid power star cone index.
+    value: '7135'
+  - name: ERR_CBF_UNHANDLED_POWER_CONE_TYPE
+    comment: An unhandled power cone type.
+    value: '7136'
+  - name: ERR_CBF_UNHANDLED_POWER_STAR_CONE_TYPE
+    comment: An unhandled power star cone type.
+    value: '7137'
+  - name: ERR_CBF_POWER_CONE_MISMATCH
+    comment: The power cone does not match with it definition.
+    value: '7138'
+  - name: ERR_CBF_POWER_STAR_CONE_MISMATCH
+    comment: The power star cone does not match with it definition.
+    value: '7139'
+  - name: ERR_CBF_INVALID_NUMBER_OF_CONES
+    comment: Invalid number of cones.
+    value: '7140'
+  - name: ERR_CBF_INVALID_DIMENSION_OF_CONES
+    comment: Invalid number of cones.
+    value: '7141'
+  - name: ERR_CBF_INVALID_NUM_PSDCON
+    comment: Invalid number of PSDCON.
+    value: '7200'
+  - name: ERR_CBF_DUPLICATE_PSDCON
+    comment: Duplicate CON keyword.
+    value: '7201'
+  - name: ERR_CBF_INVALID_DIMENSION_OF_PSDCON
+    comment: Invalid PSDCON dimension.
+    value: '7202'
+  - name: ERR_CBF_INVALID_PSDCON_INDEX
+    comment: Invalid PSDCON index.
+    value: '7203'
+  - name: ERR_CBF_INVALID_PSDCON_VARIABLE_INDEX
+    comment: Invalid PSDCON index.
+    value: '7204'
+  - name: ERR_CBF_INVALID_PSDCON_BLOCK_INDEX
+    comment: Invalid PSDCON index.
+    value: '7205'
+  - name: ERR_CBF_UNSUPPORTED_CHANGE
+    comment: The CHANGE section is not supported.
+    value: '7210'
+  - name: ERR_MIO_INVALID_ROOT_OPTIMIZER
+    comment: An invalid root optimizer was selected for the problem type.
+    value: '7700'
+  - name: ERR_MIO_INVALID_NODE_OPTIMIZER
+    comment: An invalid node optimizer was selected for the problem type.
+    value: '7701'
+  - name: ERR_MPS_WRITE_CPLEX_INVALID_CONE_TYPE
+    comment: An invalid cone type occurs when writing a CPLEX formatted MPS file.
+    value: '7750'
+  - name: ERR_TOCONIC_CONSTR_Q_NOT_PSD
+    comment: The matrix defining the quadratric part of constraint is not positive semidefinite.
+    value: '7800'
+  - name: ERR_TOCONIC_CONSTRAINT_FX
+    comment: The quadratic constraint is an equality, thus not convex.
+    value: '7801'
+  - name: ERR_TOCONIC_CONSTRAINT_RA
+    comment: The quadratic constraint has finite lower and upper bound, and therefore it is not convex.
+    value: '7802'
+  - name: ERR_TOCONIC_CONSTR_NOT_CONIC
+    comment: The constraint is not conic representable.
+    value: '7803'
+  - name: ERR_TOCONIC_OBJECTIVE_NOT_PSD
+    comment: The matrix defining the quadratric part of the objective function is not positive semidefinite.
+    value: '7804'
+  - name: ERR_SERVER_CONNECT
+    comment: Failed to connect to remote solver server.
+    value: '8000'
+  - name: ERR_SERVER_PROTOCOL
+    comment: Unexpected message or data from solver server.
+    value: '8001'
+  - name: ERR_SERVER_STATUS
+    comment: Server returned non-ok status code
+    value: '8002'
+  - name: ERR_SERVER_TOKEN
+    comment: Invalid job ID
+    value: '8003'
+  - name: ERR_SERVER_ADDRESS
+    comment: Invalid address
+    value: '8004'
+  - name: ERR_SERVER_CERTIFICATE
+    comment: Invalid TLS certificate format or path
+    value: '8005'
+  - name: ERR_SERVER_TLS_CLIENT
+    comment: Failed to create TLS client
+    value: '8006'
+  - name: ERR_SERVER_ACCESS_TOKEN
+    comment: Invalid access token
+    value: '8007'
+  - name: ERR_SERVER_PROBLEM_SIZE
+    comment: The problem is too large.
+    value: '8008'
+  - name: ERR_DUPLICATE_FIJ
+    comment: An element in the F matrix is specified twice.
+    value: '20100'
+  - name: ERR_INVALID_FIJ
+    comment: f\[i,j\] contains an invalid floating point value, i.e. a NaN or an infinite value.
+    value: '20101'
+  - name: ERR_HUGE_FIJ
+    comment: A numerically huge value is specified for an element in F.
+    value: '20102'
+  - name: ERR_INVALID_G
+    comment: g contains an invalid floating point value, i.e. a NaN or an infinite value.
+    value: '20103'
+  - name: ERR_INVALID_B
+    comment: b contains an invalid floating point value, i.e. a NaN or an infinite value.
+    value: '20150'
+  - name: ERR_DOMAIN_INVALID_INDEX
+    comment: A domain index is invalid.
+    value: '20400'
+  - name: ERR_DOMAIN_DIMENSION
+    comment: A domain dimension is invalid.
+    value: '20401'
+  - name: ERR_DOMAIN_DIMENSION_PSD
+    comment: A PSD domain dimension is invalid.
+    value: '20402'
+  - name: ERR_NOT_POWER_DOMAIN
+    comment: The function is only applicable to primal and dual power cone domains.
+    value: '20403'
+  - name: ERR_DOMAIN_POWER_INVALID_ALPHA
+    comment: Alpha contains an invalid floating point value, i.e. a NaN or an infinite value.
+    value: '20404'
+  - name: ERR_DOMAIN_POWER_NEGATIVE_ALPHA
+    comment: Alpha contains a negative value or zero.
+    value: '20405'
+  - name: ERR_DOMAIN_POWER_NLEFT
+    comment: The value of nleft is too small or too large.
+    value: '20406'
+  - name: ERR_AFE_INVALID_INDEX
+    comment: An affine expression index is invalid.
+    value: '20500'
+  - name: ERR_ACC_INVALID_INDEX
+    comment: A affine conic constraint index is invalid.
+    value: '20600'
+  - name: ERR_ACC_INVALID_ENTRY_INDEX
+    comment: The index of an element in an affine conic constraint is invalid.
+    value: '20601'
+  - name: ERR_ACC_AFE_DOMAIN_MISMATCH
+    comment: There is a mismatch between between the number of affine expressions and total dimension of the domain(s).
+    value: '20602'
+  - name: ERR_DJC_INVALID_INDEX
+    comment: A disjunctive constraint index is invalid.
+    value: '20700'
+  - name: ERR_DJC_UNSUPPORTED_DOMAIN_TYPE
+    comment: An unsupported domain type has been used in a disjunctive constraint.
+    value: '20701'
+  - name: ERR_DJC_AFE_DOMAIN_MISMATCH
+    comment: There is a mismatch between the number of affine expressions and total dimension of the domain(s).
+    value: '20702'
+  - name: ERR_DJC_INVALID_TERM_SIZE
+    comment: A termize is invalid.
+    value: '20703'
+  - name: ERR_DJC_DOMAIN_TERMSIZE_MISMATCH
+    comment: There is a mismatch between the number of domains and the term sizes.
+    value: '20704'
+  - name: ERR_DJC_TOTAL_NUM_TERMS_MISMATCH
+    comment: There total number of terms in all domains does not match.
+    value: '20705'
+  - name: ERR_UNDEF_SOLUTION
+    comment: The required solution is not defined.
+    value: '22000'
+  - name: ERR_NO_DOTY
+    comment: No doty is available.
+    value: '22010'
+  - name: TRM_MAX_ITERATIONS
+    comment: The optimizer terminated at the maximum number of iterations.
+    value: '100000'
+  - name: TRM_MAX_TIME
+    comment: The optimizer terminated at the maximum amount of time.
+    value: '100001'
+  - name: TRM_OBJECTIVE_RANGE
+    comment: The optimizer terminated with an objective value outside the objective range.
+    value: '100002'
+  - name: TRM_STALL
+    comment: The optimizer is terminated due to slow progress.
+    value: '100006'
+  - name: TRM_USER_CALLBACK
+    comment: The user-defined progress callback function terminated the optimization.
+    value: '100007'
+  - name: TRM_MIO_NUM_RELAXS
+    comment: The mixed-integer optimizer terminated as the maximum number of relaxations was reached.
+    value: '100008'
+  - name: TRM_MIO_NUM_BRANCHES
+    comment: The mixed-integer optimizer terminated as the maximum number of branches was reached.
+    value: '100009'
+  - name: TRM_NUM_MAX_NUM_INT_SOLUTIONS
+    comment: The mixed-integer optimizer terminated as the maximum number of feasible solutions was reached.
+    value: '100015'
+  - name: TRM_MAX_NUM_SETBACKS
+    comment: The optimizer terminated as the maximum number of set-backs was reached.
+    value: '100020'
+  - name: TRM_NUMERICAL_PROBLEM
+    comment: The optimizer terminated due to a numerical problem.
+    value: '100025'
+  - name: TRM_LOST_RACE
+    comment: Lost a race.
+    value: '100027'
+  - name: TRM_INTERNAL
+    comment: The optimizer terminated due to some internal reason.
+    value: '100030'
+  - name: TRM_INTERNAL_STOP
+    comment: The optimizer terminated for internal reasons.
+    value: '100031'
+Mionodeseltype:
+  name: Mionodeseltype
+  comment: Mixed-integer node selection types
+  enum_consts:
+  - name: FREE
+    comment: The optimizer decides the node selection strategy.
+    value: '0'
+  - name: FIRST
+    comment: The optimizer employs a depth first node selection strategy.
+    value: '1'
+  - name: BEST
+    comment: The optimizer employs a best bound node selection strategy.
+    value: '2'
+  - name: PSEUDO
+    comment: The optimizer employs selects the node based on a pseudo cost estimate.
+    value: '3'
+Compresstype:
+  name: Compresstype
+  comment: Compression types
+  enum_consts:
+  - name: NONE
+    comment: No compression is used.
+    value: '0'
+  - name: FREE
+    comment: The type of compression used is chosen automatically.
+    value: '1'
+  - name: GZIP
+    comment: The type of compression used is gzip compatible.
+    value: '2'
+  - name: ZSTD
+    comment: The type of compression used is zstd compatible.
+    value: '3'
