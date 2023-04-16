@@ -4,10 +4,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"flag"
+	"fmt"
 	"io"
 	"log"
 	"os"
 	"path"
+	"strings"
 
 	"github.com/go-clang/clang-v15/clang"
 	"mvdan.cc/gofumpt/format"
@@ -24,9 +26,9 @@ func getOrPanic[T any](a T, err error) T {
 	return a
 }
 
-func builderToFile(outputDir, outFile string, m *MosekH, c *OutputConfig, buildFunc func(*MosekH, *OutputConfig, io.Writer) error) {
+func builderToFile(outputDir, outFile string, h *MosekH, config *OutputConfig, buildFunc func(*MosekH, *OutputConfig, io.Writer) error) {
 	var fileContent bytes.Buffer
-	orPanic(buildFunc(m, c, &fileContent))
+	orPanic(buildFunc(h, config, &fileContent))
 	formattedContent, err := format.Source(fileContent.Bytes(), format.Options{
 		LangVersion: "1.20",
 		ExtraRules:  true,
@@ -84,12 +86,57 @@ func main() {
 		orPanic(os.WriteFile(outputFile, b, 0o644))
 	}
 
-	config := NewOutputConfig()
+	config := newOutputConfig()
 
-	orPanic(Normalize(m, config))
+	orPanic(normalize(m, config))
 
-	builderToFile(outputDir, "enums.go", m, config, BuildEnums)
-	builderToFile(outputDir, path.Join("res", "codes.go"), m, config, BuildResCode)
+	for _, enumName := range m.EnumList {
+		if enumName == "MSKrescode_enum" {
+			continue
+		}
+		enumData, ok := m.Enums[enumName]
+		if !ok {
+			log.Panicf("enum %s is not found in parsed mosek.h", enumName)
+		}
+		ec, found := config.Enums[enumName]
+		if !found {
+			log.Panicf("failed to find confing for enum: %s", enumName)
+		}
+		if ec.Skip {
+			continue
+		}
+		fileName := fmt.Sprintf("%s.go", strings.TrimPrefix(enumName, "MSK"))
+		builderToFile(outputDir, fileName, m, config, func(h *MosekH, config *OutputConfig, out io.Writer) error {
+			return enumFileTmpl.Execute(out, &enumFileInput{
+				enumConfig:  ec,
+				CEnum:       enumData,
+				PkgName:     "gmsk",
+				stripPrefix: "MSK_",
+			})
+		})
+
+	}
+
+	builderToFile(outputDir, path.Join("res", "codes.go"), m, config, func(mh *MosekH, oc *OutputConfig, w io.Writer) error {
+		rescodeEnum, ok := mh.Enums["MSKrescode_enum"]
+		if !ok {
+			return fmt.Errorf("failed to find MSKrescode_enum from parsed mosek header")
+		}
+
+		rc, found := config.Enums["MSKrescode_enum"]
+		if !found {
+			rc = &enumConfig{
+				CommonId: CommonId{},
+			}
+		}
+		rc.GoName = "Code"
+		return enumFileTmpl.Execute(w, &enumFileInput{
+			enumConfig:  rc,
+			CEnum:       rescodeEnum,
+			PkgName:     "res",
+			stripPrefix: "MSK_RES_",
+		})
+	})
 
 	for i := 0; i < int(funcType_LAST); i++ {
 		t := funcType(i)
