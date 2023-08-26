@@ -118,6 +118,8 @@ enums:
     go_name: StaKey
   MSKstartpointtype_enum:
     go_name: StarPointType
+  MSKbasindtype_enum:
+    go_name: BasIndType
 funcs:
   MSK_makeenv:
     skip: true

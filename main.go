@@ -30,7 +30,7 @@ func builderToFile(outputDir, outFile string, h *MosekH, config *OutputConfig, b
 	var fileContent bytes.Buffer
 	orPanic(buildFunc(h, config, &fileContent))
 	formattedContent, err := format.Source(fileContent.Bytes(), format.Options{
-		LangVersion: "1.20",
+		LangVersion: "1.21",
 		ExtraRules:  true,
 		ModulePath:  "github.com/fardream/gmsk",
 	})

@@ -274,6 +274,7 @@ func (t *FuncTmplInput) CReturnMapped() string {
 	if t.CFunc.ReturnType == "MSKbooleant" {
 		return "intToBool"
 	}
+
 	goTypeForC, found := t.config.TypeToGoType[t.CFunc.ReturnType]
 	if !found {
 		log.Printf("cannot find mapping for return type %s", t.CFunc.ReturnType)
@@ -292,6 +293,14 @@ func (t *FuncTmplInput) ReturnValueName() string {
 	return "r"
 }
 
+func (t *FuncTmplInput) MapResToError() string {
+	if t.CFunc.ReturnType == "MSKrescodee" {
+		return ".ToError()"
+	} else {
+		return ""
+	}
+}
+
 func (t *FuncTmplInput) ReturnType() string {
 	if t.CFunc.ReturnType == "void" && t.LastNParamOutput == 0 {
 		return ""
@@ -301,7 +310,11 @@ func (t *FuncTmplInput) ReturnType() string {
 		log.Panicf("cannot find mapping for return type %s", t.CFunc.ReturnType)
 	}
 	if t.LastNParamOutput == 0 {
-		return goTypeForC
+		if goTypeForC == "res.Code" {
+			return "error"
+		} else {
+			return goTypeForC
+		}
 	}
 
 	returnValeus := []string{}
@@ -319,7 +332,7 @@ func (t *FuncTmplInput) ReturnType() string {
 		returnValeus = append(returnValeus, thisr)
 	}
 
-	return fmt.Sprintf("(%s res.Code, %s)", returnValueName, strings.Join(returnValeus, ", "))
+	return fmt.Sprintf("(%s, %s error)", strings.Join(returnValeus, ", "), returnValueName)
 }
 
 func replacePrefix(s, oldPrefix, newPrefix string) (bool, string) {

@@ -27,10 +27,12 @@ import (
 func {{if .IsTask}}(task *Task) {{else if .IsEnv}}(env *Env) {{end}}{{.GoName}}(
 {{range .GoParams}}	{{.}},
 {{end}}) {{.ReturnType}} {
-{{if .OutputBools}}{{range .OutputBools -}}
+{{if .OutputBools}}    // function template: prepare for output of booleans
+    {{range .OutputBools -}}
 	c_{{.}} := C.MSKbooleant(0)
 {{end}}
-{{end}}{{if .OutputStrings}}{{range .OutputStrings -}}
+{{end}}{{if .OutputStrings}}    // function template: prepare for output of booleans
+    {{range .OutputStrings -}}
 	c_{{.}} := (*C.char)(C.calloc(MAX_STR_LEN + 1, 1))
 	defer C.free(unsafe.Pointer(c_{{.}}))
 {{end}}
@@ -42,13 +44,13 @@ func {{if .IsTask}}(task *Task) {{else if .IsEnv}}(env *Env) {{end}}{{.GoName}}(
 		C.{{.CName}}(
 {{range .CCallInputs}}        {{.}},
 {{end}}		),
-    )
+    ){{.MapResToError}}
 {{if .OutputBools}}
-	if {{.ReturnValueName}}.IsOk() { {{- range .OutputBools}}
+	if {{.ReturnValueName}} == nil { {{- range .OutputBools}}
 		{{.}} = intToBool(c_{{.}})
 {{- end}}
 }{{end}}{{if .OutputStrings}}
-	if {{.ReturnValueName}}.IsOk() { {{- range .OutputStrings}}
+	if {{.ReturnValueName}} == nil { {{- range .OutputStrings}}
 		{{.}} = C.GoString(c_{{.}})
 {{- end}}
 	}
