@@ -157,6 +157,7 @@ func (t *FuncTmplInput) CName() string {
 	return t.CFunc.Name
 }
 
+// GoParams return a list of strings that are parameters of golang functions.
 func (t *FuncTmplInput) GoParams() []string {
 	var r []string
 	i := 0
@@ -170,8 +171,10 @@ func (t *FuncTmplInput) GoParams() []string {
 		switch {
 		case v.OrigCType == "const char *":
 			s = fmt.Sprintf("%s string", v.Name)
+		case v.OrigCType == "char *":
+			s = fmt.Sprintf("%s *byte", v.Name)
 		case v.IsPointer:
-			s = fmt.Sprintf("%s *%s", v.Name, v.GoType)
+			s = fmt.Sprintf("%s []%s", v.Name, v.GoType)
 		default:
 			s = fmt.Sprintf("%s %s", v.Name, v.GoType)
 		}
@@ -259,7 +262,7 @@ func (t *FuncTmplInput) CCallInputs() []string {
 		case pc.OrigCType == "char *":
 			s = fmt.Sprintf("(*C.char)(unsafe.Pointer(%s))", pc.Name)
 		case pc.IsPointer:
-			s = fmt.Sprintf("(*C.%s)(%s)", pc.CgoType, pc.Name)
+			s = fmt.Sprintf("(*C.%s)(getPtrToFirst(%s))", pc.CgoType, pc.Name)
 		default:
 			s = fmt.Sprintf("C.%s(%s)", pc.CgoType, pc.Name)
 		}
