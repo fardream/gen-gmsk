@@ -35,7 +35,9 @@ func builderToFile(outputDir, outFile string, h *MosekH, config *OutputConfig, b
 		ModulePath:  "github.com/fardream/gmsk",
 	})
 	if err != nil {
-		os.Stdout.Write(fileContent.Bytes())
+		fullPath := path.Join(outputDir, outFile)
+		fmt.Fprintf(os.Stderr, "failed to format %s due to %s", fullPath, err.Error())
+		orPanic(os.WriteFile(fullPath, fileContent.Bytes(), 0o644))
 		orPanic(err)
 	}
 

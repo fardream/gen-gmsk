@@ -120,6 +120,8 @@ enums:
     go_name: StarPointType
   MSKbasindtype_enum:
     go_name: BasIndType
+  MSKmiovarseltype_enum:
+    go_name: MioVarSelType
 funcs:
   MSK_makeenv:
     skip: true
@@ -324,3 +326,7 @@ funcs:
     last_n_param_output: 1
   MSK_getvarnameindex:
     last_n_param_output: 1
+  MSK_writebsolutionhandle: # parameter name is func
+    skip: true
+  MSK_rescodetostr:
+    skip: true # parameter name is res

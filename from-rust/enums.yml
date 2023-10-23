@@ -1,311 +1,3 @@
-Miomode:
-  name: Miomode
-  comment: Integer restrictions
-  enum_consts:
-  - name: IGNORED
-    comment: The integer constraints are ignored and the problem is solved as a continuous problem.
-    value: '0'
-  - name: SATISFIED
-    comment: Integer restrictions should be satisfied.
-    value: '1'
-Scalingtype:
-  name: Scalingtype
-  comment: Scaling type
-  enum_consts:
-  - name: FREE
-    comment: The optimizer chooses the scaling heuristic.
-    value: '0'
-  - name: NONE
-    comment: No scaling is performed.
-    value: '1'
-Purify:
-  name: Purify
-  comment: Solution purification employed optimizer.
-  enum_consts:
-  - name: NONE
-    comment: The optimizer performs no solution purification.
-    value: '0'
-  - name: PRIMAL
-    comment: The optimizer purifies the primal solution.
-    value: '1'
-  - name: DUAL
-    comment: The optimizer purifies the dual solution.
-    value: '2'
-  - name: PRIMAL_DUAL
-    comment: The optimizer purifies both the primal and dual solution.
-    value: '3'
-  - name: AUTO
-    comment: TBD
-    value: '4'
-Dataformat:
-  name: Dataformat
-  comment: Data format types
-  enum_consts:
-  - name: EXTENSION
-    comment: The file extension is used to determine the data file format.
-    value: '0'
-  - name: MPS
-    comment: The data file is MPS formatted.
-    value: '1'
-  - name: LP
-    comment: The data file is LP formatted.
-    value: '2'
-  - name: OP
-    comment: The data file is an optimization problem formatted file.
-    value: '3'
-  - name: FREE_MPS
-    comment: The data a free MPS formatted file.
-    value: '4'
-  - name: TASK
-    comment: Generic task dump file.
-    value: '5'
-  - name: PTF
-    comment: (P)retty (T)ext (F)format.
-    value: '6'
-  - name: CB
-    comment: Conic benchmark format,
-    value: '7'
-  - name: JSON_TASK
-    comment: JSON based task format.
-    value: '8'
-Solitem:
-  name: Solitem
-  comment: Solution items
-  enum_consts:
-  - name: XC
-    comment: Solution for the constraints.
-    value: '0'
-  - name: XX
-    comment: Variable solution.
-    value: '1'
-  - name: Y
-    comment: Lagrange multipliers for equations.
-    value: '2'
-  - name: SLC
-    comment: Lagrange multipliers for lower bounds on the constraints.
-    value: '3'
-  - name: SUC
-    comment: Lagrange multipliers for upper bounds on the constraints.
-    value: '4'
-  - name: SLX
-    comment: Lagrange multipliers for lower bounds on the variables.
-    value: '5'
-  - name: SUX
-    comment: Lagrange multipliers for upper bounds on the variables.
-    value: '6'
-  - name: SNX
-    comment: Lagrange multipliers corresponding to the conic constraints on the variables.
-    value: '7'
-Xmlwriteroutputtype:
-  name: Xmlwriteroutputtype
-  comment: XML writer output mode
-  enum_consts:
-  - name: ROW
-    comment: Write in row order.
-    value: '0'
-  - name: COL
-    comment: Write in column order.
-    value: '1'
-Presolvemode:
-  name: Presolvemode
-  comment: Presolve method.
-  enum_consts:
-  - name: OFF
-    comment: The problem is not presolved before it is optimized.
-    value: '0'
-  - name: ON
-    comment: The problem is presolved before it is optimized.
-    value: '1'
-  - name: FREE
-    comment: It is decided automatically whether to presolve before the problem is optimized.
-    value: '2'
-Dparam:
-  name: Dparam
-  comment: Double parameters
-  enum_consts:
-  - name: ANA_SOL_INFEAS_TOL
-    comment: If a constraint violates its bound with an amount larger than this value, the constraint name, index and violation will be printed by the solution analyzer.
-    value: '0'
-  - name: BASIS_REL_TOL_S
-    comment: Maximum relative dual bound violation allowed in an optimal basic solution.
-    value: '1'
-  - name: BASIS_TOL_S
-    comment: Maximum absolute dual bound violation in an optimal basic solution.
-    value: '2'
-  - name: BASIS_TOL_X
-    comment: Maximum absolute primal bound violation allowed in an optimal basic solution.
-    value: '3'
-  - name: CHECK_CONVEXITY_REL_TOL
-    comment: Convexity check tolerance.
-    value: '4'
-  - name: DATA_SYM_MAT_TOL
-    comment: Zero tolerance threshold for symmetric matrices.
-    value: '5'
-  - name: DATA_SYM_MAT_TOL_HUGE
-    comment: Data tolerance threshold.
-    value: '6'
-  - name: DATA_SYM_MAT_TOL_LARGE
-    comment: Data tolerance threshold.
-    value: '7'
-  - name: DATA_TOL_AIJ_HUGE
-    comment: Data tolerance threshold.
-    value: '8'
-  - name: DATA_TOL_AIJ_LARGE
-    comment: Data tolerance threshold.
-    value: '9'
-  - name: DATA_TOL_BOUND_INF
-    comment: Data tolerance threshold.
-    value: '10'
-  - name: DATA_TOL_BOUND_WRN
-    comment: Data tolerance threshold.
-    value: '11'
-  - name: DATA_TOL_C_HUGE
-    comment: Data tolerance threshold.
-    value: '12'
-  - name: DATA_TOL_CJ_LARGE
-    comment: Data tolerance threshold.
-    value: '13'
-  - name: DATA_TOL_QIJ
-    comment: Data tolerance threshold.
-    value: '14'
-  - name: DATA_TOL_X
-    comment: Data tolerance threshold.
-    value: '15'
-  - name: INTPNT_CO_TOL_DFEAS
-    comment: Dual feasibility tolerance used by the interior-point optimizer for conic problems.
-    value: '16'
-  - name: INTPNT_CO_TOL_INFEAS
-    comment: Infeasibility tolerance used by the interior-point optimizer for conic problems.
-    value: '17'
-  - name: INTPNT_CO_TOL_MU_RED
-    comment: Relative complementarity gap tolerance used by the interior-point optimizer for conic problems.
-    value: '18'
-  - name: INTPNT_CO_TOL_NEAR_REL
-    comment: Optimality tolerance used by the interior-point optimizer for conic problems.
-    value: '19'
-  - name: INTPNT_CO_TOL_PFEAS
-    comment: Primal feasibility tolerance used by the interior-point optimizer for conic problems.
-    value: '20'
-  - name: INTPNT_CO_TOL_REL_GAP
-    comment: Relative gap termination tolerance used by the interior-point optimizer for conic problems.
-    value: '21'
-  - name: INTPNT_QO_TOL_DFEAS
-    comment: Dual feasibility tolerance used by the interior-point optimizer for quadratic problems.
-    value: '22'
-  - name: INTPNT_QO_TOL_INFEAS
-    comment: Infeasibility tolerance used by the interior-point optimizer for quadratic problems.
-    value: '23'
-  - name: INTPNT_QO_TOL_MU_RED
-    comment: Relative complementarity gap tolerance used by the interior-point optimizer for quadratic problems.
-    value: '24'
-  - name: INTPNT_QO_TOL_NEAR_REL
-    comment: Optimality tolerance used by the interior-point optimizer for quadratic problems.
-    value: '25'
-  - name: INTPNT_QO_TOL_PFEAS
-    comment: Primal feasibility tolerance used by the interior-point optimizer for quadratic problems.
-    value: '26'
-  - name: INTPNT_QO_TOL_REL_GAP
-    comment: Relative gap termination tolerance used by the interior-point optimizer for quadratic problems.
-    value: '27'
-  - name: INTPNT_TOL_DFEAS
-    comment: Dual feasibility tolerance used by the interior-point optimizer for linear problems.
-    value: '28'
-  - name: INTPNT_TOL_DSAFE
-    comment: Controls the interior-point dual starting point.
-    value: '29'
-  - name: INTPNT_TOL_INFEAS
-    comment: Infeasibility tolerance used by the interior-point optimizer for linear problems.
-    value: '30'
-  - name: INTPNT_TOL_MU_RED
-    comment: Relative complementarity gap tolerance used by the interior-point optimizer for linear problems.
-    value: '31'
-  - name: INTPNT_TOL_PATH
-    comment: Interior-point centering aggressiveness.
-    value: '32'
-  - name: INTPNT_TOL_PFEAS
-    comment: Primal feasibility tolerance used by the interior-point optimizer for linear problems.
-    value: '33'
-  - name: INTPNT_TOL_PSAFE
-    comment: Controls the interior-point primal starting point.
-    value: '34'
-  - name: INTPNT_TOL_REL_GAP
-    comment: Relative gap termination tolerance used by the interior-point optimizer for linear problems.
-    value: '35'
-  - name: INTPNT_TOL_REL_STEP
-    comment: Relative step size to the boundary for linear and quadratic optimization problems.
-    value: '36'
-  - name: INTPNT_TOL_STEP_SIZE
-    comment: Minimal step size tolerance for the interior-point optimizer.
-    value: '37'
-  - name: LOWER_OBJ_CUT
-    comment: Objective bound.
-    value: '38'
-  - name: LOWER_OBJ_CUT_FINITE_TRH
-    comment: Objective bound.
-    value: '39'
-  - name: MIO_DJC_MAX_BIGM
-    comment: Maximum allowed big-M value when reformulating disjunctive constraints to linear constraints.
-    value: '40'
-  - name: MIO_MAX_TIME
-    comment: Time limit for the mixed-integer optimizer.
-    value: '41'
-  - name: MIO_REL_GAP_CONST
-    comment: This value is used to compute the relative gap for the solution to an integer optimization problem.
-    value: '42'
-  - name: MIO_TOL_ABS_GAP
-    comment: Absolute optimality tolerance employed by the mixed-integer optimizer.
-    value: '43'
-  - name: MIO_TOL_ABS_RELAX_INT
-    comment: Integer feasibility tolerance.
-    value: '44'
-  - name: MIO_TOL_FEAS
-    comment: Feasibility tolerance for mixed integer solver.
-    value: '45'
-  - name: MIO_TOL_REL_DUAL_BOUND_IMPROVEMENT
-    comment: Controls cut generation for mixed-integer optimizer.
-    value: '46'
-  - name: MIO_TOL_REL_GAP
-    comment: Relative optimality tolerance employed by the mixed-integer optimizer.
-    value: '47'
-  - name: OPTIMIZER_MAX_TIME
-    comment: Solver time limit.
-    value: '48'
-  - name: PRESOLVE_TOL_ABS_LINDEP
-    comment: Absolute tolerance employed by the linear dependency checker.
-    value: '49'
-  - name: PRESOLVE_TOL_AIJ
-    comment: Absolute zero tolerance employed for constraint coefficients in the presolve.
-    value: '50'
-  - name: PRESOLVE_TOL_PRIMAL_INFEAS_PERTURBATION
-    comment: The presolve is allowed to perturbe a bound on a constraint or variable by this amount if it removes an infeasibility.
-    value: '51'
-  - name: PRESOLVE_TOL_REL_LINDEP
-    comment: Relative tolerance employed by the linear dependency checker.
-    value: '52'
-  - name: PRESOLVE_TOL_S
-    comment: Absolute zero tolerance employed for slack variables in the presolve.
-    value: '53'
-  - name: PRESOLVE_TOL_X
-    comment: Absolute zero tolerance employed for variables in the presolve.
-    value: '54'
-  - name: QCQO_REFORMULATE_REL_DROP_TOL
-    comment: This parameter determines when columns are dropped in incomplete Cholesky factorization during reformulation of quadratic problems.
-    value: '55'
-  - name: SEMIDEFINITE_TOL_APPROX
-    comment: Tolerance to define a matrix to be positive semidefinite.
-    value: '56'
-  - name: SIM_LU_TOL_REL_PIV
-    comment: Relative pivot tolerance employed when computing the LU factorization of the basis matrix.
-    value: '57'
-  - name: SIMPLEX_ABS_TOL_PIV
-    comment: Absolute pivot tolerance employed by the simplex optimizers.
-    value: '58'
-  - name: UPPER_OBJ_CUT
-    comment: Objective bound.
-    value: '59'
-  - name: UPPER_OBJ_CUT_FINITE_TRH
-    comment: Objective bound.
-    value: '60'
 Prosta:
   name: Prosta
   comment: Problem status keys
@@ -337,664 +29,38 @@ Prosta:
   - name: PRIM_INFEAS_OR_UNBOUNDED
     comment: The problem is either primal infeasible or unbounded. This may occur for mixed-integer problems.
     value: '8'
-Symmattype:
-  name: Symmattype
-  comment: Cone types
+Miodatapermmethod:
+  name: Miodatapermmethod
+  comment: Specifies the problem data permutation method for mixed-integer problems.
   enum_consts:
-  - name: SPARSE
-    comment: Sparse symmetric matrix.
+  - name: NONE
+    comment: No problem data permutation is applied.
     value: '0'
-Dinfitem:
-  name: Dinfitem
-  comment: Double information items
-  enum_consts:
-  - name: ANA_PRO_SCALARIZED_CONSTRAINT_MATRIX_DENSITY
-    comment: Density percentage of the scalarized constraint matrix.
-    value: '0'
-  - name: BI_CLEAN_DUAL_TIME
-    comment: Time  spent within the dual clean-up optimizer of the basis identification procedure since its invocation.
+  - name: CYCLIC_SHIFT
+    comment: A random cyclic shift is applied to permute the problem data.
     value: '1'
-  - name: BI_CLEAN_PRIMAL_TIME
-    comment: Time spent within the primal clean-up optimizer of the basis identification procedure since its invocation.
+  - name: RANDOM
+    comment: A random permutation is applied to the problem data.
     value: '2'
-  - name: BI_CLEAN_TIME
-    comment: Time spent within the clean-up phase of the basis identification procedure since its invocation.
+Basindtype:
+  name: Basindtype
+  comment: Basis identification
+  enum_consts:
+  - name: NEVER
+    comment: Never do basis identification.
+    value: '0'
+  - name: ALWAYS
+    comment: Basis identification is always performed even if the interior-point optimizer terminates abnormally.
+    value: '1'
+  - name: NO_ERROR
+    comment: Basis identification is performed if the interior-point optimizer terminates without an error.
+    value: '2'
+  - name: IF_FEASIBLE
+    comment: Basis identification is not performed if the interior-point optimizer terminates with a problem status saying that the problem is primal or dual infeasible.
     value: '3'
-  - name: BI_DUAL_TIME
-    comment: Time spent within the dual phase basis identification procedure since its invocation.
+  - name: RESERVERED
+    comment: Not currently in use.
     value: '4'
-  - name: BI_PRIMAL_TIME
-    comment: Time  spent within the primal phase of the basis identification procedure since its invocation.
-    value: '5'
-  - name: BI_TIME
-    comment: Time spent within the basis identification procedure since its invocation.
-    value: '6'
-  - name: INTPNT_DUAL_FEAS
-    comment: Dual feasibility measure reported by the interior-point optimizer.
-    value: '7'
-  - name: INTPNT_DUAL_OBJ
-    comment: Dual objective value reported by the interior-point optimizer.
-    value: '8'
-  - name: INTPNT_FACTOR_NUM_FLOPS
-    comment: An estimate of the number of flops used in the factorization.
-    value: '9'
-  - name: INTPNT_OPT_STATUS
-    comment: A measure of optimality of the solution.
-    value: '10'
-  - name: INTPNT_ORDER_TIME
-    comment: Order time (in seconds).
-    value: '11'
-  - name: INTPNT_PRIMAL_FEAS
-    comment: Primal feasibility measure reported by the interior-point optimizer.
-    value: '12'
-  - name: INTPNT_PRIMAL_OBJ
-    comment: Primal objective value reported by the interior-point optimizer.
-    value: '13'
-  - name: INTPNT_TIME
-    comment: Time spent within the interior-point optimizer since its invocation.
-    value: '14'
-  - name: MIO_CLIQUE_SEPARATION_TIME
-    comment: Separation time for clique cuts.
-    value: '15'
-  - name: MIO_CMIR_SEPARATION_TIME
-    comment: Separation time for CMIR cuts.
-    value: '16'
-  - name: MIO_CONSTRUCT_SOLUTION_OBJ
-    comment: Optimal objective value corresponding to the feasible solution.
-    value: '17'
-  - name: MIO_DUAL_BOUND_AFTER_PRESOLVE
-    comment: Value of the dual bound after presolve but before cut generation.
-    value: '18'
-  - name: MIO_GMI_SEPARATION_TIME
-    comment: Separation time for GMI cuts.
-    value: '19'
-  - name: MIO_IMPLIED_BOUND_TIME
-    comment: Separation time for implied bound cuts.
-    value: '20'
-  - name: MIO_INITIAL_FEASIBLE_SOLUTION_OBJ
-    comment: Optimal objective value corresponding to the user provided initial solution.
-    value: '21'
-  - name: MIO_KNAPSACK_COVER_SEPARATION_TIME
-    comment: Separation time for knapsack cover.
-    value: '22'
-  - name: MIO_LIPRO_SEPARATION_TIME
-    comment: Separation time for lift-and-project cuts.
-    value: '23'
-  - name: MIO_OBJ_ABS_GAP
-    comment: If the mixed-integer optimizer has computed a feasible solution and a bound, this contains the absolute gap.
-    value: '24'
-  - name: MIO_OBJ_BOUND
-    comment: The best bound on the objective value known.
-    value: '25'
-  - name: MIO_OBJ_INT
-    comment: The primal objective value corresponding to the best integer feasible solution.
-    value: '26'
-  - name: MIO_OBJ_REL_GAP
-    comment: If the mixed-integer optimizer has computed a feasible solution and a bound, this contains the relative gap.
-    value: '27'
-  - name: MIO_PROBING_TIME
-    comment: Total time for probing.
-    value: '28'
-  - name: MIO_ROOT_CUTGEN_TIME
-    comment: Total time for cut generation.
-    value: '29'
-  - name: MIO_ROOT_OPTIMIZER_TIME
-    comment: Time spent in the contiuous optimizer while processing the root node relaxation.
-    value: '30'
-  - name: MIO_ROOT_PRESOLVE_TIME
-    comment: Time spent presolving the problem at the root node.
-    value: '31'
-  - name: MIO_ROOT_TIME
-    comment: Time spent processing the root node.
-    value: '32'
-  - name: MIO_TIME
-    comment: Time spent in the mixed-integer optimizer.
-    value: '33'
-  - name: MIO_USER_OBJ_CUT
-    comment: If the objective cut is used, then this information item has the value of the cut.
-    value: '34'
-  - name: OPTIMIZER_TIME
-    comment: Total time spent in the optimizer since it was invoked.
-    value: '35'
-  - name: PRESOLVE_ELI_TIME
-    comment: Total time spent in the eliminator since the presolve was invoked.
-    value: '36'
-  - name: PRESOLVE_LINDEP_TIME
-    comment: Total time spent  in the linear dependency checker since the presolve was invoked.
-    value: '37'
-  - name: PRESOLVE_TIME
-    comment: Total time (in seconds) spent in the presolve since it was invoked.
-    value: '38'
-  - name: PRESOLVE_TOTAL_PRIMAL_PERTURBATION
-    comment: Total perturbation of the bounds of the primal problem.
-    value: '39'
-  - name: PRIMAL_REPAIR_PENALTY_OBJ
-    comment: The optimal objective value of the penalty function.
-    value: '40'
-  - name: QCQO_REFORMULATE_MAX_PERTURBATION
-    comment: Maximum absolute diagonal perturbation occurring during the QCQO reformulation.
-    value: '41'
-  - name: QCQO_REFORMULATE_TIME
-    comment: Time spent with conic quadratic reformulation.
-    value: '42'
-  - name: QCQO_REFORMULATE_WORST_CHOLESKY_COLUMN_SCALING
-    comment: Worst Cholesky column scaling.
-    value: '43'
-  - name: QCQO_REFORMULATE_WORST_CHOLESKY_DIAG_SCALING
-    comment: Worst Cholesky diagonal scaling.
-    value: '44'
-  - name: READ_DATA_TIME
-    comment: Time spent reading the data file.
-    value: '45'
-  - name: REMOTE_TIME
-    comment: The total real time in seconds spent when optimizing on a server by the process performing the optimization on the server
-    value: '46'
-  - name: SIM_DUAL_TIME
-    comment: Time spent in the dual simplex optimizer since invoking it.
-    value: '47'
-  - name: SIM_FEAS
-    comment: Feasibility measure reported by the simplex optimizer.
-    value: '48'
-  - name: SIM_OBJ
-    comment: Objective value reported by the simplex optimizer.
-    value: '49'
-  - name: SIM_PRIMAL_TIME
-    comment: Time spent in the primal simplex optimizer since invoking it.
-    value: '50'
-  - name: SIM_TIME
-    comment: Time spent in the simplex optimizer since invoking it.
-    value: '51'
-  - name: SOL_BAS_DUAL_OBJ
-    comment: Dual objective value of the basic solution. Updated by the function updatesolutioninfo.
-    value: '52'
-  - name: SOL_BAS_DVIOLCON
-    comment: Maximal dual bound violation for xx in the basic solution. Updated by the function updatesolutioninfo.
-    value: '53'
-  - name: SOL_BAS_DVIOLVAR
-    comment: Maximal dual bound violation for xx in the basic solution. Updated by the function updatesolutioninfo.
-    value: '54'
-  - name: SOL_BAS_NRM_BARX
-    comment: Infinity norm of barx in the basic solution.
-    value: '55'
-  - name: SOL_BAS_NRM_SLC
-    comment: Infinity norm of slc in the basic solution.
-    value: '56'
-  - name: SOL_BAS_NRM_SLX
-    comment: Infinity norm of slx in the basic solution.
-    value: '57'
-  - name: SOL_BAS_NRM_SUC
-    comment: Infinity norm of suc in the basic solution.
-    value: '58'
-  - name: SOL_BAS_NRM_SUX
-    comment: Infinity norm of sux in the basic solution.
-    value: '59'
-  - name: SOL_BAS_NRM_XC
-    comment: Infinity norm of xc in the basic solution.
-    value: '60'
-  - name: SOL_BAS_NRM_XX
-    comment: Infinity norm of xx in the basic solution.
-    value: '61'
-  - name: SOL_BAS_NRM_Y
-    comment: Infinity norm of Y in the basic solution.
-    value: '62'
-  - name: SOL_BAS_PRIMAL_OBJ
-    comment: Primal objective value of the basic solution. Updated by the function updatesolutioninfo.
-    value: '63'
-  - name: SOL_BAS_PVIOLCON
-    comment: Maximal primal bound violation for xc in the basic solution. Updated by the function updatesolutioninfo.
-    value: '64'
-  - name: SOL_BAS_PVIOLVAR
-    comment: Maximal primal bound violation for xx in the basic solution. Updated by the function updatesolutioninfo.
-    value: '65'
-  - name: SOL_ITG_NRM_BARX
-    comment: Infinity norm of barx in the integer solution.
-    value: '66'
-  - name: SOL_ITG_NRM_XC
-    comment: Infinity norm of xc in the integer solution.
-    value: '67'
-  - name: SOL_ITG_NRM_XX
-    comment: Infinity norm of xx in the integer solution.
-    value: '68'
-  - name: SOL_ITG_PRIMAL_OBJ
-    comment: Primal objective value of the integer solution. Updated by the function updatesolutioninfo.
-    value: '69'
-  - name: SOL_ITG_PVIOLACC
-    comment: Maximal primal violation for affine conic constraints in the integer solution. Updated by the function updatesolutioninfo.
-    value: '70'
-  - name: SOL_ITG_PVIOLBARVAR
-    comment: Maximal primal bound violation for barx in the integer solution. Updated by the function updatesolutioninfo.
-    value: '71'
-  - name: SOL_ITG_PVIOLCON
-    comment: Maximal primal bound violation for xc in the integer solution. Updated by the function updatesolutioninfo.
-    value: '72'
-  - name: SOL_ITG_PVIOLCONES
-    comment: Maximal primal violation for primal conic constraints in the integer solution. Updated by the function updatesolutioninfo.
-    value: '73'
-  - name: SOL_ITG_PVIOLDJC
-    comment: Maximal primal violation for disjunctive constraints in the integer solution. Updated by the function updatesolutioninfo.
-    value: '74'
-  - name: SOL_ITG_PVIOLITG
-    comment: Maximal violation for the integer constraints in the integer solution. Updated by the function updatesolutioninfo.
-    value: '75'
-  - name: SOL_ITG_PVIOLVAR
-    comment: Maximal primal bound violation for xx in the integer solution. Updated by the function updatesolutioninfo.
-    value: '76'
-  - name: SOL_ITR_DUAL_OBJ
-    comment: Dual objective value of the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '77'
-  - name: SOL_ITR_DVIOLACC
-    comment: Maximal dual violation for affine conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '78'
-  - name: SOL_ITR_DVIOLBARVAR
-    comment: Maximal dual bound violation for barx in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '79'
-  - name: SOL_ITR_DVIOLCON
-    comment: Maximal dual bound violation for xc in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '80'
-  - name: SOL_ITR_DVIOLCONES
-    comment: Maximal dual violation for conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '81'
-  - name: SOL_ITR_DVIOLVAR
-    comment: Maximal dual bound violation for xx in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '82'
-  - name: SOL_ITR_NRM_BARS
-    comment: Infinity norm of bars in the interior-point solution.
-    value: '83'
-  - name: SOL_ITR_NRM_BARX
-    comment: Infinity norm of barx in the interior-point solution.
-    value: '84'
-  - name: SOL_ITR_NRM_SLC
-    comment: Infinity norm of slc in the interior-point solution.
-    value: '85'
-  - name: SOL_ITR_NRM_SLX
-    comment: Infinity norm of slx in the interior-point solution.
-    value: '86'
-  - name: SOL_ITR_NRM_SNX
-    comment: Infinity norm of snx in the interior-point solution.
-    value: '87'
-  - name: SOL_ITR_NRM_SUC
-    comment: Infinity norm of suc in the interior-point solution.
-    value: '88'
-  - name: SOL_ITR_NRM_SUX
-    comment: Infinity norm of sux in the interior-point solution.
-    value: '89'
-  - name: SOL_ITR_NRM_XC
-    comment: Infinity norm of xc in the interior-point solution.
-    value: '90'
-  - name: SOL_ITR_NRM_XX
-    comment: Infinity norm of xx in the interior-point solution.
-    value: '91'
-  - name: SOL_ITR_NRM_Y
-    comment: Infinity norm of Y in the interior-point solution.
-    value: '92'
-  - name: SOL_ITR_PRIMAL_OBJ
-    comment: Primal objective value of the interior-point solution.
-    value: '93'
-  - name: SOL_ITR_PVIOLACC
-    comment: Maximal primal violation for affine conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '94'
-  - name: SOL_ITR_PVIOLBARVAR
-    comment: Maximal primal bound violation for barx in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '95'
-  - name: SOL_ITR_PVIOLCON
-    comment: Maximal primal bound violation for xc in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '96'
-  - name: SOL_ITR_PVIOLCONES
-    comment: Maximal primal violation for conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '97'
-  - name: SOL_ITR_PVIOLVAR
-    comment: Maximal primal bound violation for xx in the interior-point solution. Updated by the function updatesolutioninfo.
-    value: '98'
-  - name: TO_CONIC_TIME
-    comment: Time spent in the last to conic reformulation.
-    value: '99'
-  - name: WRITE_DATA_TIME
-    comment: Time spent writing the data file.
-    value: '100'
-  - name: END
-    comment: ''
-    value: '100'
-Startpointtype:
-  name: Startpointtype
-  comment: Starting point types
-  enum_consts:
-  - name: FREE
-    comment: The starting point is chosen automatically.
-    value: '0'
-  - name: GUESS
-    comment: The optimizer guesses a starting point.
-    value: '1'
-  - name: CONSTANT
-    comment: The optimizer constructs a starting point by assigning a constant value to all primal and dual variables. This starting point is normally robust.
-    value: '2'
-  - name: SATISFY_BOUNDS
-    comment: The starting point satisfies all the simple bounds on nonlinear variables.
-    value: '3'
-Iinfitem:
-  name: Iinfitem
-  comment: Integer information items.
-  enum_consts:
-  - name: ANA_PRO_NUM_CON
-    comment: Number of constraints in the problem.
-    value: '0'
-  - name: ANA_PRO_NUM_CON_EQ
-    comment: Number of equality constraints.
-    value: '1'
-  - name: ANA_PRO_NUM_CON_FR
-    comment: Number of unbounded constraints.
-    value: '2'
-  - name: ANA_PRO_NUM_CON_LO
-    comment: Number of constraints with a lower bound and an infinite upper bound.
-    value: '3'
-  - name: ANA_PRO_NUM_CON_RA
-    comment: Number of constraints with finite lower and upper bounds.
-    value: '4'
-  - name: ANA_PRO_NUM_CON_UP
-    comment: Number of constraints with an upper bound and an infinite lower bound.
-    value: '5'
-  - name: ANA_PRO_NUM_VAR
-    comment: Number of variables in the problem.
-    value: '6'
-  - name: ANA_PRO_NUM_VAR_BIN
-    comment: Number of binary variables.
-    value: '7'
-  - name: ANA_PRO_NUM_VAR_CONT
-    comment: Number of continuous variables.
-    value: '8'
-  - name: ANA_PRO_NUM_VAR_EQ
-    comment: Number of fixed variables.
-    value: '9'
-  - name: ANA_PRO_NUM_VAR_FR
-    comment: Number of unbounded constraints.
-    value: '10'
-  - name: ANA_PRO_NUM_VAR_INT
-    comment: Number of general integer variables.
-    value: '11'
-  - name: ANA_PRO_NUM_VAR_LO
-    comment: Number of variables with a lower bound and an infinite upper bound.
-    value: '12'
-  - name: ANA_PRO_NUM_VAR_RA
-    comment: Number of variables with finite lower and upper bounds.
-    value: '13'
-  - name: ANA_PRO_NUM_VAR_UP
-    comment: Number of variables with an upper bound and an infinite lower bound.
-    value: '14'
-  - name: INTPNT_FACTOR_DIM_DENSE
-    comment: Dimension of the dense sub system in factorization.
-    value: '15'
-  - name: INTPNT_ITER
-    comment: Number of interior-point iterations since invoking the interior-point optimizer.
-    value: '16'
-  - name: INTPNT_NUM_THREADS
-    comment: Number of threads that the interior-point optimizer is using.
-    value: '17'
-  - name: INTPNT_SOLVE_DUAL
-    comment: Non-zero if the interior-point optimizer is solving the dual problem.
-    value: '18'
-  - name: MIO_ABSGAP_SATISFIED
-    comment: Non-zero if absolute gap is within tolerances.
-    value: '19'
-  - name: MIO_CLIQUE_TABLE_SIZE
-    comment: Size of the clique table.
-    value: '20'
-  - name: MIO_CONSTRUCT_SOLUTION
-    comment: Informs if MOSEK successfully constructed an initial integer feasible solution.
-    value: '21'
-  - name: MIO_INITIAL_FEASIBLE_SOLUTION
-    comment: Informs if MOSEK found the solution provided by the user to be feasible
-    value: '22'
-  - name: MIO_NODE_DEPTH
-    comment: Depth of the last node solved.
-    value: '23'
-  - name: MIO_NUM_ACTIVE_NODES
-    comment: Number of active branch and bound nodes.
-    value: '24'
-  - name: MIO_NUM_BRANCH
-    comment: Number of branches performed during the optimization.
-    value: '25'
-  - name: MIO_NUM_CLIQUE_CUTS
-    comment: Number of clique cuts.
-    value: '26'
-  - name: MIO_NUM_CMIR_CUTS
-    comment: Number of Complemented Mixed Integer Rounding (CMIR) cuts.
-    value: '27'
-  - name: MIO_NUM_GOMORY_CUTS
-    comment: Number of Gomory cuts.
-    value: '28'
-  - name: MIO_NUM_IMPLIED_BOUND_CUTS
-    comment: Number of implied bound cuts.
-    value: '29'
-  - name: MIO_NUM_INT_SOLUTIONS
-    comment: Number of integer feasible solutions that have been found.
-    value: '30'
-  - name: MIO_NUM_KNAPSACK_COVER_CUTS
-    comment: Number of clique cuts.
-    value: '31'
-  - name: MIO_NUM_LIPRO_CUTS
-    comment: Number of lift-and-project cuts.
-    value: '32'
-  - name: MIO_NUM_RELAX
-    comment: Number of relaxations solved during the optimization.
-    value: '33'
-  - name: MIO_NUM_REPEATED_PRESOLVE
-    comment: Number of times presolve was repeated at root.
-    value: '34'
-  - name: MIO_NUMBIN
-    comment: Number of binary variables in the problem to be solved by the mixed-integer optimizer.
-    value: '35'
-  - name: MIO_NUMBINCONEVAR
-    comment: Number of binary cone variables in the problem to be solved by the mixed-integer optimizer.
-    value: '36'
-  - name: MIO_NUMCON
-    comment: Number of constraints in the problem to be solved by the mixed-integer optimizer.
-    value: '37'
-  - name: MIO_NUMCONE
-    comment: Number of cones in the problem to be solved by the mixed-integer optimizer.
-    value: '38'
-  - name: MIO_NUMCONEVAR
-    comment: Number of cone variables in the problem to be solved by the mixed-integer optimizer.
-    value: '39'
-  - name: MIO_NUMCONT
-    comment: Number of continuous variables in the problem to be solved by the mixed-integer optimizer.
-    value: '40'
-  - name: MIO_NUMCONTCONEVAR
-    comment: Number of continuous cone variables in the problem to be solved by the mixed-integer optimizer.
-    value: '41'
-  - name: MIO_NUMDEXPCONES
-    comment: Number of dual exponential cones in the problem to be solved by the mixed-integer optimizer.
-    value: '42'
-  - name: MIO_NUMDJC
-    comment: Number of disjunctive constraints in the problem to be solved by the mixed-integer optimizer.
-    value: '43'
-  - name: MIO_NUMDPOWCONES
-    comment: Number of dual power cones in the problem to be solved by the mixed-integer optimizer.
-    value: '44'
-  - name: MIO_NUMINT
-    comment: Number of integer variables in the problem to be solved by the mixed-integer optimizer.
-    value: '45'
-  - name: MIO_NUMINTCONEVAR
-    comment: Number of integer cone variables in the problem to be solved by the mixed-integer optimizer.
-    value: '46'
-  - name: MIO_NUMPEXPCONES
-    comment: Number of primal exponential cones in the problem to be solved by the mixed-integer optimizer.
-    value: '47'
-  - name: MIO_NUMPPOWCONES
-    comment: Number of primal power cones in the problem to be solved by the mixed-integer optimizer.
-    value: '48'
-  - name: MIO_NUMQCONES
-    comment: Number of quadratic cones in the problem to be solved by the mixed-integer optimizer.
-    value: '49'
-  - name: MIO_NUMRQCONES
-    comment: Number of rotated quadratic cones in the problem to be solved by the mixed-integer optimizer.
-    value: '50'
-  - name: MIO_NUMVAR
-    comment: Number of variables in the problem to be solved by the mixed-integer optimizer.
-    value: '51'
-  - name: MIO_OBJ_BOUND_DEFINED
-    comment: Non-zero if a valid objective bound has been found, otherwise zero.
-    value: '52'
-  - name: MIO_PRESOLVED_NUMBIN
-    comment: Number of binary variables in the problem after the mixed-integer optimizer's presolve.
-    value: '53'
-  - name: MIO_PRESOLVED_NUMBINCONEVAR
-    comment: Number of binary cone variables in the problem after the mixed-integer optimizer's presolve.
-    value: '54'
-  - name: MIO_PRESOLVED_NUMCON
-    comment: Number of constraints in the problem after the mixed-integer optimizer's presolve.
-    value: '55'
-  - name: MIO_PRESOLVED_NUMCONE
-    comment: Number of cones in the problem after the mixed-integer optimizer's presolve.
-    value: '56'
-  - name: MIO_PRESOLVED_NUMCONEVAR
-    comment: Number of cone variables in the problem after the mixed-integer optimizer's presolve.
-    value: '57'
-  - name: MIO_PRESOLVED_NUMCONT
-    comment: Number of continuous variables in the problem after the mixed-integer optimizer's presolve.
-    value: '58'
-  - name: MIO_PRESOLVED_NUMCONTCONEVAR
-    comment: Number of continuous cone variables in the problem after the mixed-integer optimizer's presolve.
-    value: '59'
-  - name: MIO_PRESOLVED_NUMDEXPCONES
-    comment: Number of dual exponential cones in the problem after the mixed-integer optimizer's presolve.
-    value: '60'
-  - name: MIO_PRESOLVED_NUMDJC
-    comment: Number of disjunctive constraints in the problem after the mixed-integer optimizer's presolve.
-    value: '61'
-  - name: MIO_PRESOLVED_NUMDPOWCONES
-    comment: Number of dual power cones in the problem after the mixed-integer optimizer's presolve.
-    value: '62'
-  - name: MIO_PRESOLVED_NUMINT
-    comment: Number of integer variables in the problem after the mixed-integer optimizer's presolve.
-    value: '63'
-  - name: MIO_PRESOLVED_NUMINTCONEVAR
-    comment: Number of integer cone variables in the problem after the mixed-integer optimizer's presolve.
-    value: '64'
-  - name: MIO_PRESOLVED_NUMPEXPCONES
-    comment: Number of primal exponential cones in the problem after the mixed-integer optimizer's presolve.
-    value: '65'
-  - name: MIO_PRESOLVED_NUMPPOWCONES
-    comment: Number of primal power cones in the problem after the mixed-integer optimizer's presolve.
-    value: '66'
-  - name: MIO_PRESOLVED_NUMQCONES
-    comment: Number of quadratic cones in the problem after the mixed-integer optimizer's presolve.
-    value: '67'
-  - name: MIO_PRESOLVED_NUMRQCONES
-    comment: Number of rotated quadratic cones in the problem after the mixed-integer optimizer's presolve.
-    value: '68'
-  - name: MIO_PRESOLVED_NUMVAR
-    comment: Number of variables in the problem after the mixed-integer optimizer's presolve.
-    value: '69'
-  - name: MIO_RELGAP_SATISFIED
-    comment: Non-zero if relative gap is within tolerances.
-    value: '70'
-  - name: MIO_TOTAL_NUM_CUTS
-    comment: Total number of cuts generated by the mixed-integer optimizer.
-    value: '71'
-  - name: MIO_USER_OBJ_CUT
-    comment: If it is non-zero, then the objective cut is used.
-    value: '72'
-  - name: OPT_NUMCON
-    comment: Number of constraints in the problem solved when the optimizer is called.
-    value: '73'
-  - name: OPT_NUMVAR
-    comment: Number of variables in the problem solved when the optimizer is called
-    value: '74'
-  - name: OPTIMIZE_RESPONSE
-    comment: The response code returned by optimize.
-    value: '75'
-  - name: PRESOLVE_NUM_PRIMAL_PERTURBATIONS
-    comment: Number perturbations to thhe bounds of the primal problem.
-    value: '76'
-  - name: PURIFY_DUAL_SUCCESS
-    comment: Is nonzero if the dual solution is purified.
-    value: '77'
-  - name: PURIFY_PRIMAL_SUCCESS
-    comment: Is nonzero if the primal solution is purified.
-    value: '78'
-  - name: RD_NUMBARVAR
-    comment: Number of symmetric variables read.
-    value: '79'
-  - name: RD_NUMCON
-    comment: Number of constraints read.
-    value: '80'
-  - name: RD_NUMCONE
-    comment: Number of conic constraints read.
-    value: '81'
-  - name: RD_NUMINTVAR
-    comment: Number of integer-constrained variables read.
-    value: '82'
-  - name: RD_NUMQ
-    comment: Number of nonempty Q matrices read.
-    value: '83'
-  - name: RD_NUMVAR
-    comment: Number of variables read.
-    value: '84'
-  - name: RD_PROTYPE
-    comment: Problem type.
-    value: '85'
-  - name: SIM_DUAL_DEG_ITER
-    comment: The number of dual degenerate iterations.
-    value: '86'
-  - name: SIM_DUAL_HOTSTART
-    comment: If 1 then the dual simplex algorithm is solving from an advanced basis.
-    value: '87'
-  - name: SIM_DUAL_HOTSTART_LU
-    comment: If 1 then a valid basis factorization of full rank was located and used by the dual simplex algorithm.
-    value: '88'
-  - name: SIM_DUAL_INF_ITER
-    comment: The number of iterations taken with dual infeasibility.
-    value: '89'
-  - name: SIM_DUAL_ITER
-    comment: Number of dual simplex iterations during the last optimization.
-    value: '90'
-  - name: SIM_NUMCON
-    comment: Number of constraints in the problem solved by the simplex optimizer.
-    value: '91'
-  - name: SIM_NUMVAR
-    comment: Number of variables in the problem solved by the simplex optimizer.
-    value: '92'
-  - name: SIM_PRIMAL_DEG_ITER
-    comment: The number of primal degenerate iterations.
-    value: '93'
-  - name: SIM_PRIMAL_HOTSTART
-    comment: If 1 then the primal simplex algorithm is solving from an advanced basis.
-    value: '94'
-  - name: SIM_PRIMAL_HOTSTART_LU
-    comment: If 1 then a valid basis factorization of full rank was located and used by the primal simplex algorithm.
-    value: '95'
-  - name: SIM_PRIMAL_INF_ITER
-    comment: The number of iterations taken with primal infeasibility.
-    value: '96'
-  - name: SIM_PRIMAL_ITER
-    comment: Number of primal simplex iterations during the last optimization.
-    value: '97'
-  - name: SIM_SOLVE_DUAL
-    comment: Is non-zero if dual problem is solved.
-    value: '98'
-  - name: SOL_BAS_PROSTA
-    comment: Problem status of the basic solution. Updated after each optimization.
-    value: '99'
-  - name: SOL_BAS_SOLSTA
-    comment: Solution status of the basic solution. Updated after each optimization.
-    value: '100'
-  - name: SOL_ITG_PROSTA
-    comment: Problem status of the integer solution. Updated after each optimization.
-    value: '101'
-  - name: SOL_ITG_SOLSTA
-    comment: Solution status of the integer solution. Updated after each optimization.
-    value: '102'
-  - name: SOL_ITR_PROSTA
-    comment: Problem status of the interior-point solution. Updated after each optimization.
-    value: '103'
-  - name: SOL_ITR_SOLSTA
-    comment: Solution status of the interior-point solution. Updated after each optimization.
-    value: '104'
-  - name: STO_NUM_A_REALLOC
-    comment: Number of times the storage for storing the linear coefficient matrix has been changed.
-    value: '105'
-  - name: END
-    comment: ''
-    value: '105'
 Transpose:
   name: Transpose
   comment: Transposed matrix.
@@ -1005,76 +71,37 @@ Transpose:
   - name: YES
     comment: A transpose is applied.
     value: '1'
-Solsta:
-  name: Solsta
-  comment: Solution status keys
+Dataformat:
+  name: Dataformat
+  comment: Data format types
   enum_consts:
-  - name: UNKNOWN
-    comment: Status of the solution is unknown.
+  - name: EXTENSION
+    comment: The file extension is used to determine the data file format.
     value: '0'
-  - name: OPTIMAL
-    comment: The solution is optimal.
+  - name: MPS
+    comment: The data file is MPS formatted.
     value: '1'
-  - name: PRIM_FEAS
-    comment: The solution is primal feasible.
+  - name: LP
+    comment: The data file is LP formatted.
     value: '2'
-  - name: DUAL_FEAS
-    comment: The solution is dual feasible.
+  - name: OP
+    comment: The data file is an optimization problem formatted file.
     value: '3'
-  - name: PRIM_AND_DUAL_FEAS
-    comment: The solution is both primal and dual feasible.
+  - name: FREE_MPS
+    comment: The data a free MPS formatted file.
     value: '4'
-  - name: PRIM_INFEAS_CER
-    comment: The solution is a certificate of primal infeasibility.
+  - name: TASK
+    comment: Generic task dump file.
     value: '5'
-  - name: DUAL_INFEAS_CER
-    comment: The solution is a certificate of dual infeasibility.
+  - name: PTF
+    comment: (P)retty (T)ext (F)format.
     value: '6'
-  - name: PRIM_ILLPOSED_CER
-    comment: The solution is a certificate that the primal problem is illposed.
+  - name: CB
+    comment: Conic benchmark format,
     value: '7'
-  - name: DUAL_ILLPOSED_CER
-    comment: The solution is a certificate that the dual problem is illposed.
+  - name: JSON_TASK
+    comment: JSON based task format.
     value: '8'
-  - name: INTEGER_OPTIMAL
-    comment: The primal solution is integer optimal.
-    value: '9'
-Scalingmethod:
-  name: Scalingmethod
-  comment: Scaling method
-  enum_consts:
-  - name: POW2
-    comment: Scales only with power of 2 leaving the mantissa untouched.
-    value: '0'
-  - name: FREE
-    comment: The optimizer chooses the scaling heuristic.
-    value: '1'
-Objsense:
-  name: Objsense
-  comment: Objective sense types
-  enum_consts:
-  - name: MINIMIZE
-    comment: The problem should be minimized.
-    value: '0'
-  - name: MAXIMIZE
-    comment: The problem should be maximized.
-    value: '1'
-Intpnthotstart:
-  name: Intpnthotstart
-  comment: Hot-start type employed by the interior-point optimizers.
-  enum_consts:
-  - name: NONE
-    comment: The interior-point optimizer performs a coldstart.
-    value: '0'
-  - name: PRIMAL
-    comment: The interior-point optimizer exploits the primal solution only.
-    value: '1'
-  - name: DUAL
-    comment: The interior-point optimizer exploits the dual solution only.
-    value: '2'
-  - name: PRIMAL_DUAL
-    comment: The interior-point optimizer exploits both the primal and dual solution.
-    value: '3'
 Problemtype:
   name: Problemtype
   comment: Problem types
@@ -1107,629 +134,62 @@ Simdupvec:
   - name: FREE
     comment: The simplex optimizer can choose freely.
     value: '2'
-Simreform:
-  name: Simreform
-  comment: Problem reformulation.
+Branchdir:
+  name: Branchdir
+  comment: Specifies the branching direction.
   enum_consts:
-  - name: OFF
-    comment: Disallow the simplex optimizer to reformulate the problem.
-    value: '0'
-  - name: ON
-    comment: Allow the simplex optimizer to reformulate the problem.
-    value: '1'
   - name: FREE
-    comment: The simplex optimizer can choose freely.
-    value: '2'
-  - name: AGGRESSIVE
-    comment: The simplex optimizer should use an aggressive reformulation strategy.
-    value: '3'
-Iparam:
-  name: Iparam
-  comment: Integer parameters
-  enum_consts:
-  - name: ANA_SOL_BASIS
-    comment: Controls whether the basis matrix is analyzed in solution analyzer.
+    comment: The mixed-integer optimizer decides which branch to choose.
     value: '0'
-  - name: ANA_SOL_PRINT_VIOLATED
-    comment: Controls whether a list of violated constraints is printed.
+  - name: UP
+    comment: The mixed-integer optimizer always chooses the up branch first.
     value: '1'
-  - name: AUTO_SORT_A_BEFORE_OPT
-    comment: Controls whether the elements in each column of A are sorted before an optimization is performed.
+  - name: DOWN
+    comment: The mixed-integer optimizer always chooses the down branch first.
     value: '2'
-  - name: AUTO_UPDATE_SOL_INFO
-    comment: Controls whether the solution information items are automatically updated after an optimization is performed.
+  - name: NEAR
+    comment: Branch in direction nearest to selected fractional variable.
     value: '3'
-  - name: BASIS_SOLVE_USE_PLUS_ONE
-    comment: Controls the sign of the columns in the basis matrix corresponding to slack variables.
+  - name: FAR
+    comment: Branch in direction farthest from selected fractional variable.
     value: '4'
-  - name: BI_CLEAN_OPTIMIZER
-    comment: Controls which simplex optimizer is used in the clean-up phase.
+  - name: ROOT_LP
+    comment: Chose direction based on root lp value of selected variable.
     value: '5'
-  - name: BI_IGNORE_MAX_ITER
-    comment: Turns on basis identification in case the interior-point optimizer is terminated due to maximum number of iterations.
+  - name: GUIDED
+    comment: Branch in direction of current incumbent.
     value: '6'
-  - name: BI_IGNORE_NUM_ERROR
-    comment: Turns on basis identification in case the interior-point optimizer is terminated due to a numerical problem.
+  - name: PSEUDOCOST
+    comment: Branch based on the pseudocost of the variable.
     value: '7'
-  - name: BI_MAX_ITERATIONS
-    comment: Maximum number of iterations after basis identification.
-    value: '8'
-  - name: CACHE_LICENSE
-    comment: Control license caching.
-    value: '9'
-  - name: CHECK_CONVEXITY
-    comment: Specify the level of convexity check on quadratic problems.
-    value: '10'
-  - name: COMPRESS_STATFILE
-    comment: Control compression of stat files.
-    value: '11'
-  - name: INFEAS_GENERIC_NAMES
-    comment: Controls the contents of the infeasibility report.
-    value: '12'
-  - name: INFEAS_PREFER_PRIMAL
-    comment: Controls which certificate is used if both primal- and dual- certificate of infeasibility is available.
-    value: '13'
-  - name: INFEAS_REPORT_AUTO
-    comment: Turns the feasibility report on or off.
-    value: '14'
-  - name: INFEAS_REPORT_LEVEL
-    comment: Controls the contents of the infeasibility report.
-    value: '15'
-  - name: INTPNT_BASIS
-    comment: Controls whether basis identification is performed.
-    value: '16'
-  - name: INTPNT_DIFF_STEP
-    comment: Controls whether different step sizes are allowed in the primal and dual space.
-    value: '17'
-  - name: INTPNT_HOTSTART
-    comment: Currently not in use.
-    value: '18'
-  - name: INTPNT_MAX_ITERATIONS
-    comment: Controls the maximum number of iterations allowed in the interior-point optimizer.
-    value: '19'
-  - name: INTPNT_MAX_NUM_COR
-    comment: Maximum number of correction steps.
-    value: '20'
-  - name: INTPNT_MAX_NUM_REFINEMENT_STEPS
-    comment: Maximum number of steps to be used by the iterative search direction refinement.
-    value: '21'
-  - name: INTPNT_OFF_COL_TRH
-    comment: Controls the aggressiveness of the offending column detection.
-    value: '22'
-  - name: INTPNT_ORDER_GP_NUM_SEEDS
-    comment: This parameter controls the number of random seeds tried.
-    value: '23'
-  - name: INTPNT_ORDER_METHOD
-    comment: Controls the ordering strategy.
-    value: '24'
-  - name: INTPNT_PURIFY
-    comment: Currently not in use.
-    value: '25'
-  - name: INTPNT_REGULARIZATION_USE
-    comment: Controls whether regularization is allowed.
-    value: '26'
-  - name: INTPNT_SCALING
-    comment: Controls how the problem is scaled before the interior-point optimizer is used.
-    value: '27'
-  - name: INTPNT_SOLVE_FORM
-    comment: Controls whether the primal or the dual problem is solved.
-    value: '28'
-  - name: INTPNT_STARTING_POINT
-    comment: Starting point used by the interior-point optimizer.
-    value: '29'
-  - name: LICENSE_DEBUG
-    comment: Controls the license manager client debugging behavior.
-    value: '30'
-  - name: LICENSE_PAUSE_TIME
-    comment: Controls license manager client behavior.
-    value: '31'
-  - name: LICENSE_SUPPRESS_EXPIRE_WRNS
-    comment: Controls license manager client behavior.
-    value: '32'
-  - name: LICENSE_TRH_EXPIRY_WRN
-    comment: Controls when expiry warnings are issued.
-    value: '33'
-  - name: LICENSE_WAIT
-    comment: Controls if MOSEK should queue for a license if none is available.
-    value: '34'
-  - name: LOG
-    comment: Controls the amount of log information.
-    value: '35'
-  - name: LOG_ANA_PRO
-    comment: Controls amount of output from the problem analyzer.
-    value: '36'
-  - name: LOG_BI
-    comment: Controls the amount of output printed by the basis identification procedure. A higher level implies that more information is logged.
-    value: '37'
-  - name: LOG_BI_FREQ
-    comment: Controls the logging frequency.
-    value: '38'
-  - name: LOG_CHECK_CONVEXITY
-    comment: Controls logging in convexity check on quadratic problems.
-    value: '39'
-  - name: LOG_CUT_SECOND_OPT
-    comment: Controls the reduction in the log levels for the second and any subsequent optimizations.
-    value: '40'
-  - name: LOG_EXPAND
-    comment: Controls the amount of logging when a data item such as the maximum number constrains is expanded.
-    value: '41'
-  - name: LOG_FEAS_REPAIR
-    comment: Controls the amount of output printed when performing feasibility repair. A value higher than one means extensive logging.
-    value: '42'
-  - name: LOG_FILE
-    comment: If turned on, then some log info is printed when a file is written or read.
-    value: '43'
-  - name: LOG_INCLUDE_SUMMARY
-    comment: Controls whether solution summary should be printed by the optimizer.
-    value: '44'
-  - name: LOG_INFEAS_ANA
-    comment: Controls log level for the infeasibility analyzer.
-    value: '45'
-  - name: LOG_INTPNT
-    comment: Controls the amount of log information from the interior-point optimizers.
-    value: '46'
-  - name: LOG_LOCAL_INFO
-    comment: Control whether local identifying information is printed to the log.
-    value: '47'
-  - name: LOG_MIO
-    comment: Controls the amount of log information from the mixed-integer optimizers.
-    value: '48'
-  - name: LOG_MIO_FREQ
-    comment: The mixed-integer optimizer logging frequency.
-    value: '49'
-  - name: LOG_ORDER
-    comment: If turned on, then factor lines are added to the log.
-    value: '50'
-  - name: LOG_PRESOLVE
-    comment: Controls amount of output printed by the presolve procedure. A higher level implies that more information is logged.
-    value: '51'
-  - name: LOG_RESPONSE
-    comment: Controls amount of output printed when response codes are reported. A higher level implies that more information is logged.
-    value: '52'
-  - name: LOG_SENSITIVITY
-    comment: Control logging in sensitivity analyzer.
-    value: '53'
-  - name: LOG_SENSITIVITY_OPT
-    comment: Control logging in sensitivity analyzer.
-    value: '54'
-  - name: LOG_SIM
-    comment: Controls the amount of log information from the simplex optimizers.
-    value: '55'
-  - name: LOG_SIM_FREQ
-    comment: Controls simplex logging frequency.
-    value: '56'
-  - name: LOG_SIM_MINOR
-    comment: Currently not in use.
-    value: '57'
-  - name: LOG_STORAGE
-    comment: Controls the memory related log information.
-    value: '58'
-  - name: MAX_NUM_WARNINGS
-    comment: Each warning is shown a limited number of times controlled by this parameter. A negative value is identical to infinite number of times.
-    value: '59'
-  - name: MIO_BRANCH_DIR
-    comment: Controls whether the mixed-integer optimizer is branching up or down by default.
-    value: '60'
-  - name: MIO_CONIC_OUTER_APPROXIMATION
-    comment: Toggles outer approximation for conic problems.
-    value: '61'
-  - name: MIO_CONSTRUCT_SOL
-    comment: Controls if an initial mixed integer solution should be constructed from the values of the integer variables.
-    value: '62'
-  - name: MIO_CUT_CLIQUE
-    comment: Controls whether clique cuts should be generated.
-    value: '63'
-  - name: MIO_CUT_CMIR
-    comment: Controls whether mixed integer rounding cuts should be generated.
-    value: '64'
-  - name: MIO_CUT_GMI
-    comment: Controls whether GMI cuts should be generated.
-    value: '65'
-  - name: MIO_CUT_IMPLIED_BOUND
-    comment: Controls whether implied bound cuts should be generated.
-    value: '66'
-  - name: MIO_CUT_KNAPSACK_COVER
-    comment: Controls whether knapsack cover cuts should be generated.
-    value: '67'
-  - name: MIO_CUT_LIPRO
-    comment: Controls whether lift-and-project cuts should be generated.
-    value: '68'
-  - name: MIO_CUT_SELECTION_LEVEL
-    comment: Controls how aggressively generated cuts are selected to be included in the relaxation.
-    value: '69'
-  - name: MIO_DATA_PERMUTATION_METHOD
-    comment: Controls what problem data permutation method is appplied to mixed-integer problems.
-    value: '70'
-  - name: MIO_FEASPUMP_LEVEL
-    comment: Controls the way the Feasibility Pump heuristic is employed by the mixed-integer optimizer.
-    value: '71'
-  - name: MIO_HEURISTIC_LEVEL
-    comment: Controls the heuristic employed by the mixed-integer optimizer to locate an initial integer feasible solution.
-    value: '72'
-  - name: MIO_MAX_NUM_BRANCHES
-    comment: Maximum number of branches allowed during the branch and bound search.
-    value: '73'
-  - name: MIO_MAX_NUM_RELAXS
-    comment: Maximum number of relaxations in branch and bound search.
-    value: '74'
-  - name: MIO_MAX_NUM_ROOT_CUT_ROUNDS
-    comment: Maximum number of cut separation rounds at the root node.
-    value: '75'
-  - name: MIO_MAX_NUM_SOLUTIONS
-    comment: Controls how many feasible solutions the mixed-integer optimizer investigates.
-    value: '76'
-  - name: MIO_MEMORY_EMPHASIS_LEVEL
-    comment: Controls how much emphasis is put on reducing memory usage.
-    value: '77'
-  - name: MIO_MODE
-    comment: Turns on/off the mixed-integer mode.
-    value: '78'
-  - name: MIO_NODE_OPTIMIZER
-    comment: Controls which optimizer is employed at the non-root nodes in the mixed-integer optimizer.
-    value: '79'
-  - name: MIO_NODE_SELECTION
-    comment: Controls the node selection strategy employed by the mixed-integer optimizer.
-    value: '80'
-  - name: MIO_NUMERICAL_EMPHASIS_LEVEL
-    comment: Controls how much emphasis is put on reducing numerical problems
-    value: '81'
-  - name: MIO_PERSPECTIVE_REFORMULATE
-    comment: Enables or disables perspective reformulation in presolve.
-    value: '82'
-  - name: MIO_PRESOLVE_AGGREGATOR_USE
-    comment: Controls if the aggregator should be used.
-    value: '83'
-  - name: MIO_PROBING_LEVEL
-    comment: Controls the amount of probing employed by the mixed-integer optimizer in presolve.
-    value: '84'
-  - name: MIO_PROPAGATE_OBJECTIVE_CONSTRAINT
-    comment: Use objective domain propagation.
-    value: '85'
-  - name: MIO_QCQO_REFORMULATION_METHOD
-    comment: Controls what reformulation method is applied to mixed-integer quadratic problems.
-    value: '86'
-  - name: MIO_RINS_MAX_NODES
-    comment: Maximum number of nodes in each call to RINS.
-    value: '87'
-  - name: MIO_ROOT_OPTIMIZER
-    comment: Controls which optimizer is employed at the root node in the mixed-integer optimizer.
-    value: '88'
-  - name: MIO_ROOT_REPEAT_PRESOLVE_LEVEL
-    comment: Controls whether presolve can be repeated at root node.
-    value: '89'
-  - name: MIO_SEED
-    comment: Sets the random seed used for randomization in the mixed integer optimizer.
-    value: '90'
-  - name: MIO_SYMMETRY_LEVEL
-    comment: Controls the amount of symmetry detection and handling employed by the mixed-integer optimizer in presolve.
-    value: '91'
-  - name: MIO_VB_DETECTION_LEVEL
-    comment: Controls how much effort is put into detecting variable bounds.
-    value: '92'
-  - name: MT_SPINCOUNT
-    comment: Set the number of iterations to spin before sleeping.
-    value: '93'
-  - name: NG
-    comment: Not in use
-    value: '94'
-  - name: NUM_THREADS
-    comment: The number of threads employed by the optimizer.
-    value: '95'
-  - name: OPF_WRITE_HEADER
-    comment: Write a text header with date and MOSEK version in an OPF file.
-    value: '96'
-  - name: OPF_WRITE_HINTS
-    comment: Write a hint section with problem dimensions in the beginning of an OPF file.
-    value: '97'
-  - name: OPF_WRITE_LINE_LENGTH
-    comment: Aim to keep lines in OPF files not much longer than this.
-    value: '98'
-  - name: OPF_WRITE_PARAMETERS
-    comment: Write a parameter section in an OPF file.
-    value: '99'
-  - name: OPF_WRITE_PROBLEM
-    comment: Write objective, constraints, bounds etc. to an OPF file.
-    value: '100'
-  - name: OPF_WRITE_SOL_BAS
-    comment: Controls what is written to the OPF files.
-    value: '101'
-  - name: OPF_WRITE_SOL_ITG
-    comment: Controls what is written to the OPF files.
-    value: '102'
-  - name: OPF_WRITE_SOL_ITR
-    comment: Controls what is written to the OPF files.
-    value: '103'
-  - name: OPF_WRITE_SOLUTIONS
-    comment: Enable inclusion of solutions in the OPF files.
-    value: '104'
-  - name: OPTIMIZER
-    comment: Controls which optimizer is used to optimize the task.
-    value: '105'
-  - name: PARAM_READ_CASE_NAME
-    comment: If turned on, then names in the parameter file are case sensitive.
-    value: '106'
-  - name: PARAM_READ_IGN_ERROR
-    comment: If turned on, then errors in parameter settings is ignored.
-    value: '107'
-  - name: PRESOLVE_ELIMINATOR_MAX_FILL
-    comment: Maximum amount of fill-in created in one pivot during the elimination phase.
-    value: '108'
-  - name: PRESOLVE_ELIMINATOR_MAX_NUM_TRIES
-    comment: Control the maximum number of times the eliminator is tried.
-    value: '109'
-  - name: PRESOLVE_LEVEL
-    comment: Currently not used.
-    value: '110'
-  - name: PRESOLVE_LINDEP_ABS_WORK_TRH
-    comment: Controls linear dependency check in presolve.
-    value: '111'
-  - name: PRESOLVE_LINDEP_REL_WORK_TRH
-    comment: Controls linear dependency check in presolve.
-    value: '112'
-  - name: PRESOLVE_LINDEP_USE
-    comment: Controls whether the linear constraints are checked for linear dependencies.
-    value: '113'
-  - name: PRESOLVE_MAX_NUM_PASS
-    comment: Control the maximum number of times presolve passes over the problem.
-    value: '114'
-  - name: PRESOLVE_MAX_NUM_REDUCTIONS
-    comment: Controls the maximum number of reductions performed by the presolve.
-    value: '115'
-  - name: PRESOLVE_USE
-    comment: Controls whether the presolve is applied to a problem before it is optimized.
-    value: '116'
-  - name: PRIMAL_REPAIR_OPTIMIZER
-    comment: Controls which optimizer that is used to find the optimal repair.
-    value: '117'
-  - name: PTF_WRITE_PARAMETERS
-    comment: Controls whether parameters section is written in PTF files.
-    value: '118'
-  - name: PTF_WRITE_SOLUTIONS
-    comment: Controls whether solution section is written in PTF files.
-    value: '119'
-  - name: PTF_WRITE_TRANSFORM
-    comment: Controls if simple transformation are done when writing PTF files.
-    value: '120'
-  - name: READ_DEBUG
-    comment: Turns on additional debugging information when reading files.
-    value: '121'
-  - name: READ_KEEP_FREE_CON
-    comment: Controls whether the free constraints are included in the problem.
-    value: '122'
-  - name: READ_MPS_FORMAT
-    comment: Controls how strictly the MPS file reader interprets the MPS format.
-    value: '123'
-  - name: READ_MPS_WIDTH
-    comment: Controls the maximal number of characters allowed in one line of the MPS file.
-    value: '124'
-  - name: READ_TASK_IGNORE_PARAM
-    comment: Controls what information is used from the task files.
-    value: '125'
-  - name: REMOTE_USE_COMPRESSION
-    comment: Use compression when sending data to an optimization server
-    value: '126'
-  - name: REMOVE_UNUSED_SOLUTIONS
-    comment: Removes unused solutions before the optimization is performed.
-    value: '127'
-  - name: SENSITIVITY_ALL
-    comment: Controls sensitivity report behavior.
-    value: '128'
-  - name: SENSITIVITY_OPTIMIZER
-    comment: Controls which optimizer is used for optimal partition sensitivity analysis.
-    value: '129'
-  - name: SENSITIVITY_TYPE
-    comment: Controls which type of sensitivity analysis is to be performed.
-    value: '130'
-  - name: SIM_BASIS_FACTOR_USE
-    comment: Controls whether an LU factorization of the basis is used in a hot-start.
-    value: '131'
-  - name: SIM_DEGEN
-    comment: Controls how aggressively degeneration is handled.
-    value: '132'
-  - name: SIM_DETECT_PWL
-    comment: Not in use.
-    value: '133'
-  - name: SIM_DUAL_CRASH
-    comment: Controls whether crashing is performed in the dual simplex optimizer.
-    value: '134'
-  - name: SIM_DUAL_PHASEONE_METHOD
-    comment: An experimental feature.
-    value: '135'
-  - name: SIM_DUAL_RESTRICT_SELECTION
-    comment: Controls how aggressively restricted selection is used.
-    value: '136'
-  - name: SIM_DUAL_SELECTION
-    comment: Controls the dual simplex strategy.
-    value: '137'
-  - name: SIM_EXPLOIT_DUPVEC
-    comment: Controls if the simplex optimizers are allowed to exploit duplicated columns.
-    value: '138'
-  - name: SIM_HOTSTART
-    comment: Controls the type of hot-start that the simplex optimizer perform.
-    value: '139'
-  - name: SIM_HOTSTART_LU
-    comment: Determines if the simplex optimizer should exploit the initial factorization.
-    value: '140'
-  - name: SIM_MAX_ITERATIONS
-    comment: Maximum number of iterations that can be used by a simplex optimizer.
-    value: '141'
-  - name: SIM_MAX_NUM_SETBACKS
-    comment: Controls how many set-backs that are allowed within a simplex optimizer.
-    value: '142'
-  - name: SIM_NON_SINGULAR
-    comment: Controls if the simplex optimizer ensures a non-singular basis, if possible.
-    value: '143'
-  - name: SIM_PRIMAL_CRASH
-    comment: Controls the simplex crash.
-    value: '144'
-  - name: SIM_PRIMAL_PHASEONE_METHOD
-    comment: An experimental feature.
-    value: '145'
-  - name: SIM_PRIMAL_RESTRICT_SELECTION
-    comment: Controls how aggressively restricted selection is used.
-    value: '146'
-  - name: SIM_PRIMAL_SELECTION
-    comment: Controls the primal simplex strategy.
-    value: '147'
-  - name: SIM_REFACTOR_FREQ
-    comment: Controls the basis refactoring frequency.
-    value: '148'
-  - name: SIM_REFORMULATION
-    comment: Controls if the simplex optimizers are allowed to reformulate the problem.
-    value: '149'
-  - name: SIM_SAVE_LU
-    comment: Controls if the LU factorization stored should be replaced with the LU factorization corresponding to the initial basis.
-    value: '150'
-  - name: SIM_SCALING
-    comment: Controls how much effort is used in scaling the problem before a simplex optimizer is used.
-    value: '151'
-  - name: SIM_SCALING_METHOD
-    comment: Controls how the problem is scaled before a simplex optimizer is used.
-    value: '152'
-  - name: SIM_SEED
-    comment: Sets the random seed used for randomization in the simplex optimizers.
-    value: '153'
-  - name: SIM_SOLVE_FORM
-    comment: Controls whether the primal or the dual problem is solved by the primal-/dual-simplex optimizer.
-    value: '154'
-  - name: SIM_STABILITY_PRIORITY
-    comment: Controls how high priority the numerical stability should be given.
-    value: '155'
-  - name: SIM_SWITCH_OPTIMIZER
-    comment: Controls the simplex behavior.
-    value: '156'
-  - name: SOL_FILTER_KEEP_BASIC
-    comment: Control the contents of the solution files.
-    value: '157'
-  - name: SOL_FILTER_KEEP_RANGED
-    comment: Control the contents of the solution files.
-    value: '158'
-  - name: SOL_READ_NAME_WIDTH
-    comment: Controls the input solution file format.
-    value: '159'
-  - name: SOL_READ_WIDTH
-    comment: Controls the input solution file format.
-    value: '160'
-  - name: SOLUTION_CALLBACK
-    comment: Indicates whether solution callbacks will be performed during the optimization.
-    value: '161'
-  - name: TIMING_LEVEL
-    comment: Controls the amount of timing performed inside MOSEK.
-    value: '162'
-  - name: WRITE_BAS_CONSTRAINTS
-    comment: Controls the basic solution file format.
-    value: '163'
-  - name: WRITE_BAS_HEAD
-    comment: Controls the basic solution file format.
-    value: '164'
-  - name: WRITE_BAS_VARIABLES
-    comment: Controls the basic solution file format.
-    value: '165'
-  - name: WRITE_COMPRESSION
-    comment: Controls output file compression.
-    value: '166'
-  - name: WRITE_DATA_PARAM
-    comment: Controls output file data.
-    value: '167'
-  - name: WRITE_FREE_CON
-    comment: Controls the output file data.
-    value: '168'
-  - name: WRITE_GENERIC_NAMES
-    comment: Controls the output file data.
-    value: '169'
-  - name: WRITE_GENERIC_NAMES_IO
-    comment: Index origin used in  generic names.
-    value: '170'
-  - name: WRITE_IGNORE_INCOMPATIBLE_ITEMS
-    comment: Controls if the writer ignores incompatible problem items when writing files.
-    value: '171'
-  - name: WRITE_INT_CONSTRAINTS
-    comment: Controls the integer solution file format.
-    value: '172'
-  - name: WRITE_INT_HEAD
-    comment: Controls the integer solution file format.
-    value: '173'
-  - name: WRITE_INT_VARIABLES
-    comment: Controls the integer solution file format.
-    value: '174'
-  - name: WRITE_JSON_INDENTATION
-    comment: When set, the JSON task and solution files are written with indentation for better readability.
-    value: '175'
-  - name: WRITE_LP_FULL_OBJ
-    comment: Write full linear objective
-    value: '176'
-  - name: WRITE_LP_LINE_WIDTH
-    comment: Controls the LP output file format.
-    value: '177'
-  - name: WRITE_MPS_FORMAT
-    comment: Controls in which format the MPS is written.
-    value: '178'
-  - name: WRITE_MPS_INT
-    comment: Controls the output file data.
-    value: '179'
-  - name: WRITE_SOL_BARVARIABLES
-    comment: Controls the solution file format.
-    value: '180'
-  - name: WRITE_SOL_CONSTRAINTS
-    comment: Controls the solution file format.
-    value: '181'
-  - name: WRITE_SOL_HEAD
-    comment: Controls solution file format.
-    value: '182'
-  - name: WRITE_SOL_IGNORE_INVALID_NAMES
-    comment: Controls whether the user specified names are employed even if they are invalid names.
-    value: '183'
-  - name: WRITE_SOL_VARIABLES
-    comment: Controls the solution file format.
-    value: '184'
-  - name: WRITE_TASK_INC_SOL
-    comment: Controls whether the solutions are stored in the task file too.
-    value: '185'
-  - name: WRITE_XML_MODE
-    comment: Controls if linear coefficients should be written by row or column when writing in the XML file format.
-    value: '186'
-Miqcqoreformmethod:
-  name: Miqcqoreformmethod
-  comment: Specifies the reformulation method for mixed-integer quadratic problems.
+Solitem:
+  name: Solitem
+  comment: Solution items
   enum_consts:
-  - name: FREE
-    comment: The mixed-integer optimizer decides which reformulation method to apply.
+  - name: XC
+    comment: Solution for the constraints.
     value: '0'
-  - name: NONE
-    comment: No reformulation method is applied.
+  - name: XX
+    comment: Variable solution.
     value: '1'
-  - name: LINEARIZATION
-    comment: A reformulation via linearization is applied.
+  - name: Y
+    comment: Lagrange multipliers for equations.
     value: '2'
-  - name: EIGEN_VAL_METHOD
-    comment: The eigenvalue method is applied.
+  - name: SLC
+    comment: Lagrange multipliers for lower bounds on the constraints.
     value: '3'
-  - name: DIAG_SDP
-    comment: A perturbation of matrix diagonals via the solution of SDPs is applied.
+  - name: SUC
+    comment: Lagrange multipliers for upper bounds on the constraints.
     value: '4'
-  - name: RELAX_SDP
-    comment: A Reformulation based on the solution of an SDP-relaxation of the problem is applied.
+  - name: SLX
+    comment: Lagrange multipliers for lower bounds on the variables.
     value: '5'
-Sensitivitytype:
-  name: Sensitivitytype
-  comment: Sensitivity types
-  enum_consts:
-  - name: BASIS
-    comment: Basis sensitivity analysis is performed.
-    value: '0'
-Problemitem:
-  name: Problemitem
-  comment: Problem data items
-  enum_consts:
-  - name: VAR
-    comment: Item is a variable.
-    value: '0'
-  - name: CON
-    comment: Item is a constraint.
-    value: '1'
-  - name: CONE
-    comment: Item is a cone.
-    value: '2'
+  - name: SUX
+    comment: Lagrange multipliers for upper bounds on the variables.
+    value: '6'
+  - name: SNX
+    comment: Lagrange multipliers corresponding to the conic constraints on the variables.
+    value: '7'
 Simseltype:
   name: Simseltype
   comment: Simplex selection strategy
@@ -1752,6 +212,42 @@ Simseltype:
   - name: PARTIAL
     comment: The optimizer uses a partial selection approach.
     value: '5'
+Inftype:
+  name: Inftype
+  comment: Information item types
+  enum_consts:
+  - name: DOU_TYPE
+    comment: Is a double information type.
+    value: '0'
+  - name: INT_TYPE
+    comment: Is an integer.
+    value: '1'
+  - name: LINT_TYPE
+    comment: Is a long integer.
+    value: '2'
+Xmlwriteroutputtype:
+  name: Xmlwriteroutputtype
+  comment: XML writer output mode
+  enum_consts:
+  - name: ROW
+    comment: Write in row order.
+    value: '0'
+  - name: COL
+    comment: Write in column order.
+    value: '1'
+Soltype:
+  name: Soltype
+  comment: Solution types
+  enum_consts:
+  - name: ITR
+    comment: The interior solution.
+    value: '0'
+  - name: BAS
+    comment: The basic solution.
+    value: '1'
+  - name: ITG
+    comment: The integer solution.
+    value: '2'
 Domaintype:
   name: Domaintype
   comment: Cone types
@@ -1795,50 +291,587 @@ Domaintype:
   - name: SVEC_PSD_CONE
     comment: The vectorized positive semidefinite cone.
     value: '12'
-Boundkey:
-  name: Boundkey
-  comment: Bound keys
+Iparam:
+  name: Iparam
+  comment: Integer parameters
   enum_consts:
-  - name: LO
-    comment: The constraint or variable has a finite lower bound and an infinite upper bound.
+  - name: ANA_SOL_BASIS
+    comment: Controls whether the basis matrix is analyzed in solution analyzer.
     value: '0'
-  - name: UP
-    comment: The constraint or variable has an infinite lower bound and an finite upper bound.
+  - name: ANA_SOL_PRINT_VIOLATED
+    comment: Controls whether a list of violated constraints is printed.
     value: '1'
-  - name: FX
-    comment: The constraint or variable is fixed.
+  - name: AUTO_SORT_A_BEFORE_OPT
+    comment: Controls whether the elements in each column of A are sorted before an optimization is performed.
     value: '2'
-  - name: FR
-    comment: The constraint or variable is free.
+  - name: AUTO_UPDATE_SOL_INFO
+    comment: Controls whether the solution information items are automatically updated after an optimization is performed.
     value: '3'
-  - name: RA
-    comment: The constraint or variable is ranged.
+  - name: BASIS_SOLVE_USE_PLUS_ONE
+    comment: Controls the sign of the columns in the basis matrix corresponding to slack variables.
     value: '4'
-Conetype:
-  name: Conetype
-  comment: Cone types
-  enum_consts:
-  - name: QUAD
-    comment: The cone is a quadratic cone.
-    value: '0'
-  - name: RQUAD
-    comment: The cone is a rotated quadratic cone.
-    value: '1'
-  - name: PEXP
-    comment: A primal exponential cone.
-    value: '2'
-  - name: DEXP
-    comment: A dual exponential cone.
-    value: '3'
-  - name: PPOW
-    comment: A primal power cone.
-    value: '4'
-  - name: DPOW
-    comment: A dual power cone.
+  - name: BI_CLEAN_OPTIMIZER
+    comment: Controls which simplex optimizer is used in the clean-up phase.
     value: '5'
-  - name: ZERO
-    comment: The zero cone.
+  - name: BI_IGNORE_MAX_ITER
+    comment: Turns on basis identification in case the interior-point optimizer is terminated due to maximum number of iterations.
     value: '6'
+  - name: BI_IGNORE_NUM_ERROR
+    comment: Turns on basis identification in case the interior-point optimizer is terminated due to a numerical problem.
+    value: '7'
+  - name: BI_MAX_ITERATIONS
+    comment: Maximum number of iterations after basis identification.
+    value: '8'
+  - name: CACHE_LICENSE
+    comment: Control license caching.
+    value: '9'
+  - name: COMPRESS_STATFILE
+    comment: Control compression of stat files.
+    value: '10'
+  - name: INFEAS_GENERIC_NAMES
+    comment: Controls the contents of the infeasibility report.
+    value: '11'
+  - name: INFEAS_PREFER_PRIMAL
+    comment: Controls which certificate is used if both primal- and dual- certificate of infeasibility is available.
+    value: '12'
+  - name: INFEAS_REPORT_AUTO
+    comment: Turns the feasibility report on or off.
+    value: '13'
+  - name: INFEAS_REPORT_LEVEL
+    comment: Controls the contents of the infeasibility report.
+    value: '14'
+  - name: INTPNT_BASIS
+    comment: Controls whether basis identification is performed.
+    value: '15'
+  - name: INTPNT_DIFF_STEP
+    comment: Controls whether different step sizes are allowed in the primal and dual space.
+    value: '16'
+  - name: INTPNT_HOTSTART
+    comment: Currently not in use.
+    value: '17'
+  - name: INTPNT_MAX_ITERATIONS
+    comment: Controls the maximum number of iterations allowed in the interior-point optimizer.
+    value: '18'
+  - name: INTPNT_MAX_NUM_COR
+    comment: Maximum number of correction steps.
+    value: '19'
+  - name: INTPNT_MAX_NUM_REFINEMENT_STEPS
+    comment: Maximum number of steps to be used by the iterative search direction refinement.
+    value: '20'
+  - name: INTPNT_OFF_COL_TRH
+    comment: Controls the aggressiveness of the offending column detection.
+    value: '21'
+  - name: INTPNT_ORDER_GP_NUM_SEEDS
+    comment: This parameter controls the number of random seeds tried.
+    value: '22'
+  - name: INTPNT_ORDER_METHOD
+    comment: Controls the ordering strategy.
+    value: '23'
+  - name: INTPNT_PURIFY
+    comment: Currently not in use.
+    value: '24'
+  - name: INTPNT_REGULARIZATION_USE
+    comment: Controls whether regularization is allowed.
+    value: '25'
+  - name: INTPNT_SCALING
+    comment: Controls how the problem is scaled before the interior-point optimizer is used.
+    value: '26'
+  - name: INTPNT_SOLVE_FORM
+    comment: Controls whether the primal or the dual problem is solved.
+    value: '27'
+  - name: INTPNT_STARTING_POINT
+    comment: Starting point used by the interior-point optimizer.
+    value: '28'
+  - name: LICENSE_DEBUG
+    comment: Controls the license manager client debugging behavior.
+    value: '29'
+  - name: LICENSE_PAUSE_TIME
+    comment: Controls license manager client behavior.
+    value: '30'
+  - name: LICENSE_SUPPRESS_EXPIRE_WRNS
+    comment: Controls license manager client behavior.
+    value: '31'
+  - name: LICENSE_TRH_EXPIRY_WRN
+    comment: Controls when expiry warnings are issued.
+    value: '32'
+  - name: LICENSE_WAIT
+    comment: Controls if MOSEK should queue for a license if none is available.
+    value: '33'
+  - name: LOG
+    comment: Controls the amount of log information.
+    value: '34'
+  - name: LOG_ANA_PRO
+    comment: Controls amount of output from the problem analyzer.
+    value: '35'
+  - name: LOG_BI
+    comment: Controls the amount of output printed by the basis identification procedure. A higher level implies that more information is logged.
+    value: '36'
+  - name: LOG_BI_FREQ
+    comment: Controls the logging frequency.
+    value: '37'
+  - name: LOG_CUT_SECOND_OPT
+    comment: Controls the reduction in the log levels for the second and any subsequent optimizations.
+    value: '38'
+  - name: LOG_EXPAND
+    comment: Controls the amount of logging when a data item such as the maximum number constrains is expanded.
+    value: '39'
+  - name: LOG_FEAS_REPAIR
+    comment: Controls the amount of output printed when performing feasibility repair. A value higher than one means extensive logging.
+    value: '40'
+  - name: LOG_FILE
+    comment: If turned on, then some log info is printed when a file is written or read.
+    value: '41'
+  - name: LOG_INCLUDE_SUMMARY
+    comment: Controls whether solution summary should be printed by the optimizer.
+    value: '42'
+  - name: LOG_INFEAS_ANA
+    comment: Controls log level for the infeasibility analyzer.
+    value: '43'
+  - name: LOG_INTPNT
+    comment: Controls the amount of log information from the interior-point optimizers.
+    value: '44'
+  - name: LOG_LOCAL_INFO
+    comment: Control whether local identifying information is printed to the log.
+    value: '45'
+  - name: LOG_MIO
+    comment: Controls the amount of log information from the mixed-integer optimizers.
+    value: '46'
+  - name: LOG_MIO_FREQ
+    comment: The mixed-integer optimizer logging frequency.
+    value: '47'
+  - name: LOG_ORDER
+    comment: If turned on, then factor lines are added to the log.
+    value: '48'
+  - name: LOG_PRESOLVE
+    comment: Controls amount of output printed by the presolve procedure. A higher level implies that more information is logged.
+    value: '49'
+  - name: LOG_RESPONSE
+    comment: Controls amount of output printed when response codes are reported. A higher level implies that more information is logged.
+    value: '50'
+  - name: LOG_SENSITIVITY
+    comment: Control logging in sensitivity analyzer.
+    value: '51'
+  - name: LOG_SENSITIVITY_OPT
+    comment: Control logging in sensitivity analyzer.
+    value: '52'
+  - name: LOG_SIM
+    comment: Controls the amount of log information from the simplex optimizers.
+    value: '53'
+  - name: LOG_SIM_FREQ
+    comment: Controls simplex logging frequency.
+    value: '54'
+  - name: LOG_SIM_MINOR
+    comment: Currently not in use.
+    value: '55'
+  - name: LOG_STORAGE
+    comment: Controls the memory related log information.
+    value: '56'
+  - name: MAX_NUM_WARNINGS
+    comment: Each warning is shown a limited number of times controlled by this parameter. A negative value is identical to infinite number of times.
+    value: '57'
+  - name: MIO_BRANCH_DIR
+    comment: Controls whether the mixed-integer optimizer is branching up or down by default.
+    value: '58'
+  - name: MIO_CONIC_OUTER_APPROXIMATION
+    comment: Toggles outer approximation for conic problems.
+    value: '59'
+  - name: MIO_CONSTRUCT_SOL
+    comment: Controls if an initial mixed integer solution should be constructed from the values of the integer variables.
+    value: '60'
+  - name: MIO_CUT_CLIQUE
+    comment: Controls whether clique cuts should be generated.
+    value: '61'
+  - name: MIO_CUT_CMIR
+    comment: Controls whether mixed integer rounding cuts should be generated.
+    value: '62'
+  - name: MIO_CUT_GMI
+    comment: Controls whether GMI cuts should be generated.
+    value: '63'
+  - name: MIO_CUT_IMPLIED_BOUND
+    comment: Controls whether implied bound cuts should be generated.
+    value: '64'
+  - name: MIO_CUT_KNAPSACK_COVER
+    comment: Controls whether knapsack cover cuts should be generated.
+    value: '65'
+  - name: MIO_CUT_LIPRO
+    comment: Controls whether lift-and-project cuts should be generated.
+    value: '66'
+  - name: MIO_CUT_SELECTION_LEVEL
+    comment: Controls how aggressively generated cuts are selected to be included in the relaxation.
+    value: '67'
+  - name: MIO_DATA_PERMUTATION_METHOD
+    comment: Controls what problem data permutation method is appplied to mixed-integer problems.
+    value: '68'
+  - name: MIO_DUAL_RAY_ANALYSIS_LEVEL
+    comment: Controls the amount of dual ray analysis employed by the mixed-integer optimizer in presolve.
+    value: '69'
+  - name: MIO_FEASPUMP_LEVEL
+    comment: Controls the way the Feasibility Pump heuristic is employed by the mixed-integer optimizer.
+    value: '70'
+  - name: MIO_HEURISTIC_LEVEL
+    comment: Controls the heuristic employed by the mixed-integer optimizer to locate an initial integer feasible solution.
+    value: '71'
+  - name: MIO_MAX_NUM_BRANCHES
+    comment: Maximum number of branches allowed during the branch and bound search.
+    value: '72'
+  - name: MIO_MAX_NUM_RELAXS
+    comment: Maximum number of relaxations in branch and bound search.
+    value: '73'
+  - name: MIO_MAX_NUM_RESTARTS
+    comment: Maximum number of restarts allowed during the branch and bound search.
+    value: '74'
+  - name: MIO_MAX_NUM_ROOT_CUT_ROUNDS
+    comment: Maximum number of cut separation rounds at the root node.
+    value: '75'
+  - name: MIO_MAX_NUM_SOLUTIONS
+    comment: Controls how many feasible solutions the mixed-integer optimizer investigates.
+    value: '76'
+  - name: MIO_MEMORY_EMPHASIS_LEVEL
+    comment: Controls how much emphasis is put on reducing memory usage.
+    value: '77'
+  - name: MIO_MIN_REL
+    comment: Number of times a variable must have been branched on for its pseudocost to be cosidered reliable.
+    value: '78'
+  - name: MIO_MODE
+    comment: Turns on/off the mixed-integer mode.
+    value: '79'
+  - name: MIO_NODE_OPTIMIZER
+    comment: Controls which optimizer is employed at the non-root nodes in the mixed-integer optimizer.
+    value: '80'
+  - name: MIO_NODE_SELECTION
+    comment: Controls the node selection strategy employed by the mixed-integer optimizer.
+    value: '81'
+  - name: MIO_NUMERICAL_EMPHASIS_LEVEL
+    comment: Controls how much emphasis is put on reducing numerical problems
+    value: '82'
+  - name: MIO_PERSPECTIVE_REFORMULATE
+    comment: Enables or disables perspective reformulation in presolve.
+    value: '83'
+  - name: MIO_PRESOLVE_AGGREGATOR_USE
+    comment: Controls if the aggregator should be used.
+    value: '84'
+  - name: MIO_PROBING_LEVEL
+    comment: Controls the amount of probing employed by the mixed-integer optimizer in presolve.
+    value: '85'
+  - name: MIO_PROPAGATE_OBJECTIVE_CONSTRAINT
+    comment: Use objective domain propagation.
+    value: '86'
+  - name: MIO_QCQO_REFORMULATION_METHOD
+    comment: Controls what reformulation method is applied to mixed-integer quadratic problems.
+    value: '87'
+  - name: MIO_RINS_MAX_NODES
+    comment: Maximum number of nodes in each call to RINS.
+    value: '88'
+  - name: MIO_ROOT_OPTIMIZER
+    comment: Controls which optimizer is employed at the root node in the mixed-integer optimizer.
+    value: '89'
+  - name: MIO_ROOT_REPEAT_PRESOLVE_LEVEL
+    comment: Controls whether presolve can be repeated at root node.
+    value: '90'
+  - name: MIO_SEED
+    comment: Sets the random seed used for randomization in the mixed integer optimizer.
+    value: '91'
+  - name: MIO_SYMMETRY_LEVEL
+    comment: Controls the amount of symmetry detection and handling employed by the mixed-integer optimizer in presolve.
+    value: '92'
+  - name: MIO_VAR_SELECTION
+    comment: Controls the variable selection strategy employed by the mixed-integer optimizer.
+    value: '93'
+  - name: MIO_VB_DETECTION_LEVEL
+    comment: Controls how much effort is put into detecting variable bounds.
+    value: '94'
+  - name: MT_SPINCOUNT
+    comment: Set the number of iterations to spin before sleeping.
+    value: '95'
+  - name: NG
+    comment: Not in use
+    value: '96'
+  - name: NUM_THREADS
+    comment: The number of threads employed by the optimizer.
+    value: '97'
+  - name: OPF_WRITE_HEADER
+    comment: Write a text header with date and MOSEK version in an OPF file.
+    value: '98'
+  - name: OPF_WRITE_HINTS
+    comment: Write a hint section with problem dimensions in the beginning of an OPF file.
+    value: '99'
+  - name: OPF_WRITE_LINE_LENGTH
+    comment: Aim to keep lines in OPF files not much longer than this.
+    value: '100'
+  - name: OPF_WRITE_PARAMETERS
+    comment: Write a parameter section in an OPF file.
+    value: '101'
+  - name: OPF_WRITE_PROBLEM
+    comment: Write objective, constraints, bounds etc. to an OPF file.
+    value: '102'
+  - name: OPF_WRITE_SOL_BAS
+    comment: Controls what is written to the OPF files.
+    value: '103'
+  - name: OPF_WRITE_SOL_ITG
+    comment: Controls what is written to the OPF files.
+    value: '104'
+  - name: OPF_WRITE_SOL_ITR
+    comment: Controls what is written to the OPF files.
+    value: '105'
+  - name: OPF_WRITE_SOLUTIONS
+    comment: Enable inclusion of solutions in the OPF files.
+    value: '106'
+  - name: OPTIMIZER
+    comment: Controls which optimizer is used to optimize the task.
+    value: '107'
+  - name: PARAM_READ_CASE_NAME
+    comment: If turned on, then names in the parameter file are case sensitive.
+    value: '108'
+  - name: PARAM_READ_IGN_ERROR
+    comment: If turned on, then errors in parameter settings is ignored.
+    value: '109'
+  - name: PRESOLVE_ELIMINATOR_MAX_FILL
+    comment: Maximum amount of fill-in created in one pivot during the elimination phase.
+    value: '110'
+  - name: PRESOLVE_ELIMINATOR_MAX_NUM_TRIES
+    comment: Control the maximum number of times the eliminator is tried.
+    value: '111'
+  - name: PRESOLVE_LEVEL
+    comment: Currently not used.
+    value: '112'
+  - name: PRESOLVE_LINDEP_ABS_WORK_TRH
+    comment: Controls linear dependency check in presolve.
+    value: '113'
+  - name: PRESOLVE_LINDEP_NEW
+    comment: Controls whether whether a new experimental linear dependency checker is employed.
+    value: '114'
+  - name: PRESOLVE_LINDEP_REL_WORK_TRH
+    comment: Controls linear dependency check in presolve.
+    value: '115'
+  - name: PRESOLVE_LINDEP_USE
+    comment: Controls whether the linear constraints are checked for linear dependencies.
+    value: '116'
+  - name: PRESOLVE_MAX_NUM_PASS
+    comment: Control the maximum number of times presolve passes over the problem.
+    value: '117'
+  - name: PRESOLVE_MAX_NUM_REDUCTIONS
+    comment: Controls the maximum number of reductions performed by the presolve.
+    value: '118'
+  - name: PRESOLVE_USE
+    comment: Controls whether the presolve is applied to a problem before it is optimized.
+    value: '119'
+  - name: PRIMAL_REPAIR_OPTIMIZER
+    comment: Controls which optimizer that is used to find the optimal repair.
+    value: '120'
+  - name: PTF_WRITE_PARAMETERS
+    comment: Controls whether parameters section is written in PTF files.
+    value: '121'
+  - name: PTF_WRITE_SOLUTIONS
+    comment: Controls whether solution section is written in PTF files.
+    value: '122'
+  - name: PTF_WRITE_TRANSFORM
+    comment: Controls if simple transformation are done when writing PTF files.
+    value: '123'
+  - name: READ_DEBUG
+    comment: Turns on additional debugging information when reading files.
+    value: '124'
+  - name: READ_KEEP_FREE_CON
+    comment: Controls whether the free constraints are included in the problem.
+    value: '125'
+  - name: READ_MPS_FORMAT
+    comment: Controls how strictly the MPS file reader interprets the MPS format.
+    value: '126'
+  - name: READ_MPS_WIDTH
+    comment: Controls the maximal number of characters allowed in one line of the MPS file.
+    value: '127'
+  - name: READ_TASK_IGNORE_PARAM
+    comment: Controls what information is used from the task files.
+    value: '128'
+  - name: REMOTE_USE_COMPRESSION
+    comment: Use compression when sending data to an optimization server
+    value: '129'
+  - name: REMOVE_UNUSED_SOLUTIONS
+    comment: Removes unused solutions before the optimization is performed.
+    value: '130'
+  - name: SENSITIVITY_ALL
+    comment: Controls sensitivity report behavior.
+    value: '131'
+  - name: SENSITIVITY_OPTIMIZER
+    comment: Controls which optimizer is used for optimal partition sensitivity analysis.
+    value: '132'
+  - name: SENSITIVITY_TYPE
+    comment: Controls which type of sensitivity analysis is to be performed.
+    value: '133'
+  - name: SIM_BASIS_FACTOR_USE
+    comment: Controls whether an LU factorization of the basis is used in a hot-start.
+    value: '134'
+  - name: SIM_DEGEN
+    comment: Controls how aggressively degeneration is handled.
+    value: '135'
+  - name: SIM_DETECT_PWL
+    comment: Not in use.
+    value: '136'
+  - name: SIM_DUAL_CRASH
+    comment: Controls whether crashing is performed in the dual simplex optimizer.
+    value: '137'
+  - name: SIM_DUAL_PHASEONE_METHOD
+    comment: An experimental feature.
+    value: '138'
+  - name: SIM_DUAL_RESTRICT_SELECTION
+    comment: Controls how aggressively restricted selection is used.
+    value: '139'
+  - name: SIM_DUAL_SELECTION
+    comment: Controls the dual simplex strategy.
+    value: '140'
+  - name: SIM_EXPLOIT_DUPVEC
+    comment: Controls if the simplex optimizers are allowed to exploit duplicated columns.
+    value: '141'
+  - name: SIM_HOTSTART
+    comment: Controls the type of hot-start that the simplex optimizer perform.
+    value: '142'
+  - name: SIM_HOTSTART_LU
+    comment: Determines if the simplex optimizer should exploit the initial factorization.
+    value: '143'
+  - name: SIM_MAX_ITERATIONS
+    comment: Maximum number of iterations that can be used by a simplex optimizer.
+    value: '144'
+  - name: SIM_MAX_NUM_SETBACKS
+    comment: Controls how many set-backs that are allowed within a simplex optimizer.
+    value: '145'
+  - name: SIM_NON_SINGULAR
+    comment: Controls if the simplex optimizer ensures a non-singular basis, if possible.
+    value: '146'
+  - name: SIM_PRIMAL_CRASH
+    comment: Controls the simplex crash.
+    value: '147'
+  - name: SIM_PRIMAL_PHASEONE_METHOD
+    comment: An experimental feature.
+    value: '148'
+  - name: SIM_PRIMAL_RESTRICT_SELECTION
+    comment: Controls how aggressively restricted selection is used.
+    value: '149'
+  - name: SIM_PRIMAL_SELECTION
+    comment: Controls the primal simplex strategy.
+    value: '150'
+  - name: SIM_REFACTOR_FREQ
+    comment: Controls the basis refactoring frequency.
+    value: '151'
+  - name: SIM_REFORMULATION
+    comment: Controls if the simplex optimizers are allowed to reformulate the problem.
+    value: '152'
+  - name: SIM_SAVE_LU
+    comment: Controls if the LU factorization stored should be replaced with the LU factorization corresponding to the initial basis.
+    value: '153'
+  - name: SIM_SCALING
+    comment: Controls how much effort is used in scaling the problem before a simplex optimizer is used.
+    value: '154'
+  - name: SIM_SCALING_METHOD
+    comment: Controls how the problem is scaled before a simplex optimizer is used.
+    value: '155'
+  - name: SIM_SEED
+    comment: Sets the random seed used for randomization in the simplex optimizers.
+    value: '156'
+  - name: SIM_SOLVE_FORM
+    comment: Controls whether the primal or the dual problem is solved by the primal-/dual-simplex optimizer.
+    value: '157'
+  - name: SIM_STABILITY_PRIORITY
+    comment: Controls how high priority the numerical stability should be given.
+    value: '158'
+  - name: SIM_SWITCH_OPTIMIZER
+    comment: Controls the simplex behavior.
+    value: '159'
+  - name: SOL_FILTER_KEEP_BASIC
+    comment: Control the contents of the solution files.
+    value: '160'
+  - name: SOL_FILTER_KEEP_RANGED
+    comment: Control the contents of the solution files.
+    value: '161'
+  - name: SOL_READ_NAME_WIDTH
+    comment: Controls the input solution file format.
+    value: '162'
+  - name: SOL_READ_WIDTH
+    comment: Controls the input solution file format.
+    value: '163'
+  - name: SOLUTION_CALLBACK
+    comment: Indicates whether solution callbacks will be performed during the optimization.
+    value: '164'
+  - name: TIMING_LEVEL
+    comment: Controls the amount of timing performed inside MOSEK.
+    value: '165'
+  - name: WRITE_BAS_CONSTRAINTS
+    comment: Controls the basic solution file format.
+    value: '166'
+  - name: WRITE_BAS_HEAD
+    comment: Controls the basic solution file format.
+    value: '167'
+  - name: WRITE_BAS_VARIABLES
+    comment: Controls the basic solution file format.
+    value: '168'
+  - name: WRITE_COMPRESSION
+    comment: Controls output file compression.
+    value: '169'
+  - name: WRITE_DATA_PARAM
+    comment: Controls output file data.
+    value: '170'
+  - name: WRITE_FREE_CON
+    comment: Controls the output file data.
+    value: '171'
+  - name: WRITE_GENERIC_NAMES
+    comment: Controls the output file data.
+    value: '172'
+  - name: WRITE_GENERIC_NAMES_IO
+    comment: Index origin used in  generic names.
+    value: '173'
+  - name: WRITE_IGNORE_INCOMPATIBLE_ITEMS
+    comment: Controls if the writer ignores incompatible problem items when writing files.
+    value: '174'
+  - name: WRITE_INT_CONSTRAINTS
+    comment: Controls the integer solution file format.
+    value: '175'
+  - name: WRITE_INT_HEAD
+    comment: Controls the integer solution file format.
+    value: '176'
+  - name: WRITE_INT_VARIABLES
+    comment: Controls the integer solution file format.
+    value: '177'
+  - name: WRITE_JSON_INDENTATION
+    comment: When set, the JSON task and solution files are written with indentation for better readability.
+    value: '178'
+  - name: WRITE_LP_FULL_OBJ
+    comment: Write full linear objective
+    value: '179'
+  - name: WRITE_LP_LINE_WIDTH
+    comment: Controls the LP output file format.
+    value: '180'
+  - name: WRITE_MPS_FORMAT
+    comment: Controls in which format the MPS is written.
+    value: '181'
+  - name: WRITE_MPS_INT
+    comment: Controls the output file data.
+    value: '182'
+  - name: WRITE_SOL_BARVARIABLES
+    comment: Controls the solution file format.
+    value: '183'
+  - name: WRITE_SOL_CONSTRAINTS
+    comment: Controls the solution file format.
+    value: '184'
+  - name: WRITE_SOL_HEAD
+    comment: Controls solution file format.
+    value: '185'
+  - name: WRITE_SOL_IGNORE_INVALID_NAMES
+    comment: Controls whether the user specified names are employed even if they are invalid names.
+    value: '186'
+  - name: WRITE_SOL_VARIABLES
+    comment: Controls the solution file format.
+    value: '187'
+  - name: WRITE_TASK_INC_SOL
+    comment: Controls whether the solutions are stored in the task file too.
+    value: '188'
+  - name: WRITE_XML_MODE
+    comment: Controls if linear coefficients should be written by row or column when writing in the XML file format.
+    value: '189'
+Sensitivitytype:
+  name: Sensitivitytype
+  comment: Sensitivity types
+  enum_consts:
+  - name: BASIS
+    comment: Basis sensitivity analysis is performed.
+    value: '0'
 Callbackcode:
   name: Callbackcode
   comment: Progress callback codes
@@ -2092,36 +1125,74 @@ Callbackcode:
   - name: READ_OPF_SECTION
     comment: A chunk of Q non-zeros has been read from a problem file.
     value: '82'
+  - name: RESTART_MIO
+    comment: The callback function is called when the mixed-integer optimizer is restarted.
+    value: '83'
   - name: SOLVING_REMOTE
     comment: The callback function is called while the task is being solved on a remote server.
-    value: '83'
+    value: '84'
   - name: UPDATE_DUAL_BI
     comment: The callback function is called from within the basis identification procedure at an intermediate point in the dual phase.
-    value: '84'
+    value: '85'
   - name: UPDATE_DUAL_SIMPLEX
     comment: The callback function is called in the dual simplex optimizer.
-    value: '85'
+    value: '86'
   - name: UPDATE_DUAL_SIMPLEX_BI
     comment: The callback function is called from within the basis identification procedure at an intermediate point in the dual simplex clean-up phase.
-    value: '86'
+    value: '87'
   - name: UPDATE_PRESOLVE
     comment: The callback function is called from within the presolve procedure.
-    value: '87'
+    value: '88'
   - name: UPDATE_PRIMAL_BI
     comment: The callback function is called from within the basis identification procedure at an intermediate point in the primal phase.
-    value: '88'
+    value: '89'
   - name: UPDATE_PRIMAL_SIMPLEX
     comment: The callback function is called  in the primal simplex optimizer.
-    value: '89'
+    value: '90'
   - name: UPDATE_PRIMAL_SIMPLEX_BI
     comment: The callback function is called from within the basis identification procedure at an intermediate point in the primal simplex clean-up phase.
-    value: '90'
+    value: '91'
   - name: UPDATE_SIMPLEX
     comment: The callback function is called from simplex optimizer.
-    value: '91'
+    value: '92'
   - name: WRITE_OPF
     comment: The callback function is called from the OPF writer.
-    value: '92'
+    value: '93'
+Boundkey:
+  name: Boundkey
+  comment: Bound keys
+  enum_consts:
+  - name: LO
+    comment: The constraint or variable has a finite lower bound and an infinite upper bound.
+    value: '0'
+  - name: UP
+    comment: The constraint or variable has an infinite lower bound and an finite upper bound.
+    value: '1'
+  - name: FX
+    comment: The constraint or variable is fixed.
+    value: '2'
+  - name: FR
+    comment: The constraint or variable is free.
+    value: '3'
+  - name: RA
+    comment: The constraint or variable is ranged.
+    value: '4'
+Mpsformat:
+  name: Mpsformat
+  comment: MPS file format type
+  enum_consts:
+  - name: STRICT
+    comment: It is assumed that the input file satisfies the MPS format strictly.
+    value: '0'
+  - name: RELAXED
+    comment: It is assumed that the input file satisfies a slightly relaxed version of the MPS format.
+    value: '1'
+  - name: FREE
+    comment: It is assumed that the input file satisfies the free MPS format. This implies that spaces are not allowed in names. Otherwise the format is free.
+    value: '2'
+  - name: CPLEX
+    comment: The CPLEX compatible version of the MPS format is employed.
+    value: '3'
 Stakey:
   name: Stakey
   comment: Status keys
@@ -2147,34 +1218,257 @@ Stakey:
   - name: INF
     comment: The constraint or variable is infeasible in the bounds.
     value: '6'
-Mpsformat:
-  name: Mpsformat
-  comment: MPS file format type
+Solsta:
+  name: Solsta
+  comment: Solution status keys
   enum_consts:
-  - name: STRICT
-    comment: It is assumed that the input file satisfies the MPS format strictly.
+  - name: UNKNOWN
+    comment: Status of the solution is unknown.
     value: '0'
-  - name: RELAXED
-    comment: It is assumed that the input file satisfies a slightly relaxed version of the MPS format.
+  - name: OPTIMAL
+    comment: The solution is optimal.
+    value: '1'
+  - name: PRIM_FEAS
+    comment: The solution is primal feasible.
+    value: '2'
+  - name: DUAL_FEAS
+    comment: The solution is dual feasible.
+    value: '3'
+  - name: PRIM_AND_DUAL_FEAS
+    comment: The solution is both primal and dual feasible.
+    value: '4'
+  - name: PRIM_INFEAS_CER
+    comment: The solution is a certificate of primal infeasibility.
+    value: '5'
+  - name: DUAL_INFEAS_CER
+    comment: The solution is a certificate of dual infeasibility.
+    value: '6'
+  - name: PRIM_ILLPOSED_CER
+    comment: The solution is a certificate that the primal problem is illposed.
+    value: '7'
+  - name: DUAL_ILLPOSED_CER
+    comment: The solution is a certificate that the dual problem is illposed.
+    value: '8'
+  - name: INTEGER_OPTIMAL
+    comment: The primal solution is integer optimal.
+    value: '9'
+Variabletype:
+  name: Variabletype
+  comment: Variable types
+  enum_consts:
+  - name: TYPE_CONT
+    comment: Is a continuous variable.
+    value: '0'
+  - name: TYPE_INT
+    comment: Is an integer variable.
+    value: '1'
+Miovarseltype:
+  name: Miovarseltype
+  comment: Mixed-integer variable selection types
+  enum_consts:
+  - name: FREE
+    comment: The optimizer decides the variable selection strategy.
+    value: '0'
+  - name: PSEUDOCOST
+    comment: The optimizer employs pseudocost variable selection.
+    value: '1'
+  - name: STRONG
+    comment: The optimizer employs strong branching variable selection.
+    value: '2'
+Value:
+  name: Value
+  comment: Integer values
+  enum_consts:
+  - name: LICENSE_BUFFER_LENGTH
+    comment: The length of a license key buffer.
+    value: '21'
+  - name: MAX_STR_LEN
+    comment: Maximum string length allowed in MOSEK.
+    value: '1024'
+Iomode:
+  name: Iomode
+  comment: Input/output modes
+  enum_consts:
+  - name: READ
+    comment: The file is read-only.
+    value: '0'
+  - name: WRITE
+    comment: The file is write-only. If the file exists then it is truncated when it is opened. Otherwise it is created when it is opened.
+    value: '1'
+  - name: READWRITE
+    comment: The file is to read and write.
+    value: '2'
+Orderingtype:
+  name: Orderingtype
+  comment: Ordering strategies
+  enum_consts:
+  - name: FREE
+    comment: The ordering method is chosen automatically.
+    value: '0'
+  - name: APPMINLOC
+    comment: Approximate minimum local fill-in ordering is employed.
+    value: '1'
+  - name: EXPERIMENTAL
+    comment: This option should not be used.
+    value: '2'
+  - name: TRY_GRAPHPAR
+    comment: Always try the graph partitioning based ordering.
+    value: '3'
+  - name: FORCE_GRAPHPAR
+    comment: Always use the graph partitioning based ordering even if it is worse than the approximate minimum local fill ordering.
+    value: '4'
+  - name: NONE
+    comment: No ordering is used. Note using this value almost always leads to a significantly slow down.
+    value: '5'
+Simhotstart:
+  name: Simhotstart
+  comment: Hot-start type employed by the simplex optimizer
+  enum_consts:
+  - name: NONE
+    comment: The simplex optimizer performs a coldstart.
+    value: '0'
+  - name: FREE
+    comment: The simplex optimize chooses the hot-start type.
+    value: '1'
+  - name: STATUS_KEYS
+    comment: Only the status keys of the constraints and variables are used to choose the type of hot-start.
+    value: '2'
+Intpnthotstart:
+  name: Intpnthotstart
+  comment: Hot-start type employed by the interior-point optimizers.
+  enum_consts:
+  - name: NONE
+    comment: The interior-point optimizer performs a coldstart.
+    value: '0'
+  - name: PRIMAL
+    comment: The interior-point optimizer exploits the primal solution only.
+    value: '1'
+  - name: DUAL
+    comment: The interior-point optimizer exploits the dual solution only.
+    value: '2'
+  - name: PRIMAL_DUAL
+    comment: The interior-point optimizer exploits both the primal and dual solution.
+    value: '3'
+Startpointtype:
+  name: Startpointtype
+  comment: Starting point types
+  enum_consts:
+  - name: FREE
+    comment: The starting point is chosen automatically.
+    value: '0'
+  - name: GUESS
+    comment: The optimizer guesses a starting point.
+    value: '1'
+  - name: CONSTANT
+    comment: The optimizer constructs a starting point by assigning a constant value to all primal and dual variables. This starting point is normally robust.
+    value: '2'
+Scalingtype:
+  name: Scalingtype
+  comment: Scaling type
+  enum_consts:
+  - name: FREE
+    comment: The optimizer chooses the scaling heuristic.
+    value: '0'
+  - name: NONE
+    comment: No scaling is performed.
+    value: '1'
+Scalingmethod:
+  name: Scalingmethod
+  comment: Scaling method
+  enum_consts:
+  - name: POW2
+    comment: Scales only with power of 2 leaving the mantissa untouched.
+    value: '0'
+  - name: FREE
+    comment: The optimizer chooses the scaling heuristic.
+    value: '1'
+Symmattype:
+  name: Symmattype
+  comment: Cone types
+  enum_consts:
+  - name: SPARSE
+    comment: Sparse symmetric matrix.
+    value: '0'
+Purify:
+  name: Purify
+  comment: Solution purification employed optimizer.
+  enum_consts:
+  - name: NONE
+    comment: The optimizer performs no solution purification.
+    value: '0'
+  - name: PRIMAL
+    comment: The optimizer purifies the primal solution.
+    value: '1'
+  - name: DUAL
+    comment: The optimizer purifies the dual solution.
+    value: '2'
+  - name: PRIMAL_DUAL
+    comment: The optimizer purifies both the primal and dual solution.
+    value: '3'
+  - name: AUTO
+    comment: TBD
+    value: '4'
+Feature:
+  name: Feature
+  comment: License feature
+  enum_consts:
+  - name: PTS
+    comment: Base system.
+    value: '0'
+  - name: PTON
+    comment: Conic extension.
+    value: '1'
+Objsense:
+  name: Objsense
+  comment: Objective sense types
+  enum_consts:
+  - name: MINIMIZE
+    comment: The problem should be minimized.
+    value: '0'
+  - name: MAXIMIZE
+    comment: The problem should be maximized.
+    value: '1'
+Nametype:
+  name: Nametype
+  comment: Name types
+  enum_consts:
+  - name: GEN
+    comment: General names. However, no duplicate and blank names are allowed.
+    value: '0'
+  - name: MPS
+    comment: MPS type names.
+    value: '1'
+  - name: LP
+    comment: LP type names.
+    value: '2'
+Streamtype:
+  name: Streamtype
+  comment: Stream types
+  enum_consts:
+  - name: LOG
+    comment: Log stream. Contains the aggregated contents of all other streams. This means that a message written to any other stream will also be written to this stream.
+    value: '0'
+  - name: MSG
+    comment: Message stream. Log information relating to performance and progress of the optimization is written to this stream.
+    value: '1'
+  - name: ERR
+    comment: Error stream. Error messages are written to this stream.
+    value: '2'
+  - name: WRN
+    comment: Warning stream. Warning messages are written to this stream.
+    value: '3'
+Presolvemode:
+  name: Presolvemode
+  comment: Presolve method.
+  enum_consts:
+  - name: OFF
+    comment: The problem is not presolved before it is optimized.
+    value: '0'
+  - name: ON
+    comment: The problem is presolved before it is optimized.
     value: '1'
   - name: FREE
-    comment: It is assumed that the input file satisfies the free MPS format. This implies that spaces are not allowed in names. Otherwise the format is free.
-    value: '2'
-  - name: CPLEX
-    comment: The CPLEX compatible version of the MPS format is employed.
-    value: '3'
-Inftype:
-  name: Inftype
-  comment: Information item types
-  enum_consts:
-  - name: DOU_TYPE
-    comment: Is a double information type.
-    value: '0'
-  - name: INT_TYPE
-    comment: Is an integer.
-    value: '1'
-  - name: LINT_TYPE
-    comment: Is a long integer.
+    comment: It is decided automatically whether to presolve before the problem is optimized.
     value: '2'
 Sparam:
   name: Sparam
@@ -2255,138 +1549,368 @@ Sparam:
   - name: WRITE_LP_GEN_VAR_NAME
     comment: Added variable names in the LP files.
     value: '24'
-Variabletype:
-  name: Variabletype
-  comment: Variable types
+Dinfitem:
+  name: Dinfitem
+  comment: Double information items
   enum_consts:
-  - name: TYPE_CONT
-    comment: Is a continuous variable.
+  - name: ANA_PRO_SCALARIZED_CONSTRAINT_MATRIX_DENSITY
+    comment: Density percentage of the scalarized constraint matrix.
     value: '0'
-  - name: TYPE_INT
-    comment: Is an integer variable.
+  - name: BI_CLEAN_DUAL_TIME
+    comment: Time  spent within the dual clean-up optimizer of the basis identification procedure since its invocation.
     value: '1'
-Feature:
-  name: Feature
-  comment: License feature
-  enum_consts:
-  - name: PTS
-    comment: Base system.
-    value: '0'
-  - name: PTON
-    comment: Conic extension.
-    value: '1'
-Solveform:
-  name: Solveform
-  comment: Solve primal or dual form
-  enum_consts:
-  - name: FREE
-    comment: The optimizer is free to solve either the primal or the dual problem.
-    value: '0'
-  - name: PRIMAL
-    comment: The optimizer should solve the primal problem.
-    value: '1'
-  - name: DUAL
-    comment: The optimizer should solve the dual problem.
+  - name: BI_CLEAN_PRIMAL_TIME
+    comment: Time spent within the primal clean-up optimizer of the basis identification procedure since its invocation.
     value: '2'
-Mark:
-  name: Mark
-  comment: Mark
-  enum_consts:
-  - name: LO
-    comment: The lower bound is selected for sensitivity analysis.
-    value: '0'
-  - name: UP
-    comment: The upper bound is selected for sensitivity analysis.
-    value: '1'
-Value:
-  name: Value
-  comment: Integer values
-  enum_consts:
-  - name: LICENSE_BUFFER_LENGTH
-    comment: The length of a license key buffer.
-    value: '21'
-  - name: MAX_STR_LEN
-    comment: Maximum string length allowed in MOSEK.
-    value: '1024'
-Checkconvexitytype:
-  name: Checkconvexitytype
-  comment: Types of convexity checks.
-  enum_consts:
-  - name: NONE
-    comment: No convexity check.
-    value: '0'
-  - name: SIMPLE
-    comment: Perform simple and fast convexity check.
-    value: '1'
-  - name: FULL
-    comment: Perform a full convexity check.
-    value: '2'
-Optimizertype:
-  name: Optimizertype
-  comment: Optimizer types
-  enum_consts:
-  - name: CONIC
-    comment: The optimizer for problems having conic constraints.
-    value: '0'
-  - name: DUAL_SIMPLEX
-    comment: The dual simplex optimizer is used.
-    value: '1'
-  - name: FREE
-    comment: The optimizer is chosen automatically.
-    value: '2'
-  - name: FREE_SIMPLEX
-    comment: One of the simplex optimizers is used.
+  - name: BI_CLEAN_TIME
+    comment: Time spent within the clean-up phase of the basis identification procedure since its invocation.
     value: '3'
-  - name: INTPNT
-    comment: The interior-point optimizer is used.
+  - name: BI_DUAL_TIME
+    comment: Time spent within the dual phase basis identification procedure since its invocation.
     value: '4'
-  - name: MIXED_INT
-    comment: The mixed-integer optimizer.
+  - name: BI_PRIMAL_TIME
+    comment: Time  spent within the primal phase of the basis identification procedure since its invocation.
     value: '5'
-  - name: PRIMAL_SIMPLEX
-    comment: The primal simplex optimizer is used.
+  - name: BI_TIME
+    comment: Time spent within the basis identification procedure since its invocation.
     value: '6'
-Orderingtype:
-  name: Orderingtype
-  comment: Ordering strategies
+  - name: INTPNT_DUAL_FEAS
+    comment: Dual feasibility measure reported by the interior-point optimizer.
+    value: '7'
+  - name: INTPNT_DUAL_OBJ
+    comment: Dual objective value reported by the interior-point optimizer.
+    value: '8'
+  - name: INTPNT_FACTOR_NUM_FLOPS
+    comment: An estimate of the number of flops used in the factorization.
+    value: '9'
+  - name: INTPNT_OPT_STATUS
+    comment: A measure of optimality of the solution.
+    value: '10'
+  - name: INTPNT_ORDER_TIME
+    comment: Order time (in seconds).
+    value: '11'
+  - name: INTPNT_PRIMAL_FEAS
+    comment: Primal feasibility measure reported by the interior-point optimizer.
+    value: '12'
+  - name: INTPNT_PRIMAL_OBJ
+    comment: Primal objective value reported by the interior-point optimizer.
+    value: '13'
+  - name: INTPNT_TIME
+    comment: Time spent within the interior-point optimizer since its invocation.
+    value: '14'
+  - name: MIO_CLIQUE_SELECTION_TIME
+    comment: Selection time for clique cuts.
+    value: '15'
+  - name: MIO_CLIQUE_SEPARATION_TIME
+    comment: Separation time for clique cuts.
+    value: '16'
+  - name: MIO_CMIR_SELECTION_TIME
+    comment: Selection time for CMIR cuts.
+    value: '17'
+  - name: MIO_CMIR_SEPARATION_TIME
+    comment: Separation time for CMIR cuts.
+    value: '18'
+  - name: MIO_CONSTRUCT_SOLUTION_OBJ
+    comment: Optimal objective value corresponding to the feasible solution.
+    value: '19'
+  - name: MIO_DUAL_BOUND_AFTER_PRESOLVE
+    comment: Value of the dual bound after presolve but before cut generation.
+    value: '20'
+  - name: MIO_GMI_SELECTION_TIME
+    comment: Selection time for GMI cuts.
+    value: '21'
+  - name: MIO_GMI_SEPARATION_TIME
+    comment: Separation time for GMI cuts.
+    value: '22'
+  - name: MIO_IMPLIED_BOUND_SELECTION_TIME
+    comment: Selection time for implied bound cuts.
+    value: '23'
+  - name: MIO_IMPLIED_BOUND_SEPARATION_TIME
+    comment: Separation time for implied bound cuts.
+    value: '24'
+  - name: MIO_INITIAL_FEASIBLE_SOLUTION_OBJ
+    comment: Optimal objective value corresponding to the user provided initial solution.
+    value: '25'
+  - name: MIO_KNAPSACK_COVER_SELECTION_TIME
+    comment: Selection time for knapsack cover.
+    value: '26'
+  - name: MIO_KNAPSACK_COVER_SEPARATION_TIME
+    comment: Separation time for knapsack cover.
+    value: '27'
+  - name: MIO_LIPRO_SELECTION_TIME
+    comment: Selection time for lift-and-project cuts.
+    value: '28'
+  - name: MIO_LIPRO_SEPARATION_TIME
+    comment: Separation time for lift-and-project cuts.
+    value: '29'
+  - name: MIO_OBJ_ABS_GAP
+    comment: If the mixed-integer optimizer has computed a feasible solution and a bound, this contains the absolute gap.
+    value: '30'
+  - name: MIO_OBJ_BOUND
+    comment: The best bound on the objective value known.
+    value: '31'
+  - name: MIO_OBJ_INT
+    comment: The primal objective value corresponding to the best integer feasible solution.
+    value: '32'
+  - name: MIO_OBJ_REL_GAP
+    comment: If the mixed-integer optimizer has computed a feasible solution and a bound, this contains the relative gap.
+    value: '33'
+  - name: MIO_PROBING_TIME
+    comment: Total time for probing.
+    value: '34'
+  - name: MIO_ROOT_CUT_SELECTION_TIME
+    comment: Total time for cut selection.
+    value: '35'
+  - name: MIO_ROOT_CUT_SEPARATION_TIME
+    comment: Total time for cut separation.
+    value: '36'
+  - name: MIO_ROOT_OPTIMIZER_TIME
+    comment: Time spent in the contiuous optimizer while processing the root node relaxation.
+    value: '37'
+  - name: MIO_ROOT_PRESOLVE_TIME
+    comment: Time spent presolving the problem at the root node.
+    value: '38'
+  - name: MIO_ROOT_TIME
+    comment: Time spent processing the root node.
+    value: '39'
+  - name: MIO_SYMMETRY_DETECTION_TIME
+    comment: Total time for symmetry detection.
+    value: '40'
+  - name: MIO_SYMMETRY_FACTOR
+    comment: Degree to which the problem is affected by detected symmetry.
+    value: '41'
+  - name: MIO_TIME
+    comment: Time spent in the mixed-integer optimizer.
+    value: '42'
+  - name: MIO_USER_OBJ_CUT
+    comment: If the objective cut is used, then this information item has the value of the cut.
+    value: '43'
+  - name: OPTIMIZER_TICKS
+    comment: Total number of ticks spent in the optimizer since it was invoked. It is strictly negative if it is not available.
+    value: '44'
+  - name: OPTIMIZER_TIME
+    comment: Total time spent in the optimizer since it was invoked.
+    value: '45'
+  - name: PRESOLVE_ELI_TIME
+    comment: Total time spent in the eliminator since the presolve was invoked.
+    value: '46'
+  - name: PRESOLVE_LINDEP_TIME
+    comment: Total time spent  in the linear dependency checker since the presolve was invoked.
+    value: '47'
+  - name: PRESOLVE_TIME
+    comment: Total time (in seconds) spent in the presolve since it was invoked.
+    value: '48'
+  - name: PRESOLVE_TOTAL_PRIMAL_PERTURBATION
+    comment: Total perturbation of the bounds of the primal problem.
+    value: '49'
+  - name: PRIMAL_REPAIR_PENALTY_OBJ
+    comment: The optimal objective value of the penalty function.
+    value: '50'
+  - name: QCQO_REFORMULATE_MAX_PERTURBATION
+    comment: Maximum absolute diagonal perturbation occurring during the QCQO reformulation.
+    value: '51'
+  - name: QCQO_REFORMULATE_TIME
+    comment: Time spent with conic quadratic reformulation.
+    value: '52'
+  - name: QCQO_REFORMULATE_WORST_CHOLESKY_COLUMN_SCALING
+    comment: Worst Cholesky column scaling.
+    value: '53'
+  - name: QCQO_REFORMULATE_WORST_CHOLESKY_DIAG_SCALING
+    comment: Worst Cholesky diagonal scaling.
+    value: '54'
+  - name: READ_DATA_TIME
+    comment: Time spent reading the data file.
+    value: '55'
+  - name: REMOTE_TIME
+    comment: The total real time in seconds spent when optimizing on a server by the process performing the optimization on the server
+    value: '56'
+  - name: SIM_DUAL_TIME
+    comment: Time spent in the dual simplex optimizer since invoking it.
+    value: '57'
+  - name: SIM_FEAS
+    comment: Feasibility measure reported by the simplex optimizer.
+    value: '58'
+  - name: SIM_OBJ
+    comment: Objective value reported by the simplex optimizer.
+    value: '59'
+  - name: SIM_PRIMAL_TIME
+    comment: Time spent in the primal simplex optimizer since invoking it.
+    value: '60'
+  - name: SIM_TIME
+    comment: Time spent in the simplex optimizer since invoking it.
+    value: '61'
+  - name: SOL_BAS_DUAL_OBJ
+    comment: Dual objective value of the basic solution. Updated by the function updatesolutioninfo.
+    value: '62'
+  - name: SOL_BAS_DVIOLCON
+    comment: Maximal dual bound violation for xx in the basic solution. Updated by the function updatesolutioninfo.
+    value: '63'
+  - name: SOL_BAS_DVIOLVAR
+    comment: Maximal dual bound violation for xx in the basic solution. Updated by the function updatesolutioninfo.
+    value: '64'
+  - name: SOL_BAS_NRM_BARX
+    comment: Infinity norm of barx in the basic solution.
+    value: '65'
+  - name: SOL_BAS_NRM_SLC
+    comment: Infinity norm of slc in the basic solution.
+    value: '66'
+  - name: SOL_BAS_NRM_SLX
+    comment: Infinity norm of slx in the basic solution.
+    value: '67'
+  - name: SOL_BAS_NRM_SUC
+    comment: Infinity norm of suc in the basic solution.
+    value: '68'
+  - name: SOL_BAS_NRM_SUX
+    comment: Infinity norm of sux in the basic solution.
+    value: '69'
+  - name: SOL_BAS_NRM_XC
+    comment: Infinity norm of xc in the basic solution.
+    value: '70'
+  - name: SOL_BAS_NRM_XX
+    comment: Infinity norm of xx in the basic solution.
+    value: '71'
+  - name: SOL_BAS_NRM_Y
+    comment: Infinity norm of Y in the basic solution.
+    value: '72'
+  - name: SOL_BAS_PRIMAL_OBJ
+    comment: Primal objective value of the basic solution. Updated by the function updatesolutioninfo.
+    value: '73'
+  - name: SOL_BAS_PVIOLCON
+    comment: Maximal primal bound violation for xc in the basic solution. Updated by the function updatesolutioninfo.
+    value: '74'
+  - name: SOL_BAS_PVIOLVAR
+    comment: Maximal primal bound violation for xx in the basic solution. Updated by the function updatesolutioninfo.
+    value: '75'
+  - name: SOL_ITG_NRM_BARX
+    comment: Infinity norm of barx in the integer solution.
+    value: '76'
+  - name: SOL_ITG_NRM_XC
+    comment: Infinity norm of xc in the integer solution.
+    value: '77'
+  - name: SOL_ITG_NRM_XX
+    comment: Infinity norm of xx in the integer solution.
+    value: '78'
+  - name: SOL_ITG_PRIMAL_OBJ
+    comment: Primal objective value of the integer solution. Updated by the function updatesolutioninfo.
+    value: '79'
+  - name: SOL_ITG_PVIOLACC
+    comment: Maximal primal violation for affine conic constraints in the integer solution. Updated by the function updatesolutioninfo.
+    value: '80'
+  - name: SOL_ITG_PVIOLBARVAR
+    comment: Maximal primal bound violation for barx in the integer solution. Updated by the function updatesolutioninfo.
+    value: '81'
+  - name: SOL_ITG_PVIOLCON
+    comment: Maximal primal bound violation for xc in the integer solution. Updated by the function updatesolutioninfo.
+    value: '82'
+  - name: SOL_ITG_PVIOLCONES
+    comment: Maximal primal violation for primal conic constraints in the integer solution. Updated by the function updatesolutioninfo.
+    value: '83'
+  - name: SOL_ITG_PVIOLDJC
+    comment: Maximal primal violation for disjunctive constraints in the integer solution. Updated by the function updatesolutioninfo.
+    value: '84'
+  - name: SOL_ITG_PVIOLITG
+    comment: Maximal violation for the integer constraints in the integer solution. Updated by the function updatesolutioninfo.
+    value: '85'
+  - name: SOL_ITG_PVIOLVAR
+    comment: Maximal primal bound violation for xx in the integer solution. Updated by the function updatesolutioninfo.
+    value: '86'
+  - name: SOL_ITR_DUAL_OBJ
+    comment: Dual objective value of the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '87'
+  - name: SOL_ITR_DVIOLACC
+    comment: Maximal dual violation for affine conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '88'
+  - name: SOL_ITR_DVIOLBARVAR
+    comment: Maximal dual bound violation for barx in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '89'
+  - name: SOL_ITR_DVIOLCON
+    comment: Maximal dual bound violation for xc in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '90'
+  - name: SOL_ITR_DVIOLCONES
+    comment: Maximal dual violation for conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '91'
+  - name: SOL_ITR_DVIOLVAR
+    comment: Maximal dual bound violation for xx in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '92'
+  - name: SOL_ITR_NRM_BARS
+    comment: Infinity norm of bars in the interior-point solution.
+    value: '93'
+  - name: SOL_ITR_NRM_BARX
+    comment: Infinity norm of barx in the interior-point solution.
+    value: '94'
+  - name: SOL_ITR_NRM_SLC
+    comment: Infinity norm of slc in the interior-point solution.
+    value: '95'
+  - name: SOL_ITR_NRM_SLX
+    comment: Infinity norm of slx in the interior-point solution.
+    value: '96'
+  - name: SOL_ITR_NRM_SNX
+    comment: Infinity norm of snx in the interior-point solution.
+    value: '97'
+  - name: SOL_ITR_NRM_SUC
+    comment: Infinity norm of suc in the interior-point solution.
+    value: '98'
+  - name: SOL_ITR_NRM_SUX
+    comment: Infinity norm of sux in the interior-point solution.
+    value: '99'
+  - name: SOL_ITR_NRM_XC
+    comment: Infinity norm of xc in the interior-point solution.
+    value: '100'
+  - name: SOL_ITR_NRM_XX
+    comment: Infinity norm of xx in the interior-point solution.
+    value: '101'
+  - name: SOL_ITR_NRM_Y
+    comment: Infinity norm of Y in the interior-point solution.
+    value: '102'
+  - name: SOL_ITR_PRIMAL_OBJ
+    comment: Primal objective value of the interior-point solution.
+    value: '103'
+  - name: SOL_ITR_PVIOLACC
+    comment: Maximal primal violation for affine conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '104'
+  - name: SOL_ITR_PVIOLBARVAR
+    comment: Maximal primal bound violation for barx in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '105'
+  - name: SOL_ITR_PVIOLCON
+    comment: Maximal primal bound violation for xc in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '106'
+  - name: SOL_ITR_PVIOLCONES
+    comment: Maximal primal violation for conic constraints in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '107'
+  - name: SOL_ITR_PVIOLVAR
+    comment: Maximal primal bound violation for xx in the interior-point solution. Updated by the function updatesolutioninfo.
+    value: '108'
+  - name: TO_CONIC_TIME
+    comment: Time spent in the last to conic reformulation.
+    value: '109'
+  - name: WRITE_DATA_TIME
+    comment: Time spent writing the data file.
+    value: '110'
+  - name: END
+    comment: ''
+    value: '110'
+Miqcqoreformmethod:
+  name: Miqcqoreformmethod
+  comment: Specifies the reformulation method for mixed-integer quadratic problems.
   enum_consts:
   - name: FREE
-    comment: The ordering method is chosen automatically.
+    comment: The mixed-integer optimizer decides which reformulation method to apply.
     value: '0'
-  - name: APPMINLOC
-    comment: Approximate minimum local fill-in ordering is employed.
-    value: '1'
-  - name: EXPERIMENTAL
-    comment: This option should not be used.
-    value: '2'
-  - name: TRY_GRAPHPAR
-    comment: Always try the graph partitioning based ordering.
-    value: '3'
-  - name: FORCE_GRAPHPAR
-    comment: Always use the graph partitioning based ordering even if it is worse than the approximate minimum local fill ordering.
-    value: '4'
   - name: NONE
-    comment: No ordering is used.
-    value: '5'
-Basindtype:
-  name: Basindtype
-  comment: Basis identification
-  enum_consts:
-  - name: NEVER
-    comment: Never do basis identification.
-    value: '0'
-  - name: ALWAYS
-    comment: Basis identification is always performed even if the interior-point optimizer terminates abnormally.
+    comment: No reformulation method is applied.
     value: '1'
-  - name: NO_ERROR
-    comment: Basis identification is performed if the interior-point optimizer terminates without an error.
+  - name: LINEARIZATION
+    comment: A reformulation via linearization is applied.
     value: '2'
-  - name: IF_FEASIBLE
-    comment: Basis identification is not performed if the interior-point optimizer terminates with a problem status saying that the problem is primal or dual infeasible.
+  - name: EIGEN_VAL_METHOD
+    comment: The eigenvalue method is applied.
     value: '3'
-  - name: RESERVERED
-    comment: Not currently in use.
+  - name: DIAG_SDP
+    comment: A perturbation of matrix diagonals via the solution of SDPs is applied.
     value: '4'
+  - name: RELAX_SDP
+    comment: A Reformulation based on the solution of an SDP-relaxation of the problem is applied.
+    value: '5'
 Parametertype:
   name: Parametertype
   comment: Parameter type
@@ -2403,6 +1927,32 @@ Parametertype:
   - name: STR_TYPE
     comment: Is a string parameter.
     value: '3'
+Miomode:
+  name: Miomode
+  comment: Integer restrictions
+  enum_consts:
+  - name: IGNORED
+    comment: The integer constraints are ignored and the problem is solved as a continuous problem.
+    value: '0'
+  - name: SATISFIED
+    comment: Integer restrictions should be satisfied.
+    value: '1'
+Mionodeseltype:
+  name: Mionodeseltype
+  comment: Mixed-integer node selection types
+  enum_consts:
+  - name: FREE
+    comment: The optimizer decides the node selection strategy.
+    value: '0'
+  - name: FIRST
+    comment: The optimizer employs a depth first node selection strategy.
+    value: '1'
+  - name: BEST
+    comment: The optimizer employs a best bound node selection strategy.
+    value: '2'
+  - name: PSEUDO
+    comment: The optimizer employs selects the node based on a pseudo cost estimate.
+    value: '3'
 Onoffkey:
   name: Onoffkey
   comment: On/off
@@ -2413,160 +1963,25 @@ Onoffkey:
   - name: ON
     comment: Switch the option on.
     value: '1'
-Soltype:
-  name: Soltype
-  comment: Solution types
+Rescodetype:
+  name: Rescodetype
+  comment: Response code type
   enum_consts:
-  - name: ITR
-    comment: The interior solution.
+  - name: OK
+    comment: The response code is OK.
     value: '0'
-  - name: BAS
-    comment: The basic solution.
+  - name: WRN
+    comment: The response code is a warning.
     value: '1'
-  - name: ITG
-    comment: The integer solution.
+  - name: TRM
+    comment: The response code is an optimizer termination status.
     value: '2'
-Simdegen:
-  name: Simdegen
-  comment: Degeneracy strategies
-  enum_consts:
-  - name: NONE
-    comment: The simplex optimizer should use no degeneration strategy.
-    value: '0'
-  - name: FREE
-    comment: The simplex optimizer chooses the degeneration strategy.
-    value: '1'
-  - name: AGGRESSIVE
-    comment: The simplex optimizer should use an aggressive degeneration strategy.
-    value: '2'
-  - name: MODERATE
-    comment: The simplex optimizer should use a moderate degeneration strategy.
+  - name: ERR
+    comment: The response code is an error.
     value: '3'
-  - name: MINIMUM
-    comment: The simplex optimizer should use a minimum degeneration strategy.
+  - name: UNK
+    comment: The response code does not belong to any class.
     value: '4'
-Nametype:
-  name: Nametype
-  comment: Name types
-  enum_consts:
-  - name: GEN
-    comment: General names. However, no duplicate and blank names are allowed.
-    value: '0'
-  - name: MPS
-    comment: MPS type names.
-    value: '1'
-  - name: LP
-    comment: LP type names.
-    value: '2'
-Miocontsoltype:
-  name: Miocontsoltype
-  comment: Continuous mixed-integer solution type
-  enum_consts:
-  - name: NONE
-    comment: No interior-point or basic solution.
-    value: '0'
-  - name: ROOT
-    comment: Solutions to the root node problem.
-    value: '1'
-  - name: ITG
-    comment: A feasible primal solution.
-    value: '2'
-  - name: ITG_REL
-    comment: A feasible primal solution or a root node solution if the problem is infeasible.
-    value: '3'
-Uplo:
-  name: Uplo
-  comment: Triangular part of a symmetric matrix.
-  enum_consts:
-  - name: LO
-    comment: Lower part.
-    value: '0'
-  - name: UP
-    comment: Upper part.
-    value: '1'
-Branchdir:
-  name: Branchdir
-  comment: Specifies the branching direction.
-  enum_consts:
-  - name: FREE
-    comment: The mixed-integer optimizer decides which branch to choose.
-    value: '0'
-  - name: UP
-    comment: The mixed-integer optimizer always chooses the up branch first.
-    value: '1'
-  - name: DOWN
-    comment: The mixed-integer optimizer always chooses the down branch first.
-    value: '2'
-  - name: NEAR
-    comment: Branch in direction nearest to selected fractional variable.
-    value: '3'
-  - name: FAR
-    comment: Branch in direction farthest from selected fractional variable.
-    value: '4'
-  - name: ROOT_LP
-    comment: Chose direction based on root lp value of selected variable.
-    value: '5'
-  - name: GUIDED
-    comment: Branch in direction of current incumbent.
-    value: '6'
-  - name: PSEUDOCOST
-    comment: Branch based on the pseudocost of the variable.
-    value: '7'
-Solformat:
-  name: Solformat
-  comment: Data format types
-  enum_consts:
-  - name: EXTENSION
-    comment: The file extension is used to determine the data file format.
-    value: '0'
-  - name: B
-    comment: Simple binary format
-    value: '1'
-  - name: TASK
-    comment: Tar based format.
-    value: '2'
-  - name: JSON_TASK
-    comment: JSON based format.
-    value: '3'
-Simhotstart:
-  name: Simhotstart
-  comment: Hot-start type employed by the simplex optimizer
-  enum_consts:
-  - name: NONE
-    comment: The simplex optimizer performs a coldstart.
-    value: '0'
-  - name: FREE
-    comment: The simplex optimize chooses the hot-start type.
-    value: '1'
-  - name: STATUS_KEYS
-    comment: Only the status keys of the constraints and variables are used to choose the type of hot-start.
-    value: '2'
-Miodatapermmethod:
-  name: Miodatapermmethod
-  comment: Specifies the problem data permutation method for mixed-integer problems.
-  enum_consts:
-  - name: NONE
-    comment: No problem data permutation is applied.
-    value: '0'
-  - name: CYCLIC_SHIFT
-    comment: A random cyclic shift is applied to permute the problem data.
-    value: '1'
-  - name: RANDOM
-    comment: A random permutation is applied to the problem data.
-    value: '2'
-Iomode:
-  name: Iomode
-  comment: Input/output modes
-  enum_consts:
-  - name: READ
-    comment: The file is read-only.
-    value: '0'
-  - name: WRITE
-    comment: The file is write-only. If the file exists then it is truncated when it is opened. Otherwise it is created when it is opened.
-    value: '1'
-  - name: READWRITE
-    comment: The file is to read and write.
-    value: '2'
 Liinfitem:
   name: Liinfitem
   comment: Long integer information items.
@@ -2637,40 +2052,256 @@ Liinfitem:
   - name: END
     comment: ''
     value: '20'
-Rescodetype:
-  name: Rescodetype
-  comment: Response code type
+Simreform:
+  name: Simreform
+  comment: Problem reformulation.
   enum_consts:
-  - name: OK
-    comment: The response code is OK.
+  - name: OFF
+    comment: Disallow the simplex optimizer to reformulate the problem.
     value: '0'
-  - name: WRN
-    comment: The response code is a warning.
+  - name: ON
+    comment: Allow the simplex optimizer to reformulate the problem.
     value: '1'
-  - name: TRM
-    comment: The response code is an optimizer termination status.
+  - name: FREE
+    comment: The simplex optimizer can choose freely.
     value: '2'
-  - name: ERR
-    comment: The response code is an error.
+  - name: AGGRESSIVE
+    comment: The simplex optimizer should use an aggressive reformulation strategy.
     value: '3'
-  - name: UNK
-    comment: The response code does not belong to any class.
-    value: '4'
-Streamtype:
-  name: Streamtype
-  comment: Stream types
+Dparam:
+  name: Dparam
+  comment: Double parameters
   enum_consts:
-  - name: LOG
-    comment: Log stream. Contains the aggregated contents of all other streams. This means that a message written to any other stream will also be written to this stream.
+  - name: ANA_SOL_INFEAS_TOL
+    comment: If a constraint violates its bound with an amount larger than this value, the constraint name, index and violation will be printed by the solution analyzer.
     value: '0'
-  - name: MSG
-    comment: Message stream. Log information relating to performance and progress of the optimization is written to this stream.
+  - name: BASIS_REL_TOL_S
+    comment: Maximum relative dual bound violation allowed in an optimal basic solution.
     value: '1'
-  - name: ERR
-    comment: Error stream. Error messages are written to this stream.
+  - name: BASIS_TOL_S
+    comment: Maximum absolute dual bound violation in an optimal basic solution.
     value: '2'
-  - name: WRN
-    comment: Warning stream. Warning messages are written to this stream.
+  - name: BASIS_TOL_X
+    comment: Maximum absolute primal bound violation allowed in an optimal basic solution.
+    value: '3'
+  - name: CHECK_CONVEXITY_REL_TOL
+    comment: Convexity check tolerance.
+    value: '4'
+  - name: DATA_SYM_MAT_TOL
+    comment: Zero tolerance threshold for symmetric matrices.
+    value: '5'
+  - name: DATA_SYM_MAT_TOL_HUGE
+    comment: Data tolerance threshold.
+    value: '6'
+  - name: DATA_SYM_MAT_TOL_LARGE
+    comment: Data tolerance threshold.
+    value: '7'
+  - name: DATA_TOL_AIJ_HUGE
+    comment: Data tolerance threshold.
+    value: '8'
+  - name: DATA_TOL_AIJ_LARGE
+    comment: Data tolerance threshold.
+    value: '9'
+  - name: DATA_TOL_BOUND_INF
+    comment: Data tolerance threshold.
+    value: '10'
+  - name: DATA_TOL_BOUND_WRN
+    comment: Data tolerance threshold.
+    value: '11'
+  - name: DATA_TOL_C_HUGE
+    comment: Data tolerance threshold.
+    value: '12'
+  - name: DATA_TOL_CJ_LARGE
+    comment: Data tolerance threshold.
+    value: '13'
+  - name: DATA_TOL_QIJ
+    comment: Data tolerance threshold.
+    value: '14'
+  - name: DATA_TOL_X
+    comment: Data tolerance threshold.
+    value: '15'
+  - name: INTPNT_CO_TOL_DFEAS
+    comment: Dual feasibility tolerance used by the interior-point optimizer for conic problems.
+    value: '16'
+  - name: INTPNT_CO_TOL_INFEAS
+    comment: Infeasibility tolerance used by the interior-point optimizer for conic problems.
+    value: '17'
+  - name: INTPNT_CO_TOL_MU_RED
+    comment: Relative complementarity gap tolerance used by the interior-point optimizer for conic problems.
+    value: '18'
+  - name: INTPNT_CO_TOL_NEAR_REL
+    comment: Optimality tolerance used by the interior-point optimizer for conic problems.
+    value: '19'
+  - name: INTPNT_CO_TOL_PFEAS
+    comment: Primal feasibility tolerance used by the interior-point optimizer for conic problems.
+    value: '20'
+  - name: INTPNT_CO_TOL_REL_GAP
+    comment: Relative gap termination tolerance used by the interior-point optimizer for conic problems.
+    value: '21'
+  - name: INTPNT_QO_TOL_DFEAS
+    comment: Dual feasibility tolerance used by the interior-point optimizer for quadratic problems.
+    value: '22'
+  - name: INTPNT_QO_TOL_INFEAS
+    comment: Infeasibility tolerance used by the interior-point optimizer for quadratic problems.
+    value: '23'
+  - name: INTPNT_QO_TOL_MU_RED
+    comment: Relative complementarity gap tolerance used by the interior-point optimizer for quadratic problems.
+    value: '24'
+  - name: INTPNT_QO_TOL_NEAR_REL
+    comment: Optimality tolerance used by the interior-point optimizer for quadratic problems.
+    value: '25'
+  - name: INTPNT_QO_TOL_PFEAS
+    comment: Primal feasibility tolerance used by the interior-point optimizer for quadratic problems.
+    value: '26'
+  - name: INTPNT_QO_TOL_REL_GAP
+    comment: Relative gap termination tolerance used by the interior-point optimizer for quadratic problems.
+    value: '27'
+  - name: INTPNT_TOL_DFEAS
+    comment: Dual feasibility tolerance used by the interior-point optimizer for linear problems.
+    value: '28'
+  - name: INTPNT_TOL_DSAFE
+    comment: Controls the interior-point dual starting point.
+    value: '29'
+  - name: INTPNT_TOL_INFEAS
+    comment: Infeasibility tolerance used by the interior-point optimizer for linear problems.
+    value: '30'
+  - name: INTPNT_TOL_MU_RED
+    comment: Relative complementarity gap tolerance used by the interior-point optimizer for linear problems.
+    value: '31'
+  - name: INTPNT_TOL_PATH
+    comment: Interior-point centering aggressiveness.
+    value: '32'
+  - name: INTPNT_TOL_PFEAS
+    comment: Primal feasibility tolerance used by the interior-point optimizer for linear problems.
+    value: '33'
+  - name: INTPNT_TOL_PSAFE
+    comment: Controls the interior-point primal starting point.
+    value: '34'
+  - name: INTPNT_TOL_REL_GAP
+    comment: Relative gap termination tolerance used by the interior-point optimizer for linear problems.
+    value: '35'
+  - name: INTPNT_TOL_REL_STEP
+    comment: Relative step size to the boundary for linear and quadratic optimization problems.
+    value: '36'
+  - name: INTPNT_TOL_STEP_SIZE
+    comment: Minimal step size tolerance for the interior-point optimizer.
+    value: '37'
+  - name: LOWER_OBJ_CUT
+    comment: Objective bound.
+    value: '38'
+  - name: LOWER_OBJ_CUT_FINITE_TRH
+    comment: Objective bound.
+    value: '39'
+  - name: MIO_DJC_MAX_BIGM
+    comment: Maximum allowed big-M value when reformulating disjunctive constraints to linear constraints.
+    value: '40'
+  - name: MIO_MAX_TIME
+    comment: Time limit for the mixed-integer optimizer.
+    value: '41'
+  - name: MIO_REL_GAP_CONST
+    comment: This value is used to compute the relative gap for the solution to an integer optimization problem.
+    value: '42'
+  - name: MIO_TOL_ABS_GAP
+    comment: Absolute optimality tolerance employed by the mixed-integer optimizer.
+    value: '43'
+  - name: MIO_TOL_ABS_RELAX_INT
+    comment: Integer feasibility tolerance.
+    value: '44'
+  - name: MIO_TOL_FEAS
+    comment: Feasibility tolerance for mixed integer solver.
+    value: '45'
+  - name: MIO_TOL_REL_DUAL_BOUND_IMPROVEMENT
+    comment: Controls cut generation for mixed-integer optimizer.
+    value: '46'
+  - name: MIO_TOL_REL_GAP
+    comment: Relative optimality tolerance employed by the mixed-integer optimizer.
+    value: '47'
+  - name: OPTIMIZER_MAX_TICKS
+    comment: Solver ticks limit.
+    value: '48'
+  - name: OPTIMIZER_MAX_TIME
+    comment: Solver time limit.
+    value: '49'
+  - name: PRESOLVE_TOL_ABS_LINDEP
+    comment: Absolute tolerance employed by the linear dependency checker.
+    value: '50'
+  - name: PRESOLVE_TOL_AIJ
+    comment: Absolute zero tolerance employed for constraint coefficients in the presolve.
+    value: '51'
+  - name: PRESOLVE_TOL_PRIMAL_INFEAS_PERTURBATION
+    comment: The presolve is allowed to perturb a bound on a constraint or variable by this amount if it removes an infeasibility.
+    value: '52'
+  - name: PRESOLVE_TOL_REL_LINDEP
+    comment: Relative tolerance employed by the linear dependency checker.
+    value: '53'
+  - name: PRESOLVE_TOL_S
+    comment: Absolute zero tolerance employed for slack variables in the presolve.
+    value: '54'
+  - name: PRESOLVE_TOL_X
+    comment: Absolute zero tolerance employed for variables in the presolve.
+    value: '55'
+  - name: QCQO_REFORMULATE_REL_DROP_TOL
+    comment: This parameter determines when columns are dropped in incomplete Cholesky factorization during reformulation of quadratic problems.
+    value: '56'
+  - name: SEMIDEFINITE_TOL_APPROX
+    comment: Tolerance to define a matrix to be positive semidefinite.
+    value: '57'
+  - name: SIM_LU_TOL_REL_PIV
+    comment: Relative pivot tolerance employed when computing the LU factorization of the basis matrix.
+    value: '58'
+  - name: SIMPLEX_ABS_TOL_PIV
+    comment: Absolute pivot tolerance employed by the simplex optimizers.
+    value: '59'
+  - name: UPPER_OBJ_CUT
+    comment: Objective bound.
+    value: '60'
+  - name: UPPER_OBJ_CUT_FINITE_TRH
+    comment: Objective bound.
+    value: '61'
+Solformat:
+  name: Solformat
+  comment: Data format types
+  enum_consts:
+  - name: EXTENSION
+    comment: The file extension is used to determine the data file format.
+    value: '0'
+  - name: B
+    comment: Simple binary format
+    value: '1'
+  - name: TASK
+    comment: Tar based format.
+    value: '2'
+  - name: JSON_TASK
+    comment: JSON based format.
+    value: '3'
+Problemitem:
+  name: Problemitem
+  comment: Problem data items
+  enum_consts:
+  - name: VAR
+    comment: Item is a variable.
+    value: '0'
+  - name: CON
+    comment: Item is a constraint.
+    value: '1'
+  - name: CONE
+    comment: Item is a cone.
+    value: '2'
+Compresstype:
+  name: Compresstype
+  comment: Compression types
+  enum_consts:
+  - name: NONE
+    comment: No compression is used.
+    value: '0'
+  - name: FREE
+    comment: The type of compression used is chosen automatically.
+    value: '1'
+  - name: GZIP
+    comment: The type of compression used is gzip compatible.
+    value: '2'
+  - name: ZSTD
+    comment: The type of compression used is zstd compatible.
     value: '3'
 Rescode:
   name: Rescode
@@ -2767,7 +2398,7 @@ Rescode:
     comment: A variable or constraint name is empty. The output file may be invalid.
     value: '502'
   - name: WRN_USING_GENERIC_NAMES
-    comment: Generic names are used because a name is not valid.
+    comment: Generic names are used because a name is invalid for requested format.
     value: '503'
   - name: WRN_INVALID_MPS_NAME
     comment: A name e.g. a row name is not a valid MPS name.
@@ -3015,6 +2646,12 @@ Rescode:
   - name: ERR_LIVING_TASKS
     comment: Not all tasks associated with the environment have been deleted.
     value: '1066'
+  - name: ERR_READ_GZIP
+    comment: Error encountered in GZIP stream.
+    value: '1067'
+  - name: ERR_READ_ZSTD
+    comment: Error encountered in ZSTD stream.
+    value: '1068'
   - name: ERR_BLANK_NAME
     comment: An all blank name has been specified.
     value: '1070'
@@ -3189,32 +2826,23 @@ Rescode:
   - name: ERR_OPF_DUAL_INTEGER_SOLUTION
     comment: Dual solution values are not allowed in OPF File
     value: '1146'
-  - name: ERR_LP_INCOMPATIBLE
-    comment: The problem cannot be written to an LP formatted file.
-    value: '1150'
   - name: ERR_LP_EMPTY
     comment: The problem cannot be written to an LP formatted file.
     value: '1151'
-  - name: ERR_LP_DUP_SLACK_NAME
-    comment: The name of the slack variable added to a ranged constraint already exists.
-    value: '1152'
   - name: ERR_WRITE_MPS_INVALID_NAME
     comment: An invalid name is created while writing an MPS file.
     value: '1153'
   - name: ERR_LP_INVALID_VAR_NAME
     comment: A variable name is invalid when used in an LP formatted file.
     value: '1154'
-  - name: ERR_LP_FREE_CONSTRAINT
-    comment: Free constraints cannot be written in LP file format.
-    value: '1155'
   - name: ERR_WRITE_OPF_INVALID_VAR_NAME
     comment: Empty variable names cannot be written to OPF files.
     value: '1156'
   - name: ERR_LP_FILE_FORMAT
     comment: Syntax error in an LP file.
     value: '1157'
-  - name: ERR_WRITE_LP_FORMAT
-    comment: Problem cannot be written as an LP file.
+  - name: ERR_LP_EXPECTED_NUMBER
+    comment: Expected a number in LP file
     value: '1158'
   - name: ERR_READ_LP_MISSING_END_TAG
     comment: Syntax error in LP fil. Possibly missing End tag.
@@ -3222,27 +2850,27 @@ Rescode:
   - name: ERR_LP_INDICATOR_VAR
     comment: An indicator variable was not declared binary
     value: '1160'
-  - name: ERR_WRITE_LP_NON_UNIQUE_NAME
-    comment: An auto-generated name is not unique.
+  - name: ERR_LP_EXPECTED_OBJECTIVE
+    comment: Expected an objective section in LP file
     value: '1161'
-  - name: ERR_READ_LP_NONEXISTING_NAME
-    comment: A variable never occurred in objective or constraints.
+  - name: ERR_LP_EXPECTED_CONSTRAINT_RELATION
+    comment: Expected constraint relation
     value: '1162'
-  - name: ERR_LP_WRITE_CONIC_PROBLEM
-    comment: The problem contains cones that cannot be written to an LP formatted file.
+  - name: ERR_LP_AMBIGUOUS_CONSTRAINT_BOUND
+    comment: Constraint has ambiguous or invalid bound
     value: '1163'
-  - name: ERR_LP_WRITE_GECO_PROBLEM
-    comment: The problem contains general convex terms that cannot be written to an LP formatted file.
+  - name: ERR_LP_DUPLICATE_SECTION
+    comment: Duplicate section
     value: '1164'
+  - name: ERR_READ_LP_DELAYED_ROWS_NOT_SUPPORTED
+    comment: Duplicate section
+    value: '1165'
   - name: ERR_WRITING_FILE
     comment: An error occurred while writing file
     value: '1166'
   - name: ERR_INVALID_NAME_IN_SOL_FILE
     comment: An invalid name occurred in a solution file.
     value: '1170'
-  - name: ERR_LP_INVALID_CON_NAME
-    comment: A constraint name is invalid when used in an LP formatted file.
-    value: '1171'
   - name: ERR_JSON_SYNTAX
     comment: Syntax error in an JSON data
     value: '1175'
@@ -3432,6 +3060,18 @@ Rescode:
   - name: ERR_OBJECTIVE_RANGE
     comment: Empty objective range.
     value: '1260'
+  - name: ERR_INV_RESCODE
+    comment: Invalid response code.
+    value: '1261'
+  - name: ERR_INV_IINF
+    comment: Invalid integer information item.
+    value: '1262'
+  - name: ERR_INV_LIINF
+    comment: Invalid long integer information item.
+    value: '1263'
+  - name: ERR_INV_DINF
+    comment: Invalid double information item.
+    value: '1264'
   - name: ERR_BASIS
     comment: Invalid basis is specified.
     value: '1266'
@@ -3883,7 +3523,7 @@ Rescode:
     comment: The file format does not support a problem with free constraints.
     value: '4003'
   - name: ERR_INVALID_FILE_FORMAT_FOR_CONES
-    comment: The file format does not support a problem with conic constraints.
+    comment: The file format does not support a problem with the simple cones (deprecated).
     value: '4005'
   - name: ERR_INVALID_FILE_FORMAT_FOR_QUADRATIC_TERMS
     comment: The file format does not support a problem with quadratic terms.
@@ -4089,6 +3729,30 @@ Rescode:
   - name: ERR_CBF_INVALID_DIMENSION_OF_CONES
     comment: Invalid number of cones.
     value: '7141'
+  - name: ERR_CBF_INVALID_NUM_OBJACOORD
+    comment: Invalid number of OBJACOORD.
+    value: '7150'
+  - name: ERR_CBF_INVALID_NUM_OBJFCOORD
+    comment: Invalid number of OBJFCOORD.
+    value: '7151'
+  - name: ERR_CBF_INVALID_NUM_ACOORD
+    comment: Invalid number of ACOORD.
+    value: '7152'
+  - name: ERR_CBF_INVALID_NUM_BCOORD
+    comment: Invalid number of BCOORD.
+    value: '7153'
+  - name: ERR_CBF_INVALID_NUM_FCOORD
+    comment: Invalid number of FCOORD.
+    value: '7155'
+  - name: ERR_CBF_INVALID_NUM_HCOORD
+    comment: Invalid number of HCOORD.
+    value: '7156'
+  - name: ERR_CBF_INVALID_NUM_DCOORD
+    comment: Invalid number of DCOORD.
+    value: '7157'
+  - name: ERR_CBF_EXPECTED_A_KEYWORD
+    comment: Expected a key word.
+    value: '7158'
   - name: ERR_CBF_INVALID_NUM_PSDCON
     comment: Invalid number of PSDCON.
     value: '7200'
@@ -4161,6 +3825,12 @@ Rescode:
   - name: ERR_SERVER_PROBLEM_SIZE
     comment: The problem is too large.
     value: '8008'
+  - name: ERR_DUPLICATE_INDEX_IN_A_SPARSE_MATRIX
+    comment: An element in a sparse matrix is specified twice.
+    value: '20050'
+  - name: ERR_DUPLICATE_INDEX_IN_AFEIDX_LIST
+    comment: An index is specified twice in an affine expression list.
+    value: '20060'
   - name: ERR_DUPLICATE_FIJ
     comment: An element in the F matrix is specified twice.
     value: '20100'
@@ -4272,35 +3942,479 @@ Rescode:
   - name: TRM_INTERNAL_STOP
     comment: The optimizer terminated for internal reasons.
     value: '100031'
-Mionodeseltype:
-  name: Mionodeseltype
-  comment: Mixed-integer node selection types
+Uplo:
+  name: Uplo
+  comment: Triangular part of a symmetric matrix.
+  enum_consts:
+  - name: LO
+    comment: Lower part.
+    value: '0'
+  - name: UP
+    comment: Upper part.
+    value: '1'
+Solveform:
+  name: Solveform
+  comment: Solve primal or dual form
   enum_consts:
   - name: FREE
-    comment: The optimizer decides the node selection strategy.
+    comment: The optimizer is free to solve either the primal or the dual problem.
     value: '0'
-  - name: FIRST
-    comment: The optimizer employs a depth first node selection strategy.
+  - name: PRIMAL
+    comment: The optimizer should solve the primal problem.
     value: '1'
-  - name: BEST
-    comment: The optimizer employs a best bound node selection strategy.
+  - name: DUAL
+    comment: The optimizer should solve the dual problem.
     value: '2'
-  - name: PSEUDO
-    comment: The optimizer employs selects the node based on a pseudo cost estimate.
-    value: '3'
-Compresstype:
-  name: Compresstype
-  comment: Compression types
+Miocontsoltype:
+  name: Miocontsoltype
+  comment: Continuous mixed-integer solution type
   enum_consts:
   - name: NONE
-    comment: No compression is used.
+    comment: No interior-point or basic solution.
+    value: '0'
+  - name: ROOT
+    comment: Solutions to the root node problem.
+    value: '1'
+  - name: ITG
+    comment: A feasible primal solution.
+    value: '2'
+  - name: ITG_REL
+    comment: A feasible primal solution or a root node solution if the problem is infeasible.
+    value: '3'
+Optimizertype:
+  name: Optimizertype
+  comment: Optimizer types
+  enum_consts:
+  - name: CONIC
+    comment: The optimizer for problems having conic constraints.
+    value: '0'
+  - name: DUAL_SIMPLEX
+    comment: The dual simplex optimizer is used.
+    value: '1'
+  - name: FREE
+    comment: The optimizer is chosen automatically.
+    value: '2'
+  - name: FREE_SIMPLEX
+    comment: One of the simplex optimizers is used.
+    value: '3'
+  - name: INTPNT
+    comment: The interior-point optimizer is used.
+    value: '4'
+  - name: MIXED_INT
+    comment: The mixed-integer optimizer.
+    value: '5'
+  - name: PRIMAL_SIMPLEX
+    comment: The primal simplex optimizer is used.
+    value: '6'
+Simdegen:
+  name: Simdegen
+  comment: Degeneracy strategies
+  enum_consts:
+  - name: NONE
+    comment: The simplex optimizer should use no degeneration strategy.
     value: '0'
   - name: FREE
-    comment: The type of compression used is chosen automatically.
+    comment: The simplex optimizer chooses the degeneration strategy.
     value: '1'
-  - name: GZIP
-    comment: The type of compression used is gzip compatible.
+  - name: AGGRESSIVE
+    comment: The simplex optimizer should use an aggressive degeneration strategy.
     value: '2'
-  - name: ZSTD
-    comment: The type of compression used is zstd compatible.
+  - name: MODERATE
+    comment: The simplex optimizer should use a moderate degeneration strategy.
     value: '3'
+  - name: MINIMUM
+    comment: The simplex optimizer should use a minimum degeneration strategy.
+    value: '4'
+Conetype:
+  name: Conetype
+  comment: Cone types
+  enum_consts:
+  - name: QUAD
+    comment: The cone is a quadratic cone.
+    value: '0'
+  - name: RQUAD
+    comment: The cone is a rotated quadratic cone.
+    value: '1'
+  - name: PEXP
+    comment: A primal exponential cone.
+    value: '2'
+  - name: DEXP
+    comment: A dual exponential cone.
+    value: '3'
+  - name: PPOW
+    comment: A primal power cone.
+    value: '4'
+  - name: DPOW
+    comment: A dual power cone.
+    value: '5'
+  - name: ZERO
+    comment: The zero cone.
+    value: '6'
+Mark:
+  name: Mark
+  comment: Mark
+  enum_consts:
+  - name: LO
+    comment: The lower bound is selected for sensitivity analysis.
+    value: '0'
+  - name: UP
+    comment: The upper bound is selected for sensitivity analysis.
+    value: '1'
+Iinfitem:
+  name: Iinfitem
+  comment: Integer information items.
+  enum_consts:
+  - name: ANA_PRO_NUM_CON
+    comment: Number of constraints in the problem.
+    value: '0'
+  - name: ANA_PRO_NUM_CON_EQ
+    comment: Number of equality constraints.
+    value: '1'
+  - name: ANA_PRO_NUM_CON_FR
+    comment: Number of unbounded constraints.
+    value: '2'
+  - name: ANA_PRO_NUM_CON_LO
+    comment: Number of constraints with a lower bound and an infinite upper bound.
+    value: '3'
+  - name: ANA_PRO_NUM_CON_RA
+    comment: Number of constraints with finite lower and upper bounds.
+    value: '4'
+  - name: ANA_PRO_NUM_CON_UP
+    comment: Number of constraints with an upper bound and an infinite lower bound.
+    value: '5'
+  - name: ANA_PRO_NUM_VAR
+    comment: Number of variables in the problem.
+    value: '6'
+  - name: ANA_PRO_NUM_VAR_BIN
+    comment: Number of binary variables.
+    value: '7'
+  - name: ANA_PRO_NUM_VAR_CONT
+    comment: Number of continuous variables.
+    value: '8'
+  - name: ANA_PRO_NUM_VAR_EQ
+    comment: Number of fixed variables.
+    value: '9'
+  - name: ANA_PRO_NUM_VAR_FR
+    comment: Number of unbounded constraints.
+    value: '10'
+  - name: ANA_PRO_NUM_VAR_INT
+    comment: Number of general integer variables.
+    value: '11'
+  - name: ANA_PRO_NUM_VAR_LO
+    comment: Number of variables with a lower bound and an infinite upper bound.
+    value: '12'
+  - name: ANA_PRO_NUM_VAR_RA
+    comment: Number of variables with finite lower and upper bounds.
+    value: '13'
+  - name: ANA_PRO_NUM_VAR_UP
+    comment: Number of variables with an upper bound and an infinite lower bound.
+    value: '14'
+  - name: INTPNT_FACTOR_DIM_DENSE
+    comment: Dimension of the dense sub system in factorization.
+    value: '15'
+  - name: INTPNT_ITER
+    comment: Number of interior-point iterations since invoking the interior-point optimizer.
+    value: '16'
+  - name: INTPNT_NUM_THREADS
+    comment: Number of threads that the interior-point optimizer is using.
+    value: '17'
+  - name: INTPNT_SOLVE_DUAL
+    comment: Non-zero if the interior-point optimizer is solving the dual problem.
+    value: '18'
+  - name: MIO_ABSGAP_SATISFIED
+    comment: Non-zero if absolute gap is within tolerances.
+    value: '19'
+  - name: MIO_CLIQUE_TABLE_SIZE
+    comment: Size of the clique table.
+    value: '20'
+  - name: MIO_CONSTRUCT_SOLUTION
+    comment: Informs if MOSEK successfully constructed an initial integer feasible solution.
+    value: '21'
+  - name: MIO_INITIAL_FEASIBLE_SOLUTION
+    comment: Informs if MOSEK found the solution provided by the user to be feasible
+    value: '22'
+  - name: MIO_NODE_DEPTH
+    comment: Depth of the last node solved.
+    value: '23'
+  - name: MIO_NUM_ACTIVE_NODES
+    comment: Number of active branch and bound nodes.
+    value: '24'
+  - name: MIO_NUM_ACTIVE_ROOT_CUTS
+    comment: Number of active cuts in the final relaxation after the mixed-integer optimizer's root cut generation.
+    value: '25'
+  - name: MIO_NUM_BRANCH
+    comment: Number of branches performed during the optimization.
+    value: '26'
+  - name: MIO_NUM_INT_SOLUTIONS
+    comment: Number of integer feasible solutions that have been found.
+    value: '27'
+  - name: MIO_NUM_RELAX
+    comment: Number of relaxations solved during the optimization.
+    value: '28'
+  - name: MIO_NUM_REPEATED_PRESOLVE
+    comment: Number of times presolve was repeated at root.
+    value: '29'
+  - name: MIO_NUM_RESTARTS
+    comment: Number of restarts performed during the optimization.
+    value: '30'
+  - name: MIO_NUM_ROOT_CUT_ROUNDS
+    comment: Number of cut separation rounds at the root node of the mixed-integer optimizer.
+    value: '31'
+  - name: MIO_NUM_SELECTED_CLIQUE_CUTS
+    comment: Number of clique cuts selected to be included in the relaxation.
+    value: '32'
+  - name: MIO_NUM_SELECTED_CMIR_CUTS
+    comment: Number of Complemented Mixed Integer Rounding (CMIR) cuts selected to be included in the relaxation.
+    value: '33'
+  - name: MIO_NUM_SELECTED_GOMORY_CUTS
+    comment: Number of Gomory cuts selected to be included in the relaxation.
+    value: '34'
+  - name: MIO_NUM_SELECTED_IMPLIED_BOUND_CUTS
+    comment: Number of implied bound cuts selected to be included in the relaxation.
+    value: '35'
+  - name: MIO_NUM_SELECTED_KNAPSACK_COVER_CUTS
+    comment: Number of clique cuts selected to be included in the relaxation.
+    value: '36'
+  - name: MIO_NUM_SELECTED_LIPRO_CUTS
+    comment: Number of lift-and-project cuts selected to be included in the relaxation.
+    value: '37'
+  - name: MIO_NUM_SEPARATED_CLIQUE_CUTS
+    comment: Number of separated clique cuts.
+    value: '38'
+  - name: MIO_NUM_SEPARATED_CMIR_CUTS
+    comment: Number of separated Complemented Mixed Integer Rounding (CMIR) cuts.
+    value: '39'
+  - name: MIO_NUM_SEPARATED_GOMORY_CUTS
+    comment: Number of separated Gomory cuts.
+    value: '40'
+  - name: MIO_NUM_SEPARATED_IMPLIED_BOUND_CUTS
+    comment: Number of separated implied bound cuts.
+    value: '41'
+  - name: MIO_NUM_SEPARATED_KNAPSACK_COVER_CUTS
+    comment: Number of separated clique cuts.
+    value: '42'
+  - name: MIO_NUM_SEPARATED_LIPRO_CUTS
+    comment: Number of separated lift-and-project cuts.
+    value: '43'
+  - name: MIO_NUM_SOLVED_NODES
+    comment: Number of branch and bounds nodes solved in the main branch and bound tree.
+    value: '44'
+  - name: MIO_NUMBIN
+    comment: Number of binary variables in the problem to be solved by the mixed-integer optimizer.
+    value: '45'
+  - name: MIO_NUMBINCONEVAR
+    comment: Number of binary cone variables in the problem to be solved by the mixed-integer optimizer.
+    value: '46'
+  - name: MIO_NUMCON
+    comment: Number of constraints in the problem to be solved by the mixed-integer optimizer.
+    value: '47'
+  - name: MIO_NUMCONE
+    comment: Number of cones in the problem to be solved by the mixed-integer optimizer.
+    value: '48'
+  - name: MIO_NUMCONEVAR
+    comment: Number of cone variables in the problem to be solved by the mixed-integer optimizer.
+    value: '49'
+  - name: MIO_NUMCONT
+    comment: Number of continuous variables in the problem to be solved by the mixed-integer optimizer.
+    value: '50'
+  - name: MIO_NUMCONTCONEVAR
+    comment: Number of continuous cone variables in the problem to be solved by the mixed-integer optimizer.
+    value: '51'
+  - name: MIO_NUMDEXPCONES
+    comment: Number of dual exponential cones in the problem to be solved by the mixed-integer optimizer.
+    value: '52'
+  - name: MIO_NUMDJC
+    comment: Number of disjunctive constraints in the problem to be solved by the mixed-integer optimizer.
+    value: '53'
+  - name: MIO_NUMDPOWCONES
+    comment: Number of dual power cones in the problem to be solved by the mixed-integer optimizer.
+    value: '54'
+  - name: MIO_NUMINT
+    comment: Number of integer variables in the problem to be solved by the mixed-integer optimizer.
+    value: '55'
+  - name: MIO_NUMINTCONEVAR
+    comment: Number of integer cone variables in the problem to be solved by the mixed-integer optimizer.
+    value: '56'
+  - name: MIO_NUMPEXPCONES
+    comment: Number of primal exponential cones in the problem to be solved by the mixed-integer optimizer.
+    value: '57'
+  - name: MIO_NUMPPOWCONES
+    comment: Number of primal power cones in the problem to be solved by the mixed-integer optimizer.
+    value: '58'
+  - name: MIO_NUMQCONES
+    comment: Number of quadratic cones in the problem to be solved by the mixed-integer optimizer.
+    value: '59'
+  - name: MIO_NUMRQCONES
+    comment: Number of rotated quadratic cones in the problem to be solved by the mixed-integer optimizer.
+    value: '60'
+  - name: MIO_NUMVAR
+    comment: Number of variables in the problem to be solved by the mixed-integer optimizer.
+    value: '61'
+  - name: MIO_OBJ_BOUND_DEFINED
+    comment: Non-zero if a valid objective bound has been found, otherwise zero.
+    value: '62'
+  - name: MIO_PRESOLVED_NUMBIN
+    comment: Number of binary variables in the problem after the mixed-integer optimizer's presolve.
+    value: '63'
+  - name: MIO_PRESOLVED_NUMBINCONEVAR
+    comment: Number of binary cone variables in the problem after the mixed-integer optimizer's presolve.
+    value: '64'
+  - name: MIO_PRESOLVED_NUMCON
+    comment: Number of constraints in the problem after the mixed-integer optimizer's presolve.
+    value: '65'
+  - name: MIO_PRESOLVED_NUMCONE
+    comment: Number of cones in the problem after the mixed-integer optimizer's presolve.
+    value: '66'
+  - name: MIO_PRESOLVED_NUMCONEVAR
+    comment: Number of cone variables in the problem after the mixed-integer optimizer's presolve.
+    value: '67'
+  - name: MIO_PRESOLVED_NUMCONT
+    comment: Number of continuous variables in the problem after the mixed-integer optimizer's presolve.
+    value: '68'
+  - name: MIO_PRESOLVED_NUMCONTCONEVAR
+    comment: Number of continuous cone variables in the problem after the mixed-integer optimizer's presolve.
+    value: '69'
+  - name: MIO_PRESOLVED_NUMDEXPCONES
+    comment: Number of dual exponential cones in the problem after the mixed-integer optimizer's presolve.
+    value: '70'
+  - name: MIO_PRESOLVED_NUMDJC
+    comment: Number of disjunctive constraints in the problem after the mixed-integer optimizer's presolve.
+    value: '71'
+  - name: MIO_PRESOLVED_NUMDPOWCONES
+    comment: Number of dual power cones in the problem after the mixed-integer optimizer's presolve.
+    value: '72'
+  - name: MIO_PRESOLVED_NUMINT
+    comment: Number of integer variables in the problem after the mixed-integer optimizer's presolve.
+    value: '73'
+  - name: MIO_PRESOLVED_NUMINTCONEVAR
+    comment: Number of integer cone variables in the problem after the mixed-integer optimizer's presolve.
+    value: '74'
+  - name: MIO_PRESOLVED_NUMPEXPCONES
+    comment: Number of primal exponential cones in the problem after the mixed-integer optimizer's presolve.
+    value: '75'
+  - name: MIO_PRESOLVED_NUMPPOWCONES
+    comment: Number of primal power cones in the problem after the mixed-integer optimizer's presolve.
+    value: '76'
+  - name: MIO_PRESOLVED_NUMQCONES
+    comment: Number of quadratic cones in the problem after the mixed-integer optimizer's presolve.
+    value: '77'
+  - name: MIO_PRESOLVED_NUMRQCONES
+    comment: Number of rotated quadratic cones in the problem after the mixed-integer optimizer's presolve.
+    value: '78'
+  - name: MIO_PRESOLVED_NUMVAR
+    comment: Number of variables in the problem after the mixed-integer optimizer's presolve.
+    value: '79'
+  - name: MIO_RELGAP_SATISFIED
+    comment: Non-zero if relative gap is within tolerances.
+    value: '80'
+  - name: MIO_TOTAL_NUM_SELECTED_CUTS
+    comment: Total number of cuts selected to be included in the relaxation by the mixed-integer optimizer.
+    value: '81'
+  - name: MIO_TOTAL_NUM_SEPARATED_CUTS
+    comment: Total number of cuts separated by the mixed-integer optimizer.
+    value: '82'
+  - name: MIO_USER_OBJ_CUT
+    comment: If it is non-zero, then the objective cut is used.
+    value: '83'
+  - name: OPT_NUMCON
+    comment: Number of constraints in the problem solved when the optimizer is called.
+    value: '84'
+  - name: OPT_NUMVAR
+    comment: Number of variables in the problem solved when the optimizer is called
+    value: '85'
+  - name: OPTIMIZE_RESPONSE
+    comment: The response code returned by optimize.
+    value: '86'
+  - name: PRESOLVE_NUM_PRIMAL_PERTURBATIONS
+    comment: Number perturbations to thhe bounds of the primal problem.
+    value: '87'
+  - name: PURIFY_DUAL_SUCCESS
+    comment: Is nonzero if the dual solution is purified.
+    value: '88'
+  - name: PURIFY_PRIMAL_SUCCESS
+    comment: Is nonzero if the primal solution is purified.
+    value: '89'
+  - name: RD_NUMBARVAR
+    comment: Number of symmetric variables read.
+    value: '90'
+  - name: RD_NUMCON
+    comment: Number of constraints read.
+    value: '91'
+  - name: RD_NUMCONE
+    comment: Number of conic constraints read.
+    value: '92'
+  - name: RD_NUMINTVAR
+    comment: Number of integer-constrained variables read.
+    value: '93'
+  - name: RD_NUMQ
+    comment: Number of nonempty Q matrices read.
+    value: '94'
+  - name: RD_NUMVAR
+    comment: Number of variables read.
+    value: '95'
+  - name: RD_PROTYPE
+    comment: Problem type.
+    value: '96'
+  - name: SIM_DUAL_DEG_ITER
+    comment: The number of dual degenerate iterations.
+    value: '97'
+  - name: SIM_DUAL_HOTSTART
+    comment: If 1 then the dual simplex algorithm is solving from an advanced basis.
+    value: '98'
+  - name: SIM_DUAL_HOTSTART_LU
+    comment: If 1 then a valid basis factorization of full rank was located and used by the dual simplex algorithm.
+    value: '99'
+  - name: SIM_DUAL_INF_ITER
+    comment: The number of iterations taken with dual infeasibility.
+    value: '100'
+  - name: SIM_DUAL_ITER
+    comment: Number of dual simplex iterations during the last optimization.
+    value: '101'
+  - name: SIM_NUMCON
+    comment: Number of constraints in the problem solved by the simplex optimizer.
+    value: '102'
+  - name: SIM_NUMVAR
+    comment: Number of variables in the problem solved by the simplex optimizer.
+    value: '103'
+  - name: SIM_PRIMAL_DEG_ITER
+    comment: The number of primal degenerate iterations.
+    value: '104'
+  - name: SIM_PRIMAL_HOTSTART
+    comment: If 1 then the primal simplex algorithm is solving from an advanced basis.
+    value: '105'
+  - name: SIM_PRIMAL_HOTSTART_LU
+    comment: If 1 then a valid basis factorization of full rank was located and used by the primal simplex algorithm.
+    value: '106'
+  - name: SIM_PRIMAL_INF_ITER
+    comment: The number of iterations taken with primal infeasibility.
+    value: '107'
+  - name: SIM_PRIMAL_ITER
+    comment: Number of primal simplex iterations during the last optimization.
+    value: '108'
+  - name: SIM_SOLVE_DUAL
+    comment: Is non-zero if dual problem is solved.
+    value: '109'
+  - name: SOL_BAS_PROSTA
+    comment: Problem status of the basic solution. Updated after each optimization.
+    value: '110'
+  - name: SOL_BAS_SOLSTA
+    comment: Solution status of the basic solution. Updated after each optimization.
+    value: '111'
+  - name: SOL_ITG_PROSTA
+    comment: Problem status of the integer solution. Updated after each optimization.
+    value: '112'
+  - name: SOL_ITG_SOLSTA
+    comment: Solution status of the integer solution. Updated after each optimization.
+    value: '113'
+  - name: SOL_ITR_PROSTA
+    comment: Problem status of the interior-point solution. Updated after each optimization.
+    value: '114'
+  - name: SOL_ITR_SOLSTA
+    comment: Solution status of the interior-point solution. Updated after each optimization.
+    value: '115'
+  - name: STO_NUM_A_REALLOC
+    comment: Number of times the storage for storing the linear coefficient matrix has been changed.
+    value: '116'
+  - name: END
+    comment: ''
+    value: '116'

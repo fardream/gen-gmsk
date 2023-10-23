@@ -369,6 +369,9 @@
     - `dinf` is a list of f64 information items (indexed with `MSK_DINF_...`)
     - `iinf` is a list of i32 information items (indexed with `MSK_IINF_...`)
     - `liinf` is a list of i64 information items (indexed with `MSK_LIINF_...`)
+- name: clear_callback
+  struct_name: TaskCB
+  comment: ''
 - name: analyze_names
   struct_name: TaskCB
   comment: |-
@@ -856,6 +859,17 @@
     - `nrminvbasis_` An estimate for the 1-norm of the inverse of the basis.
 
     Full documentation: <https://docs.mosek.com/latest/capi/alphabetic-functionalities.html#mosek.env.basiscond>
+- name: check_mem
+  struct_name: TaskCB
+  comment: |-
+    Checks the memory allocated by the task.
+
+    # Arguments
+
+    - `file_` File from which the function is called.
+    - `line_` Line in the file from which the function is called.
+
+    Full documentation: <https://docs.mosek.com/latest/capi/alphabetic-functionalities.html#mosek.env.checkmemtask>
 - name: chg_con_bound
   struct_name: TaskCB
   comment: |-
@@ -1149,7 +1163,10 @@
     # Arguments
 
     - `accidx_` The index of the affine conic constraint.
-    - `domidx_` The index of domain in the affine conic constraint.
+
+    # Returns
+
+    - `domidx` The index of domain in the affine conic constraint.
 
     Full documentation: <https://docs.mosek.com/latest/capi/alphabetic-functionalities.html#mosek.env.getaccdomain>
 - name: get_acc_dot_y
@@ -5939,6 +5956,9 @@
 - name: handle_res
   struct_name: Task
   comment: ''
+- name: write_data_stream
+  struct_name: Task
+  comment: ''
 - name: analyze_names
   struct_name: Task
   comment: |-
@@ -6426,6 +6446,17 @@
     - `nrminvbasis_` An estimate for the 1-norm of the inverse of the basis.
 
     Full documentation: <https://docs.mosek.com/latest/capi/alphabetic-functionalities.html#mosek.env.basiscond>
+- name: check_mem
+  struct_name: Task
+  comment: |-
+    Checks the memory allocated by the task.
+
+    # Arguments
+
+    - `file_` File from which the function is called.
+    - `line_` Line in the file from which the function is called.
+
+    Full documentation: <https://docs.mosek.com/latest/capi/alphabetic-functionalities.html#mosek.env.checkmemtask>
 - name: chg_con_bound
   struct_name: Task
   comment: |-
@@ -6719,7 +6750,10 @@
     # Arguments
 
     - `accidx_` The index of the affine conic constraint.
-    - `domidx_` The index of domain in the affine conic constraint.
+
+    # Returns
+
+    - `domidx` The index of domain in the affine conic constraint.
 
     Full documentation: <https://docs.mosek.com/latest/capi/alphabetic-functionalities.html#mosek.env.getaccdomain>
 - name: get_acc_dot_y
