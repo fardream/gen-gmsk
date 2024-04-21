@@ -52,7 +52,7 @@ func builderToFile(outputDir, outFile string, h *MosekH, config *OutputConfig, b
 func main() {
 	homeDir := getOrPanic(os.UserHomeDir())
 
-	fileName := path.Join(homeDir, "mosek", "10.0", "tools", "platform", "linux64x86", "h", "mosek.h")
+	fileName := path.Join(homeDir, "mosek", "10.1", "tools", "platform", "linux64x86", "h", "mosek.h")
 	flag.StringVar(&fileName, "filename", fileName, "path to mosek.h")
 
 	outputFile := ""

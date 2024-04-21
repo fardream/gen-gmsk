@@ -36,9 +36,9 @@ func (e *enumFileInput) ConstantValues() []string {
 		constname := strings.TrimPrefix(ev.Name, e.stripPrefix)
 		c, found := e.ConstantComments[ev.Name]
 		if found {
-			r = append(r, fmt.Sprintf("%s %s = %s // %s", constname, e.GoName, ev.Value, c))
+			r = append(r, fmt.Sprintf("%s %s = C.%s // %s", constname, e.GoName, ev.Name, c))
 		} else {
-			r = append(r, fmt.Sprintf("%s %s = %s", constname, e.GoName, ev.Value))
+			r = append(r, fmt.Sprintf("%s %s = C.%s", constname, e.GoName, ev.Name))
 		}
 	}
 

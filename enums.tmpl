@@ -3,6 +3,9 @@
 
 package {{.PkgName}}
 
+// #include <mosek.h>
+import "C"
+
 {{if not .IsEqualType }}import "strconv"{{end}}
 
 // {{.GoName}} is {{.CName}}.
