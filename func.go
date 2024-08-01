@@ -313,7 +313,7 @@ func (t *FuncTmplInput) ReturnType() string {
 		log.Panicf("cannot find mapping for return type %s", t.CFunc.ReturnType)
 	}
 	if t.LastNParamOutput == 0 {
-		if goTypeForC == "res.Code" {
+		if goTypeForC == "ResCode" {
 			return "error"
 		} else {
 			return goTypeForC
@@ -340,7 +340,8 @@ func (t *FuncTmplInput) ReturnType() string {
 
 func replacePrefix(s, oldPrefix, newPrefix string) (bool, string) {
 	if strings.HasPrefix(s, oldPrefix) {
-		return true, fmt.Sprintf("%s%s", newPrefix, upperCaseFirstLetter(strings.TrimPrefix(s, oldPrefix)))
+		return true, fmt.Sprintf("%s%s", newPrefix,
+			upperCaseFirstLetter(strings.TrimPrefix(s, oldPrefix)))
 	}
 	return false, s
 }
@@ -518,7 +519,8 @@ func normalizeFunction(f *MskFunction, config *OutputConfig) {
 			fallthrough
 		case i == nparams-1 && fc.FuncType == funcType_TASK_APPENDDOMAIN && fc.LastNParamOutput == 0:
 			fallthrough
-		case i == nparams-1 && action == "Get" && (suffix == "NumNz" || suffix == "NumNz64") && fc.LastNParamOutput == 0:
+		case i == nparams-1 && action == "Get" &&
+			(suffix == "NumNz" || suffix == "NumNz64") && fc.LastNParamOutput == 0:
 			fallthrough
 		case i == nparams-1 && action == "Get" && suffix == "NameLen" && fc.LastNParamOutput == 0:
 			fc.LastNParamOutput = 1
@@ -528,7 +530,8 @@ func normalizeFunction(f *MskFunction, config *OutputConfig) {
 			fc.LastNParamOutput = 1
 			pc.IsStrOut = true
 
-		case i == nparams-1 && action == "" && suffix == "ToStr" && fc.LastNParamOutput == 0 && p.Type == "char *":
+		case i == nparams-1 && action == "" && suffix == "ToStr" &&
+			fc.LastNParamOutput == 0 && p.Type == "char *":
 			fc.LastNParamOutput = 1
 			pc.IsStrOut = true
 

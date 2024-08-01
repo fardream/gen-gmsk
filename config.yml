@@ -330,3 +330,7 @@ funcs:
     skip: true
   MSK_rescodetostr:
     skip: true # parameter name is res
+  MSK_utf8towchar:
+    skip: true # platform dependent input
+  MSK_wchartoutf8:
+    skip: true # platform dependent input

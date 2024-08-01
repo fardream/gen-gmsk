@@ -119,7 +119,7 @@ func main() {
 
 	}
 
-	builderToFile(outputDir, path.Join("res", "codes.go"), m, config, func(mh *MosekH, oc *OutputConfig, w io.Writer) error {
+	builderToFile(outputDir, "rescodes.go", m, config, func(mh *MosekH, oc *OutputConfig, w io.Writer) error {
 		rescodeEnum, ok := mh.Enums["MSKrescode_enum"]
 		if !ok {
 			return fmt.Errorf("failed to find MSKrescode_enum from parsed mosek header")
@@ -131,12 +131,12 @@ func main() {
 				CommonId: CommonId{},
 			}
 		}
-		rc.GoName = "Code"
+		rc.GoName = "ResCode"
 		return enumFileTmpl.Execute(w, &enumFileInput{
 			enumConfig:  rc,
 			CEnum:       rescodeEnum,
-			PkgName:     "res",
-			stripPrefix: "MSK_RES_",
+			PkgName:     "gmsk",
+			stripPrefix: "MSK_",
 		})
 	})
 

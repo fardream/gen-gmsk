@@ -50,7 +50,7 @@ func newOutputConfig() *OutputConfig {
 			"size_t":       "uint64",
 			"double":       "float64",
 			"char":         "byte",
-			"MSKrescodee":  "res.Code",
+			"MSKrescodee":  "ResCode",
 			"unsigned int": "uint32",
 			"MSKbooleant":  "bool",
 		},
