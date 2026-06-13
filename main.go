@@ -11,8 +11,9 @@ import (
 	"path"
 	"strings"
 
-	"github.com/go-clang/clang-v15/clang"
 	"mvdan.cc/gofumpt/format"
+	"modernc.org/cc/v4"
+	"runtime"
 )
 
 func orPanic(err error) {
@@ -30,7 +31,7 @@ func builderToFile(outputDir, outFile string, h *MosekH, config *OutputConfig, b
 	var fileContent bytes.Buffer
 	orPanic(buildFunc(h, config, &fileContent))
 	formattedContent, err := format.Source(fileContent.Bytes(), format.Options{
-		LangVersion: "1.21",
+		LangVersion: "go1.21",
 		ExtraRules:  true,
 		ModulePath:  "github.com/fardream/gmsk",
 	})
@@ -63,24 +64,21 @@ func main() {
 
 	flag.Parse()
 
-	idx := clang.NewIndex(0, 1)
-	defer idx.Dispose()
+	cfg, err := cc.NewConfig(runtime.GOOS, runtime.GOARCH)
+	orPanic(err)
+	cfg.EvalAllMacros = true
+	cfg.UnsignedEnums = true
 
-	tu := idx.ParseTranslationUnit(fileName, nil, nil, 0)
-	defer tu.Dispose()
-
-	diagnostics := tu.Diagnostics()
-	for _, d := range diagnostics {
-		log.Println("PROBLEM:", d.Spelling())
+	sources := []cc.Source{
+		{Name: "<predefined>", Value: cfg.Predefined},
+		{Name: "<builtin>", Value: cc.Builtin},
+		{Name: fileName},
 	}
 
-	cursor := tu.TranslationUnitCursor()
+	ast, err := cc.Translate(cfg, sources)
+	orPanic(err)
 
-	m := NewMosekH().Build(cursor)
-
-	if len(diagnostics) > 0 {
-		log.Println("NOTE: There were problems while analyzing the given file")
-	}
+	m := NewMosekH().Build(ast, fileName)
 
 	if outputFile != "" {
 		b := getOrPanic(json.MarshalIndent(m, "", "  "))
