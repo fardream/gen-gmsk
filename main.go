@@ -9,11 +9,11 @@ import (
 	"log"
 	"os"
 	"path"
+	"runtime"
 	"strings"
 
-	"mvdan.cc/gofumpt/format"
 	"modernc.org/cc/v4"
-	"runtime"
+	"mvdan.cc/gofumpt/format"
 )
 
 func orPanic(err error) {
@@ -33,7 +33,7 @@ func builderToFile(outputDir, outFile string, h *MosekH, config *OutputConfig, b
 	formattedContent, err := format.Source(fileContent.Bytes(), format.Options{
 		LangVersion: "go1.21",
 		ExtraRules:  true,
-		ModulePath:  "github.com/fardream/gmsk",
+		ModulePath:  "github.com/fardream/gmsk/v11",
 	})
 	if err != nil {
 		fullPath := path.Join(outputDir, outFile)
@@ -52,8 +52,7 @@ func builderToFile(outputDir, outFile string, h *MosekH, config *OutputConfig, b
 
 func main() {
 	homeDir := getOrPanic(os.UserHomeDir())
-
-	fileName := path.Join(homeDir, "mosek", "10.1", "tools", "platform", "linux64x86", "h", "mosek.h")
+	fileName := path.Join(homeDir, "mosek", "11.2", "tools", "platform", "linux64x86", "h", "mosek.h")
 	flag.StringVar(&fileName, "filename", fileName, "path to mosek.h")
 
 	outputFile := ""

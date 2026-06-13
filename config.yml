@@ -334,3 +334,8 @@ funcs:
     skip: true # platform dependent input
   MSK_wchartoutf8:
     skip: true # platform dependent input
+  MSK_getdualproblem:
+    skip: true #
+  MSK_readdatahandle:
+    skip: true # handle functions
+

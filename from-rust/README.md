@@ -3,7 +3,7 @@
 First, update the data file in `data` folder
 
 ```shell
-curl -o data/mosek-lib.rs https://raw.githubusercontent.com/MOSEK/mosek.rust/mosek-10.1/src/lib.rs
+curl -o data/mosek-lib.rs https://raw.githubusercontent.com/MOSEK/mosek.rust/refs/heads/mosek-11.2/src/lib.rs
 ```
 
 Then, run the code
